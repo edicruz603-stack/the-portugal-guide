@@ -17,7 +17,7 @@ The site is published with GitHub Pages from the `main` branch, using the reposi
 ## Current status
 - The homepage is live.
 - The current visual artwork uses CSS gradients; verified commercial-use photography has not yet been added.
-- The Sintra field guide now includes four credited Wikimedia Commons photographs with their licence links, plus a curated shortlist of local pastry shops and restaurants.\n- The guide is published as an online planning resource; it is not yet a paid/downloadable product.
+- The Sintra field guide now includes four credited Wikimedia Commons photographs with their licence links, a curated shortlist of local pastry shops and restaurants, and an interactive itinerary builder with traveller preferences and contingency advice.\n- The guide is published as an online planning resource; it is not yet a paid/downloadable product. The €9.90 target is provisional and requires product, legal, tax, accessibility and content validation before any sale.
 - No checkout, payment provider, or paid service is connected.
 - Before selling or collecting customer information, add the required contact, privacy, terms, and consumer information, and verify applicable tax and invoicing obligations.
 - No paid domain or subscription is required for the current prototype.
