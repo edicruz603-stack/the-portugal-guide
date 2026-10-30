@@ -51,9 +51,11 @@ Do not treat future destinations as simple copies of Sintra. Reuse the technical
 
 - The site is hosted on GitHub Pages from the `main` branch and repository root. Hosting is currently free.
 - Sintra has a core guide, local-discoveries page, romantic companion page, map and interactive day planner.
-- The guide is still a prototype/editorial product in progress. It has not yet passed a complete factual, technical, accessibility, mobile and commercial-readiness audit.
-- Ticket prices, opening hours, event dates, transport and access restrictions are changeable and must be rechecked against official sources before publication and sale.
-- A polished downloadable PDF, full route verification, and a repeatable content-review process remain to be completed.
+- The online Sintra guide, local-discoveries directory, romantic companion, interactive map and day planner are published as the current editorial edition.
+- The ticket budget and cultural diary were refreshed against official operator and municipal sources on 30 October 2026.
+- A 10-page English (UK) PDF companion has been produced as a downloadable review edition; it is not yet hosted in the public repository.
+- The product has not passed a complete end-to-end device, accessibility, map-route, image-rights or commercial-readiness audit. Do not describe it as fully launch-ready yet.
+- Ticket prices, opening hours, event dates, transport and access restrictions are changeable and must be rechecked before each commercial release.
 - No checkout, payment provider, paid service or subscription is connected.
 
 ## Before launch
@@ -62,7 +64,7 @@ Do not treat future destinations as simple copies of Sintra. Reuse the technical
 2. Verify key facts, ticket prices, opening hours, transport, accessibility and event dates against authoritative sources.
 3. Review all images, credits and licences for the intended commercial use.
 4. Complete the mobile and desktop experience, including keyboard and accessibility checks.
-5. Produce and proofread the downloadable PDF.
+5. Proofread the downloadable PDF against the live guide and host the approved final PDF in the public product flow.
 6. Add the necessary business identity, contact, privacy, terms, consumer and refund information.
 7. Confirm Portuguese/EU tax, VAT, invoicing and digital-content obligations with an appropriately qualified source.
 8. Compare payment providers by fees, payout availability and compliance requirements before selecting one.
