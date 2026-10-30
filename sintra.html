@@ -57,7 +57,19 @@
 .guide-highlights{padding:75px 0}.highlight-grid{grid-template-columns:1fr}.highlight-card{min-height:0;padding:28px}
 .timeline article{grid-template-columns:1fr;gap:8px}.guide-essentials{padding:75px 0}.essentials-inner{grid-template-columns:1fr;gap:30px}
 .official-links{grid-template-columns:1fr}
-}</style>
+}
+.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:35px}
+.photo-card{margin:0;background:#e9dfc9;border:1px solid rgba(49,74,58,.16)}
+.photo-card img{display:block;width:100%;height:260px;object-fit:cover}
+.photo-card figcaption{padding:13px 15px;color:#6d7469;font-size:10px;line-height:1.7}
+.photo-card figcaption strong{display:block;color:#314a3a;font-size:12px;margin-bottom:3px}
+.food-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(49,74,58,.18);border:1px solid rgba(49,74,58,.18);margin-top:35px}
+.food-card{padding:28px;background:#e9dfc9}
+.food-card h3{font-family:Georgia,serif;font-weight:500;font-size:24px;margin:0 0 10px}
+.food-card p{font-size:13px;line-height:1.8;color:#6d7469}
+.food-card a{display:inline-block;margin-top:5px;font-size:11px;font-weight:700;color:#314a3a}
+@media(max-width:760px){.photo-grid,.food-grid{grid-template-columns:1fr}.photo-card img{height:230px}}
+</style>
 </head>
 <body class="guide-page">
   <header class="site-header">
@@ -81,7 +93,7 @@
     </section>
 
     <nav class="guide-toc" aria-label="Guide contents">
-      <a href="#first-look">First look</a><a href="#highlights">What to see</a><a href="#getting-around">Getting around</a><a href="#plan">Itineraries</a><a href="#day-plan">Day plan</a><a href="#food">What to taste</a><a href="#tickets">Ticket budget</a><a href="#map">Map</a><a href="#essentials">Before you go</a>
+      <a href="#first-look">First look</a><a href="#highlights">What to see</a><a href="#getting-around">Getting around</a><a href="#plan">Itineraries</a><a href="#day-plan">Day plan</a><a href="#food">What to taste</a><a href="#photographs">Photographs</a><a href="#food-stops">Where to eat</a><a href="#tickets">Ticket budget</a><a href="#map">Map</a><a href="#essentials">Before you go</a>
     </nav>
 
     <section class="guide-intro section-wrap" id="first-look">
@@ -156,6 +168,20 @@
       </div>
     </section>
 
+    <section class="guide-highlights" id="photographs">
+      <div class="section-wrap">
+        <p class="eyebrow">A closer look · Four landmarks</p>
+        <h2>See the character of each place.</h2>
+        <p class="plan-lead">A small visual preview of the places in this guide. Each photograph is credited to its author and linked to its original licence record.</p>
+        <div class="photo-grid">
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Pal%C3%A1cio_Nacional_da_Pena%2C_sintra.jpg" alt="Palácio Nacional da Pena in Sintra"><figcaption><strong>Pena Palace</strong>Photo: Pakycassano · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_Nacional_da_Pena,_sintra.jpg" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Regaleira_Initiation_Well.JPG/960px-Regaleira_Initiation_Well.JPG" alt="The Initiation Well at Quinta da Regaleira"><figcaption><strong>Quinta da Regaleira</strong>Photo: Husond · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Regaleira_Initiation_Well.JPG" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Castelo_dos_Mouros._Sintra%2C_Portugal.jpg/960px-Castelo_dos_Mouros._Sintra%2C_Portugal.jpg" alt="Stone walls of Castelo dos Mouros above Sintra"><figcaption><strong>Moorish Castle</strong>Photo: Ввласенко · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Castelo_dos_Mouros._Sintra,_Portugal.jpg" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg/960px-Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg" alt="Ornate exterior of Palácio de Monserrate"><figcaption><strong>Monserrate Palace</strong>Photo: nborges · CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_de_Monserrate_DSC08899_(36939236406).jpg" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
     <section class="guide-highlights" id="tickets">
       <div class="section-wrap">
         <p class="eyebrow">07 · Plan your budget</p>
@@ -180,6 +206,21 @@
         <a href="https://www.google.com/maps/search/?api=1&query=Park+and+Palace+of+Monserrate+Sintra" target="_blank" rel="noopener"><span>Monserrate Palace</span><small>Open location in Google Maps ↗</small></a>
         <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Historic+Centre" target="_blank" rel="noopener"><span>Historic Centre</span><small>Open location in Google Maps ↗</small></a>
         <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Train+Station" target="_blank" rel="noopener"><span>Sintra Train Station</span><small>Open location in Google Maps ↗</small></a>
+      </div>
+    </section>
+
+    <section class="guide-highlights" id="food-stops">
+      <div class="section-wrap">
+        <p class="eyebrow">Local stops · Eat and pause</p>
+        <h2>Good places for a proper pause.</h2>
+        <p class="plan-lead">A short, practical shortlist in and around the historic centre. These are independent suggestions, not paid placements. Check opening times and menus before setting off.</p>
+        <div class="food-grid">
+          <article class="food-card"><h3>Casa Piriquita</h3><p><strong>For:</strong> the classic travesseiro and traditional queijadas. Founded in 1862, this is one of Sintra’s best-known historic pastry houses. Expect a busy counter at peak times.</p><p><strong>Address:</strong> Rua das Padarias 16, historic centre.</p><a href="https://www.google.com/maps/search/?api=1&query=Casa+Piriquita+Rua+das+Padarias+16+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a> · <a href="https://piriquita.pt/" target="_blank" rel="noopener">Official website ↗</a></article>
+          <article class="food-card"><h3>Queijadas da Sapa</h3><p><strong>For:</strong> a traditional queijada and a slower tea-room stop. The shop’s history is traced to Maria Sapa in 1756 and its move to Volta do Duche in 1887.</p><p><strong>Address:</strong> Volta do Duche 12.</p><a href="https://www.google.com/maps/search/?api=1&query=Queijadas+da+Sapa+Volta+do+Duche+12+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a> · <a href="https://www.comerciocomhistoria.gov.pt/en/listings/queijadas-da-sapa-3707/" target="_blank" rel="noopener">Historic shop profile ↗</a></article>
+          <article class="food-card"><h3>Tascantiga</h3><p><strong>For:</strong> Portuguese petiscos and small plates in the historic centre. It is on a steep pedestrian lane, so allow a little extra time if you have mobility limitations.</p><p><strong>Address:</strong> Escadinhas da Fonte da Pipa 2.</p><a href="https://www.google.com/maps/search/?api=1&query=Tascantiga+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a></article>
+          <article class="food-card"><h3>Restaurante Regional de Sintra</h3><p><strong>For:</strong> a traditional Portuguese sit-down meal close to the Town Hall. A useful option when you want a full lunch rather than pastries or snacks.</p><p><strong>Address:</strong> Travessa do Município 2.</p><a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Regional+de+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a></article>
+        </div>
+        <p class="guide-disclaimer">Food recommendations are selected for their local character and location. Menus, prices, service and opening hours can change; check directly with each business. The Portugal Guide is independent and receives no payment for these listings.</p>
       </div>
     </section>
 
