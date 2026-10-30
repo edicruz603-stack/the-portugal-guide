@@ -239,12 +239,20 @@
       <div id="sintra-map" class="interactive-map" role="application" aria-label="Interactive map of Sintra's main monuments"></div>
       <p class="map-note">Map data © OpenStreetMap contributors. Monument locations are approximate visitor-area markers; follow official directions for the correct entrance and access route.</p>
       <div class="official-links" style="margin-top:24px">
-        <a href="https://www.google.com/maps/search/?api=1&query=Park+and+National+Palace+of+Pena+Sintra" target="_blank" rel="noopener"><span>Pena Palace</span><small>Open directions ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Quinta+da+Regaleira+Sintra" target="_blank" rel="noopener"><span>Quinta da Regaleira</span><small>Open directions ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Moorish+Castle+Sintra" target="_blank" rel="noopener"><span>Moorish Castle</span><small>Open directions ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Park+and+Palace+of+Monserrate+Sintra" target="_blank" rel="noopener"><span>Monserrate Palace</span><small>Open directions ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Historic+Centre" target="_blank" rel="noopener"><span>Historic Centre</span><small>Open directions ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Train+Station" target="_blank" rel="noopener"><span>Train Station</span><small>Open directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Park+and+National+Palace+of+Pena+Sintra" target="_blank" rel="noopener"><span>Pena Palace & Park</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Quinta+da+Regaleira+Sintra" target="_blank" rel="noopener"><span>Quinta da Regaleira</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Castelo+dos+Mouros+Sintra" target="_blank" rel="noopener"><span>Moorish Castle</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Palacio+Nacional+de+Sintra" target="_blank" rel="noopener"><span>National Palace</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Palacio+de+Monserrate+Sintra" target="_blank" rel="noopener"><span>Monserrate Palace</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Convento+dos+Capuchos+Sintra" target="_blank" rel="noopener"><span>Convent of the Capuchos</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Chalet+da+Condessa+d+Edla+Sintra" target="_blank" rel="noopener"><span>Chalet of the Countess of Edla</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Vila+Sassetti+Sintra" target="_blank" rel="noopener"><span>Vila Sassetti</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Museu+Anjos+Teixeira+Sintra" target="_blank" rel="noopener"><span>Museu Anjos Teixeira</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Parque+da+Liberdade+Sintra" target="_blank" rel="noopener"><span>Parque da Liberdade</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Miradouro+do+Adro+de+S+Martinho+Sintra" target="_blank" rel="noopener"><span>Miradouro de São Martinho</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Lawrences+Hotel+Sintra" target="_blank" rel="noopener"><span>Lawrence’s Hotel</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Historic+Centre" target="_blank" rel="noopener"><span>Historic Centre</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Train+Station" target="_blank" rel="noopener"><span>Train Station</span><small>Map and directions ↗</small></a>
       </div>
     </section>
 
@@ -348,7 +356,6 @@
         {name:'Museu Anjos Teixeira · free',coords:[38.79683,-9.38733],zone:'Free cultural stop'},
         {name:'Parque da Liberdade · free',coords:[38.79667,-9.38628],zone:'Free public garden'},
         {name:'Miradouro do Adro de São Martinho · free',coords:[38.79644,-9.39175],zone:'Free viewpoint'},
-        {name:'Lawrence’s Hotel · historic exterior',coords:[38.7964,-9.3958],zone:'Historic landmark'},
         {name:'Vila Sassetti · free garden path',coords:[38.79572,-9.39067],zone:'Free garden walk'}
       ];
       places.forEach((p,i)=>L.circleMarker(p.coords,{radius:8,color:'#f4efe5',weight:2,fillColor:i<5?'#a65f43':'#314a3a',fillOpacity:1}).addTo(map).bindPopup('<strong>'+p.name+'</strong><br><small>'+p.zone+'</small>'));
