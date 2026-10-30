@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=4">\n  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">\n
   <style id="sintra-page-styles">
 .guide-hero{min-height:590px;display:grid;grid-template-columns:1.05fr .95fr;background:#314a3a;color:#f4efe5}
 .guide-hero-copy{padding:95px 5vw 90px 10vw;align-self:center}
@@ -69,7 +69,7 @@
 .food-card p{font-size:13px;line-height:1.8;color:#6d7469}
 .food-card a{display:inline-block;margin-top:5px;font-size:11px;font-weight:700;color:#314a3a}
 @media(max-width:760px){.photo-grid,.food-grid{grid-template-columns:1fr}.photo-card img{height:230px}}
-</style>
+.interactive-map{height:480px;width:100%;border:1px solid rgba(49,74,58,.2);background:#e9dfc9}.map-note{font-size:11px;color:#6d7469;line-height:1.7;margin-top:12px}.map-legend{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;font-size:11px;color:#314a3a}.map-legend span{display:inline-flex;align-items:center;gap:6px}.map-dot{width:9px;height:9px;border-radius:50%;background:#a65f43;display:inline-block}.map-dot.green{background:#314a3a}</style>
 </head>
 <body class="guide-page">
   <header class="site-header">
@@ -93,7 +93,7 @@
     </section>
 
     <nav class="guide-toc" aria-label="Guide contents">
-      <a href="#first-look">First look</a><a href="#highlights">What to see</a><a href="#getting-around">Getting around</a><a href="#plan">Itineraries</a><a href="#day-plan">Day plan</a><a href="#food">What to taste</a><a href="#photographs">Photographs</a><a href="#food-stops">Where to eat</a><a href="#tickets">Ticket budget</a><a href="#map">Map</a><a href="#essentials">Before you go</a>
+      <a href="#first-look">First look</a><a href="#highlights">What to see</a><a href="#getting-around">Getting around</a><a href="#plan">Itineraries</a><a href="#day-plan">Day plan</a><a href="#food">What to taste</a><a href="#photographs">Photographs</a><a href="#food-stops">Where to eat</a><a href="#tickets">Ticket budget</a><a href="#map">Interactive map</a><a href="#essentials">Before you go</a>
     </nav>
 
     <section class="guide-intro section-wrap" id="first-look">
@@ -196,16 +196,19 @@
     </section>
 
     <section class="guide-intro section-wrap" id="map">
-      <p class="eyebrow">08 · Find your way</p>
-      <h2>Keep the places<br><em>close at hand.</em></h2>
-      <p>Open each location in your preferred map app. Check the route from your actual starting point: walking times on the Sintra hills can be demanding, and road access is restricted around some monuments.</p>
-      <div class="official-links">
-        <a href="https://www.google.com/maps/search/?api=1&query=Park+and+National+Palace+of+Pena+Sintra" target="_blank" rel="noopener"><span>Pena Palace</span><small>Open location in Google Maps ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Quinta+da+Regaleira+Sintra" target="_blank" rel="noopener"><span>Quinta da Regaleira</span><small>Open location in Google Maps ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Moorish+Castle+Sintra" target="_blank" rel="noopener"><span>Moorish Castle</span><small>Open location in Google Maps ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Park+and+Palace+of+Monserrate+Sintra" target="_blank" rel="noopener"><span>Monserrate Palace</span><small>Open location in Google Maps ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Historic+Centre" target="_blank" rel="noopener"><span>Historic Centre</span><small>Open location in Google Maps ↗</small></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Train+Station" target="_blank" rel="noopener"><span>Sintra Train Station</span><small>Open location in Google Maps ↗</small></a>
+      <p class="eyebrow">08 · Explore the map</p>
+      <h2>Understand the lay of<br><em>the Sintra hills.</em></h2>
+      <p>Use this map to understand where the main sights sit in relation to the historic centre. It is a location guide, not a suggested walking route: the hills are steep, and some roads are closed to private vehicles.</p>
+      <div class="map-legend"><span><i class="map-dot"></i> Historic centre</span><span><i class="map-dot green"></i> Hilltop and garden monuments</span></div>
+      <div id="sintra-map" class="interactive-map" role="application" aria-label="Interactive map of Sintra's main monuments"></div>
+      <p class="map-note">Map data © OpenStreetMap contributors. Monument locations are approximate visitor-area markers; follow official directions for the correct entrance and access route.</p>
+      <div class="official-links" style="margin-top:24px">
+        <a href="https://www.google.com/maps/search/?api=1&query=Park+and+National+Palace+of+Pena+Sintra" target="_blank" rel="noopener"><span>Pena Palace</span><small>Open directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Quinta+da+Regaleira+Sintra" target="_blank" rel="noopener"><span>Quinta da Regaleira</span><small>Open directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Moorish+Castle+Sintra" target="_blank" rel="noopener"><span>Moorish Castle</span><small>Open directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Park+and+Palace+of+Monserrate+Sintra" target="_blank" rel="noopener"><span>Monserrate Palace</span><small>Open directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Historic+Centre" target="_blank" rel="noopener"><span>Historic Centre</span><small>Open directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sintra+Train+Station" target="_blank" rel="noopener"><span>Train Station</span><small>Open directions ↗</small></a>
       </div>
     </section>
 
@@ -253,6 +256,23 @@
     <p>Independent travel guides, made with care in Portugal.</p>
     <small>© <span id="year"></span> The Portugal Guide.</small>
   </footer>
-  <script src="script.js"></script>
+  <script src="script.js"></script>\n  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+    (function(){
+      const el=document.getElementById('sintra-map');
+      if(!el || !window.L) return;
+      const map=L.map(el,{scrollWheelZoom:false}).setView([38.7955,-9.3975],13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+      const places=[
+        {name:'Historic Centre · National Palace',coords:[38.7975,-9.3907],zone:'Historic centre'},
+        {name:'Quinta da Regaleira',coords:[38.7966,-9.3962],zone:'Historic centre and gardens'},
+        {name:'Moorish Castle',coords:[38.7929,-9.3890],zone:'Hilltop monuments'},
+        {name:'Pena Palace · main visitor area',coords:[38.7876,-9.3905],zone:'Hilltop monuments'},
+        {name:'Monserrate Palace',coords:[38.7908,-9.4200],zone:'Western gardens'}
+      ];
+      places.forEach((p,i)=>L.circleMarker(p.coords,{radius:8,color:'#f4efe5',weight:2,fillColor:i<2?'#a65f43':'#314a3a',fillOpacity:1}).addTo(map).bindPopup('<strong>'+p.name+'</strong><br><small>'+p.zone+'</small>'));
+      setTimeout(()=>map.invalidateSize(),250);
+    })();
+  </script>
 </body>
 </html>
