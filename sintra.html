@@ -71,7 +71,23 @@
 .food-card p{font-size:13px;line-height:1.8;color:#6d7469}
 .food-card a{display:inline-block;margin-top:5px;font-size:11px;font-weight:700;color:#314a3a}
 @media(max-width:760px){.photo-grid,.food-grid{grid-template-columns:1fr}.photo-card img{height:230px}}
-.interactive-map{height:480px;width:100%;border:1px solid rgba(49,74,58,.2);background:#e9dfc9}.map-note{font-size:11px;color:#6d7469;line-height:1.7;margin-top:12px}.map-legend{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;font-size:11px;color:#314a3a}.map-legend span{display:inline-flex;align-items:center;gap:6px}.map-dot{width:9px;height:9px;border-radius:50%;background:#a65f43;display:inline-block}.map-dot.green{background:#314a3a}</style>
+.interactive-map{height:480px;width:100%;border:1px solid rgba(49,74,58,.2);background:#e9dfc9}.map-note{font-size:11px;color:#6d7469;line-height:1.7;margin-top:12px}.map-legend{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;font-size:11px;color:#314a3a}.map-legend span{display:inline-flex;align-items:center;gap:6px}.map-dot{width:9px;height:9px;border-radius:50%;background:#a65f43;display:inline-block}.map-dot.green{background:#314a3a}
+.companion-tool{background:#314a3a;color:#f4efe5;padding:34px;margin-top:28px}
+.companion-tool .eyebrow{color:#d3b77d}
+.companion-fields{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:25px 0}
+.companion-fields label{display:grid;gap:8px;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.82)}
+.companion-fields select{width:100%;padding:13px;background:#f4efe5;color:#27352c;border:1px solid #d3b77d;border-radius:0;font:inherit}
+.companion-tool button{border:0;background:#d3b77d;color:#24382d;padding:15px 20px;font:700 12px 'DM Sans',Arial;cursor:pointer}
+.companion-result{margin-top:24px;padding:24px;background:#f4efe5;color:#27352c;line-height:1.8}
+.companion-result h3{font:500 26px Georgia,serif;color:#314a3a}
+.companion-result ul{padding-left:20px}
+.companion-result .small-note{font-size:11px;color:#6d7469}
+.decision-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:35px}
+.decision-card{border-top:2px solid #a65f43;padding:20px 0}
+.decision-card h3{font:500 23px Georgia,serif;margin:0 0 10px}
+.decision-card p{font-size:13px;line-height:1.8;color:#6d7469}
+@media(max-width:760px){.companion-tool{padding:24px 18px}.companion-fields,.decision-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="guide-page">
   <header class="site-header">
@@ -95,7 +111,7 @@
     </section>
 
     <nav class="guide-toc" aria-label="Guide contents">
-      <a href="#first-look">First look</a><a href="#highlights">What to see</a><a href="#getting-around">Getting around</a><a href="#plan">Itineraries</a><a href="#day-plan">Day plan</a><a href="#food">What to taste</a><a href="#photographs">Photographs</a><a href="#food-stops">Where to eat</a><a href="#tickets">Ticket budget</a><a href="#map">Interactive map</a><a href="#essentials">Before you go</a>
+      <a href="#first-look">First look</a><a href="#highlights">What to see</a><a href="#getting-around">Getting around</a><a href="#plan">Itineraries</a><a href="#day-plan">Day plan</a><a href="#food">What to taste</a><a href="#photographs">Photographs</a><a href="#food-stops">Where to eat</a><a href="#tickets">Ticket budget</a><a href="#map">Interactive map</a><a href="#companion">Build my day</a><a href="#essentials">Before you go</a>
     </nav>
 
     <section class="guide-intro section-wrap" id="first-look">
@@ -226,6 +242,45 @@
           <article class="food-card"><h3>Restaurante Regional de Sintra</h3><p><strong>For:</strong> a traditional Portuguese sit-down meal close to the Town Hall. A useful option when you want a full lunch rather than pastries or snacks.</p><p><strong>Address:</strong> Travessa do Município 2.</p><a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Regional+de+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a></article>
         </div>
         <p class="guide-disclaimer">Food recommendations are selected for their local character and location. Menus, prices, service and opening hours can change; check directly with each business. The Portugal Guide is independent and receives no payment for these listings.</p>
+      </div>
+    </section>
+
+    <section class="guide-intro section-wrap" id="companion">
+      <p class="eyebrow">Your personal field companion</p>
+      <h2>Build a day that<br><em>fits you.</em></h2>
+      <p>This planner does more than list attractions. It helps you choose a realistic combination based on your time, interests, travel style and mobility. It deliberately avoids squeezing too many timed visits into one day.</p>
+      <div class="companion-tool">
+        <p class="eyebrow">The Sintra day builder</p>
+        <h3 style="font:500 30px Georgia,serif;margin:0 0 10px">Tell us how you like to travel.</h3>
+        <p style="font-size:13px;line-height:1.8;color:rgba(255,255,255,.78)">Choose the options below to receive a practical starting plan. This is a planning aid, not a live ticket or transport availability checker.</p>
+        <div class="companion-fields">
+          <label>How much time do you have?
+            <select id="sc-days"><option value="one">One day</option><option value="two">Two days</option><option value="half">Half a day</option></select>
+          </label>
+          <label>What interests you most?
+            <select id="sc-interest"><option value="classic">The iconic palaces and history</option><option value="gardens">Gardens, nature and scenery</option><option value="culture">Architecture, history and culture</option><option value="food">Food, cafés and the old town</option><option value="family">A balanced family day</option></select>
+          </label>
+          <label>What is your preferred pace?
+            <select id="sc-pace"><option value="relaxed">Relaxed — fewer stops</option><option value="balanced">Balanced — a full day</option><option value="active">Active — happy to walk more</option></select>
+          </label>
+          <label>Any mobility considerations?
+            <select id="sc-mobility"><option value="standard">No particular limitation</option><option value="low">Prefer less walking and fewer stairs</option><option value="stepfree">Need step-free access where possible</option></select>
+          </label>
+          <label>How will you arrive?
+            <select id="sc-transport"><option value="train">By train</option><option value="car">By car</option><option value="local">Already staying in Sintra</option></select>
+          </label>
+          <label>Who is travelling?
+            <select id="sc-company"><option value="solo">Solo</option><option value="couple">As a couple</option><option value="family">With children</option><option value="group">With friends or a group</option></select>
+          </label>
+        </div>
+        <button type="button" id="sc-build">Build my suggested plan ↗</button>
+        <div class="companion-result" id="sc-result" aria-live="polite" hidden></div>
+      </div>
+      <div class="decision-grid">
+        <article class="decision-card"><h3>When the weather turns</h3><p>Keep outdoor viewpoints and long hill walks flexible. Move towards indoor palace rooms, cafés and the historic centre, but check which interiors are open and whether your ticket covers them. Do not assume every monument remains accessible in severe weather.</p></article>
+        <article class="decision-card"><h3>When tickets are sold out</h3><p>Do not buy a random third-party ticket without checking what it includes. Rebuild the day around a monument with official availability, or switch to a garden, village and viewpoint day. Pena requires a dated time slot.</p></article>
+        <article class="decision-card"><h3>When you are running late</h3><p>Protect the timed entry you have already booked. Drop the next distant monument rather than rushing across the hills. A missed slot can cost more than a missed photo stop.</p></article>
+        <article class="decision-card"><h3>When walking is difficult</h3><p>Choose fewer sites, check each monument’s accessibility page and contact the operator before booking. Historic gardens, cobbled streets and hilltop sites can include steep slopes, steps and uneven surfaces.</p></article>
       </div>
     </section>
 
