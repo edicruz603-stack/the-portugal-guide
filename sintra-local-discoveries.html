@@ -12,7 +12,7 @@
 </style>
 </head>
 <body>
-<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">✳</span><span>THE PORTUGAL GUIDE</span></a><nav class="main-nav"><a href="sintra.html">Sintra field guide</a><a href="#free">Free discoveries</a><a href="#food">Eat & drink</a><a href="#events">What's on</a><a href="sintra-romantic-guide.html">Romantic guide</a></nav></header>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">✳</span><span>THE PORTUGAL GUIDE</span></a><button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="main-nav" aria-label="Main navigation"><a href="sintra.html">Sintra field guide</a><a href="#free">Free discoveries</a><a href="#food">Eat & drink</a><a href="#events">What's on</a><a href="sintra-romantic-guide.html">Romantic guide</a></nav></header>
 <main>
 <section class="local-hero"><p class="tag" style="color:#d3b77d">The local atlas · Sintra</p><h1>Find the Sintra <em>between the monuments.</em></h1><p>A carefully selected companion to the famous palaces: small museums, free gardens, viewpoints, historic places, cafés and a cultural diary. Built to help you decide where to go, what is worth your time and how to make a better day.</p></section>
 <section class="local-wrap" id="free"><p class="tag">01 · Spend less, discover more</p><h2>Sintra's free discoveries</h2><p class="lead">Free entry is not the same as always open, and public access can change. Check the linked official information on the day. Walking times below are deliberately not promised: Sintra's slopes, steps and cobbles make route choice important.</p>
@@ -56,4 +56,22 @@
 <section class="local-wrap" style="padding-top:10px"><p class="tag">Editorial standard</p><h2>Useful, honest, independent.</h2><p class="lead">We do not accept payment for inclusion. We distinguish official facts from editorial judgement, and we do not invent live opening status, walking times, prices or availability. If a detail is not verified, we say so. Always confirm transport, access, tickets and business opening hours with the operator before departure.</p><p><a href="sintra.html">← Return to the main Sintra Field Guide</a></p></section>
 </main>
 <footer class="local-foot">THE PORTUGAL GUIDE · Independent travel guides, made with care in Portugal.<br>Research snapshot: 30 October 2026. Event and business details can change. Sources: <a href="https://agendaculturaldesintra.pt/agenda">Sintra Cultural Agenda</a>, <a href="https://cm-sintra.pt/agenda">Sintra Municipality</a>, <a href="https://visitsintra.travel/">Visit Sintra</a> and official attraction operators.</footer>
+<script>
+const menuButton=document.querySelector(".menu-toggle");
+const navigation=document.querySelector(".main-nav");
+if(menuButton&&navigation){
+  menuButton.addEventListener("click",()=>{
+    const open=navigation.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded",String(open));
+    menuButton.setAttribute("aria-label",open?"Close navigation":"Open navigation");
+    menuButton.textContent=open?"×":"☰";
+  });
+  navigation.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+    navigation.classList.remove("open");
+    menuButton.setAttribute("aria-expanded","false");
+    menuButton.setAttribute("aria-label","Open navigation");
+    menuButton.textContent="☰";
+  }));
+}
+</script>
 </body></html>
