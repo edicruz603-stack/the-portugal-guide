@@ -1,0 +1,38 @@
+[
+  {
+    "id": "img.sintra.wm-pena-palace",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Pal%C3%A1cio_Nacional_da_Pena%2C_sintra.jpg",
+    "author": "Pakycassano", "licence": "CC BY-SA 4.0", "rights_category": "licensed",
+    "source": "src.wikimedia-commons", "source_page": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_Nacional_da_Pena,_sintra.jpg",
+    "credit_line": "Photo: Pakycassano · CC BY-SA 4.0",
+    "commercial_ok": false, "status": "pending",
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. Share-alike obligations for commercial use not reviewed."
+  },
+  {
+    "id": "img.sintra.wm-regaleira-well",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Regaleira_Initiation_Well.JPG/960px-Regaleira_Initiation_Well.JPG",
+    "author": "Husond", "licence": "CC BY-SA 3.0", "rights_category": "licensed",
+    "source": "src.wikimedia-commons", "source_page": "https://commons.wikimedia.org/wiki/File:Regaleira_Initiation_Well.JPG",
+    "credit_line": "Photo: Husond · CC BY-SA 3.0",
+    "commercial_ok": false, "status": "pending",
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. Share-alike obligations for commercial use not reviewed."
+  },
+  {
+    "id": "img.sintra.wm-moorish-castle",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Castelo_dos_Mouros._Sintra%2C_Portugal.jpg/960px-Castelo_dos_Mouros._Sintra%2C_Portugal.jpg",
+    "author": "Ввласенко", "licence": "CC BY-SA 3.0", "rights_category": "licensed",
+    "source": "src.wikimedia-commons", "source_page": "https://commons.wikimedia.org/wiki/File:Castelo_dos_Mouros._Sintra,_Portugal.jpg",
+    "credit_line": "Photo: Ввласенко · CC BY-SA 3.0",
+    "commercial_ok": false, "status": "pending",
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. Share-alike obligations for commercial use not reviewed."
+  },
+  {
+    "id": "img.sintra.wm-monserrate",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg/960px-Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg",
+    "author": "nborges", "licence": "CC BY 2.0", "rights_category": "licensed",
+    "source": "src.wikimedia-commons", "source_page": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_de_Monserrate_DSC08899_(36939236406).jpg",
+    "credit_line": "Photo: nborges · CC BY 2.0",
+    "commercial_ok": false, "status": "pending",
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons."
+  }
+]

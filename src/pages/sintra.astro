@@ -1,0 +1,264 @@
+---
+// Ported from legacy /sintra.html by scripts/port-legacy.mjs (Phase 1).
+// Editorial content is unchanged; see docs/phase-0-1-report.md.
+import Base from '../layouts/Base.astro';
+import MapView from '../components/MapView.astro';
+import { sintraMapPlaces } from '../data/sintra-map.ts';
+---
+<Base
+  title="Sintra Field Guide — The Portugal Guide"
+  description="Plan a thoughtful day in Sintra: palaces, gardens, practical routes, ticket advice and local details."
+  nav={[["index.html#destinations","Destinations"],["index.html#our-way","Our way"],["index.html#about","About"]]}
+  cta={["#day-plan","Plan your visit"]}
+  bodyClass="guide-page"
+>
+<main id="main" tabindex="-1">
+    <section class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="eyebrow">THE FIRST FIELD GUIDE · PORTUGAL</p>
+        <h1>Sintra, <em>beyond the palaces.</em></h1>
+        <p>A town wrapped in mist, gardens that feel like another world, and a mountain full of stories. Here is how to experience it with a little more time and a little less rushing.</p>
+        <a class="button button-light" href="#day-plan">Plan your day <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="guide-hero-art" role="img" aria-label="Abstract illustration inspired by the green hills of Sintra"></div>
+    </section>
+
+    <nav class="guide-toc" aria-label="Guide contents">
+      <a href="sintra-local-discoveries.html">Local discoveries</a><a href="sintra-romantic-guide.html">Romantic guide</a><a href="#first-look">First look</a><a href="#highlights">What to see</a><a href="#free-sintra">Free Sintra</a><a href="#getting-around">Getting around</a><a href="#plan">Itineraries</a><a href="#day-plan">Day plan</a><a href="#food">What to taste</a><a href="#photographs">Photographs</a><a href="#food-stops">Where to eat</a><a href="#tickets">Ticket budget</a><a href="#map">Interactive map</a><a href="#companion">Build my day</a><a href="#essentials">Before you go</a>
+    </nav>
+
+    <section class="section-wrap" style="padding-top:35px;padding-bottom:35px"><div style="background:var(--paper);padding:28px;border-left:4px solid var(--gold-text)"><p class="eyebrow">New · The growing Sintra directory</p><h2 style="font:500 clamp(27px,4vw,40px) var(--font-serif);margin:12px 0">30 places, free discoveries, food and seasonal events.</h2><p style="color:var(--muted);line-height:1.8">Explore a curated and searchable companion to this guide, with direct maps, practical tips, suggested routes and a dated events diary.</p><a class="button" href="sintra-local-discoveries.html">Explore the Sintra directory ↗</a></div></section>
+    <section class="section-wrap" style="padding-top:18px;padding-bottom:18px"><div style="background:var(--forest);color:var(--ivory);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap"><div><p class="eyebrow" style="color:var(--gold-light);margin:0 0 8px">A slower way to experience Sintra</p><h2 style="font:500 clamp(25px,4vw,36px) var(--font-serif);margin:0 0 6px">Discover our romantic field guide.</h2><p style="margin:0;color:rgba(244,238,223,.8);font-size:13px;line-height:1.7">Gardens, quiet paths, palaces and thoughtful itineraries for two.</p></div><a class="button" href="sintra-romantic-guide.html" style="white-space:nowrap">Explore the romantic guide ↗</a></div></section>
+    <section class="guide-intro section-wrap" id="first-look">
+      <p class="eyebrow">01 · Get your bearings</p>
+      <h2>Let Sintra set<br><em>its own rhythm.</em></h2>
+      <p>Sintra is not a place to squeeze into a hurried checklist. The historic centre, the forested hills and the monuments sit across a landscape that takes time to cross. Choose fewer stops, book timed entries carefully and leave room for the town itself.</p>
+      <div class="guide-facts">
+        <div><strong>Allow</strong><span>A full day for a first visit</span></div>
+        <div><strong>Bring</strong><span>Comfortable shoes and a light layer</span></div>
+        <div><strong>Expect</strong><span>Steep paths, changing weather and crowds</span></div>
+      </div>
+    </section>
+
+    <section class="guide-highlights" id="highlights">
+      <div class="section-wrap">
+        <p class="eyebrow">02 · Choose your stops</p>
+        <h2>Four places, four different moods.</h2>
+        <div class="highlight-grid">
+          <article class="highlight-card"><span class="highlight-no">01</span><h3>Palácio da Pena</h3><p>The unmistakable hilltop palace. Its colours and terraces are spectacular, but the visit works best when you respect your timed entry and allow time to reach the palace from the park entrance.</p><a href="https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-nacional-da-pena/" target="_blank" rel="noopener">Official visitor information ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">02</span><h3>Quinta da Regaleira</h3><p>A romantic estate of gardens, grottoes, tunnels and symbolic architecture. Give the gardens time; the Initiation Well is only one part of the experience.</p><a href="https://www.regaleira.pt/pt/visitas" target="_blank" rel="noopener">Official visitor information ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">03</span><h3>Castelo dos Mouros</h3><p>Come for the long stone walls and the views across the hills. There are uneven steps and exposed sections, so take your time and check the weather.</p><a href="https://www.parquesdesintra.pt/pt/parques-monumentos/castelo-dos-mouros/" target="_blank" rel="noopener">Official visitor information ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">04</span><h3>Palácio de Monserrate</h3><p>A quieter-feeling alternative for architecture and gardens, with an extraordinary blend of styles. It deserves more than a quick photo stop.</p><a href="https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-de-monserrate/" target="_blank" rel="noopener">Official visitor information ↗</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-intro section-wrap" id="getting-around">
+      <p class="eyebrow">03 · Move around wisely</p>
+      <h2>Sintra is small on the map.<br><em>Not on the ground.</em></h2>
+      <p>The monuments sit across the hills, not in one walkable cluster. The easiest plan is usually to arrive by train, use the local public transport or walk where the route makes sense, and avoid trying to drive from monument to monument.</p>
+      <div class="guide-facts">
+        <div><strong>By train</strong><span>Direct services connect Lisbon with Sintra. Check the timetable before setting off.</span></div>
+        <div><strong>By bus</strong><span>Bus 434 serves the historic centre, Moorish Castle and Pena area. Check the operator’s current route and ticket conditions.</span></div>
+        <div><strong>By car</strong><span>Private vehicles are restricted on access roads to Pena and in parts of the historic centre. Use designated parking and continue on foot or by public transport.</span></div>
+      </div>
+      <p style="margin-top:28px"><a class="text-link" href="https://www.parquesdesintra.pt/pt/planear-a-visita/como-chegar/" target="_blank" rel="noopener">Check the official access and transport guidance ↗</a></p>
+    </section>
+
+    <section class="guide-highlights" id="plan">
+      <div class="section-wrap">
+        <p class="eyebrow">05 · Choose your pace</p>
+        <h2>Two ways to spend your time.</h2>
+        <div class="highlight-grid">
+          <article class="highlight-card"><span class="highlight-no">ONE DAY · FIRST VISIT</span><h3>The essential Sintra day</h3><p><strong>Morning:</strong> Book an early timed entry at Pena and allow time for the walk or transfer from the park entrance to the palace. <strong>Lunch:</strong> Return towards the historic centre and take a proper break. <strong>Afternoon:</strong> Visit Quinta da Regaleira if you have enough time and a suitable ticket slot. Keep the rest of the afternoon flexible.</p><p><strong>Best for:</strong> First-time visitors who want to experience two signature places without racing between every monument.</p></article>
+          <article class="highlight-card"><span class="highlight-no">TWO DAYS · SLOWER EXPLORATION</span><h3>More gardens, less rushing</h3><p><strong>Day one:</strong> Explore Pena and the Moorish Castle, allowing time for the hill paths and viewpoints. Finish in the historic centre. <strong>Day two:</strong> Give Quinta da Regaleira a generous visit, then choose Monserrate for its gardens and architecture. Check transport connections before committing to the order.</p><p><strong>Best for:</strong> Travellers who enjoy gardens, architecture and a more relaxed pace.</p></article>
+        </div>
+        <p class="guide-disclaimer">These are planning frameworks, not timed guarantees. Check each attraction’s entry slot, travel time and current access conditions before booking. Avoid buying consecutive timed entries at different monuments unless you have confirmed the transfer.</p>
+      </div>
+    </section>
+
+    <section class="guide-intro section-wrap" id="food">
+      <p class="eyebrow">06 · A taste of Sintra</p>
+      <h2>Save room for<br><em>something sweet.</em></h2>
+      <p>Sintra has its own pastry traditions. Look out for two classics in the village: <strong>travesseiros</strong>, flaky pastries traditionally filled with an almond-and-egg cream, and <strong>queijadas</strong>, small cheese-based tarts with a lightly spiced, caramelised finish. They are part of the town’s food identity, not just souvenirs.</p>
+      <div class="guide-facts">
+        <div><strong>Travesseiro</strong><span>Best enjoyed freshly made, ideally still slightly warm.</span></div>
+        <div><strong>Queijada</strong><span>A small traditional tart with a rich, gently sweet filling.</span></div>
+        <div><strong>Local tip</strong><span>Take a break in the historic centre rather than trying to eat between bus connections.</span></div>
+      </div>
+      <p style="margin-top:28px"><a class="text-link" href="https://visitsintra.travel/en" target="_blank" rel="noopener">Explore the official Visit Sintra guide ↗</a></p>
+    </section>
+
+    <section class="guide-plan section-wrap" id="day-plan">
+      <p class="eyebrow">09 · A realistic first day</p>
+      <h2>One day in Sintra.<br><em>Without the sprint.</em></h2>
+      <p class="plan-lead">A suggested structure, not a race. Pick two major monuments rather than trying to see everything in one day.</p>
+      <div class="timeline">
+        <article><span>Morning</span><div><h3>Start with your timed ticket</h3><p>Visit the monument you most want to see first. For many first-time visitors, that is Pena or Regaleira. Check the official entry time and transport before leaving.</p></div></article>
+        <article><span>Midday</span><div><h3>Pause in the historic centre</h3><p>Walk through the old town, have lunch and make time for a pastry. Avoid planning a tight transfer between timed entries.</p></div></article>
+        <article><span>Afternoon</span><div><h3>Choose one more experience</h3><p>Regaleira, the Moorish Castle or Monserrate can each fill a meaningful part of the afternoon. Choose according to your interests and energy.</p></div></article>
+        <article><span>Late day</span><div><h3>Leave space for the unexpected</h3><p>Return to the village, browse slowly and check your return transport. The last part of the day should not depend on a risky connection.</p></div></article>
+      </div>
+    </section>
+
+    <section class="guide-highlights" id="photographs">
+      <div class="section-wrap">
+        <p class="eyebrow">A closer look · Four landmarks</p>
+        <h2>See the character of each place.</h2>
+        <p class="plan-lead">A small visual preview of the places in this guide. Each photograph is credited to its author and linked to its original licence record.</p>
+        <div class="photo-grid">
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Pal%C3%A1cio_Nacional_da_Pena%2C_sintra.jpg" alt="Palácio Nacional da Pena in Sintra"><figcaption><strong>Pena Palace</strong>Photo: Pakycassano · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_Nacional_da_Pena,_sintra.jpg" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Regaleira_Initiation_Well.JPG/960px-Regaleira_Initiation_Well.JPG" alt="The Initiation Well at Quinta da Regaleira"><figcaption><strong>Quinta da Regaleira</strong>Photo: Husond · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Regaleira_Initiation_Well.JPG" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Castelo_dos_Mouros._Sintra%2C_Portugal.jpg/960px-Castelo_dos_Mouros._Sintra%2C_Portugal.jpg" alt="Stone walls of Castelo dos Mouros above Sintra"><figcaption><strong>Moorish Castle</strong>Photo: Ввласенко · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Castelo_dos_Mouros._Sintra,_Portugal.jpg" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+          <figure class="photo-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg/960px-Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg" alt="Ornate exterior of Palácio de Monserrate"><figcaption><strong>Monserrate Palace</strong>Photo: nborges · CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_de_Monserrate_DSC08899_(36939236406).jpg" target="_blank" rel="noopener">Original file and licence</a></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-highlights" id="tickets">
+      <div class="section-wrap">
+        <p class="eyebrow">07 · Plan your budget</p>
+        <h2>Know what your tickets cover.</h2>
+        <p class="plan-lead">Adult reference prices currently published by the operators, checked on 30 October 2026. These are separate admissions, not a combined pass. Transport, food and optional transfers are extra.</p>
+        <div class="highlight-grid">
+          <article class="highlight-card"><span class="highlight-no">PARQUES DE SINTRA · ADULT 18–64</span><h3>Signature monuments</h3><p><strong>Pena Palace · Essential visit:</strong> €20. <strong>Pena Park only:</strong> €12. The optional park-to-palace transfer is an additional €4.50 return. <strong>Moorish Castle:</strong> €12. <strong>Monserrate Park and Palace:</strong> €12. <strong>National Palace of Sintra:</strong> €13. The National Palace gardens are listed as free entry.</p><a href="https://www.parquesdesintra.pt/pt/planear-a-visita/horarios-e-precos/" target="_blank" rel="noopener">Check official prices and hours ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">SEPARATE OPERATOR · ADULT 18–64</span><h3>Quinta da Regaleira</h3><p><strong>Adult admission:</strong> €20 (2026 tariff). The estate has its own ticketing system; tickets are valid for the selected date and time. Buy only through the official ticket office and check current access notices before travelling.</p><a href="https://www.regaleira.pt/pt/visitas" target="_blank" rel="noopener">Check official tickets, prices and hours ↗</a></article>
+        </div>
+        <p class="guide-disclaimer">Prices checked on 30 October 2026 against the official operators. Adult rates apply to ages 18–64; other age bands, family tickets and special conditions differ. Prices and visit formats can change. Confirm the exact product and date before paying. Sources: Parques de Sintra and Fundação Cultursintra.</p>
+      </div>
+    </section>
+
+
+    <section class="guide-highlights" id="free-sintra">
+      <div class="section-wrap">
+        <p class="eyebrow">A different Sintra · Mostly free discoveries</p>
+        <h2>The places you can enjoy<br><em>without buying a palace ticket.</em></h2>
+        <p class="plan-lead">Some of Sintra’s best moments happen between the famous monuments. This small-town trail brings together public gardens, a free museum, a viewpoint and a remarkable historic hotel. Check opening hours before you go; “free” does not always mean open at every hour.</p>
+        <div class="highlight-grid">
+          <article class="highlight-card"><span class="highlight-no">FREE · MUSEUM</span><h3>Museu Anjos Teixeira</h3><p>A lovely off-the-main-route discovery dedicated to sculptors Artur and Pedro Anjos Teixeira, father and son. Look for the human and animal figures, studies and models. The museum occupies an old watermill building by the Rio do Porto, which makes the setting part of the visit too.</p><p><strong>Why stop:</strong> A genuine cultural visit, not just another photo stop.</p><p><strong>Typical hours:</strong> Tue–Fri 10:00–18:00; weekends 12:00–18:00. Closed Mondays and most public holidays.</p><p><strong>Entry:</strong> Free. Allow around 20–40 minutes as a planning estimate.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Museu+Anjos+Teixeira+Sintra" target="_blank" rel="noopener">Open museum map ↗</a> · <a href="https://visitsintra.travel/pt/visitar/museus/museu-anjos-teixeira" target="_blank" rel="noopener">Official visitor details ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">FREE · GARDEN</span><h3>Gardens of the National Palace</h3><p>Here is a useful detail many visitors miss: the National Palace’s gardens have free admission, even though entry to the palace interiors is ticketed. It is an easy way to enjoy a quieter corner of the royal complex without committing to the full visit.</p><p><strong>Why stop:</strong> A calm pause right in the historic centre, especially if you are saving your budget for another monument.</p><p><strong>Current published hours:</strong> 09:30–18:30; last entry 18:00. Check the official page before visiting.</p><p><strong>Entry:</strong> Free to the gardens; palace interiors require a ticket.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Jardins+Palacio+Nacional+de+Sintra" target="_blank" rel="noopener">Open garden map ↗</a> · <a href="https://www.parquesdesintra.pt/pt/parques-monumentos/palacio-nacional-sintra/" target="_blank" rel="noopener">Official details ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">FREE · PUBLIC PARK</span><h3>Parque da Liberdade</h3><p>A green, slightly wild public garden tucked just above the Volta do Duche. Follow its winding paths among mature trees, rocks and moss, and look for the small details that make it feel like a secret garden. The paths climb, so it is not uniformly easy for everyone.</p><p><strong>Why stop:</strong> A peaceful breather close to the centre, ideal between the museum and the old town.</p><p><strong>Published hours:</strong> Seasonal, generally from 10:00; check the municipal page for the current closing time.</p><p><strong>Entry:</strong> Free.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Parque+da+Liberdade+Sintra" target="_blank" rel="noopener">Open park map ↗</a> · <a href="https://visitsintra.travel/pt/visitar/parques-e-jardins/parque-da-liberdade" target="_blank" rel="noopener">Official park story and hours ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">FREE · VIEWPOINT</span><h3>Miradouro do Adro de São Martinho</h3><p>This is the little viewpoint I would not want visitors to miss. From the churchyard terrace you can frame the National Palace, the white houses of the old town and, higher up, the Moorish Castle and Pena. On a clear day, the view stretches towards the coast.</p><p><strong>Why stop:</strong> One of the best quick panoramas in the historic centre, with benches for a proper pause.</p><p><strong>Best moment:</strong> Late afternoon, when the light softens over the village.</p><p><strong>Entry:</strong> Free public viewpoint.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Miradouro+do+Adro+da+Igreja+de+S+Martinho+Sintra" target="_blank" rel="noopener">Open viewpoint map ↗</a> · <a href="https://visitsintra.travel/pt/visitar/miradouros-e-cascatas/miradouro-do-adro-da-igreja-de-s-martinho" target="_blank" rel="noopener">Official viewpoint details ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">HISTORIC LANDMARK · HOTEL</span><h3>Lawrence’s Hotel</h3><p>Founded in 1764 as the Estalagem dos Cavaleiros, Lawrence’s is widely described as the oldest hotel on the Iberian Peninsula. It later became associated with the Englishman Lewis Lawrence and with literary Sintra: Lord Byron stayed here, and the hotel is connected to the world of Eça de Queirós’s <em>Os Maias</em>.</p><p><strong>Why stop:</strong> Notice the historic façade and imagine the generations of travellers who have passed through this street. It is a working hotel, so respect guest privacy and do not assume the interior is open to non-guests.</p><p><strong>Entry:</strong> Admire the exterior from the public street; access to hotel spaces is for guests or by arrangement.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Lawrences+Hotel+Sintra" target="_blank" rel="noopener">Open hotel map ↗</a> · <a href="https://www.lawrenceshotel.com/" target="_blank" rel="noopener">Hotel website and history ↗</a></article>
+          <article class="highlight-card"><span class="highlight-no">FREE · GARDEN WALK</span><h3>Vila Sassetti</h3><p>A beautiful garden path and historic villa on the way up towards the hilltop monuments. It is a rewarding alternative to simply taking the road, with landscaped terraces and a strong sense of Sintra’s romantic garden culture.</p><p><strong>Why stop:</strong> A scenic link between the village and the hills, especially if you enjoy walking. The climb is real, and this is not a step-free shortcut.</p><p><strong>Entry:</strong> Free. Opening hours are published by Parques de Sintra and can change.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Vila+Sassetti+Sintra" target="_blank" rel="noopener">Open garden map ↗</a> · <a href="https://www.parquesdesintra.pt/pt/parques-monumentos/vila-sassetti/" target="_blank" rel="noopener">Official visitor details ↗</a></article>
+        </div>
+        <p class="guide-disclaimer">Free-entry information and opening hours checked against official visitor sources on 30 October 2026. Temporary closures, maintenance and special-event restrictions may apply. The museum is free according to Visit Sintra; the National Palace gardens are explicitly listed as free by Parques de Sintra. The Parque da Liberdade is a public municipal park.</p>
+      </div>
+    </section>
+
+    <section class="guide-intro section-wrap" id="map">
+      <p class="eyebrow">08 · Explore the map</p>
+      <h2>Understand the lay of<br><em>the Sintra hills.</em></h2>
+      <p>Use this map to understand where the main sights sit in relation to the historic centre. It is a location guide, not a suggested walking route: the hills are steep, and some roads are closed to private vehicles.</p>
+      <div class="map-legend"><span><i class="map-dot"></i> Main monuments</span><span><i class="map-dot green"></i> Free stops</span></div>
+      <MapView id="sintra-map" places={sintraMapPlaces} label="Interactive map of Sintra visitor areas" />
+      <p class="map-note">Map data © OpenStreetMap contributors. Monument locations are approximate visitor-area markers; follow official directions for the correct entrance and access route.</p>
+      <div class="official-links" style="margin-top:24px">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Park+and+National+Palace+of+Pena+Sintra" target="_blank" rel="noopener"><span>Pena Palace &amp; Park</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Quinta+da+Regaleira+Sintra" target="_blank" rel="noopener"><span>Quinta da Regaleira</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Castelo+dos+Mouros+Sintra" target="_blank" rel="noopener"><span>Moorish Castle</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Palacio+Nacional+de+Sintra" target="_blank" rel="noopener"><span>National Palace</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Palacio+de+Monserrate+Sintra" target="_blank" rel="noopener"><span>Monserrate Palace</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Convento+dos+Capuchos+Sintra" target="_blank" rel="noopener"><span>Convent of the Capuchos</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Chalet+da+Condessa+d+Edla+Sintra" target="_blank" rel="noopener"><span>Chalet of the Countess of Edla</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Vila+Sassetti+Sintra" target="_blank" rel="noopener"><span>Vila Sassetti</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Museu+Anjos+Teixeira+Sintra" target="_blank" rel="noopener"><span>Museu Anjos Teixeira</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Parque+da+Liberdade+Sintra" target="_blank" rel="noopener"><span>Parque da Liberdade</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Miradouro+do+Adro+de+S+Martinho+Sintra" target="_blank" rel="noopener"><span>Miradouro de São Martinho</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Lawrences+Hotel+Sintra" target="_blank" rel="noopener"><span>Lawrence’s Hotel</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Sintra+Historic+Centre" target="_blank" rel="noopener"><span>Historic Centre</span><small>Map and directions ↗</small></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Sintra+Train+Station" target="_blank" rel="noopener"><span>Train Station</span><small>Map and directions ↗</small></a>
+      </div>
+    </section>
+
+    <section class="guide-highlights" id="food-stops">
+      <div class="section-wrap">
+        <p class="eyebrow">Local stops · Eat and pause</p>
+        <h2>Good places for a proper pause.</h2>
+        <p class="plan-lead">A short, practical shortlist in and around the historic centre. These are independent suggestions, not paid placements. Check opening times and menus before setting off.</p>
+        <div class="food-grid">
+          <article class="food-card"><h3>Casa Piriquita</h3><p><strong>For:</strong> the classic travesseiro and traditional queijadas. Founded in 1862, this is one of Sintra’s best-known historic pastry houses. Expect a busy counter at peak times.</p><p><strong>Address:</strong> Rua das Padarias 16, historic centre.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Casa+Piriquita+Rua+das+Padarias+16+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a> · <a href="https://piriquita.pt/" target="_blank" rel="noopener">Official website ↗</a></article>
+          <article class="food-card"><h3>Queijadas da Sapa</h3><p><strong>For:</strong> a traditional queijada and a slower tea-room stop. The shop’s history is traced to Maria Sapa in 1756 and its move to Volta do Duche in 1887.</p><p><strong>Address:</strong> Volta do Duche 12.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Queijadas+da+Sapa+Volta+do+Duche+12+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a> · <a href="https://www.comerciocomhistoria.gov.pt/en/listings/queijadas-da-sapa-3707/" target="_blank" rel="noopener">Historic shop profile ↗</a></article>
+          <article class="food-card"><h3>Tascantiga</h3><p><strong>For:</strong> Portuguese petiscos and small plates in the historic centre. It is on a steep pedestrian lane, so allow a little extra time if you have mobility limitations.</p><p><strong>Address:</strong> Escadinhas da Fonte da Pipa 2.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Tascantiga+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a></article>
+          <article class="food-card"><h3>Restaurante Regional de Sintra</h3><p><strong>For:</strong> a traditional Portuguese sit-down meal close to the Town Hall. A useful option when you want a full lunch rather than pastries or snacks.</p><p><strong>Address:</strong> Travessa do Município 2.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Regional+de+Sintra" target="_blank" rel="noopener">Open in Google Maps ↗</a></article>
+        </div>
+        <p class="guide-disclaimer">Food recommendations are selected for their local character and location. Menus, prices, service and opening hours can change; check directly with each business. The Portugal Guide is independent and receives no payment for these listings.</p>
+      </div>
+    </section>
+
+    <section class="guide-intro section-wrap" id="companion">
+      <p class="eyebrow">Your personal field companion</p>
+      <h2>Build a day that<br><em>fits you.</em></h2>
+      <p>This planner does more than list attractions. It helps you choose a realistic combination based on your time, interests, travel style and mobility. It deliberately avoids squeezing too many timed visits into one day.</p>
+      <div class="companion-tool">
+        <p class="eyebrow">The Sintra day builder</p>
+        <h3 style="font:500 30px var(--font-serif);margin:0 0 10px">Tell us how you like to travel.</h3>
+        <p style="font-size:13px;line-height:1.8;color:rgba(255,255,255,.78)">Choose the options below to receive a practical starting plan. This is a planning aid, not a live ticket or transport availability checker.</p>
+        <div class="companion-fields">
+          <label>How much time do you have?
+            <select id="sc-days"><option value="one">One day</option><option value="two">Two days</option><option value="half">Half a day</option></select>
+          </label>
+          <label>What interests you most?
+            <select id="sc-interest"><option value="classic">The iconic palaces and history</option><option value="gardens">Gardens, nature and scenery</option><option value="culture">Architecture, history and culture</option><option value="food">Food, cafés and the old town</option><option value="family">A balanced family day</option></select>
+          </label>
+          <label>What is your preferred pace?
+            <select id="sc-pace"><option value="relaxed">Relaxed — fewer stops</option><option value="balanced">Balanced — a full day</option><option value="active">Active — happy to walk more</option></select>
+          </label>
+          <label>Any mobility considerations?
+            <select id="sc-mobility"><option value="standard">No particular limitation</option><option value="low">Prefer less walking and fewer stairs</option><option value="stepfree">Need step-free access where possible</option></select>
+          </label>
+          <label>How will you arrive?
+            <select id="sc-transport"><option value="train">By train</option><option value="car">By car</option><option value="local">Already staying in Sintra</option></select>
+          </label>
+          <label>Who is travelling?
+            <select id="sc-company"><option value="solo">Solo</option><option value="couple">As a couple</option><option value="family">With children</option><option value="group">With friends or a group</option></select>
+          </label>
+        </div>
+        <button type="button" id="sc-build">Build my suggested plan ↗</button>
+        <div class="companion-result" id="sc-result" aria-live="polite" hidden></div>
+      </div>
+      <div class="decision-grid">
+        <article class="decision-card"><h3>When the weather turns</h3><p>Keep outdoor viewpoints and long hill walks flexible. Move towards indoor palace rooms, cafés and the historic centre, but check which interiors are open and whether your ticket covers them. Do not assume every monument remains accessible in severe weather.</p></article>
+        <article class="decision-card"><h3>When tickets are sold out</h3><p>Do not buy a random third-party ticket without checking what it includes. Rebuild the day around a monument with official availability, or switch to a garden, village and viewpoint day. Pena requires a dated time slot.</p></article>
+        <article class="decision-card"><h3>When you are running late</h3><p>Protect the timed entry you have already booked. Drop the next distant monument rather than rushing across the hills. A missed slot can cost more than a missed photo stop.</p></article>
+        <article class="decision-card"><h3>When walking is difficult</h3><p>Choose fewer sites, check each monument’s accessibility page and contact the operator before booking. Historic gardens, cobbled streets and hilltop sites can include steep slopes, steps and uneven surfaces.</p></article>
+      </div>
+    </section>
+
+    <section class="guide-essentials" id="essentials">
+      <div class="section-wrap essentials-inner">
+        <div><p class="eyebrow">10 · Before you go</p><h2>The details<br><em>that make the day.</em></h2></div>
+        <div class="essentials-list">
+          <article><h3>Book the important entries</h3><p>Pena Palace uses date and time reservations. Regaleira also sells timed tickets through its official ticket office. Check availability directly before travelling.</p></article>
+          <article><h3>Do not assume the monuments are next door</h3><p>Sintra’s attractions are spread across the hills. Road traffic, queues and walking distances can make transfers take longer than expected.</p></article>
+          <article><h3>Dress for the mountain</h3><p>Conditions can be cooler, windier or mistier than in Lisbon. Wear shoes with grip and bring a light jacket, even on a warm day.</p></article>
+          <article><h3>Check official updates on the day</h3><p>Opening times, access restrictions and ticket conditions can change. The official operators are the final source of truth.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-links section-wrap">
+      <p class="eyebrow">Useful official links</p>
+      <h2>Plan with confidence.</h2>
+      <div class="official-links">
+        <a href="https://www.parquesdesintra.pt/pt/planear-a-visita/horarios-e-precos/" target="_blank" rel="noopener"><span>Parques de Sintra</span><small>Opening times, prices and visitor notices ↗</small></a>
+        <a href="https://www.regaleira.pt/pt/visitas" target="_blank" rel="noopener"><span>Quinta da Regaleira</span><small>Tickets and visit information ↗</small></a>
+        <a href="https://www.cp.pt/" target="_blank" rel="noopener"><span>Comboios de Portugal</span><small>Train schedules and tickets ↗</small></a>
+      </div>
+      <p class="guide-disclaimer">This independent guide is for planning inspiration. It is not affiliated with or endorsed by the monuments or transport operators. Always confirm current details with the official providers. Information reviewed on 30 October 2026. Transport routes, access rules, opening times and ticket prices can change; verify them with the official providers before departure.</p>
+    </section>
+  </main>
+</Base>
+
+<style is:global>
+/* Page styles ported from legacy sintra.html: colours/fonts re-pointed to tokens; token overrides and shared header/footer rules removed. */
+.guide-hero{min-height:590px;display:grid;grid-template-columns:1.05fr .95fr;background:var(--forest);color:var(--ivory)}.guide-hero-copy{padding:95px 5vw 90px 10vw;align-self:center}.guide-hero-copy .eyebrow{color:var(--gold-light)}.guide-hero-copy h1{font-size:clamp(48px,6vw,78px);line-height:1.04}.guide-hero-copy h1 em{color:var(--gold-light)}.guide-hero-copy>p:not(.eyebrow){max-width:490px;color:rgba(255,255,255,.82);font-size:15px;line-height:1.9}.guide-hero-art{min-height:480px;background:radial-gradient(ellipse at 68% 24%,rgba(205,181,122,.78) 0 7%,transparent 7.5%),radial-gradient(ellipse at 32% 75%,rgba(126,106,51,.72),transparent 38%),repeating-linear-gradient(155deg,transparent 0 48px,rgba(235,226,204,.12) 49px 51px),linear-gradient(145deg,#78866a,var(--forest) 55%,var(--forest-deep))}.guide-toc{display:flex;justify-content:center;flex-wrap:wrap;gap:28px;padding:22px 5vw;background:var(--paper);border-bottom:1px solid rgba(31,58,45,.15)}.guide-toc a{font-size:11px;letter-spacing:.06em;white-space:nowrap}.guide-intro{padding-top:105px;padding-bottom:105px}.guide-intro h2,.guide-plan h2,.essentials-inner h2{font-size:clamp(42px,5vw,62px);line-height:1.12}.guide-intro h2 em,.guide-plan h2 em{color:var(--gold-text)}.guide-intro>p:not(.eyebrow){max-width:690px;color:var(--muted);line-height:1.95;font-size:15px}.guide-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:48px;padding-top:25px;border-top:1px solid rgba(31,58,45,.2)}.guide-facts div{display:grid;gap:8px}.guide-facts strong{color:var(--gold-text);font-family:var(--font-serif);font-size:21px;font-weight:500}.guide-facts span{color:var(--muted);font-size:12px;line-height:1.6}.guide-highlights{padding:95px 0 105px;background:var(--paper)}.guide-highlights h2,.guide-links h2{max-width:600px;margin-bottom:45px;font-size:clamp(38px,5vw,55px)}.highlight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(31,58,45,.18);border:1px solid rgba(31,58,45,.18)}.highlight-card{min-height:260px;padding:35px;background:var(--paper)}.highlight-no{color:var(--gold-text);font-size:10px;letter-spacing:.16em}.highlight-card h3,.timeline h3,.essentials-list h3{margin:15px 0 10px;font-family:var(--font-serif);font-size:26px;font-weight:500}.highlight-card p,.timeline p,.essentials-list p{color:var(--muted);font-size:13px;line-height:1.85}.highlight-card a{display:inline-block;margin-top:8px;color:var(--forest);font-size:11px;font-weight:700}.guide-plan{padding-top:105px;padding-bottom:110px}.plan-lead{max-width:580px;color:var(--muted);line-height:1.8;font-size:14px}.timeline{max-width:780px;margin-top:50px;border-top:1px solid rgba(31,58,45,.2)}.timeline article{display:grid;grid-template-columns:150px 1fr;gap:25px;padding:27px 0;border-bottom:1px solid rgba(31,58,45,.2)}.timeline article>span{padding-top:5px;color:var(--gold-text);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.timeline h3{margin-top:0}.timeline p{margin-bottom:0}.guide-essentials{padding:100px 0;background:var(--forest);color:var(--ivory)}.essentials-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:8vw}.essentials-inner .eyebrow{color:var(--gold-light)}.essentials-inner h2 em{color:var(--gold-light)}.essentials-list article{padding:0 0 22px;margin-bottom:22px;border-bottom:1px solid rgba(255,255,255,.2)}.essentials-list h3{margin-top:0}.essentials-list p{margin-bottom:0;color:rgba(255,255,255,.72)}.guide-links{padding-top:100px;padding-bottom:90px}.official-links{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.official-links a{display:grid;gap:10px;padding:23px;border:1px solid rgba(31,58,45,.22)}.official-links a:hover{background:var(--paper)}.official-links span{font-family:var(--font-serif);font-size:20px}.official-links small{color:var(--muted);font-size:11px;line-height:1.6}.guide-disclaimer{max-width:760px;margin:35px 0 0;color:var(--muted);font-size:10px;line-height:1.8}
+@media(max-width:760px){.guide-hero{grid-template-columns:1fr}.guide-hero-copy{padding:70px 7vw 55px}.guide-hero-copy h1{font-size:clamp(45px,12vw,62px);overflow-wrap:normal}.guide-hero-art{min-height:230px}.guide-toc{justify-content:flex-start;gap:22px;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap;padding:18px 7vw}.guide-intro,.guide-plan{padding-top:75px;padding-bottom:75px}.guide-facts{grid-template-columns:1fr;gap:18px}.guide-highlights{padding:75px 0}.highlight-grid{grid-template-columns:1fr}.highlight-card{min-height:0;padding:28px}.timeline article{grid-template-columns:1fr;gap:8px}.guide-essentials{padding:75px 0}.essentials-inner{grid-template-columns:1fr;gap:30px}.official-links{grid-template-columns:1fr}
+}.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:35px}.photo-card{margin:0;background:var(--paper);border:1px solid rgba(31,58,45,.16)}.photo-card img{display:block;width:100%;height:260px;object-fit:cover}.photo-card figcaption{padding:13px 15px;color:var(--muted);font-size:10px;line-height:1.7}.photo-card figcaption strong{display:block;color:var(--forest);font-size:12px;margin-bottom:3px}.food-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(31,58,45,.18);border:1px solid rgba(31,58,45,.18);margin-top:35px}.food-card{padding:28px;background:var(--paper)}.food-card h3{font-family:var(--font-serif);font-weight:500;font-size:24px;margin:0 0 10px}.food-card p{font-size:13px;line-height:1.8;color:var(--muted)}.food-card a{display:inline-block;margin-top:5px;font-size:11px;font-weight:700;color:var(--forest)}
+@media(max-width:760px){.photo-grid,.food-grid{grid-template-columns:1fr}.photo-card img{height:230px}}.interactive-map{height:480px;width:100%;border:1px solid rgba(31,58,45,.2);background:var(--paper)}.map-note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}.map-legend{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;font-size:11px;color:var(--forest)}.map-legend span{display:inline-flex;align-items:center;gap:6px}.map-dot{width:9px;height:9px;border-radius:50%;background:var(--gold-text);display:inline-block}.map-dot.green{background:var(--forest)}.companion-tool{background:var(--forest);color:var(--ivory);padding:34px;margin-top:28px}.companion-tool .eyebrow{color:var(--gold-light)}.companion-fields{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:25px 0}.companion-fields label{display:grid;gap:8px;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.82)}.companion-fields select{width:100%;padding:13px;background:var(--ivory);color:var(--ink);border:1px solid var(--gold-light);border-radius:0;font:inherit}.companion-tool button{border:0;background:var(--gold-light);color:var(--forest-deep);padding:15px 20px;font:700 12px var(--font-sans);cursor:pointer}.companion-result{margin-top:24px;padding:24px;background:var(--ivory);color:var(--ink);line-height:1.8}.companion-result h3{font:500 26px var(--font-serif);color:var(--forest)}.companion-result ul{padding-left:20px}.companion-result .small-note{font-size:11px;color:var(--muted)}.decision-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:35px}.decision-card{border-top:2px solid var(--gold-text);padding:20px 0}.decision-card h3{font:500 23px var(--font-serif);margin:0 0 10px}.decision-card p{font-size:13px;line-height:1.8;color:var(--muted)}
+@media(max-width:760px){.companion-tool{padding:24px 18px}.companion-fields,.decision-grid{grid-template-columns:1fr}}
+</style>
+
+<script>
+  import '../scripts/planner.ts';
+</script>

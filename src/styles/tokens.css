@@ -1,0 +1,56 @@
+/*
+ * The Portugal Guide — design tokens (v0.1)
+ * One palette and type system shared by the website, future app and PDF export.
+ * Values match the Sintra PDF edition (forest green, ivory, restrained antique gold).
+ * Contrast (WCAG 2.x, measured): --gold-text on --paper 5.1:1, on --ivory 5.7:1;
+ * --muted on --paper 4.8:1; --gold-light on --forest 6.2:1; --ivory on --forest 10.7:1.
+ */
+@import '@fontsource/lora/400.css';
+@import '@fontsource/lora/500.css';
+@import '@fontsource/lora/600.css';
+@import '@fontsource/lora/400-italic.css';
+@import '@fontsource/lora/500-italic.css';
+@import '@fontsource/dm-sans/400.css';
+@import '@fontsource/dm-sans/500.css';
+@import '@fontsource/dm-sans/600.css';
+@import '@fontsource/dm-sans/700.css';
+
+:root {
+  /* Colour */
+  --forest-deep: #14261d;
+  --forest: #1f3a2d;
+  --mist: #5f7566;
+  --ivory: #f4eedf;
+  --paper: #ebe2cc;
+  --stone: #cbbfa4;
+  --rule: #cdbf9f;
+  --gold: #a88b4a;        /* ornaments, rules, large display only */
+  --gold-light: #cdb57a;  /* accents on dark backgrounds */
+  --gold-text: #6e5b29;   /* small accent text on light backgrounds */
+  --ink: #1d241f;
+  --muted: #5c6358;
+  --white: #ffffff;
+  --focus: #6e5b29;
+  --focus-on-dark: #cdb57a;
+
+  /* Type */
+  --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+  /* Space and layout */
+  --gutter: clamp(20px, 5vw, 64px);
+  --measure: 68ch;
+  --max: 1180px;
+  --radius: 0;
+
+  /* Breakpoints (reference only; CSS custom properties cannot be used in media queries)
+     mobile < 760px · tablet 760–1100px · desktop ≥ 1100px */
+
+  /* Legacy aliases kept so ported pages keep working during Phase 1 */
+  --paper-light: var(--ivory);
+  --olive: var(--forest);
+  --olive-dark: var(--forest-deep);
+  --terracotta: var(--gold-text);
+  --serif: var(--font-serif);
+  --sans: var(--font-sans);
+}

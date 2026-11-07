@@ -1,0 +1,43 @@
+[
+  {
+    "featured": true,
+    "href": "sintra.html",
+    "art": "sintra-image",
+    "label": "01 / THE FIRST GUIDE",
+    "name": "Sintra",
+    "summary": "Palaces, forest paths and stories hidden in the hills.",
+    "linkText": "Explore the field guide"
+  },
+  {
+    "featured": false,
+    "href": "sintra-local-discoveries.html",
+    "art": "sintra-image",
+    "label": "THE COMPANION GUIDE",
+    "name": "Sintra, more locally",
+    "summary": "Free gardens, viewpoints, museums, cafés, restaurants and seasonal discoveries."
+  },
+  {
+    "featured": false,
+    "href": "sintra-romantic-guide.html",
+    "art": "sintra-image",
+    "label": "THE ROMANTIC FIELD GUIDE",
+    "name": "Sintra, made for lingering",
+    "summary": "Romantic palaces, hidden paths and thoughtful itineraries for a slower escape."
+  },
+  {
+    "featured": false,
+    "href": "#guides",
+    "art": "porto-image",
+    "label": "COMING NEXT",
+    "name": "Porto",
+    "summary": "River light, tiled façades and neighbourhood life."
+  },
+  {
+    "featured": false,
+    "href": "#guides",
+    "art": "douro-image",
+    "label": "COMING NEXT",
+    "name": "Douro Valley",
+    "summary": "Quiet roads through one of Portugal’s great landscapes."
+  }
+]

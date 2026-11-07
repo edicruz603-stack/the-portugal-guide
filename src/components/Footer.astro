@@ -1,0 +1,18 @@
+---
+import type { NavItem } from '../lib/types.ts';
+interface Props { links?: NavItem[] }
+const { links } = Astro.props;
+const year = new Date().getFullYear();
+const hasNote = Astro.slots.has('default');
+---
+<footer class="site-footer">
+  <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">✳</span><span>THE PORTUGAL GUIDE</span></a>
+  <p>Independent travel guides, made with care in Portugal.</p>
+  <small>© {year} The Portugal Guide. All rights reserved.</small>
+  {links && (
+    <nav class="footer-links" aria-label="Footer">
+      {links.map(([href, label], i) => <>{i > 0 && ' · '}<a href={href}>{label}</a></>)}
+    </nav>
+  )}
+  {hasNote && <div class="footer-note"><slot /></div>}
+</footer>
