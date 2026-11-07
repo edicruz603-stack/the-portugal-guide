@@ -1,0 +1,24 @@
+---
+/**
+ * Engine-independent map component. Data is passed as JSON; the engine is loaded on the client
+ * only when the map scrolls near the viewport.
+ */
+import type { MapPlace } from '../lib/map/types.ts';
+interface Props { id: string; places: MapPlace[]; label: string }
+const { id, places, label } = Astro.props;
+---
+<section id={id} class="interactive-map" aria-label={label} data-map-places={JSON.stringify(places)}></section>
+
+<script>
+  const els = document.querySelectorAll<HTMLElement>('[data-map-places]');
+  const io = new IntersectionObserver(async (entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      io.unobserve(entry.target);
+      const el = entry.target as HTMLElement;
+      const { leafletAdapter } = await import('../lib/map/leaflet-adapter.ts');
+      leafletAdapter.mount(el, JSON.parse(el.dataset.mapPlaces ?? '[]'));
+    }
+  }, { rootMargin: '400px' });
+  els.forEach((el) => io.observe(el));
+</script>

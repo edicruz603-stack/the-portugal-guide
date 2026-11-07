@@ -1,0 +1,27 @@
+---
+/**
+ * Site header with brand and responsive navigation.
+ * Mobile: disclosure button controls the nav (aria-expanded/aria-controls, Escape closes, focus returns).
+ */
+import type { NavItem } from '../lib/types.ts';
+interface Props { nav: NavItem[]; cta?: NavItem }
+const { nav, cta } = Astro.props;
+---
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="The Portugal Guide home">
+    <span class="brand-mark" aria-hidden="true">✳</span>
+    <span>THE PORTUGAL GUIDE</span>
+  </a>
+  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">
+    <span aria-hidden="true">☰</span>
+  </button>
+  <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+    {nav.map(([href, label]) => <a href={href}>{label}</a>)}
+    {cta && <a class="nav-cta" href={cta[0]}>{cta[1]}</a>}
+  </nav>
+</header>
+
+<script>
+  import { initNavigation } from '../scripts/navigation.ts';
+  initNavigation();
+</script>

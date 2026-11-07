@@ -1,0 +1,52 @@
+---
+/**
+ * Base layout shared by every page and every destination.
+ * Owns: <head> metadata, design tokens, skip link, header, footer.
+ * Pages supply only their content (and optional page-scoped CSS).
+ */
+import '../styles/tokens.css';
+import '../styles/legacy-base.css';
+import '../styles/brand.css';
+import '../styles/a11y.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { NavItem } from '../lib/types.ts';
+
+interface Props {
+  title: string;
+  description: string;
+  nav: NavItem[];
+  cta?: NavItem;
+  bodyClass?: string;
+  footerLinks?: NavItem[];
+  lang?: string;
+}
+const { title, description, nav, cta, bodyClass, footerLinks, lang = 'en-GB' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1f3a2d" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`.replace('//', '/')} type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Portugal Guide" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_GB" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header nav={nav} cta={cta} />
+    <slot />
+    <Footer links={footerLinks}>
+      <slot name="footer-note" />
+    </Footer>
+  </body>
+</html>

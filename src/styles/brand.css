@@ -1,0 +1,36 @@
+/* Phase 1 brand adjustments on top of the ported legacy styles (approved palette: forest, ivory, restrained gold). */
+
+/* Shared chrome keeps its own colours whatever a page sets for plain links. */
+.site-header a, .site-footer a { color: inherit; }
+.site-footer { color: var(--ivory); }
+
+/* Large surfaces stay forest or paper; gold is reserved for accents. */
+.closing { background: var(--paper); color: var(--forest); }
+.closing .eyebrow { color: var(--gold-text); }
+.closing .text-link { border-bottom-color: var(--gold); }
+
+/* Heading accents: light backgrounds use the darker text gold (dark sections keep their own, more specific rules). */
+main h2 em { color: var(--gold-text); }
+
+/* Header: collapse navigation into the menu button up to tablet width (legacy collapsed only below 760px,
+   which made five-item navigations wrap onto two lines on tablets). Mirrors the legacy mobile rules. */
+@media (max-width: 1024px) {
+  .site-header { min-height: 72px; padding: 0 6vw; }
+  .menu-toggle { display: block; }
+  .main-nav { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 24px 6vw 30px; flex-direction: column; align-items: stretch; gap: 20px; background: var(--ivory); box-shadow: 0 12px 18px rgba(0, 0, 0, .08); }
+  .main-nav.open { display: flex; }
+  .nav-cta { text-align: center; }
+}
+
+/* Planner result sits on ivory inside the dark tool panel: its label needs the darker text gold
+   (was gold-light on ivory, 1.73:1). */
+.companion-tool .companion-result .eyebrow { color: var(--gold-text); }
+
+/* Map markers (MapView / Leaflet adapter). Same colours and size as before: 16 px dot, ivory ring. */
+.tpg-marker-icon, .tpg-cluster-icon { background: none; border: 0; display: grid; place-items: center; }
+.tpg-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ivory); box-shadow: 0 1px 3px rgba(0, 0, 0, .35); }
+.tpg-dot--monument { background: var(--gold-text); }
+.tpg-dot--free { background: var(--forest); }
+.tpg-cluster { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--forest); color: var(--ivory); border: 3px solid var(--gold-light); font: 700 14px var(--font-sans); box-shadow: 0 1px 4px rgba(0, 0, 0, .35); }
+.tpg-marker-icon:focus-visible, .tpg-cluster-icon:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 50%; }
+.tpg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

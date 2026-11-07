@@ -1,0 +1,23 @@
+---
+/**
+ * Destination card used on the home directory (and future destination lists).
+ * The artwork is a decorative CSS placeholder, so it is hidden from assistive technology.
+ */
+interface Props {
+  href: string;
+  name: string;
+  summary: string;
+  label: string;
+  art: string;          // CSS class of the artwork, e.g. "sintra-image"
+  featured?: boolean;
+  linkText?: string;
+}
+const { href, name, summary, label, art, featured = false, linkText } = Astro.props;
+---
+<a class:list={['destination-card', { featured }]} href={href}>
+  <div class={`destination-image ${art}`} aria-hidden="true"></div>
+  <div class="card-caption"><span>{label}</span><span aria-hidden="true">↗</span></div>
+  <h3>{name}</h3>
+  <p>{summary}</p>
+  {linkText && <span class="text-link">{linkText} <span aria-hidden="true">↗</span></span>}
+</a>

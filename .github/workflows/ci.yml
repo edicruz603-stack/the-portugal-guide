@@ -1,0 +1,74 @@
+name: CI
+
+# Runs on every pull request and on pushes to the development branch.
+# It never deploys and never uploads the built site. Only test results and technical reports are kept.
+on:
+  pull_request:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ASTRO_TELEMETRY_DISABLED: '1'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type check
+        run: npm run check
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Content validation + production build
+        run: npm run build
+
+      - name: Internal links
+        run: npm run test:links
+
+      - name: HTML validation
+        run: npm run test:html
+
+      - name: Editorial parity with the live pages
+        run: npm run test:parity
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser tests (mobile, tablet, desktop; third-party requests blocked)
+        run: npx playwright test
+
+      - name: Review screenshots (with map tiles and photographs)
+        if: always()
+        env:
+          ALLOW_EXTERNAL: '1'
+        run: npx playwright test pages -g "screenshot" --retries=0
+
+      - name: Upload screenshots and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-and-reports
+          path: |
+            review-screenshots/
+            playwright-report/
+            dist-reports/
+          retention-days: 14

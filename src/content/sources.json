@@ -1,0 +1,9 @@
+[
+  { "id": "src.parques-de-sintra.national-palace", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/", "kind": "operator", "seen_on": "2026-11-07" },
+  { "id": "src.parques-de-sintra.pena", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/", "kind": "operator", "seen_on": "2026-11-07" },
+  { "id": "src.parques-de-sintra.moorish-castle", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/the-moorish-castle/", "kind": "operator", "seen_on": "2026-11-07" },
+  { "id": "src.parques-de-sintra.monserrate", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-palace-of-monserrate/", "kind": "operator", "seen_on": "2026-11-07" },
+  { "id": "src.parques-de-sintra.villa-sassetti", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/", "kind": "operator", "seen_on": "2026-11-07", "note": "Coordinates recorded in the PDF fact ledger; exact page URL to be re-recorded in Phase 2." },
+  { "id": "src.regaleira.contacts", "publisher": "Fundação Cultursintra (Quinta da Regaleira)", "url": "https://www.regaleira.pt/en/", "kind": "operator", "seen_on": "2026-11-07" },
+  { "id": "src.wikimedia-commons", "publisher": "Wikimedia Commons", "url": "https://commons.wikimedia.org/", "kind": "image-library", "seen_on": "2026-10-30" }
+]
