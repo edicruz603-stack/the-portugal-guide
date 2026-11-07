@@ -1,7 +1,7 @@
 name: CI
 
 # Runs on every pull request and on pushes to the development branch.
-# It never deploys: the built site is uploaded as a downloadable preview artifact.
+# It never deploys and never uploads the built site. Only test results and technical reports are kept.
 on:
   pull_request:
   push:
@@ -62,19 +62,11 @@ jobs:
           ALLOW_EXTERNAL: '1'
         run: npx playwright test pages -g "screenshot" --retries=0
 
-      - name: Upload preview site
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: preview-site
-          path: dist/
-          retention-days: 14
-
       - name: Upload screenshots and reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: review-screenshots-and-reports
+          name: test-results-and-reports
           path: |
             review-screenshots/
             playwright-report/

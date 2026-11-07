@@ -15,7 +15,7 @@ Branch `phase/0-1-foundation` → `develop`. Prepared 7 November 2026 by Claude 
 | Initial design system | `src/styles/tokens.css`: Lora (headings), DM Sans (body/UI), forest, ivory, restrained antique gold — the same values as the PDF edition; fonts self-hosted (SIL OFL) |
 | Reusable components | `Base` layout, `Header` + navigation, `Footer`, `DestinationCard`, `MapView` (engine-independent; Leaflet adapter) |
 | Port homepage and Sintra pages | All 5 pages ported; **URLs identical** (`/index.html`, `/sintra.html`, `/sintra-local-discoveries.html`, `/sintra-romantic-guide.html`, `/sintra-discoveries.html`), so no redirects are needed |
-| Preview without replacing production | CI artifact `preview-site` (the built site) + `review-screenshots-and-reports`. GitHub Pages hosts one site per repository, so a hosted preview there would replace production |
+| Preview without replacing production | Superseded 7 Nov 2026: the owner decided on no previews. CI keeps only test results and technical reports (`test-results-and-reports`); the built site is not uploaded. |
 
 ## 2. Production safety
 
