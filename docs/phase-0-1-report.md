@@ -101,4 +101,4 @@ Scope limited to the four approved issues. No editorial content, image rights, p
 
 Results after the fixes (local, 7 Nov 2026): astro check 0/0/0 · Vitest 27/27 · validation 0 critical · 5 pages built · 87 internal links, 0 broken · html-validate 0 · parity 5/5 · Playwright 132 passed, 3 skipped by design.
 
-Before/after screenshots: `docs/review/phase-0-1-fixes/`. Map before/after with real tiles is produced by the review run on `review/phase-0-1`.
+Before/after screenshots: `docs/review/phase-0-1-fixes/`. Map before/after with real tiles (`2-map-*-before-after.jpg`) comes from the review run on `review/phase-0-1`, which runs in GitHub Actions with network access: default view 5 + 2 clusters plus 2 single markers, cluster selection reveals the places, popups intact, mounted coordinates identical to the source at all three widths.
