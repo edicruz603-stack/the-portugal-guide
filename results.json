@@ -1,0 +1,1501 @@
+{
+  "page:mobile:index": {
+    "metrics": {
+      "cls": 0,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "height": 6129
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:mobile:sintra": {
+    "metrics": {
+      "cls": 0,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "height": 23889
+    },
+    "imgs": [
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Pal%C3%A1cio_Nacional_da_Pena%2C_sintra.jpg",
+        "alt": "Palácio Nacional da Pena in Sintra",
+        "loaded": true,
+        "natural": [
+          1440,
+          1799
+        ],
+        "rendered": [
+          333,
+          230
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Pena PalacePhoto: Pakycassano · CC BY-SA 4.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_Nacional_da_Pena,_sintra.jpg"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Regaleira_Initiation_Well.JPG/960px-Regaleira_Initiation_Well.JPG",
+        "alt": "The Initiation Well at Quinta da Regaleira",
+        "loaded": true,
+        "natural": [
+          960,
+          720
+        ],
+        "rendered": [
+          333,
+          230
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Quinta da RegaleiraPhoto: Husond · CC BY-SA 3.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Regaleira_Initiation_Well.JPG"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Castelo_dos_Mouros._Sintra%2C_Portugal.jpg/960px-Castelo_dos_Mouros._Sintra%2C_Portugal.jpg",
+        "alt": "Stone walls of Castelo dos Mouros above Sintra",
+        "loaded": true,
+        "natural": [
+          960,
+          710
+        ],
+        "rendered": [
+          333,
+          230
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Moorish CastlePhoto: Ввласенко · CC BY-SA 3.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Castelo_dos_Mouros._Sintra,_Portugal.jpg"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg/960px-Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg",
+        "alt": "Ornate exterior of Palácio de Monserrate",
+        "loaded": true,
+        "natural": [
+          960,
+          640
+        ],
+        "rendered": [
+          333,
+          230
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Monserrate PalacePhoto: nborges · CC BY 2.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_de_Monserrate_DSC08899_(36939236406).jpg"
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:mobile:sintra-local-discoveries": {
+    "metrics": {
+      "cls": 0,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "height": 9722
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:mobile:sintra-romantic-guide": {
+    "metrics": {
+      "cls": 0,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "height": 8378
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:mobile:sintra-discoveries": {
+    "metrics": {
+      "cls": 0,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "height": 11416
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "map:mobile": {
+    "initial": {
+      "tiles": 6,
+      "markers": 2,
+      "clusters": [
+        "5\n5 places close together. Select to zoom in.",
+        "2\n2 places close together. Select to zoom in."
+      ]
+    },
+    "expanded": {
+      "markers": 5,
+      "clusters": []
+    },
+    "popup": "Palácio Nacional de Sintra · gardens (free entry) Historic centre",
+    "coordinatesIdentical": true,
+    "attribution": " Leaflet | © OpenStreetMap contributors",
+    "consoleErrors": []
+  },
+  "discoveries:mobile": {
+    "initial": "30 curated stops",
+    "totalPlaces": 30,
+    "filter:all": {
+      "count": 30,
+      "countText": "30 curated stops shown",
+      "typesShown": [
+        "monument",
+        "free",
+        "food"
+      ],
+      "pressed": "true"
+    },
+    "filter:monument": {
+      "count": 8,
+      "countText": "8 curated stops shown",
+      "typesShown": [
+        "monument"
+      ],
+      "pressed": "true"
+    },
+    "filter:free": {
+      "count": 9,
+      "countText": "9 curated stops shown",
+      "typesShown": [
+        "free"
+      ],
+      "pressed": "true"
+    },
+    "filter:food": {
+      "count": 13,
+      "countText": "13 curated stops shown",
+      "typesShown": [
+        "food"
+      ],
+      "pressed": "true"
+    },
+    "search:regaleira": {
+      "count": 1,
+      "names": [
+        "Quinta da Regaleira"
+      ],
+      "countText": "1 curated stop shown"
+    },
+    "search:garden": {
+      "count": 6,
+      "names": [
+        "Quinta da Regaleira",
+        "Palácio de Monserrate",
+        "Chalet da Condessa d’Edla",
+        "Parque da Liberdade",
+        "Jardins do Palácio Nacional",
+        "Vila Sassetti"
+      ],
+      "countText": "6 curated stops shown"
+    },
+    "search:piriquita": {
+      "count": 1,
+      "names": [
+        "Casa Piriquita"
+      ],
+      "countText": "1 curated stop shown"
+    },
+    "search:zzzz": {
+      "count": 0,
+      "names": [],
+      "countText": "0 curated stops shown"
+    },
+    "combined:free+garden": {
+      "names": [
+        "Parque da Liberdade",
+        "Jardins do Palácio Nacional",
+        "Vila Sassetti"
+      ]
+    },
+    "consoleErrors": []
+  },
+  "planner:mobile": {
+    "A": {
+      "input": {
+        "id": "A",
+        "days": "one",
+        "interest": "classic",
+        "pace": "balanced",
+        "mobility": "standard",
+        "transport": "train",
+        "company": "couple"
+      },
+      "title": "A balanced one-day Sintra plan",
+      "sections": [
+        "Suggested sequence",
+        "Practical notes"
+      ],
+      "items": 6,
+      "text": "YOUR PERSONALISED STARTING POINT A balanced one-day Sintra plan For a first visit, choose one headline palace and one nearby experience. Sintra rewards a slower pace. Suggested sequence Morning · Visit Pena Palace at your reserved time OR choose Quinta da Regaleira. Midday · Allow time for lunch and the transfer back towards the village. Afternoon · Explore the historic centre, a free garden or a viewpoint. If you choose Pena, consider the Moorish Castle only if the day is running comfortably and the tickets fit. Practical notes As a couple, leave a little unplanned time for a viewpoint, a garden bench or a longer café stop. By train? Check the current CP timetable and the local bus service for each monument on the day. Do not assume the same bus frequency throughout the year. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "B": {
+      "input": {
+        "id": "B",
+        "days": "two",
+        "interest": "gardens",
+        "pace": "relaxed",
+        "mobility": "low",
+        "transport": "car",
+        "company": "family"
+      },
+      "title": "Two days to experience Sintra properly — less walking",
+      "sections": [
+        "Suggested sequence",
+        "Second day",
+        "Practical notes"
+      ],
+      "items": 10,
+      "text": "YOUR PERSONALISED STARTING POINT Two days to experience Sintra properly — less walking Separate the central gardens from the western estate to avoid rushing between different parts of the mountain. Suggested sequence Day 1 · Explore Quinta da Regaleira at an unhurried pace. Walk back towards the historic centre for the National Palace area, Vila Sassetti or Parque da Liberdade. Leave time for a viewpoint and a relaxed dinner. Second day Day 2 · Visit Monserrate Palace and its gardens. Add a nearby cultural stop only if transport and opening times make it practical. Practical notes Do not treat the optional extra as guaranteed: check opening hours, ticket slots and transfers before committing. Sintra has steep slopes, cobbles, steps and uneven garden paths. Contact each venue before booking to confirm step-free routes, accessible facilities and the nearest authorised drop-off point. Do not assume a route is fully step-free. Keep the optional stops optional. Plan generous breaks and remove one visit rather than rushing. With children, plan snack, toilet and rest breaks; avoid stacking two long visits without a pause. Driving? Private vehicles are not permitted on the access roads to Pena Palace and the Moorish Castle, and traffic in the historic centre is restricted. Use designated parking and continue by authorised transport or on foot. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "C": {
+      "input": {
+        "id": "C",
+        "days": "half",
+        "interest": "food",
+        "pace": "active",
+        "mobility": "stepfree",
+        "transport": "local",
+        "company": "solo"
+      },
+      "title": "A thoughtful half-day in Sintra — step-free access requested",
+      "sections": [
+        "Suggested sequence",
+        "Practical notes"
+      ],
+      "items": 8,
+      "text": "YOUR PERSONALISED STARTING POINT A thoughtful half-day in Sintra — step-free access requested Keep this visit close to the historic centre. It is the best way to enjoy Sintra without spending your limited time crossing the hills. Suggested sequence Arrive in the historic centre and explore the lanes around the National Palace. Pause for a travesseiro or queijada at a traditional pastry shop. If you have a pre-booked timed ticket and enough time, choose Quinta da Regaleira as your one major visit. Practical notes Do not add a second major monument unless you have checked the exact entry time, transfer and return journey. Sintra has steep slopes, cobbles, steps and uneven garden paths. Contact each venue before booking to confirm step-free routes, accessible facilities and the nearest authorised drop-off point. Do not assume a route is fully step-free. You asked for step-free access. This planner has not verified step-free routes, entrances or facilities at any venue, so none of the suggestions above should be read as step-free. Check each venue's own accessibility information before you go. Travelling solo? Keep your return connection in mind and save your key ticket and transport links before leaving. Already staying in Sintra? Start from your accommodation's area and check the day's transport notices before crossing the hills. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "axeOnResult": [],
+    "consoleErrors": []
+  },
+  "nav:mobile": {
+    "tabOrder": [
+      "a.skip-link \"Skip to content\" outline=solid/3px",
+      "a.brand \"✳\nTHE PORTUGAL GUIDE\" outline=solid/3px",
+      "button.menu-toggle \"☰\" outline=solid/3px",
+      "a.button \"Plan your day\n↓\" outline=solid/3px",
+      "a \"Local discoveries\" outline=solid/3px",
+      "a \"Romantic guide\" outline=solid/3px",
+      "a \"First look\" outline=solid/3px",
+      "a \"What to see\" outline=solid/3px"
+    ],
+    "openedWithEnter": "true",
+    "firstItemAfterToggle": "Destinations",
+    "afterEscape": {
+      "expanded": "false",
+      "navVisible": false,
+      "focusOnToggle": true
+    },
+    "closesOnLinkClick": "false"
+  },
+  "page:tablet:index": {
+    "metrics": {
+      "cls": 0.007956475998188774,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "height": 4064
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:tablet:sintra": {
+    "metrics": {
+      "cls": 0.011425082169713989,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "height": 16860
+    },
+    "imgs": [
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Pal%C3%A1cio_Nacional_da_Pena%2C_sintra.jpg",
+        "alt": "Palácio Nacional da Pena in Sintra",
+        "loaded": true,
+        "natural": [
+          1440,
+          1799
+        ],
+        "rendered": [
+          317,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Pena PalacePhoto: Pakycassano · CC BY-SA 4.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_Nacional_da_Pena,_sintra.jpg"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Regaleira_Initiation_Well.JPG/960px-Regaleira_Initiation_Well.JPG",
+        "alt": "The Initiation Well at Quinta da Regaleira",
+        "loaded": true,
+        "natural": [
+          960,
+          720
+        ],
+        "rendered": [
+          317,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Quinta da RegaleiraPhoto: Husond · CC BY-SA 3.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Regaleira_Initiation_Well.JPG"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Castelo_dos_Mouros._Sintra%2C_Portugal.jpg/960px-Castelo_dos_Mouros._Sintra%2C_Portugal.jpg",
+        "alt": "Stone walls of Castelo dos Mouros above Sintra",
+        "loaded": true,
+        "natural": [
+          960,
+          710
+        ],
+        "rendered": [
+          317,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Moorish CastlePhoto: Ввласенко · CC BY-SA 3.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Castelo_dos_Mouros._Sintra,_Portugal.jpg"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg/960px-Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg",
+        "alt": "Ornate exterior of Palácio de Monserrate",
+        "loaded": true,
+        "natural": [
+          960,
+          640
+        ],
+        "rendered": [
+          317,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Monserrate PalacePhoto: nborges · CC BY 2.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_de_Monserrate_DSC08899_(36939236406).jpg"
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3880/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3883/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3880/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3883/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3880/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3883/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:tablet:sintra-local-discoveries": {
+    "metrics": {
+      "cls": 0.008123636653856126,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "height": 5845
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:tablet:sintra-romantic-guide": {
+    "metrics": {
+      "cls": 0.008010114385102754,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "height": 5804
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:tablet:sintra-discoveries": {
+    "metrics": {
+      "cls": 0.0352494342108029,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "height": 5971
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "map:tablet": {
+    "initial": {
+      "tiles": 12,
+      "markers": 2,
+      "clusters": [
+        "5\n5 places close together. Select to zoom in.",
+        "2\n2 places close together. Select to zoom in."
+      ]
+    },
+    "expanded": {
+      "markers": 8,
+      "clusters": []
+    },
+    "popup": "Quinta da Regaleira Historic centre and gardens",
+    "coordinatesIdentical": true,
+    "attribution": " Leaflet | © OpenStreetMap contributors",
+    "consoleErrors": []
+  },
+  "discoveries:tablet": {
+    "initial": "30 curated stops",
+    "totalPlaces": 30,
+    "filter:all": {
+      "count": 30,
+      "countText": "30 curated stops shown",
+      "typesShown": [
+        "monument",
+        "free",
+        "food"
+      ],
+      "pressed": "true"
+    },
+    "filter:monument": {
+      "count": 8,
+      "countText": "8 curated stops shown",
+      "typesShown": [
+        "monument"
+      ],
+      "pressed": "true"
+    },
+    "filter:free": {
+      "count": 9,
+      "countText": "9 curated stops shown",
+      "typesShown": [
+        "free"
+      ],
+      "pressed": "true"
+    },
+    "filter:food": {
+      "count": 13,
+      "countText": "13 curated stops shown",
+      "typesShown": [
+        "food"
+      ],
+      "pressed": "true"
+    },
+    "search:regaleira": {
+      "count": 1,
+      "names": [
+        "Quinta da Regaleira"
+      ],
+      "countText": "1 curated stop shown"
+    },
+    "search:garden": {
+      "count": 6,
+      "names": [
+        "Quinta da Regaleira",
+        "Palácio de Monserrate",
+        "Chalet da Condessa d’Edla",
+        "Parque da Liberdade",
+        "Jardins do Palácio Nacional",
+        "Vila Sassetti"
+      ],
+      "countText": "6 curated stops shown"
+    },
+    "search:piriquita": {
+      "count": 1,
+      "names": [
+        "Casa Piriquita"
+      ],
+      "countText": "1 curated stop shown"
+    },
+    "search:zzzz": {
+      "count": 0,
+      "names": [],
+      "countText": "0 curated stops shown"
+    },
+    "combined:free+garden": {
+      "names": [
+        "Parque da Liberdade",
+        "Jardins do Palácio Nacional",
+        "Vila Sassetti"
+      ]
+    },
+    "consoleErrors": []
+  },
+  "planner:tablet": {
+    "A": {
+      "input": {
+        "id": "A",
+        "days": "one",
+        "interest": "classic",
+        "pace": "balanced",
+        "mobility": "standard",
+        "transport": "train",
+        "company": "couple"
+      },
+      "title": "A balanced one-day Sintra plan",
+      "sections": [
+        "Suggested sequence",
+        "Practical notes"
+      ],
+      "items": 6,
+      "text": "YOUR PERSONALISED STARTING POINT A balanced one-day Sintra plan For a first visit, choose one headline palace and one nearby experience. Sintra rewards a slower pace. Suggested sequence Morning · Visit Pena Palace at your reserved time OR choose Quinta da Regaleira. Midday · Allow time for lunch and the transfer back towards the village. Afternoon · Explore the historic centre, a free garden or a viewpoint. If you choose Pena, consider the Moorish Castle only if the day is running comfortably and the tickets fit. Practical notes As a couple, leave a little unplanned time for a viewpoint, a garden bench or a longer café stop. By train? Check the current CP timetable and the local bus service for each monument on the day. Do not assume the same bus frequency throughout the year. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "B": {
+      "input": {
+        "id": "B",
+        "days": "two",
+        "interest": "gardens",
+        "pace": "relaxed",
+        "mobility": "low",
+        "transport": "car",
+        "company": "family"
+      },
+      "title": "Two days to experience Sintra properly — less walking",
+      "sections": [
+        "Suggested sequence",
+        "Second day",
+        "Practical notes"
+      ],
+      "items": 10,
+      "text": "YOUR PERSONALISED STARTING POINT Two days to experience Sintra properly — less walking Separate the central gardens from the western estate to avoid rushing between different parts of the mountain. Suggested sequence Day 1 · Explore Quinta da Regaleira at an unhurried pace. Walk back towards the historic centre for the National Palace area, Vila Sassetti or Parque da Liberdade. Leave time for a viewpoint and a relaxed dinner. Second day Day 2 · Visit Monserrate Palace and its gardens. Add a nearby cultural stop only if transport and opening times make it practical. Practical notes Do not treat the optional extra as guaranteed: check opening hours, ticket slots and transfers before committing. Sintra has steep slopes, cobbles, steps and uneven garden paths. Contact each venue before booking to confirm step-free routes, accessible facilities and the nearest authorised drop-off point. Do not assume a route is fully step-free. Keep the optional stops optional. Plan generous breaks and remove one visit rather than rushing. With children, plan snack, toilet and rest breaks; avoid stacking two long visits without a pause. Driving? Private vehicles are not permitted on the access roads to Pena Palace and the Moorish Castle, and traffic in the historic centre is restricted. Use designated parking and continue by authorised transport or on foot. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "C": {
+      "input": {
+        "id": "C",
+        "days": "half",
+        "interest": "food",
+        "pace": "active",
+        "mobility": "stepfree",
+        "transport": "local",
+        "company": "solo"
+      },
+      "title": "A thoughtful half-day in Sintra — step-free access requested",
+      "sections": [
+        "Suggested sequence",
+        "Practical notes"
+      ],
+      "items": 8,
+      "text": "YOUR PERSONALISED STARTING POINT A thoughtful half-day in Sintra — step-free access requested Keep this visit close to the historic centre. It is the best way to enjoy Sintra without spending your limited time crossing the hills. Suggested sequence Arrive in the historic centre and explore the lanes around the National Palace. Pause for a travesseiro or queijada at a traditional pastry shop. If you have a pre-booked timed ticket and enough time, choose Quinta da Regaleira as your one major visit. Practical notes Do not add a second major monument unless you have checked the exact entry time, transfer and return journey. Sintra has steep slopes, cobbles, steps and uneven garden paths. Contact each venue before booking to confirm step-free routes, accessible facilities and the nearest authorised drop-off point. Do not assume a route is fully step-free. You asked for step-free access. This planner has not verified step-free routes, entrances or facilities at any venue, so none of the suggestions above should be read as step-free. Check each venue's own accessibility information before you go. Travelling solo? Keep your return connection in mind and save your key ticket and transport links before leaving. Already staying in Sintra? Start from your accommodation's area and check the day's transport notices before crossing the hills. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "axeOnResult": [],
+    "consoleErrors": []
+  },
+  "nav:tablet": {
+    "tabOrder": [
+      "a.skip-link \"Skip to content\" outline=solid/3px",
+      "a.brand \"✳\nTHE PORTUGAL GUIDE\" outline=solid/3px",
+      "button.menu-toggle \"☰\" outline=solid/3px",
+      "a.button \"Plan your day\n↓\" outline=solid/3px",
+      "a \"Local discoveries\" outline=solid/3px",
+      "a \"Romantic guide\" outline=solid/3px",
+      "a \"First look\" outline=solid/3px",
+      "a \"What to see\" outline=solid/3px"
+    ],
+    "openedWithEnter": "true",
+    "firstItemAfterToggle": "Destinations",
+    "afterEscape": {
+      "expanded": "false",
+      "navVisible": false,
+      "focusOnToggle": true
+    },
+    "closesOnLinkClick": "false"
+  },
+  "page:desktop:index": {
+    "metrics": {
+      "cls": 0.012500318621935014,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "height": 4615
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:desktop:sintra": {
+    "metrics": {
+      "cls": 0.0024843034323023833,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "height": 15943
+    },
+    "imgs": [
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Pal%C3%A1cio_Nacional_da_Pena%2C_sintra.jpg",
+        "alt": "Palácio Nacional da Pena in Sintra",
+        "loaded": true,
+        "natural": [
+          1440,
+          1799
+        ],
+        "rendered": [
+          565,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Pena PalacePhoto: Pakycassano · CC BY-SA 4.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_Nacional_da_Pena,_sintra.jpg"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Regaleira_Initiation_Well.JPG/960px-Regaleira_Initiation_Well.JPG",
+        "alt": "The Initiation Well at Quinta da Regaleira",
+        "loaded": true,
+        "natural": [
+          960,
+          720
+        ],
+        "rendered": [
+          565,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Quinta da RegaleiraPhoto: Husond · CC BY-SA 3.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Regaleira_Initiation_Well.JPG"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Castelo_dos_Mouros._Sintra%2C_Portugal.jpg/960px-Castelo_dos_Mouros._Sintra%2C_Portugal.jpg",
+        "alt": "Stone walls of Castelo dos Mouros above Sintra",
+        "loaded": true,
+        "natural": [
+          960,
+          710
+        ],
+        "rendered": [
+          565,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Moorish CastlePhoto: Ввласенко · CC BY-SA 3.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Castelo_dos_Mouros._Sintra,_Portugal.jpg"
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg/960px-Pal%C3%A1cio_de_Monserrate_DSC08899_%2836939236406%29.jpg",
+        "alt": "Ornate exterior of Palácio de Monserrate",
+        "loaded": true,
+        "natural": [
+          960,
+          640
+        ],
+        "rendered": [
+          565,
+          260
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": "Monserrate PalacePhoto: nborges · CC BY 2.0 · Original file and licence",
+        "licenceLink": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_de_Monserrate_DSC08899_(36939236406).jpg"
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3881/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3882/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3880/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3883/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3880/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3883/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3880/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3883/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3879/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3884/3136.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3879/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3884/3135.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3879/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      },
+      {
+        "src": "https://tile.openstreetmap.org/13/3884/3137.png",
+        "alt": "",
+        "loaded": true,
+        "natural": [
+          256,
+          256
+        ],
+        "rendered": [
+          256,
+          256
+        ],
+        "hasWH": false,
+        "lazy": "auto",
+        "credit": null,
+        "licenceLink": null
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:desktop:sintra-local-discoveries": {
+    "metrics": {
+      "cls": 0.005827207714441872,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "height": 5478
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:desktop:sintra-romantic-guide": {
+    "metrics": {
+      "cls": 0.016762826927404835,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "height": 5784
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "page:desktop:sintra-discoveries": {
+    "metrics": {
+      "cls": 0.010513296379016096,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "height": 5460
+    },
+    "imgs": [],
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "map:desktop": {
+    "initial": {
+      "tiles": 18,
+      "markers": 2,
+      "clusters": [
+        "5\n5 places close together. Select to zoom in.",
+        "2\n2 places close together. Select to zoom in."
+      ]
+    },
+    "expanded": {
+      "markers": 9,
+      "clusters": []
+    },
+    "popup": "Palácio de Monserrate Western gardens",
+    "coordinatesIdentical": true,
+    "attribution": " Leaflet | © OpenStreetMap contributors",
+    "consoleErrors": []
+  },
+  "discoveries:desktop": {
+    "initial": "30 curated stops",
+    "totalPlaces": 30,
+    "filter:all": {
+      "count": 30,
+      "countText": "30 curated stops shown",
+      "typesShown": [
+        "monument",
+        "free",
+        "food"
+      ],
+      "pressed": "true"
+    },
+    "filter:monument": {
+      "count": 8,
+      "countText": "8 curated stops shown",
+      "typesShown": [
+        "monument"
+      ],
+      "pressed": "true"
+    },
+    "filter:free": {
+      "count": 9,
+      "countText": "9 curated stops shown",
+      "typesShown": [
+        "free"
+      ],
+      "pressed": "true"
+    },
+    "filter:food": {
+      "count": 13,
+      "countText": "13 curated stops shown",
+      "typesShown": [
+        "food"
+      ],
+      "pressed": "true"
+    },
+    "search:regaleira": {
+      "count": 1,
+      "names": [
+        "Quinta da Regaleira"
+      ],
+      "countText": "1 curated stop shown"
+    },
+    "search:garden": {
+      "count": 6,
+      "names": [
+        "Quinta da Regaleira",
+        "Palácio de Monserrate",
+        "Chalet da Condessa d’Edla",
+        "Parque da Liberdade",
+        "Jardins do Palácio Nacional",
+        "Vila Sassetti"
+      ],
+      "countText": "6 curated stops shown"
+    },
+    "search:piriquita": {
+      "count": 1,
+      "names": [
+        "Casa Piriquita"
+      ],
+      "countText": "1 curated stop shown"
+    },
+    "search:zzzz": {
+      "count": 0,
+      "names": [],
+      "countText": "0 curated stops shown"
+    },
+    "combined:free+garden": {
+      "names": [
+        "Parque da Liberdade",
+        "Jardins do Palácio Nacional",
+        "Vila Sassetti"
+      ]
+    },
+    "consoleErrors": []
+  },
+  "planner:desktop": {
+    "A": {
+      "input": {
+        "id": "A",
+        "days": "one",
+        "interest": "classic",
+        "pace": "balanced",
+        "mobility": "standard",
+        "transport": "train",
+        "company": "couple"
+      },
+      "title": "A balanced one-day Sintra plan",
+      "sections": [
+        "Suggested sequence",
+        "Practical notes"
+      ],
+      "items": 6,
+      "text": "YOUR PERSONALISED STARTING POINT A balanced one-day Sintra plan For a first visit, choose one headline palace and one nearby experience. Sintra rewards a slower pace. Suggested sequence Morning · Visit Pena Palace at your reserved time OR choose Quinta da Regaleira. Midday · Allow time for lunch and the transfer back towards the village. Afternoon · Explore the historic centre, a free garden or a viewpoint. If you choose Pena, consider the Moorish Castle only if the day is running comfortably and the tickets fit. Practical notes As a couple, leave a little unplanned time for a viewpoint, a garden bench or a longer café stop. By train? Check the current CP timetable and the local bus service for each monument on the day. Do not assume the same bus frequency throughout the year. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "B": {
+      "input": {
+        "id": "B",
+        "days": "two",
+        "interest": "gardens",
+        "pace": "relaxed",
+        "mobility": "low",
+        "transport": "car",
+        "company": "family"
+      },
+      "title": "Two days to experience Sintra properly — less walking",
+      "sections": [
+        "Suggested sequence",
+        "Second day",
+        "Practical notes"
+      ],
+      "items": 10,
+      "text": "YOUR PERSONALISED STARTING POINT Two days to experience Sintra properly — less walking Separate the central gardens from the western estate to avoid rushing between different parts of the mountain. Suggested sequence Day 1 · Explore Quinta da Regaleira at an unhurried pace. Walk back towards the historic centre for the National Palace area, Vila Sassetti or Parque da Liberdade. Leave time for a viewpoint and a relaxed dinner. Second day Day 2 · Visit Monserrate Palace and its gardens. Add a nearby cultural stop only if transport and opening times make it practical. Practical notes Do not treat the optional extra as guaranteed: check opening hours, ticket slots and transfers before committing. Sintra has steep slopes, cobbles, steps and uneven garden paths. Contact each venue before booking to confirm step-free routes, accessible facilities and the nearest authorised drop-off point. Do not assume a route is fully step-free. Keep the optional stops optional. Plan generous breaks and remove one visit rather than rushing. With children, plan snack, toilet and rest breaks; avoid stacking two long visits without a pause. Driving? Private vehicles are not permitted on the access roads to Pena Palace and the Moorish Castle, and traffic in the historic centre is restricted. Use designated parking and continue by authorised transport or on foot. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "C": {
+      "input": {
+        "id": "C",
+        "days": "half",
+        "interest": "food",
+        "pace": "active",
+        "mobility": "stepfree",
+        "transport": "local",
+        "company": "solo"
+      },
+      "title": "A thoughtful half-day in Sintra — step-free access requested",
+      "sections": [
+        "Suggested sequence",
+        "Practical notes"
+      ],
+      "items": 8,
+      "text": "YOUR PERSONALISED STARTING POINT A thoughtful half-day in Sintra — step-free access requested Keep this visit close to the historic centre. It is the best way to enjoy Sintra without spending your limited time crossing the hills. Suggested sequence Arrive in the historic centre and explore the lanes around the National Palace. Pause for a travesseiro or queijada at a traditional pastry shop. If you have a pre-booked timed ticket and enough time, choose Quinta da Regaleira as your one major visit. Practical notes Do not add a second major monument unless you have checked the exact entry time, transfer and return journey. Sintra has steep slopes, cobbles, steps and uneven garden paths. Contact each venue before booking to confirm step-free routes, accessible facilities and the nearest authorised drop-off point. Do not assume a route is fully step-free. You asked for step-free access. This planner has not verified step-free routes, entrances or facilities at any venue, so none of the suggestions above should be read as step-free. Check each venue's own accessibility information before you go. Travelling solo? Keep your return connection in mind and save your key ticket and transport links before leaving. Already staying in Sintra? Start from your accommodation's area and check the day's transport notices before crossing the hills. Explore local discoveries, food and viewpoints ↗ This is a planning recommendation, not a live availability checker. Confirm opening times, ticket slots, access restrictions and transport with official providers before travelling. Times and routes should be adjusted to your actual bookings."
+    },
+    "axeOnResult": [],
+    "consoleErrors": []
+  },
+  "nav:desktop": {
+    "tabOrder": [
+      "a.skip-link \"Skip to content\" outline=solid/3px",
+      "a.brand \"✳\nTHE PORTUGAL GUIDE\" outline=solid/3px",
+      "a \"Destinations\" outline=solid/3px",
+      "a \"Our way\" outline=solid/3px",
+      "a \"About\" outline=solid/3px",
+      "a.nav-cta \"Plan your visit\" outline=solid/3px",
+      "a.button \"Plan your day\n↓\" outline=solid/3px",
+      "a \"Local discoveries\" outline=solid/3px"
+    ],
+    "menuButton": "not shown at this width (inline navigation)"
+  }
+}
