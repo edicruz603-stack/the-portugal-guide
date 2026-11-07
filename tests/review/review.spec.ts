@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 
@@ -70,7 +71,7 @@ test('map · tiles, markers and popups', async ({ page }, info) => {
     await expect(pop).toHaveCount(1);
     await expect(pop).toBeVisible();
     popups.push((await pop.innerText()).replace(/\s+/g, ' '));
-    if (i === 1) await map.screenshot({ path: shot(`map/${info.project.name}-popup`) });
+    if (i === 1) { await page.waitForTimeout(600); await map.screenshot({ path: shot(`map/${info.project.name}-popup`) }); }
     await map.locator('.leaflet-popup-close-button').click();
     await expect(pop).toHaveCount(0);
   }
@@ -94,15 +95,18 @@ test('discoveries · every filter and search', async ({ page }, info) => {
     const visible = page.locator('.place:visible');
     const types = await visible.evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.type));
     out[`filter:${f}`] = { count: types.length, countText: await page.locator('#count').innerText(), typesShown: [...new Set(types)], pressed: await page.locator(`[data-filter="${f}"]`).getAttribute('aria-pressed') };
-    await page.locator('.controls, [data-filter]').first().scrollIntoViewIfNeeded();
-    await page.screenshot({ path: shot(`discoveries/${info.project.name}-filter-${f}`) });
+    const top = await page.locator('#search').evaluate((e) => e.getBoundingClientRect().top + window.scrollY - 20);
+    await page.screenshot({ path: shot(`discoveries/${info.project.name}-filter-${f}`), fullPage: true, clip: { x: 0, y: top, width: page.viewportSize()!.width, height: 1500 } });
   }
   await page.click('[data-filter="all"]');
   for (const q of ['regaleira', 'garden', 'piriquita', 'zzzz']) {
     await page.fill('#search', q);
     const names = await page.locator('.place:visible h3').allInnerTexts();
     out[`search:${q}`] = { count: names.length, names, countText: await page.locator('#count').innerText() };
-    if (q === 'garden') await page.screenshot({ path: shot(`discoveries/${info.project.name}-search-garden`) });
+    if (q === 'garden') {
+      const top = await page.locator('#search').evaluate((e) => e.getBoundingClientRect().top + window.scrollY - 20);
+      await page.screenshot({ path: shot(`discoveries/${info.project.name}-search-garden`), fullPage: true, clip: { x: 0, y: top, width: page.viewportSize()!.width, height: 1500 } });
+    }
   }
   await page.fill('#search', 'garden'); await page.click('[data-filter="free"]');
   out['combined:free+garden'] = { names: await page.locator('.place:visible h3').allInnerTexts() };
@@ -128,6 +132,8 @@ test('planner · three combinations', async ({ page }, info) => {
     await page.locator('#companion, .companion-tool').first().scrollIntoViewIfNeeded().catch(() => {});
     await page.locator('.companion-tool').screenshot({ path: shot(`planner/${info.project.name}-combo-${c.id}`) });
   }
+  const axe = await new AxeBuilder({ page }).include('#sc-result').withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+  out.axeOnResult = axe.violations.map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.map((n) => ({ target: n.target.join(' '), summary: n.failureSummary?.replace(/\s+/g, ' ').slice(0, 200) })) }));
   out.consoleErrors = w.errors;
   save(`planner:${info.project.name}`, out);
 });
