@@ -1,3 +1,5 @@
+import { stopsShown } from '../lib/format.ts';
+
 /** Filter + search for the Sintra discoveries directory. Logic unchanged from the legacy page; typed and announced politely. */
 const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
 const items = [...document.querySelectorAll<HTMLElement>('.place')];
@@ -14,7 +16,7 @@ function apply(): void {
     el.hidden = !ok;
     if (ok) n++;
   });
-  count.textContent = n + ' curated stops shown';
+  count.textContent = stopsShown(n);
 }
 
 buttons.forEach((b) =>

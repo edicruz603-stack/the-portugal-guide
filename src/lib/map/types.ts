@@ -18,5 +18,5 @@ export interface MapPlace {
 }
 
 export interface MapAdapter {
-  mount(el: HTMLElement, places: MapPlace[]): void;
+  mount(el: HTMLElement, places: MapPlace[]): void | Promise<void>;
 }

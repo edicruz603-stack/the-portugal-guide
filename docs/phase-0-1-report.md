@@ -85,3 +85,20 @@ Content model and de-duplication of the three place lists (Phase 2); map categor
 1. Approve this PR into `develop`.
 2. Cut-over to the Astro build on production is a separate, later approval (needs a Pages source change and a deploy workflow with manual approval).
 3. Confirm the closing-band and tablet-navigation design changes (§3 items 4 and 6), or ask for the legacy behaviour.
+
+---
+
+## 9. Review fixes (issues 1–4 of the Phase 0+1 visual review, approved 7 Nov 2026)
+
+Scope limited to the four approved issues. No editorial content, image rights, prices or opening hours changed; URLs and architecture unchanged.
+
+| # | Issue | Fix | Tests added |
+|---|---|---|---|
+| 1 | Planner result label "Your personalised starting point" at 1.73:1 contrast | Label uses the text gold on the ivory result panel (`brand.css`), 5.7:1 | axe scan of the **visible** planner result for 3 plans × 3 widths. It failed before the fix: the first CSS attempt was overridden by the page CSS and the test caught it |
+| 2 | Six town-centre markers overlapped at the default zoom | Leaflet.markercluster 1.5.3 (MIT): nearby markers form a numbered cluster; selecting it (click, tap or Enter) zooms in until the places separate, and spiderfies if they still coincide. Markers are `L.marker`s with a 16 px dot (same colours as before) inside a 32 px touch target, keyboard-focusable with a screen-reader name. **Coordinates unchanged** | Markers equal the source coordinates exactly (all 9 IDs); separate + clustered markers = 9; selecting a cluster reveals more markers; every one of the 9 popups (name + zone) is reachable; keyboard Enter opens a cluster and a popup; touch targets ≥ 24 px |
+| 3 | Planner merged "less walking" and "step-free" and dropped the duration from the title | Title keeps the duration and adds the need: "… — less walking" or "… — step-free access requested". A step-free choice adds: "This planner has not verified step-free routes, entrances or facilities at any venue, so none of the suggestions above should be read as step-free…". Rules moved to a pure function (`src/lib/planner/legacy-plan.ts`) | Golden test: runs the live site's own `script.js` and compares all 1,620 input combinations — identical except the two deliberate changes; 3 durations × 3 mobility options; browser test of the titles |
+| 4 | "1 curated stops shown" | Singular for 1, plural otherwise (`src/lib/format.ts`) | Unit: 0 / 1 / many; browser: 0, 1 and many results |
+
+Results after the fixes (local, 7 Nov 2026): astro check 0/0/0 · Vitest 27/27 · validation 0 critical · 5 pages built · 87 internal links, 0 broken · html-validate 0 · parity 5/5 · Playwright 132 passed, 3 skipped by design.
+
+Before/after screenshots: `docs/review/phase-0-1-fixes/`. Map before/after with real tiles is produced by the review run on `review/phase-0-1`.

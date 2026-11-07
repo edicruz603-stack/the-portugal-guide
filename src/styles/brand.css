@@ -21,3 +21,16 @@ main h2 em { color: var(--gold-text); }
   .main-nav.open { display: flex; }
   .nav-cta { text-align: center; }
 }
+
+/* Planner result sits on ivory inside the dark tool panel: its label needs the darker text gold
+   (was gold-light on ivory, 1.73:1). */
+.companion-tool .companion-result .eyebrow { color: var(--gold-text); }
+
+/* Map markers (MapView / Leaflet adapter). Same colours and size as before: 16 px dot, ivory ring. */
+.tpg-marker-icon, .tpg-cluster-icon { background: none; border: 0; display: grid; place-items: center; }
+.tpg-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ivory); box-shadow: 0 1px 3px rgba(0, 0, 0, .35); }
+.tpg-dot--monument { background: var(--gold-text); }
+.tpg-dot--free { background: var(--forest); }
+.tpg-cluster { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--forest); color: var(--ivory); border: 3px solid var(--gold-light); font: 700 14px var(--font-sans); box-shadow: 0 1px 4px rgba(0, 0, 0, .35); }
+.tpg-marker-icon:focus-visible, .tpg-cluster-icon:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 50%; }
+.tpg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
