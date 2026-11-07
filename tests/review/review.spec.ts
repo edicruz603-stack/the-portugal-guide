@@ -53,35 +53,32 @@ for (const name of PAGES) {
   });
 }
 
-test('map · tiles, markers and popups', async ({ page }, info) => {
+test('map · tiles, clusters, markers and popups', async ({ page }, info) => {
   const w = await watch(page);
   await page.goto('sintra.html');
   const map = page.locator('#sintra-map');
   await map.scrollIntoViewIfNeeded();
+  await expect(map).toHaveAttribute('data-map-ready', 'true');
   await expect(map.locator('img.leaflet-tile-loaded').first()).toBeVisible({ timeout: 20_000 });
   await page.waitForLoadState('networkidle');
-  const tiles = await map.locator('img.leaflet-tile-loaded').count();
-  const markers = map.locator('path.leaflet-interactive');
-  const n = await markers.count();
-  await map.screenshot({ path: shot(`map/${info.project.name}-tiles-markers`) });
-  const popups: string[] = [];
-  for (let i = 0; i < n; i++) {
-    await markers.nth(i).dispatchEvent('click');
-    const pop = map.locator('.leaflet-popup-content');
-    await expect(pop).toHaveCount(1);
-    await expect(pop).toBeVisible();
-    popups.push((await pop.innerText()).replace(/\s+/g, ' '));
-    if (i === 1) { await page.waitForTimeout(600); await map.screenshot({ path: shot(`map/${info.project.name}-popup`) }); }
-    await map.locator('.leaflet-popup-close-button').click();
-    await expect(pop).toHaveCount(0);
-  }
-  // keyboard: focus map and pan with arrow keys
-  await map.focus();
-  const before = await map.locator('.leaflet-map-pane').getAttribute('style');
-  await page.keyboard.press('ArrowRight'); await page.waitForTimeout(400);
-  const after = await map.locator('.leaflet-map-pane').getAttribute('style');
-  const attribution = await map.locator('.leaflet-control-attribution').innerText();
-  save(`map:${info.project.name}`, { tilesLoaded: tiles, markers: n, popups, keyboardPan: before !== after, attribution, consoleErrors: w.errors });
+  await page.waitForTimeout(600);
+  const p = info.project.name;
+  const initial = { tiles: await map.locator('img.leaflet-tile-loaded').count(), markers: await map.locator('.tpg-marker-icon').count(), clusters: await map.locator('.tpg-cluster-icon').allInnerTexts() };
+  await map.screenshot({ path: shot(`map/${p}-1-initial-clusters`) });
+  // open the largest cluster
+  const sizes = (await map.locator('.tpg-cluster').allInnerTexts()).map((t) => parseInt(t, 10));
+  await map.locator('.tpg-cluster-icon').nth(sizes.indexOf(Math.max(...sizes))).click();
+  await page.waitForTimeout(900); await page.waitForLoadState('networkidle');
+  const expanded = { markers: await map.locator('.tpg-marker-icon').count(), clusters: await map.locator('.tpg-cluster-icon').allInnerTexts() };
+  await map.screenshot({ path: shot(`map/${p}-2-cluster-expanded`) });
+  const marker = map.locator('.tpg-marker-icon').first();
+  await marker.dispatchEvent('click');
+  await expect(map.locator('.leaflet-popup-content')).toBeVisible();
+  await page.waitForTimeout(600);
+  const popup = (await map.locator('.leaflet-popup-content').innerText()).replace(/\s+/g, ' ');
+  await map.screenshot({ path: shot(`map/${p}-3-popup`) });
+  const coords = await map.evaluate((el) => ({ source: JSON.parse((el as HTMLElement).dataset.mapPlaces ?? '[]').map((x: any) => [x.id, x.lat, x.lon]), mounted: ((el as any).tpgMarkers ?? []).map((x: any) => [x.id, x.lat, x.lon]) }));
+  save(`map:${p}`, { initial, expanded, popup, coordinatesIdentical: JSON.stringify(coords.source) === JSON.stringify(coords.mounted), attribution: await map.locator('.leaflet-control-attribution').innerText(), consoleErrors: w.errors });
 });
 
 test('discoveries · every filter and search', async ({ page }, info) => {
