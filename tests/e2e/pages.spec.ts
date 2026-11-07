@@ -56,7 +56,7 @@ for (const p of PAGES) {
       const map = page.locator('[data-map-places]');
       if (await map.count()) {
         await map.scrollIntoViewIfNeeded();
-        await expect(map).toHaveClass(/leaflet-container/);
+        await expect(map).toHaveAttribute('data-map-ready', 'true');
         await page.evaluate(() => window.scrollTo(0, 0));
       }
       await page.waitForTimeout(500);
