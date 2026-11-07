@@ -65,11 +65,14 @@ test('map · tiles, markers and popups', async ({ page }, info) => {
   await map.screenshot({ path: shot(`map/${info.project.name}-tiles-markers`) });
   const popups: string[] = [];
   for (let i = 0; i < n; i++) {
-    await markers.nth(i).click({ force: true });
+    await markers.nth(i).dispatchEvent('click');
     const pop = map.locator('.leaflet-popup-content');
+    await expect(pop).toHaveCount(1);
     await expect(pop).toBeVisible();
     popups.push((await pop.innerText()).replace(/\s+/g, ' '));
     if (i === 1) await map.screenshot({ path: shot(`map/${info.project.name}-popup`) });
+    await map.locator('.leaflet-popup-close-button').click();
+    await expect(pop).toHaveCount(0);
   }
   // keyboard: focus map and pan with arrow keys
   await map.focus();
