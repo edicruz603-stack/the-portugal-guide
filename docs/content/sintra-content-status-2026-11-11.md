@@ -1,6 +1,6 @@
 # Content status report
 
-Generated 2026-11-11 from src/content. Critical 0 · warnings 32 · editorial pending 91.
+Generated 2026-11-11 from src/content. Critical 0 · warnings 29 · editorial pending 91.
 
 ## 1. Place inventory (40 places)
 
@@ -52,8 +52,8 @@ Generated 2026-11-11 from src/content. Critical 0 · warnings 32 · editorial pe
 | List | Renders | Items |
 |---|---|---|
 | `list.sintra.directory` | directory | 30 |
-| `list.sintra.events-directory` | event:directory | 4 |
-| `list.sintra.events-local` | event:local | 6 |
+| `list.sintra.events-directory` | event:directory | 1 |
+| `list.sintra.events-local` | event:local | 4 |
 | `list.sintra.field-guide-food` | food_card | 4 |
 | `list.sintra.field-guide-free` | field_guide | 6 |
 | `list.sintra.field-guide-highlights` | field_guide | 4 |
@@ -266,9 +266,6 @@ Every competing value is kept. None is chosen until a source settles it.
 - [W06] `img.sintra.wm-regaleira-well`: not cleared for commercial publication
 - [W06] `img.sintra.wm-moorish-castle`: not cleared for commercial publication
 - [W06] `img.sintra.wm-monserrate`: not cleared for commercial publication
-- [W02] `event.sintra.colares-wine-journey`: event ended 2026-11-07; still listed
-- [W02] `event.sintra.masmo-mystery-afternoon`: event ended 2026-10-31; still listed
-- [W02] `event.sintra.taxi-concert`: event ended 2026-11-06; still listed
 - [W03] `place.sintra.apeadeiro`: no coordinates recorded
 - [W03] `place.sintra.bacalhau-na-vila`: no coordinates recorded
 - [W03] `place.sintra.biester-palace`: no coordinates recorded

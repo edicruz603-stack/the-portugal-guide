@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "validate": "node --experimental-strip-types scripts/validate-content.ts",
     "check": "astro check",
-    "build": "npm run validate -- --production && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
     "test:links": "node scripts/check-links.mjs dist",
@@ -18,7 +18,9 @@
     "test:e2e": "playwright test",
     "ci": "npm run check && npm run test && npm run build && npm run test:links && npm run test:html && npm run test:parity && npm run test:e2e",
     "test:parity": "node scripts/check-parity.mjs dist",
-    "ids:lock": "node --experimental-strip-types scripts/lock-ids.ts"
+    "ids:lock": "node --experimental-strip-types scripts/lock-ids.ts",
+    "build:commercial": "PUBLICATION_MODE=commercial astro build",
+    "validate:commercial": "node --experimental-strip-types scripts/validate-content.ts --mode=commercial"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.3.0",

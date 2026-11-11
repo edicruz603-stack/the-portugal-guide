@@ -115,11 +115,30 @@ describe('CRITICAL rules each fail on a fixture', () => {
 });
 
 describe('WARNING and EDITORIAL PENDING never block', () => {
-  it('ended events and unverified facts are reported but not critical', () => {
+  it('unverified facts are reported but not critical', () => {
     const issues = run(fresh());
-    expect(issues.some((i) => i.rule === 'W02')).toBe(true);
     expect(issues.some((i) => i.rule === 'P01')).toBe(true);
     expect(hasCritical(issues)).toBe(false);
+  });
+  it('W02 warns for an ended event only while an active list still publishes it', () => {
+    const i = fresh();
+    const listed = new Set((i.lists as Rec[]).filter((l) => String(l.context).startsWith('event:')).flatMap((l) => l.items));
+    const evs = i.events as Rec[];
+    const inList = evs.find((e) => listed.has(e.id))!;
+    const history = evs.find((e) => !listed.has(e.id));
+    inList.starts_on = '2020-01-01'; inList.ends_on = '2020-01-02';
+    if (history) { history.starts_on = '2020-01-01'; history.ends_on = '2020-01-02'; }
+    const w02 = run(i).filter((x) => x.rule === 'W02');
+    expect(w02.map((x) => x.where)).toEqual([inList.id]);
+    expect(hasCritical(run(i))).toBe(false);
+  });
+  it('the three ended Sintra events are kept as history, not listed', () => {
+    const i = fresh();
+    const listed = new Set((i.lists as Rec[]).flatMap((l) => l.items));
+    for (const k of ['taxi-concert', 'colares-wine-journey', 'masmo-mystery-afternoon']) {
+      expect((i.events as Rec[]).some((e) => e.id === `event.sintra.${k}`)).toBe(true);
+      expect(listed.has(`event.sintra.${k}`)).toBe(false);
+    }
   });
   it('facts past their review window become warnings, not errors', () => {
     const issues = run(fresh(), { ...opts, today: '2027-06-01' });

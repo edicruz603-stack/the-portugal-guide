@@ -3,7 +3,4 @@ destination: destination.sintra
 title: Discoveries · seasonal diary
 context: event:directory
 items:
-- event.sintra.masmo-mystery-afternoon
-- event.sintra.taxi-concert
-- event.sintra.colares-wine-journey
 - event.sintra.mordidas-do-tempo

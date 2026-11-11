@@ -55,7 +55,7 @@ src/lib/content/repository.ts  the only read path for pages (placesInList, event
 | C12 | Event ending before it starts |
 | C13 | Homepage card linking to a missing page |
 
-WARNING (never blocks): W01 fact past its review window · W02 ended event still listed · W03 place without coordinates · W04 stale source · W05 new ID not yet locked · W06 uncleared image (free mode).
+WARNING (never blocks): W01 fact past its review window · W02 ended event still in an active list (unlisted ended events are history) · W03 place without coordinates · W04 stale source · W05 new ID not yet locked · W06 uncleared image (free mode).
 EDITORIAL PENDING: P01 unverified facts/events · P02 no zone · P03 no reader-facing text · P04 no facts · P05 image rights pending · P06 map marker on unverified coordinates.
 
 Current dataset: **0 critical · 32 warnings · 91 pending**.
@@ -114,3 +114,46 @@ Cards that are not about one place (itineraries, the multi-monument tickets card
 - The marker labelled "Palácio Nacional de Sintra · gardens (free entry)" belongs to `place.sintra.national-palace-gardens` (its label is about the gardens) and uses the palace's coordinate fact (its `part_of` parent). Same coordinates as before.
 - One-off migration scripts are kept for reproducibility: `scripts/migrations/m2-extract-sintra.mjs` (+ `m2-place-meta.json`), `m2-rewrite-pages.py`, `m2-facts-entry.py`, `m2-events-entry.py`. The YAML is now the source of truth. `scripts/port-legacy.mjs` is retired (refuses to run) because it would overwrite the data-driven pages.
 - New dev dependency: `yaml` 2.9.1 (ISC). No runtime dependency added.
+
+## 9. Independent review corrections (11 Nov 2026)
+
+**1 · Publication mode.** Findings: `npm run build` passed `--production`, which the validator ignored; any `PUBLICATION_MODE` other than exactly `commercial` (including a typo) silently became free; and a direct `npx astro build` skipped validation entirely.
+Corrections:
+- `src/lib/validation/mode.ts` defines the contract: `free` (the default) or `commercial`, from `PUBLICATION_MODE` and/or `--mode=`. Values are trimmed and case-insensitive. An unknown value, a bare `--mode`, the old `--production` flag, or an argument that contradicts the environment variable exits 2. The resolved mode and its origin are always printed.
+- `astro.config.mjs` adds a build hook (`astro:build:start`) that runs the validator, so every `astro build`, however it is started, is validated. `npm run build` is now `astro build`.
+- New scripts: `build:commercial` and `validate:commercial`.
+- Commercial reports are written as `*-commercial.*`, so they never overwrite the free-edition reports.
+- CI gets a new step that asserts a commercial `astro build` fails, and fails because of C11.
+- Free behaviour is unchanged: the same rules, warnings and outcome (0 critical).
+
+**2 · Map coordinate semantics.** Finding: `precision` was `approximate` only for confirm-first; unresolved coordinates (National Palace gardens, Monserrate) and any reported coordinates were labelled `official`.
+Corrections:
+- `CoordinatePrecision` and `precision` are replaced by `coordinates: { status, fact, source, provenance, checkedOn?, conflictGroup? }`, copied 1:1 from the coordinate fact by `src/lib/map/markers.ts` (a pure function used by the repository).
+- `checked` requires `checked_on`, and `unresolved` requires a `conflict_group`; otherwise the build fails.
+- Tests cover each of the four statuses and the real dataset: 4 checked, 2 unresolved, 3 confirm-first.
+- Coordinates are unchanged (`m2-preservation.test.ts`).
+
+**3 · Event freshness (editorial change).** Three events had ended:
+- `masmo-mystery-afternoon` (31 Oct);
+- `taxi-concert` (6 Nov);
+- `colares-wine-journey` (7 Nov).
+
+Decision:
+- They were removed from the active lists (`events-local`: −2; `events-directory`: −3). Their records stay in `events/` as history.
+- W02 now warns only for an ended event that an `event:*` list still publishes.
+- `scripts/check-parity.mjs` lists the five removed legacy HTML blocks verbatim (`ALLOWED_REMOVED`). Each must exist exactly in the legacy page, and is cut from the legacy side before every comparison. Nothing else on those pages may differ.
+
+Next: `mutatis-mutandis` ends 15 Nov 2026 and must leave `events-local` after that date (W02 will flag it).
+
+**Evidence (local, 11 Nov 2026):** see §7 for the base results.
+- astro check: 0 errors.
+- Vitest: 77/77.
+- Validation:
+  - free: 0 critical · 29 warnings · 91 pending;
+  - commercial: 4 × C11, exit 1;
+  - invalid mode: exit 2.
+- Build: 5 pages; `astro build` in commercial mode stops before generating pages.
+- Links: 87 internal, 0 broken.
+- html-validate: 0 problems.
+- Parity: 5/5 (1 text exception and 5 removed legacy blocks).
+- Playwright and axe: 132 passed, 3 skipped by design.

@@ -279,7 +279,9 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     const limit = f.review_after_days ?? opts.defaultReviewDays;
     if (days(since, opts.today) > limit) add('warning', 'W01', f.id, `last ${f.checked_on ? 'checked' : 'observed'} ${days(since, opts.today)} days ago (review every ${limit})`);
   }
-  for (const e of events) if ((e.ends_on ?? e.starts_on) < opts.today) add('warning', 'W02', e.id, `event ended ${e.ends_on ?? e.starts_on}; still listed`);
+  // W02 — an ended event is a warning only while a list still publishes it; unlisted ended events are kept as history
+  const listedEvents = new Set(lists.filter((l) => l.context.startsWith('event:')).flatMap((l) => l.items));
+  for (const e of events) if (listedEvents.has(e.id) && (e.ends_on ?? e.starts_on) < opts.today) add('warning', 'W02', e.id, `event ended ${e.ends_on ?? e.starts_on}; still listed in an active list`);
   const hasCoords = new Set(facts.filter((f) => f.kind === 'coordinates').map((f) => f.place));
   for (const p of places) if (!hasCoords.has(p.id) && !(p.part_of && hasCoords.has(p.part_of))) add('warning', 'W03', p.id, 'no coordinates recorded');
   for (const s of sources) if (days(s.seen_on, opts.today) > opts.sourceReviewDays) add('warning', 'W04', s.id, `last seen ${days(s.seen_on, opts.today)} days ago`);

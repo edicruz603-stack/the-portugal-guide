@@ -5,6 +5,7 @@
 import { getCollection } from 'astro:content';
 import type { Place, Fact, Event, List } from './schemas.ts';
 import type { MapPlace } from '../map/types.ts';
+import { buildMarker } from '../map/markers.ts';
 
 export interface DestinationContent {
   places: Map<string, Place>;
@@ -71,14 +72,7 @@ export async function mapMarkers(destination: string, listId: string): Promise<M
   if (l.context !== 'map') throw new Error(`${listId} is not a map list`);
   return l.items.map((id) => {
     const place = content.places.get(id);
-    if (!place?.map) throw new Error(`${listId}: ${id} has no map entry`);
-    const fact = content.facts.get(place.map.coordinates);
-    if (!fact || typeof fact.value.lat !== 'number' || typeof fact.value.lon !== 'number') throw new Error(`${id}: coordinate fact ${place.map.coordinates} missing`);
-    return {
-      id: place.id, name: place.map.label, zone: place.map.zone_label,
-      lat: fact.value.lat, lon: fact.value.lon, category: place.map.category,
-      precision: fact.status === 'confirm-first' ? 'approximate' : 'official',
-      source: fact.source,
-    };
+    if (!place) throw new Error(`${listId}: unknown place ${id}`);
+    return buildMarker(place, place.map ? content.facts.get(place.map.coordinates) : undefined);
   });
 }

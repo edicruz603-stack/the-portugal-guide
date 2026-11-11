@@ -31,8 +31,10 @@ tests/unit · tests/e2e        Vitest · Playwright (mobile 390, tablet 820, des
 
 - Never push to `main`. Work on a branch, open a PR into `develop`; CI must be green before review.
 - Production deploys only with explicit owner approval.
-- Every image on a page needs a record in `src/content/images.json`; commercial builds (`PUBLICATION_MODE=commercial`) refuse uncleared images.
-- Coordinates marked `official` need a source ID from `src/content/sources.json`.
+- Every build validates content first (an Astro build hook runs `scripts/validate-content.ts`; `npx astro build` cannot skip it). Any critical issue stops the build.
+- Publication mode: `free` (default, announced in the output) or `commercial`, set with `PUBLICATION_MODE` or `--mode=` on the validator. `npm run build:commercial` / `npm run validate:commercial` refuse uncleared images (C11). An unknown or contradicting mode is an error (exit 2), never a silent fallback to free.
+- Every map marker carries its coordinate fact's verification (`checked`, `reported`, `confirm-first`, `unresolved`) plus source and provenance; the map never labels a coordinate more certain than its fact.
+- An ended event stays as a record (history) but is removed from the `event:*` lists; W02 warns while an ended event is still listed.
 - The legacy root HTML files are what production serves today. Do not edit them; `scripts/port-legacy.mjs` regenerates the Astro pages from them until Phase 2 replaces that with structured content.
 
 ## Content (M2)
