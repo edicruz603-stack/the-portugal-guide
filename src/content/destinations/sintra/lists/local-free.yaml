@@ -1,0 +1,13 @@
+id: list.sintra.local-free
+destination: destination.sintra
+title: Local discoveries · free
+context: local
+items:
+  - place.sintra.museu-anjos-teixeira
+  - place.sintra.natural-history-museum
+  - place.sintra.parque-da-liberdade
+  - place.sintra.villa-sassetti
+  - place.sintra.national-palace-gardens
+  - place.sintra.miradouro-sao-martinho
+  - place.sintra.miradouro-santa-eufemia
+  - place.sintra.lawrences-hotel

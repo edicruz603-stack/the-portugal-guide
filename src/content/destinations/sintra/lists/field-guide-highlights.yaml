@@ -1,0 +1,9 @@
+id: list.sintra.field-guide-highlights
+destination: destination.sintra
+title: Field guide · four places
+context: field_guide
+items:
+  - place.sintra.pena-palace
+  - place.sintra.quinta-da-regaleira
+  - place.sintra.moorish-castle
+  - place.sintra.monserrate

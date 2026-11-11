@@ -1,0 +1,20 @@
+id: place.sintra.loja-5
+destination: destination.sintra
+kind: cafe
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Loja 5
+editorial:
+  directory:
+    filter: food
+    meta: Historic Centre · Coffee
+    title: Loja 5
+    text: A small speciality-coffee stop at the municipal market; check current hours before detouring.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Loja+5+Mercado+Municipal+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Loja+5+Mercado+Municipal+Sintra
+        external: true

@@ -1,0 +1,23 @@
+id: event.sintra.mordidas-do-tempo
+destination: destination.sintra
+title: Mordidas do Tempo
+starts_on: '2026-08-01'
+ends_on: '2027-01-03'
+venue: Natural History Museum of Sintra
+place: place.sintra.natural-history-museum
+source: src.tpg.website-2026
+provenance: legacy-website
+observed_on: '2026-11-11'
+status: reported
+editorial:
+  local:
+    when: 1 Aug 2026 – 3 Jan 2027
+    title: Mordidas do Tempo · Natural History Museum
+    text: A fossil-teeth exhibition exploring what teeth reveal about prehistoric animals and their adaptation.
+    link:
+      label: Official cultural agenda ↗
+      href: https://agendaculturaldesintra.pt/agenda
+      external: false
+  directory:
+    heading: Until 3 Jan 2027 · Mordidas do Tempo
+    text: A temporary exhibition at Sintra’s Natural History Museum about fossil teeth and the stories they tell.

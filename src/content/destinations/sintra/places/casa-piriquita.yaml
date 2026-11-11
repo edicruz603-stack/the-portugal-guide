@@ -1,0 +1,43 @@
+id: place.sintra.casa-piriquita
+destination: destination.sintra
+kind: pastry-shop
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Casa Piriquita
+editorial:
+  directory:
+    filter: food
+    meta: Historic Centre · Pastries
+    title: Casa Piriquita
+    text: Try the classic travesseiro, then compare a queijada. A quick counter stop can work better than a long queue.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Casa+Piriquita+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://piriquita.pt/
+        external: true
+  local:
+    tag: Historic pastry shop · signature sweet
+    title: Casa Piriquita
+    text: "The classic address for a travesseiro: flaky pastry with a rich almond-and-egg filling. Also try a queijada. Expect queues at peak times; consider takeaway and enjoy it away from the busiest counter."
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Casa+Piriquita+Sintra
+        external: false
+      - label: Official website ↗
+        href: https://piriquita.pt/
+        external: false
+  food_card:
+    title: Casa Piriquita
+    paragraphs:
+      - "**For:** the classic travesseiro and traditional queijadas. Founded in 1862, this is one of Sintra’s best-known historic pastry houses. Expect a busy counter at peak times."
+      - "**Address:** Rua das Padarias 16, historic centre."
+    links:
+      - label: Open in Google Maps ↗
+        href: https://www.google.com/maps/search/?api=1&query=Casa+Piriquita+Rua+das+Padarias+16+Sintra
+        external: true
+      - label: Official website ↗
+        href: https://piriquita.pt/
+        external: true

@@ -1,0 +1,20 @@
+id: place.sintra.mela-canela
+destination: destination.sintra
+kind: cafe
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Mela Canela
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Plant-based
+    title: Mela Canela
+    text: A plant-based café option for breakfast or lunch, with choices for visitors seeking a different food style.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Mela+Canela+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Mela+Canela+Sintra
+        external: true

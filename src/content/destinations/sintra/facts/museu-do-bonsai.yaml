@@ -1,0 +1,56 @@
+place: place.sintra.museu-do-bonsai
+facts:
+- id: fact.sintra.museu-do-bonsai.founder
+  kind: history
+  value:
+    founder: Marco Rodrigues
+  text: Founded by Marco Rodrigues
+  source: src.press.nit
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  note: Press listings only (NiT, Time Out); no official page found.
+- id: fact.sintra.museu-do-bonsai.opened
+  kind: date
+  value:
+    date: '2011-03-21'
+  text: Opened on 21 March 2011
+  source: src.press.nit
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  note: Press listings only (NiT, Time Out); no official page found.
+- id: fact.sintra.museu-do-bonsai.price
+  kind: price
+  value:
+    adult: 0
+    currency: EUR
+  text: Free entry
+  source: src.press.nit
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  note: Press listings only (NiT, Time Out); no official page found.
+- id: fact.sintra.museu-do-bonsai.address
+  kind: address
+  value:
+    street: Estrada Chão de Meninos 12
+    postcode: 2710-193
+  text: Estrada Chão de Meninos 12, 2710-193 Sintra
+  source: src.press.nit
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  note: Press listings only (NiT, Time Out); no official page found.
+- id: fact.sintra.museu-do-bonsai.hours
+  kind: hours
+  value:
+    days: Tue–Sun
+    opens: '10:00'
+    closes: '19:00'
+  text: Tuesday–Sunday 10:00–19:00 according to one listing; listings differ
+  source: src.press.time-out
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: confirm-first
+  note: The PDF ledger records that listings differ but did not record the other values.

@@ -1,0 +1,9 @@
+id: place.sintra.sao-pedro-de-canaferrim
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.palace-hills
+part_of: place.sintra.moorish-castle
+name:
+  aliases:
+    - São Pedro de Canaferrim
+editorial: {}

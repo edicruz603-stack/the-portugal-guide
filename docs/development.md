@@ -34,3 +34,14 @@ tests/unit · tests/e2e        Vitest · Playwright (mobile 390, tablet 820, des
 - Every image on a page needs a record in `src/content/images.json`; commercial builds (`PUBLICATION_MODE=commercial`) refuse uncleared images.
 - Coordinates marked `official` need a source ID from `src/content/sources.json`.
 - The legacy root HTML files are what production serves today. Do not edit them; `scripts/port-legacy.mjs` regenerates the Astro pages from them until Phase 2 replaces that with structured content.
+
+## Content (M2)
+
+Places, facts, events and lists live in `src/content/destinations/<destination>/` as YAML (one record per file),
+validated by the Zod schemas in `src/lib/content/schemas.ts`. Pages read them only through `src/lib/content/repository.ts`.
+
+- Add a place: create `places/<key>.yaml` with a new `id` (`place.<destination>.<key>`), add it to a list in `lists/`, run `npm run ids:lock`.
+- Add a fact: add it to `facts/<place-key>.yaml` with `source`, `observed_on`, `status` and `provenance`; add `checked_on` only if you verified it yourself against an operator or official page.
+- Sources disagree: keep every value, give them the same `conflict_group`, status `unresolved`.
+- Never rename or delete an ID; retire it in `src/content/ids.lock.json`.
+- `npm run validate` writes `dist-reports/content-status.md` (inventory, coverage, conflicts, pending).

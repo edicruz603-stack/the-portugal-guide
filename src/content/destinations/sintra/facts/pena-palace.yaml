@@ -1,0 +1,158 @@
+place: place.sintra.pena-palace
+facts:
+- id: fact.sintra.pena-palace.coordinates-main-entrance
+  kind: coordinates
+  subject: main entrance to the park
+  value:
+    lat: 38.7879
+    lon: -9.3876
+    dms: 38°47'16.45"N 9°23'15.35"W
+    precision: rounded to the existing map marker (4–5 decimals)
+  text: Main entrance 38°47’16.45”N 9°23’15.35”W
+  source: src.parques-de-sintra.visitor-map
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.pena-palace.coordinates-lakes-entrance
+  kind: coordinates
+  subject: Lakes entrance
+  value:
+    lat: 38.789278
+    lon: -9.392194
+    dms: 38°47'21.4"N 9°23'31.9"W
+  text: Lakes entrance 38°47’21.4”N 9°23’31.9”W
+  source: src.parques-de-sintra.pena
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.pena-palace.hours-park
+  kind: hours
+  subject: park
+  value:
+    opens: 09:00
+    closes: '19:00'
+    last_entry: '18:00'
+  text: Park 09:00–19:00; last ticket and last admission 18:00
+  source: src.parques-de-sintra.opening-times
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.pena-palace.hours-palace
+  kind: hours
+  subject: palace
+  value:
+    opens: 09:30
+    closes: '18:30'
+  text: Palace 09:30–18:30
+  source: src.parques-de-sintra.opening-times
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.pena-palace.last-entry-palace
+  kind: last-entry
+  subject: palace
+  value:
+    last_ticket: '17:30'
+    last_entry: '18:00'
+  text: 'Palace: last ticket 17:30, last entry 18:00'
+  source: src.parques-de-sintra.pena
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.pena-palace.timed-ticket
+  kind: rule
+  value:
+    timed: true
+  text: Palace tickets only for a specific date and time
+  quote: Palace entry requires a dated time slot
+  source: src.parques-de-sintra.parks-list
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.pena-palace.walk-gate-to-palace
+  kind: route
+  value:
+    minutes: 30
+  text: About 30 minutes between the park entrance gate and the palace meeting point
+  source: src.parques-de-sintra.pena-skip-the-line
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.pena-palace.step-free-route
+  kind: access
+  value:
+    step_free_route_m: 600
+    interior_accessible: false
+  text: Step-free route of 600 m; palace interior not accessible
+  source: src.parques-de-sintra.pena
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.pena-palace.price-essential
+  kind: price
+  value:
+    adult: 20
+    youth: 18
+    senior: 18
+    family: 65
+    currency: EUR
+  text: 'Essential visit: adult €20, youth €18, senior €18, family €65'
+  source: src.parques-de-sintra.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.pena-palace.price-complete
+  kind: price
+  value:
+    adult: 45
+    youth: 20
+    senior: 35
+    family: 115
+    currency: EUR
+  text: 'Complete visit: adult €45, youth €20, senior €35, family €115'
+  source: src.parques-de-sintra.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.pena-palace.price-park
+  kind: price
+  value:
+    adult: 12
+    youth: 10
+    senior: 10
+    family: 40
+    currency: EUR
+  text: 'Park only: adult €12, youth €10, senior €10, family €40'
+  source: src.parques-de-sintra.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.pena-palace.shuttle-supplement
+  kind: price
+  value:
+    amount: 4.5
+    currency: EUR
+  text: 'Park–palace shuttle: €4.50 return supplement'
+  source: src.parques-de-sintra.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60

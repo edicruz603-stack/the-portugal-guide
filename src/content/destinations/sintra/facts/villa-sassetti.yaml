@@ -1,0 +1,50 @@
+place: place.sintra.villa-sassetti
+facts:
+- id: fact.sintra.villa-sassetti.coordinates
+  kind: coordinates
+  value:
+    lat: 38.79572
+    lon: -9.39067
+    dms: 38°47'44.6"N 9°23'26.4"W
+    precision: rounded to the existing map marker (4–5 decimals)
+  text: 38°47’44.6”N 9°23’26.4”W
+  source: src.parques-de-sintra.villa-sassetti
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.villa-sassetti.hours
+  kind: hours
+  value:
+    opens: '10:00'
+    closes: '18:00'
+  text: Garden 10:00–18:00
+  source: src.parques-de-sintra.villa-sassetti
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.villa-sassetti.trail
+  kind: route
+  value:
+    length_m: 1850
+    minutes: 45
+  text: 'Villa Sassetti trail: 1,850 m, about 45 minutes'
+  quote: 'Official route: 1.85 km, about 45 minutes, moderate difficulty'
+  source: src.parques-de-sintra.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.villa-sassetti.entry
+  kind: price
+  value:
+    adult: 0
+    currency: EUR
+  text: Free access to the garden and path
+  quote: Garden and path access currently free
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported

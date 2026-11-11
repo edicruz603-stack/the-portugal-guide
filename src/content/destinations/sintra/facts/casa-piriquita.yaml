@@ -1,0 +1,22 @@
+place: place.sintra.casa-piriquita
+facts:
+- id: fact.sintra.casa-piriquita.founded
+  kind: history
+  value:
+    founded: 1862
+  text: Founded in 1862
+  quote: Founded in 1862
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported
+- id: fact.sintra.casa-piriquita.address
+  kind: address
+  value:
+    street: Rua das Padarias 16
+  text: Rua das Padarias 16, historic centre
+  quote: Rua das Padarias 16, historic centre.
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported

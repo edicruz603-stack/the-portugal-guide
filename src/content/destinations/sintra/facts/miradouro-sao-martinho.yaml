@@ -1,0 +1,24 @@
+place: place.sintra.miradouro-sao-martinho
+facts:
+- id: fact.sintra.miradouro-sao-martinho.price
+  kind: price
+  value:
+    adult: 0
+    currency: EUR
+  text: Free public viewpoint
+  quote: Free public viewpoint.
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported
+- id: fact.sintra.miradouro-sao-martinho.coordinates-approximate
+  kind: coordinates
+  value:
+    lat: 38.79644
+    lon: -9.39175
+  text: Approximate visitor-area marker
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: confirm-first
+  note: Placed by the previous edition; not checked against any source.

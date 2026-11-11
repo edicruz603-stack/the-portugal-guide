@@ -1,0 +1,14 @@
+id: list.sintra.map
+destination: destination.sintra
+title: Interactive map markers
+context: map
+items:
+  - place.sintra.national-palace-gardens
+  - place.sintra.quinta-da-regaleira
+  - place.sintra.moorish-castle
+  - place.sintra.pena-palace
+  - place.sintra.monserrate
+  - place.sintra.museu-anjos-teixeira
+  - place.sintra.parque-da-liberdade
+  - place.sintra.miradouro-sao-martinho
+  - place.sintra.villa-sassetti

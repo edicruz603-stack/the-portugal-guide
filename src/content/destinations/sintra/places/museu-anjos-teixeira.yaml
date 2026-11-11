@@ -1,0 +1,55 @@
+id: place.sintra.museu-anjos-teixeira
+destination: destination.sintra
+kind: museum
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Museu Anjos Teixeira
+    - Museu Anjos Teixeira · free
+map:
+  coordinates: fact.sintra.museu-anjos-teixeira.coordinates-approximate
+  category: free
+  label: Museu Anjos Teixeira · free
+  zone_label: Free cultural stop
+editorial:
+  directory:
+    filter: free
+    meta: Station & town · Free
+    title: Museu Anjos Teixeira
+    text: "A father-and-son sculpture collection in an atmospheric former mill. Not suited to all mobility needs: access involves steps."
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Museu+Anjos+Teixeira+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://cm-sintra.pt/sintra/cultura/museus-municipais
+        external: true
+  local:
+    tag: Free museum · sculpture
+    title: Museu Anjos Teixeira
+    text: Dedicated to sculptors Artur and Pedro Anjos Teixeira, father and son. Look for the studies, models and sculptural figures; the museum is housed in a former watermill by the Rio do Porto. A compact cultural visit away from the palace crowds. Check current opening days and hours before setting out.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Museu+Anjos+Teixeira+Sintra
+        external: false
+      - label: Visit Sintra ↗
+        href: https://visitsintra.travel/pt/visitar/museus/museu-anjos-teixeira
+        external: false
+  field_guide:
+    label: FREE · MUSEUM
+    title: Museu Anjos Teixeira
+    paragraphs:
+      - A lovely off-the-main-route discovery dedicated to sculptors Artur and Pedro Anjos Teixeira, father and son. Look for the human and animal figures, studies and models. The museum occupies an old watermill building by the Rio do Porto, which makes the setting part of the visit too.
+      - "**Why stop:** A genuine cultural visit, not just another photo stop."
+      - "**Typical hours:** Tue–Fri 10:00–18:00; weekends 12:00–18:00. Closed Mondays and most public holidays."
+      - "**Entry:** Free. Allow around 20–40 minutes as a planning estimate."
+    links:
+      - label: Open museum map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Museu+Anjos+Teixeira+Sintra
+        external: true
+      - label: Official visitor details ↗
+        href: https://visitsintra.travel/pt/visitar/museus/museu-anjos-teixeira
+        external: true
+  map_link:
+    title: Museu Anjos Teixeira
+    href: https://www.google.com/maps/search/?api=1&query=Museu+Anjos+Teixeira+Sintra

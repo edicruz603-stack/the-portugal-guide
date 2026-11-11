@@ -1,0 +1,19 @@
+id: list.sintra.map-links
+destination: destination.sintra
+title: Field guide · map and directions links
+context: map_link
+items:
+  - place.sintra.pena-palace
+  - place.sintra.quinta-da-regaleira
+  - place.sintra.moorish-castle
+  - place.sintra.national-palace
+  - place.sintra.monserrate
+  - place.sintra.capuchos-convent
+  - place.sintra.chalet-countess-edla
+  - place.sintra.villa-sassetti
+  - place.sintra.museu-anjos-teixeira
+  - place.sintra.parque-da-liberdade
+  - place.sintra.miradouro-sao-martinho
+  - place.sintra.lawrences-hotel
+  - place.sintra.historic-centre
+  - place.sintra.sintra-station

@@ -1,0 +1,22 @@
+id: event.sintra.taxi-concert
+destination: destination.sintra
+title: TAXI
+starts_on: '2026-11-06'
+time: '21:00'
+venue: Centro Cultural Olga Cadaval
+source: src.tpg.website-2026
+provenance: legacy-website
+observed_on: '2026-11-11'
+status: reported
+editorial:
+  local:
+    when: 6 Nov 2026 · 21:00
+    title: TAXI · Centro Cultural Olga Cadaval
+    text: A live concert by the Portuguese band TAXI in Sintra. Check the venue's ticketing and event details before making plans.
+    link:
+      label: Official cultural agenda ↗
+      href: https://agendaculturaldesintra.pt/agenda
+      external: false
+  directory:
+    heading: 6 Nov · TAXI at Centro Cultural Olga Cadaval
+    text: Portuguese rock concert, listed for 21:00.

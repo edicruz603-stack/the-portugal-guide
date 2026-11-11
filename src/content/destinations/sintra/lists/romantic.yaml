@@ -1,0 +1,11 @@
+id: list.sintra.romantic
+destination: destination.sintra
+title: Romantic guide · places with atmosphere
+context: romantic
+items:
+  - place.sintra.monserrate
+  - place.sintra.quinta-da-regaleira
+  - place.sintra.villa-sassetti
+  - place.sintra.pena-palace
+  - place.sintra.capuchos-convent
+  - place.sintra.historic-centre

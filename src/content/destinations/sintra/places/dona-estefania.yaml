@@ -1,0 +1,28 @@
+id: place.sintra.dona-estefania
+destination: destination.sintra
+kind: pastry-shop
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Dona Estefânia
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Pastries
+    title: Dona Estefânia
+    text: Traditional Sintra sweets and a convenient stop outside the busiest lanes of the old centre.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Dona+Estefania+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Dona+Estefania+Sintra
+        external: true
+  local:
+    tag: Pastry shop
+    title: Dona Estefânia
+    text: Another option for Sintra's traditional pastries. Worth including in a pastry comparison rather than presenting a single shop as the only authentic choice. Confirm current selection and hours.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Dona+Estefania+Sintra
+        external: false

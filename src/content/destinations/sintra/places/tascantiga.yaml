@@ -1,0 +1,37 @@
+id: place.sintra.tascantiga
+destination: destination.sintra
+kind: restaurant
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Tascantiga
+editorial:
+  directory:
+    filter: food
+    meta: Historic Centre · Petiscos
+    title: Tascantiga
+    text: Small plates to share. A good central lunch choice, though the steep approach is a consideration.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Tascantiga+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Tascantiga+Sintra
+        external: true
+  local:
+    tag: Portuguese petiscos · sharing
+    title: Tascantiga
+    text: A lively choice for Portuguese small plates and sharing. Its location on a steep pedestrian lane is part of the charm, but a real consideration for visitors with limited mobility or pushchairs.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Tascantiga+Sintra
+        external: false
+  food_card:
+    title: Tascantiga
+    paragraphs:
+      - "**For:** Portuguese petiscos and small plates in the historic centre. It is on a steep pedestrian lane, so allow a little extra time if you have mobility limitations."
+      - "**Address:** Escadinhas da Fonte da Pipa 2."
+    links:
+      - label: Open in Google Maps ↗
+        href: https://www.google.com/maps/search/?api=1&query=Tascantiga+Sintra
+        external: true

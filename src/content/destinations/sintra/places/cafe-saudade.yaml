@@ -1,0 +1,28 @@
+id: place.sintra.cafe-saudade
+destination: destination.sintra
+kind: cafe
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Café Saudade
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Café
+    title: Café Saudade
+    text: A charming stop near the station for breakfast, tea or a relaxed lunch. Useful when you want to begin the day slowly.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Cafe+Saudade+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Cafe+Saudade+Sintra
+        external: true
+  local:
+    tag: Café · breakfast · brunch
+    title: Café Saudade
+    text: Near the railway station, with a nostalgic interior and a café atmosphere that makes it a good start or finish to a day. Look for coffee, pastries and brunch-style options. Best for a slower pause rather than a rushed transfer between monuments.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Cafe+Saudade+Sintra
+        external: false

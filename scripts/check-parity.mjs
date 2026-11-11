@@ -49,6 +49,13 @@ for (const page of PAGES) {
   }
   const la = links(region(oldHtml)), lb = links(region(newHtml));
   if (JSON.stringify(la) !== JSON.stringify(lb)) problems.push(`links differ:\n      legacy only: ${la.filter((x) => !lb.includes(x)).join(', ') || '(order)'}\n      new only:    ${lb.filter((x) => !la.includes(x)).join(', ') || '(order)'}`);
+  // behaviour-bearing attributes: directory filter/search data and whether each link opens a new tab
+  const attrs = (h) => JSON.stringify([
+    [...h.matchAll(/data-search="([^"]*)"/g)].map((m) => decode(m[1])),
+    [...h.matchAll(/data-type="([^"]*)"/g)].map((m) => m[1]),
+    [...h.matchAll(/<a\b[^>]*\bhref="([^"]*)"([^>]*)>/g)].map((m) => decode(m[1]) + (/target="_blank"/.test(m[0]) ? ' [new tab]' : '')),
+  ]);
+  if (attrs(region(oldHtml)) !== attrs(region(newHtml))) problems.push('data-search / data-type / link-target attributes differ');
   const ia = imgs(region(oldHtml)), ib = imgs(region(newHtml));
   if (JSON.stringify(ia) !== JSON.stringify(ib)) problems.push('images or alt texts differ');
 

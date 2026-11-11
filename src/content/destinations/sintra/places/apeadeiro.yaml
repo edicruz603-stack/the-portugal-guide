@@ -1,0 +1,20 @@
+id: place.sintra.apeadeiro
+destination: destination.sintra
+kind: restaurant
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Apeadeiro
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Traditional
+    title: Apeadeiro
+    text: Close to the station, handy for a substantial Portuguese meal before the return train.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Restaurante+Apeadeiro+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Restaurante+Apeadeiro+Sintra
+        external: true

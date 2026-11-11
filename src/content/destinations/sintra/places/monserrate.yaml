@@ -1,0 +1,50 @@
+id: place.sintra.monserrate
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.western-sintra
+name:
+  official: Park and Palace of Monserrate
+  official_source: src.parques-de-sintra.monserrate
+  aliases:
+    - Palácio de Monserrate
+    - Monserrate Palace
+    - Monserrate Palace & Park
+map:
+  coordinates: fact.sintra.monserrate.coordinates-a
+  category: monument
+  label: Palácio de Monserrate
+  zone_label: Western gardens
+editorial:
+  directory:
+    filter: monument
+    meta: Western Sintra · Paid
+    title: Palácio de Monserrate
+    text: Choose this for garden landscapes and richly layered architecture rather than another hurried palace photo.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Palacio+de+Monserrate+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  field_guide:
+    label: "04"
+    title: Palácio de Monserrate
+    paragraphs:
+      - A quieter-feeling alternative for architecture and gardens, with an extraordinary blend of styles. It deserves more than a quick photo stop.
+    links:
+      - label: Official visitor information ↗
+        href: https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-de-monserrate/
+        external: true
+  map_link:
+    title: Monserrate Palace
+    href: https://www.google.com/maps/search/?api=1&query=Palacio+de+Monserrate+Sintra
+  romantic:
+    label: 01 / THE GRAND ROMANTIC DREAM
+    title: Monserrate Palace & Park
+    text: An exuberant 19th-century Romantic masterpiece, with exotic gardens, winding paths, fern-filled corners, waterfalls and architecture that blends several influences. This is the place to slow down and wander.
+    links:
+      - label: Official visitor information ↗
+        href: https://www.parquesdesintra.pt/en/parks-monuments/park-and-palace-of-monserrate/
+        external: true
+    meta: Allow a generous half-day · Adult ticket currently €12 · Check restoration notices before visiting.
