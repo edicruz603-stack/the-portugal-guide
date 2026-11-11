@@ -58,7 +58,7 @@ src/lib/content/repository.ts  the only read path for pages (placesInList, event
 WARNING (never blocks): W01 fact past its review window · W02 ended event still in an active list (unlisted ended events are history) · W03 place without coordinates · W04 stale source · W05 new ID not yet locked · W06 uncleared image (free mode).
 EDITORIAL PENDING: P01 unverified facts/events · P02 no zone · P03 no reader-facing text · P04 no facts · P05 image rights pending · P06 map marker on unverified coordinates.
 
-Current dataset: **0 critical · 32 warnings · 91 pending**.
+Current dataset: **0 critical · 29 warnings · 91 pending**.
 
 ## 4. Data entered
 
@@ -100,8 +100,8 @@ Cards that are not about one place (itineraries, the multi-monument tickets card
 | Check | Result |
 |---|---|
 | astro check | 0 errors / 0 warnings / 0 hints |
-| Vitest | 62 / 62 (every critical rule fails on a fixture; dataset passes; single-source; map preservation; planner golden 1,620 combinations) |
-| Content validation | 0 critical · 32 warnings · 91 pending |
+| Vitest | 77 / 77 (every critical rule fails on a fixture; dataset passes; single-source; map preservation; planner golden 1,620 combinations) |
+| Content validation | 0 critical · 29 warnings · 91 pending |
 | Build | 5 pages |
 | Internal links | 87, 0 broken |
 | html-validate | 0 problems |
