@@ -15,7 +15,7 @@ Full generated reports: `docs/content/sintra-content-status-2026-11-11.md` (snap
 | Two hard-coded event diaries | 7 events in `events/`, each with dates, venue, source and both editions' wording |
 | Pages carried data | Pages select through 12 lists in `lists/` and render with 8 components |
 
-Visible output is unchanged: identical text, links, images, link targets, filter/search attributes and map coordinates (evidence §5).
+Visible output is unchanged: identical text, links, images, link targets, filter/search attributes and map coordinates (evidence §7).
 
 ## 2. Model (multi-destination by design)
 
