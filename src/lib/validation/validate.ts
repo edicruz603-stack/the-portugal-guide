@@ -14,6 +14,7 @@ import {
   type Event, type Fact, type List, type Place,
 } from '../content/schemas.ts';
 import { HomeDestinationSchema } from './schemas.ts';
+import { isEventActive, lastDay } from '../content/dates.ts';
 
 export type Level = 'critical' | 'warning' | 'pending';
 export interface Issue { level: Level; rule: string; where: string; message: string }
@@ -279,9 +280,14 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     const limit = f.review_after_days ?? opts.defaultReviewDays;
     if (days(since, opts.today) > limit) add('warning', 'W01', f.id, `last ${f.checked_on ? 'checked' : 'observed'} ${days(since, opts.today)} days ago (review every ${limit})`);
   }
-  // W02 — an ended event is a warning only while a list still publishes it; unlisted ended events are kept as history
-  const listedEvents = new Set(lists.filter((l) => l.context.startsWith('event:')).flatMap((l) => l.items));
-  for (const e of events) if (listedEvents.has(e.id) && (e.ends_on ?? e.starts_on) < opts.today) add('warning', 'W02', e.id, `event ended ${e.ends_on ?? e.starts_on}; still listed in an active list`);
+  // W02 — a listed event that has ended is hidden automatically (repository.eventsInList, rule in content/dates.ts);
+  //       the warning tells editors the list has lost an item. Unlisted ended events are history and stay silent.
+  // W07 — an event list with nothing left to show at the validation date
+  const eventLists = lists.filter((l) => l.context.startsWith('event:'));
+  const eventById = new Map(events.map((e) => [e.id, e]));
+  const listsOf = (id: string) => eventLists.filter((l) => l.items.includes(id)).map((l) => l.id);
+  for (const e of events) if (listsOf(e.id).length && !isEventActive(e, opts.today)) add('warning', 'W02', e.id, `event ended ${lastDay(e)}; hidden automatically from ${listsOf(e.id).join(', ')}`);
+  for (const l of eventLists) if (!l.items.some((id) => { const e = eventById.get(id); return e && isEventActive(e, opts.today); })) add('warning', 'W07', l.id, 'no event left to show at the validation date');
   const hasCoords = new Set(facts.filter((f) => f.kind === 'coordinates').map((f) => f.place));
   for (const p of places) if (!hasCoords.has(p.id) && !(p.part_of && hasCoords.has(p.part_of))) add('warning', 'W03', p.id, 'no coordinates recorded');
   for (const s of sources) if (days(s.seen_on, opts.today) > opts.sourceReviewDays) add('warning', 'W04', s.id, `last seen ${days(s.seen_on, opts.today)} days ago`);

@@ -34,7 +34,8 @@ tests/unit · tests/e2e        Vitest · Playwright (mobile 390, tablet 820, des
 - Every build validates content first (an Astro build hook runs `scripts/validate-content.ts`; `npx astro build` cannot skip it). Any critical issue stops the build.
 - Publication mode: `free` (default, announced in the output) or `commercial`, set with `PUBLICATION_MODE` or `--mode=` on the validator. `npm run build:commercial` / `npm run validate:commercial` refuse uncleared images (C11). An unknown or contradicting mode is an error (exit 2), never a silent fallback to free.
 - Every map marker carries its coordinate fact's verification (`checked`, `reported`, `confirm-first`, `unresolved`) plus source and provenance; the map never labels a coordinate more certain than its fact.
-- An ended event stays as a record (history) but is removed from the `event:*` lists; W02 warns while an ended event is still listed.
+- Events expire by themselves: a listed event is shown up to and including its last day (`ends_on`, or `starts_on` for one-day events) and disappears the next day. Ended events stay in `events/` and in their lists as history; nobody edits YAML when an event ends. "Today" is the validation date: `VALIDATION_DATE=YYYY-MM-DD`, otherwise the calendar date in Europe/Lisbon; the build hook fixes it once per build (`src/lib/content/dates.ts`). W02 reports listed events that have ended; W07 reports an event list with nothing left to show. Pages are static, so a page changes only when the site is rebuilt.
+- Reports: `npm run validate` writes `dist-reports/content-status.md` (incl. pending items by category); `npm run report:inventory` regenerates `docs/content/sintra-inventory-reconciliation.md`.
 - The legacy root HTML files are what production serves today. Do not edit them; `scripts/port-legacy.mjs` regenerates the Astro pages from them until Phase 2 replaces that with structured content.
 
 ## Content (M2)

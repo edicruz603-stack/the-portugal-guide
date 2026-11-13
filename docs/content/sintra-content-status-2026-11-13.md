@@ -1,6 +1,6 @@
 # Content status report
 
-Generated 2026-11-11 from src/content. Critical 0 · warnings 29 · editorial pending 91.
+Generated 2026-11-13 from src/content. Critical 0 · warnings 32 · editorial pending 91.
 
 ## 1. Place inventory (40 places)
 
@@ -52,8 +52,8 @@ Generated 2026-11-11 from src/content. Critical 0 · warnings 29 · editorial pe
 | List | Renders | Items |
 |---|---|---|
 | `list.sintra.directory` | directory | 30 |
-| `list.sintra.events-directory` | event:directory | 1 |
-| `list.sintra.events-local` | event:local | 4 |
+| `list.sintra.events-directory` | event:directory | 4 |
+| `list.sintra.events-local` | event:local | 6 |
 | `list.sintra.field-guide-food` | food_card | 4 |
 | `list.sintra.field-guide-free` | field_guide | 6 |
 | `list.sintra.field-guide-highlights` | field_guide | 4 |
@@ -260,12 +260,158 @@ Every competing value is kept. None is chosen until a source settles it.
 - `place.sintra.national-palace-gardens`: map marker uses unresolved coordinates (fact.sintra.national-palace.coordinates)
 - `place.sintra.parque-da-liberdade`: map marker uses confirm-first coordinates (fact.sintra.parque-da-liberdade.coordinates-approximate)
 
-## 6. Warnings
+## 6. Pending items by category
+
+91 pending issues = 86 distinct items (5 map markers are reported twice: P06 for the marker and P01 for its coordinate fact; counted once here). Validation date 2026-11-13: event visibility depends on it.
+
+| Category | Items | checked | reported | confirm-first | unresolved | no status (place / image) |
+|---|---|---|---|---|---|---|
+| Content risks visible to visitors | 27 | 0 | 21 | 3 | 3 | 0 |
+| Internal research tasks | 33 | 0 | 19 | 2 | 9 | 3 |
+| Place descriptions missing | 6 | 0 | 0 | 0 | 0 | 6 |
+| Structured facts missing | 16 | 0 | 0 | 0 | 0 | 16 |
+| Blockers for commercial publication | 4 | 0 | 0 | 0 | 0 | 4 |
+
+### 6.1 Content risks visible to visitors (27)
+
+- **Visitor impact:** A visitor reads or sees the value today (page text, map marker or event diary) without a per-item verification mark.
+- **Can be shown with a caveat:** reported and confirm-first: yes, with a visible status mark ("reported, check before you travel" / "approximate, confirm first"). Status marks arrive with M3; until then only the pages' general "check before travelling" notes apply.
+- **Must stay hidden until confirmed:** unresolved: yes — a single value should not be presented as fact while sources disagree; show "confirm with the operator" (or every value with its source) instead. Changing visible text breaks parity with production, so this needs owner approval (M3).
+
+| ID | Status | Shown as | Pending issue(s) | What resolves it |
+|---|---|---|---|---|
+| `fact.sintra.casa-piriquita.founded` | reported | published text of place.sintra.casa-piriquita: “Founded in 1862” | P01:fact.sintra.casa-piriquita.founded | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.casa-piriquita.address` | reported | published text of place.sintra.casa-piriquita: “Rua das Padarias 16, historic centre.” | P01:fact.sintra.casa-piriquita.address | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.lawrences-hotel.founded` | reported | published text of place.sintra.lawrences-hotel: “Founded in 1764” | P01:fact.sintra.lawrences-hotel.founded | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.miradouro-sao-martinho.price` | reported | published text of place.sintra.miradouro-sao-martinho: “Free public viewpoint.” | P01:fact.sintra.miradouro-sao-martinho.price | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.museu-anjos-teixeira.hours` | reported | published text of place.sintra.museu-anjos-teixeira: “Tue–Fri 10:00–18:00; weekends 12:00–18:00. Closed Mondays and most public holidays.” | P01:fact.sintra.museu-anjos-teixeira.hours | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.museu-anjos-teixeira.price` | reported | published text of place.sintra.museu-anjos-teixeira: “**Entry:** Free.” | P01:fact.sintra.museu-anjos-teixeira.price | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.national-palace-gardens.last-entry-website` | unresolved | published text of place.sintra.national-palace-gardens: “09:30–18:30; last entry 18:00” | P01:fact.sintra.national-palace-gardens.last-entry-website | Ask the operator which value applies (conflict national-palace-gardens-last-entry); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.natural-history-museum.price` | reported | published text of place.sintra.natural-history-museum: “Free museum · natural history” | P01:fact.sintra.natural-history-museum.price | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.parque-da-liberdade.hours` | reported | published text of place.sintra.parque-da-liberdade: “Seasonal, generally from 10:00” | P01:fact.sintra.parque-da-liberdade.hours | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.parque-da-liberdade.price` | reported | published text of place.sintra.parque-da-liberdade: “**Entry:** Free.” | P01:fact.sintra.parque-da-liberdade.price | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.queijadas-da-sapa.history` | reported | published text of place.sintra.queijadas-da-sapa: “traced to Maria Sapa in 1756 and its move to Volta do Duche in 1887” | P01:fact.sintra.queijadas-da-sapa.history | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.queijadas-da-sapa.address` | reported | published text of place.sintra.queijadas-da-sapa: “Volta do Duche 12.” | P01:fact.sintra.queijadas-da-sapa.address | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.quinta-da-regaleira.price-adult` | reported | published text of place.sintra.quinta-da-regaleira: “€20 (2026 tariff)” | P01:fact.sintra.quinta-da-regaleira.price-adult | Re-read on the operator page cited by the First Edition ledger (read 7 Nov 2026); record checked_on if unchanged. |
+| `fact.sintra.quinta-da-regaleira.timed-ticket` | reported | published text of place.sintra.quinta-da-regaleira: “tickets are valid for the selected date and time” | P01:fact.sintra.quinta-da-regaleira.timed-ticket | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.restaurante-regional.address` | reported | published text of place.sintra.restaurante-regional: “Travessa do Município 2.” | P01:fact.sintra.restaurante-regional.address | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.sintra-station.buses` | reported | page prose (sintra.astro): “Bus 434 serves the historic centre…” (part of the value) | P01:fact.sintra.sintra-station.buses | Confirm with the operator itself (current source is secondary, which cannot make a fact checked). |
+| `fact.sintra.tascantiga.address` | reported | published text of place.sintra.tascantiga: “Escadinhas da Fonte da Pipa 2.” | P01:fact.sintra.tascantiga.address | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `fact.sintra.villa-sassetti.entry` | reported | published text of place.sintra.villa-sassetti: “Garden and path access currently free” | P01:fact.sintra.villa-sassetti.entry | Re-read on the operator's or business's own page; record checked_on only when that source states the same value. |
+| `event.sintra.cunha-e-costa-collection` | reported | event diary (list.sintra.events-local) until 2026-12-31 | P01:event.sintra.cunha-e-costa-collection | Check the organiser's own event page (dates, times, booking); record checked_on when it matches. |
+| `event.sintra.mordidas-do-tempo` | reported | event diary (list.sintra.events-directory, list.sintra.events-local) until 2027-01-03 | P01:event.sintra.mordidas-do-tempo | Check the organiser's own event page (dates, times, booking); record checked_on when it matches. |
+| `event.sintra.mutatis-mutandis` | reported | event diary (list.sintra.events-local) until 2026-11-15 | P01:event.sintra.mutatis-mutandis | Check the organiser's own event page (dates, times, booking); record checked_on when it matches. |
+| `event.sintra.vinil-musa` | reported | event diary (list.sintra.events-local) until 2027-01-03 | P01:event.sintra.vinil-musa | Check the organiser's own event page (dates, times, booking); record checked_on when it matches. |
+| `place.sintra.miradouro-sao-martinho` | confirm-first | map marker "Miradouro do Adro de São Martinho · free" (coordinates fact.sintra.miradouro-sao-martinho.coordinates-approximate) | P06:place.sintra.miradouro-sao-martinho, P01:fact.sintra.miradouro-sao-martinho.coordinates-approximate | Find operator-published coordinates or survey on site; until then the marker stays approximate. |
+| `place.sintra.monserrate` | unresolved | map marker "Palácio de Monserrate" (coordinates fact.sintra.monserrate.coordinates-a) | P06:place.sintra.monserrate, P01:fact.sintra.monserrate.coordinates-a | Ask the operator which value applies (conflict monserrate-coordinates); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `place.sintra.museu-anjos-teixeira` | confirm-first | map marker "Museu Anjos Teixeira · free" (coordinates fact.sintra.museu-anjos-teixeira.coordinates-approximate) | P06:place.sintra.museu-anjos-teixeira, P01:fact.sintra.museu-anjos-teixeira.coordinates-approximate | Find operator-published coordinates or survey on site; until then the marker stays approximate. |
+| `place.sintra.national-palace-gardens` | unresolved | map marker "Palácio Nacional de Sintra · gardens (free entry)" (coordinates fact.sintra.national-palace.coordinates) | P06:place.sintra.national-palace-gardens, P01:fact.sintra.national-palace.coordinates | Ask the operator which value applies (conflict national-palace-coordinates); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `place.sintra.parque-da-liberdade` | confirm-first | map marker "Parque da Liberdade · free" (coordinates fact.sintra.parque-da-liberdade.coordinates-approximate) | P06:place.sintra.parque-da-liberdade, P01:fact.sintra.parque-da-liberdade.coordinates-approximate | Find operator-published coordinates or survey on site; until then the marker stays approximate. |
+
+### 6.2 Internal research tasks (33)
+
+- **Visitor impact:** None today: the values are data only. None is quoted in a published card, marker or diary, and a check of each value against the built pages (13 Nov 2026) found none in page prose either (the one exception is in category 1).
+- **Can be shown with a caveat:** Not applicable while unpublished. If published later, the same rule as category 1 applies by status.
+- **Must stay hidden until confirmed:** Yes, until checked or until M3 can show their status mark. Unresolved values stay hidden until the operator settles them.
+
+| ID | Status | Shown as | Pending issue(s) | What resolves it |
+|---|---|---|---|---|
+| `fact.sintra.adega-regional-de-colares.coordinates` | reported | — | P01:fact.sintra.adega-regional-de-colares.coordinates | Confirm with the operator (the cited page gives only part of the picture); record checked_on when confirmed. |
+| `fact.sintra.adega-regional-de-colares.address` | reported | — | P01:fact.sintra.adega-regional-de-colares.address | Confirm with the operator (the cited page gives only part of the picture); record checked_on when confirmed. |
+| `fact.sintra.adega-regional-de-colares.phone` | reported | — | P01:fact.sintra.adega-regional-de-colares.phone | Confirm with the operator (the cited page gives only part of the picture); record checked_on when confirmed. |
+| `fact.sintra.adega-regional-de-colares.hours` | reported | — | P01:fact.sintra.adega-regional-de-colares.hours | Confirm with the operator (the cited page gives only part of the picture); record checked_on when confirmed. |
+| `fact.sintra.adega-regional-de-colares.visits` | reported | — | P01:fact.sintra.adega-regional-de-colares.visits | Confirm with the operator (the cited page gives only part of the picture); record checked_on when confirmed. |
+| `fact.sintra.adega-regional-de-colares.founded` | reported | — | P01:fact.sintra.adega-regional-de-colares.founded | Confirm with the operator (the cited page gives only part of the picture); record checked_on when confirmed. |
+| `fact.sintra.capuchos-convent.closure-history` | reported | — | P01:fact.sintra.capuchos-convent.closure-history | Re-read on the operator page cited by the First Edition ledger (read 7 Nov 2026); record checked_on if unchanged. |
+| `fact.sintra.colares.demarcated` | reported | — | P01:fact.sintra.colares.demarcated | Re-read on the operator page cited by the First Edition ledger (read 7 Nov 2026); record checked_on if unchanged. |
+| `fact.sintra.colares.ungrafted-vines` | reported | — | P01:fact.sintra.colares.ungrafted-vines | Confirm with the operator itself (current source is secondary, which cannot make a fact checked). |
+| `fact.sintra.colares.pr8-length-hiking-page` | unresolved | — | P01:fact.sintra.colares.pr8-length-hiking-page | Ask the operator which value applies (conflict colares-pr8-length); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.colares.pr8-length-itinerary-page` | unresolved | — | P01:fact.sintra.colares.pr8-length-itinerary-page | Ask the operator which value applies (conflict colares-pr8-length); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.monserrate.coordinates-b` | unresolved | — | P01:fact.sintra.monserrate.coordinates-b | Ask the operator which value applies (conflict monserrate-coordinates); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.monserrate.last-ticket-park-monument-page` | unresolved | — | P01:fact.sintra.monserrate.last-ticket-park-monument-page | Ask the operator which value applies (conflict monserrate-park-last-ticket); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.monserrate.last-ticket-park-ticket-office` | unresolved | — | P01:fact.sintra.monserrate.last-ticket-park-ticket-office | Ask the operator which value applies (conflict monserrate-park-last-ticket); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.museu-do-bonsai.founder` | reported | — | P01:fact.sintra.museu-do-bonsai.founder | Confirm with the operator itself (current source is secondary, which cannot make a fact checked). |
+| `fact.sintra.museu-do-bonsai.opened` | reported | — | P01:fact.sintra.museu-do-bonsai.opened | Confirm with the operator itself (current source is secondary, which cannot make a fact checked). |
+| `fact.sintra.museu-do-bonsai.price` | reported | — | P01:fact.sintra.museu-do-bonsai.price | Confirm with the operator itself (current source is secondary, which cannot make a fact checked). |
+| `fact.sintra.museu-do-bonsai.address` | reported | — | P01:fact.sintra.museu-do-bonsai.address | Confirm with the operator itself (current source is secondary, which cannot make a fact checked). |
+| `fact.sintra.museu-do-bonsai.hours` | confirm-first | — | P01:fact.sintra.museu-do-bonsai.hours | Find a reliable published source (the operator itself); until then do not state the value. |
+| `fact.sintra.national-palace-gardens.last-entry-ticket-office` | unresolved | — | P01:fact.sintra.national-palace-gardens.last-entry-ticket-office | Ask the operator which value applies (conflict national-palace-gardens-last-entry); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.national-palace-gardens.last-entry-opening-times` | unresolved | — | P01:fact.sintra.national-palace-gardens.last-entry-opening-times | Ask the operator which value applies (conflict national-palace-gardens-last-entry); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.national-palace-gardens.last-entry-essential-visit` | unresolved | — | P01:fact.sintra.national-palace-gardens.last-entry-essential-visit | Ask the operator which value applies (conflict national-palace-gardens-last-entry); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.national-palace.coordinates-ticket-office` | unresolved | — | P01:fact.sintra.national-palace.coordinates-ticket-office | Ask the operator which value applies (conflict national-palace-coordinates); keep every value until then; then mark the confirmed one checked and retire or re-scope the others. |
+| `fact.sintra.quinta-da-regaleira.price-youth-senior` | reported | — | P01:fact.sintra.quinta-da-regaleira.price-youth-senior | Re-read on the operator page cited by the First Edition ledger (read 7 Nov 2026); record checked_on if unchanged. |
+| `fact.sintra.quinta-da-regaleira.price-family` | confirm-first | — | P01:fact.sintra.quinta-da-regaleira.price-family | Find a reliable published source (the operator itself); until then do not state the value. |
+| `fact.sintra.sintra-station.train-from-lisbon` | reported | — | P01:fact.sintra.sintra-station.train-from-lisbon | Re-read on the operator page cited by the First Edition ledger (read 7 Nov 2026); record checked_on if unchanged. |
+| `fact.sintra.sintra-station.bus-pass` | reported | — | P01:fact.sintra.sintra-station.bus-pass | Confirm with the operator itself (current source is secondary, which cannot make a fact checked). |
+| `event.sintra.colares-wine-journey` | reported | — | P01:event.sintra.colares-wine-journey | Ended 2026-11-07: hidden automatically, kept as history. No action unless the record is reused. |
+| `event.sintra.masmo-mystery-afternoon` | reported | — | P01:event.sintra.masmo-mystery-afternoon | Ended 2026-10-31: hidden automatically, kept as history. No action unless the record is reused. |
+| `event.sintra.taxi-concert` | reported | — | P01:event.sintra.taxi-concert | Ended 2026-11-06: hidden automatically, kept as history. No action unless the record is reused. |
+| `place.sintra.bacalhau-na-vila` | — | — | P02:place.sintra.bacalhau-na-vila | Establish where the place is from a reliable source (address published by the business), then assign its zone. |
+| `place.sintra.incomum` | — | — | P02:place.sintra.incomum | Establish where the place is from a reliable source (address published by the business), then assign its zone. |
+| `place.sintra.museu-do-bonsai` | — | — | P02:place.sintra.museu-do-bonsai | Establish where the place is from a reliable source (address published by the business), then assign its zone. |
+
+### 6.3 Place descriptions missing (6)
+
+- **Visitor impact:** None today: these places have no card or page. They would be empty if published.
+- **Can be shown with a caveat:** No — there is nothing to qualify.
+- **Must stay hidden until confirmed:** Yes: no page or card for them until reader-facing text is written and approved (M3/M4). Text must come from the editions or new sourced writing, never invented.
+
+| ID | Status | Shown as | Pending issue(s) | What resolves it |
+|---|---|---|---|---|
+| `place.sintra.adega-regional-de-colares` | — | — | P03:place.sintra.adega-regional-de-colares | Write reader-facing text from the PDF chapter or new sourced research, for editorial approval (M3/M4). |
+| `place.sintra.cabo-da-roca-lighthouse` | — | — | P03:place.sintra.cabo-da-roca-lighthouse | Write reader-facing text from the PDF chapter or new sourced research, for editorial approval (M3/M4). |
+| `place.sintra.cabo-da-roca` | — | — | P03:place.sintra.cabo-da-roca | Write reader-facing text from the PDF chapter or new sourced research, for editorial approval (M3/M4). |
+| `place.sintra.colares` | — | — | P03:place.sintra.colares | Write reader-facing text from the PDF chapter or new sourced research, for editorial approval (M3/M4). |
+| `place.sintra.museu-do-bonsai` | — | — | P03:place.sintra.museu-do-bonsai | Write reader-facing text from the PDF chapter or new sourced research, for editorial approval (M3/M4). |
+| `place.sintra.sao-pedro-de-canaferrim` | — | — | P03:place.sintra.sao-pedro-de-canaferrim | Write reader-facing text from the PDF chapter or new sourced research, for editorial approval (M3/M4). |
+
+### 6.4 Structured facts missing (16)
+
+- **Visitor impact:** The place is published with editorial text only; no hours, prices or contact data are shown as facts for it.
+- **Can be shown with a caveat:** Yes: editorial text stays as published; it must not gain hours, prices or rules until they are sourced.
+- **Must stay hidden until confirmed:** Not required for the place itself; any future fact field stays empty until sourced.
+
+| ID | Status | Shown as | Pending issue(s) | What resolves it |
+|---|---|---|---|---|
+| `place.sintra.apeadeiro` | — | — | P04:place.sintra.apeadeiro | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.bacalhau-na-vila` | — | — | P04:place.sintra.bacalhau-na-vila | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.biester-palace` | — | — | P04:place.sintra.biester-palace | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.cabo-da-roca` | — | — | P04:place.sintra.cabo-da-roca | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.cafe-saudade` | — | — | P04:place.sintra.cafe-saudade | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.cajo` | — | — | P04:place.sintra.cajo | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.dona-estefania` | — | — | P04:place.sintra.dona-estefania | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.historic-centre` | — | — | P04:place.sintra.historic-centre | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.incomum` | — | — | P04:place.sintra.incomum | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.loja-5` | — | — | P04:place.sintra.loja-5 | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.mela-canela` | — | — | P04:place.sintra.mela-canela | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.metamorphosis` | — | — | P04:place.sintra.metamorphosis | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.miradouro-santa-eufemia` | — | — | P04:place.sintra.miradouro-santa-eufemia | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.museu-ferreira-de-castro` | — | — | P04:place.sintra.museu-ferreira-de-castro | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.romaria-de-baco` | — | — | P04:place.sintra.romaria-de-baco | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+| `place.sintra.tacho-real` | — | — | P04:place.sintra.tacho-real | Research hours, prices, address or access from the operator or the business's own page; enter each with source and status. |
+
+### 6.5 Blockers for commercial publication (4)
+
+- **Visitor impact:** Free edition: the photographs show with their credits (warning W06). Commercial edition: the build fails (C11).
+- **Can be shown with a caveat:** Free edition only, with credit and licence as today.
+- **Must stay hidden until confirmed:** Commercial edition: yes — each image is cleared, replaced or removed before a commercial build can pass.
+
+| ID | Status | Shown as | Pending issue(s) | What resolves it |
+|---|---|---|---|---|
+| `img.sintra.wm-pena-palace` | — | — | P05:img.sintra.wm-pena-palace | Verify the licence and author on the file page, decide on share-alike and attribution for commercial use, record it — or replace with an owner photograph with written permission. |
+| `img.sintra.wm-regaleira-well` | — | — | P05:img.sintra.wm-regaleira-well | Verify the licence and author on the file page, decide on share-alike and attribution for commercial use, record it — or replace with an owner photograph with written permission. |
+| `img.sintra.wm-moorish-castle` | — | — | P05:img.sintra.wm-moorish-castle | Verify the licence and author on the file page, decide on share-alike and attribution for commercial use, record it — or replace with an owner photograph with written permission. |
+| `img.sintra.wm-monserrate` | — | — | P05:img.sintra.wm-monserrate | Verify the licence and author on the file page, decide on share-alike and attribution for commercial use, record it — or replace with an owner photograph with written permission. |
+
+## 7. Warnings
 
 - [W06] `img.sintra.wm-pena-palace`: not cleared for commercial publication
 - [W06] `img.sintra.wm-regaleira-well`: not cleared for commercial publication
 - [W06] `img.sintra.wm-moorish-castle`: not cleared for commercial publication
 - [W06] `img.sintra.wm-monserrate`: not cleared for commercial publication
+- [W02] `event.sintra.colares-wine-journey`: event ended 2026-11-07; hidden automatically from list.sintra.events-directory, list.sintra.events-local
+- [W02] `event.sintra.masmo-mystery-afternoon`: event ended 2026-10-31; hidden automatically from list.sintra.events-directory
+- [W02] `event.sintra.taxi-concert`: event ended 2026-11-06; hidden automatically from list.sintra.events-directory, list.sintra.events-local
 - [W03] `place.sintra.apeadeiro`: no coordinates recorded
 - [W03] `place.sintra.bacalhau-na-vila`: no coordinates recorded
 - [W03] `place.sintra.biester-palace`: no coordinates recorded

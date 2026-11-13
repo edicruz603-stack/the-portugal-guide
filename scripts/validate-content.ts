@@ -13,6 +13,7 @@ import { loadContentFromDisk } from '../src/lib/content/load-fs.ts';
 import { validateContent, hasCritical, DEFAULT_OPTIONS, type Issue } from '../src/lib/validation/validate.ts';
 import { contentStatusReport } from '../src/lib/validation/report.ts';
 import { resolvePublicationMode, PublicationModeError } from '../src/lib/validation/mode.ts';
+import { validationDate } from '../src/lib/content/dates.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const input = loadContentFromDisk(root);
@@ -20,7 +21,8 @@ let resolved;
 try { resolved = resolvePublicationMode(process.argv.slice(2), process.env); }
 catch (e) { if (e instanceof PublicationModeError) { console.error(`✗ ${e.message}`); process.exit(2); } throw e; }
 const { mode, origin } = resolved;
-const today = process.env.VALIDATION_DATE ?? new Date().toISOString().slice(0, 10);
+let today: string;
+try { today = validationDate(process.env); } catch (e) { console.error(`✗ ${(e as Error).message}`); process.exit(2); }
 const issues = validateContent(input, { ...DEFAULT_OPTIONS, mode, today });
 
 const by = (l: Issue['level']) => issues.filter((i) => i.level === l);

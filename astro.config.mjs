@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { validationDate } from './src/lib/content/dates.ts';
 
 // Host-independent static build.
 // SITE and BASE can be overridden for another host without code changes.
@@ -18,6 +19,9 @@ const contentValidation = {
   name: 'tpg-content-validation',
   hooks: {
     'astro:build:start': () => {
+      // one date for the whole build: the validator and the event lists read the same VALIDATION_DATE
+      process.env.VALIDATION_DATE = validationDate(process.env);
+      console.log(`[tpg] validation date ${process.env.VALIDATION_DATE}`);
       const script = fileURLToPath(new URL('./scripts/validate-content.ts', import.meta.url));
       const r = spawnSync(process.execPath, ['--experimental-strip-types', script], { stdio: 'inherit', env: process.env });
       if (r.status !== 0) throw new Error(`Content validation failed (exit ${r.status}); build stopped.`);

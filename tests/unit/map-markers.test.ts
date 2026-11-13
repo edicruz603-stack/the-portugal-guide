@@ -49,4 +49,18 @@ describe('Sintra map: verification per marker (coordinates unchanged, see m2-pre
       'place.sintra.villa-sassetti': 'checked',
     });
   });
+  it('keeps each marker\'s coordinate source and provenance (Phase 1 positions, see m2-preservation)', () => {
+    const prov = Object.fromEntries(markers.map((m: any) => [m.id, [m.coordinates.provenance, m.coordinates.source, m.coordinates.checkedOn ?? null]]));
+    expect(prov).toEqual({
+      'place.sintra.national-palace-gardens': ['official-page-read', 'src.parques-de-sintra.national-palace', null],
+      'place.sintra.quinta-da-regaleira': ['pdf-first-edition-2026', 'src.regaleira.site', '2026-11-07'],
+      'place.sintra.moorish-castle': ['official-page-read', 'src.parques-de-sintra.moorish-castle', '2026-11-11'],
+      'place.sintra.pena-palace': ['official-page-read', 'src.parques-de-sintra.visitor-map', '2026-11-11'],
+      'place.sintra.monserrate': ['official-page-read', 'src.parques-de-sintra.visitor-map', null],
+      'place.sintra.museu-anjos-teixeira': ['legacy-website', 'src.tpg.website-2026', null],
+      'place.sintra.parque-da-liberdade': ['legacy-website', 'src.tpg.website-2026', null],
+      'place.sintra.miradouro-sao-martinho': ['legacy-website', 'src.tpg.website-2026', null],
+      'place.sintra.villa-sassetti': ['official-page-read', 'src.parques-de-sintra.villa-sassetti', '2026-11-11'],
+    });
+  });
 });

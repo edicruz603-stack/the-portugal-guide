@@ -120,25 +120,26 @@ describe('WARNING and EDITORIAL PENDING never block', () => {
     expect(issues.some((i) => i.rule === 'P01')).toBe(true);
     expect(hasCritical(issues)).toBe(false);
   });
-  it('W02 warns for an ended event only while an active list still publishes it', () => {
+  it('W02 flags listed events that ended (hidden automatically); unlisted ended events are silent history', () => {
     const i = fresh();
-    const listed = new Set((i.lists as Rec[]).filter((l) => String(l.context).startsWith('event:')).flatMap((l) => l.items));
     const evs = i.events as Rec[];
-    const inList = evs.find((e) => listed.has(e.id))!;
-    const history = evs.find((e) => !listed.has(e.id));
-    inList.starts_on = '2020-01-01'; inList.ends_on = '2020-01-02';
-    if (history) { history.starts_on = '2020-01-01'; history.ends_on = '2020-01-02'; }
-    const w02 = run(i).filter((x) => x.rule === 'W02');
-    expect(w02.map((x) => x.where)).toEqual([inList.id]);
+    const unlisted: Rec = { ...evs.find((e) => e.id === 'event.sintra.taxi-concert')!, id: 'event.sintra.old-unlisted', starts_on: '2020-01-01' };
+    delete unlisted.ends_on; evs.push(unlisted);
+    const w02 = run(i).filter((x) => x.rule === 'W02').map((x) => x.where).sort();
+    expect(w02).toEqual(['event.sintra.colares-wine-journey', 'event.sintra.masmo-mystery-afternoon', 'event.sintra.taxi-concert']);
+    expect(run(i).find((x) => x.rule === 'W02')!.message).toMatch(/hidden automatically/);
     expect(hasCritical(run(i))).toBe(false);
   });
-  it('the three ended Sintra events are kept as history, not listed', () => {
-    const i = fresh();
-    const listed = new Set((i.lists as Rec[]).flatMap((l) => l.items));
-    for (const k of ['taxi-concert', 'colares-wine-journey', 'masmo-mystery-afternoon']) {
-      expect((i.events as Rec[]).some((e) => e.id === `event.sintra.${k}`)).toBe(true);
-      expect(listed.has(`event.sintra.${k}`)).toBe(false);
-    }
+  it('W02 follows the validation date: Mutatis Mutandis joins on 16 Nov, not on 15 Nov', () => {
+    const w = (today: string) => run(fresh(), { ...opts, today }).filter((x) => x.rule === 'W02').map((x) => x.where);
+    expect(w('2026-11-15')).not.toContain('event.sintra.mutatis-mutandis');
+    expect(w('2026-11-16')).toContain('event.sintra.mutatis-mutandis');
+  });
+  it('W07 flags an event list with nothing left to show', () => {
+    expect(run(fresh()).filter((x) => x.rule === 'W07')).toEqual([]);
+    // last recorded events end 3 Jan 2027 (Mordidas do Tempo, Vinil Musa): from 4 Jan both diaries are empty
+    expect(run(fresh(), { ...opts, today: '2027-01-03' }).filter((x) => x.rule === 'W07')).toEqual([]);
+    expect(run(fresh(), { ...opts, today: '2027-01-04' }).filter((x) => x.rule === 'W07').map((x) => x.where).sort()).toEqual(['list.sintra.events-directory', 'list.sintra.events-local']);
   });
   it('facts past their review window become warnings, not errors', () => {
     const issues = run(fresh(), { ...opts, today: '2027-06-01' });

@@ -4,6 +4,7 @@
  */
 import type { ContentInput, Issue } from './validate.ts';
 import type { Event, Fact, List, Place } from '../content/schemas.ts';
+import { classifyPending, CATEGORY_INFO, type PendingCategory } from './pending.ts';
 
 type Src = { id: string; publisher: string; kind: string; url: string; seen_on: string };
 
@@ -98,8 +99,39 @@ export function contentStatusReport(input: ContentInput, issues: Issue[], today:
     line();
   }
 
+  // ---- classification of the pending items
+  const items = classifyPending(input, issues, today);
+  const merged = items.filter((x) => x.issues.length > 1).length;
+  line(`## 6. Pending items by category`);
+  line();
+  line(`${pending.length} pending issues = ${items.length} distinct items (${merged} map markers are reported twice: P06 for the marker and P01 for its coordinate fact; counted once here). Validation date ${today}: event visibility depends on it.`);
+  line();
+  line('| Category | Items | checked | reported | confirm-first | unresolved | no status (place / image) |');
+  line('|---|---|---|---|---|---|---|');
+  const cats = Object.keys(CATEGORY_INFO) as PendingCategory[];
+  for (const c of cats) {
+    const xs = items.filter((x) => x.category === c);
+    const n = (s?: string) => xs.filter((x) => x.status === s).length;
+    line(`| ${CATEGORY_INFO[c].title} | ${xs.length} | ${n('checked')} | ${n('reported')} | ${n('confirm-first')} | ${n('unresolved')} | ${n(undefined)} |`);
+  }
+  line();
+  cats.forEach((c, k) => {
+    const xs = items.filter((x) => x.category === c);
+    const info = CATEGORY_INFO[c];
+    line(`### 6.${k + 1} ${info.title} (${xs.length})`);
+    line();
+    line(`- **Visitor impact:** ${info.impact}`);
+    line(`- **Can be shown with a caveat:** ${info.caveat}`);
+    line(`- **Must stay hidden until confirmed:** ${info.hidden}`);
+    line();
+    line('| ID | Status | Shown as | Pending issue(s) | What resolves it |');
+    line('|---|---|---|---|---|');
+    for (const x of xs) line(`| \`${x.id}\` | ${x.status ?? '—'} | ${esc(x.visibleAs ?? '—')} | ${x.issues.join(', ')} | ${esc(x.action)} |`);
+    line();
+  });
+
   // ---- warnings
-  line(`## 6. Warnings`);
+  line(`## 7. Warnings`);
   line();
   for (const i of issues.filter((x) => x.level === 'warning')) line(`- [${i.rule}] \`${i.where}\`: ${esc(i.message)}`);
   line();

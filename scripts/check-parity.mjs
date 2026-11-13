@@ -8,7 +8,11 @@
  * Legacy footer sentences must also survive in the new page.
  * Intentional differences are listed in ALLOWED and must be justified in the PR report.
  */
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { parse } from 'yaml';
+import { validationDate, isEventActive } from '../src/lib/content/dates.ts';
+import { plain } from '../src/lib/content/inline.ts';
+const plainInline = (t) => plain(t).replace(/\s+/g, ' ').trim();
 
 const dist = process.argv[2] ?? 'dist';
 const PAGES = ['index.html', 'sintra.html', 'sintra-local-discoveries.html', 'sintra-romantic-guide.html', 'sintra-discoveries.html'];
@@ -18,19 +22,18 @@ const ALLOWED = [
   ['sintra.html', 'Historic centre Hilltop and garden monuments', 'Main monuments Free stops'],
 ];
 
-// [page, exact legacy HTML block] — legacy blocks intentionally removed from the new page.
-// Each block must still exist verbatim in the legacy file (so an exception can never go stale or match loosely),
-// and is cut from the legacy side before every comparison (text, links, attributes, images).
-// M2 review (11 Nov 2026): events that had ended were taken off the active seasonal lists; the event records stay
-// in src/content/destinations/sintra/events/ as history. Justified in docs/m2-report.md §9.
-const ALLOWED_REMOVED = [
-  ['sintra-local-discoveries.html', `<div class="event"><time>6 Nov 2026 · 21:00</time><div><h3>TAXI · Centro Cultural Olga Cadaval</h3><p>A live concert by the Portuguese band TAXI in Sintra. Check the venue's ticketing and event details before making plans. <a href="https://agendaculturaldesintra.pt/agenda">Official cultural agenda ↗</a></p></div></div>`],
-  ['sintra-local-discoveries.html', `<div class="event"><time>7 Nov 2026 · 10:00</time><div><h3>Wine journey between Sintra and Colares</h3><p>A guided visit announced by Sintra Municipality and Adega Regional de Colares for World Wine Tourism Day. Booking requirements and availability apply; confirm with the organiser. <a href="https://cm-sintra.pt/agenda">Municipal event details ↗</a></p></div></div>`],
-  ['sintra-discoveries.html', `<div class="event"><strong>31 Oct · A mystery afternoon at the Archaeological Museum of São Miguel de Odrinhas</strong><p>A themed history and mystery activity. Check age suitability and admission details with the organiser.</p></div>`],
-  ['sintra-discoveries.html', `<div class="event"><strong>6 Nov · TAXI at Centro Cultural Olga Cadaval</strong><p>Portuguese rock concert, listed for 21:00.</p></div>`],
-  ['sintra-discoveries.html', `<div class="event"><strong>7 Nov · Sintra and Colares wine heritage visit</strong><p>A guided wine-themed event at Adega Regional de Colares, listed for 10:00. Booking requirements should be confirmed.</p></div>`],
+// Ended events. The new pages show a listed event only up to and including its last day (src/lib/content/dates.ts);
+// the legacy pages are frozen. So for every listed event that has ended at the validation date, its legacy block is
+// cut from the legacy side before comparing. The block is found by the event's own editorial title and must match
+// exactly one legacy event block, so the exception cannot go stale or match loosely. Nothing is hard-coded here.
+const today = validationDate(process.env);
+const EVENT_PAGES = [
+  // [page, list, block pattern, title field]
+  ['sintra-local-discoveries.html', 'events-local', /<div class="event"><time>[\s\S]*?<\/div><\/div>/g, (e) => e.editorial.local.title],
+  ['sintra-discoveries.html', 'events-directory', /<div class="event"><strong>[\s\S]*?<\/div>/g, (e) => e.editorial.directory.heading],
 ];
-
+const sintra = new URL('../src/content/destinations/sintra/', import.meta.url);
+const eventRecords = new Map(readdirSync(new URL('events/', sintra)).map((f) => parse(readFileSync(new URL(`events/${f}`, sintra), 'utf8'))).map((e) => [e.id, e]));
 // Legacy footer taglines replaced by the single shared footer ("Independent travel guides, made with care in Portugal.")
 const ALLOWED_FOOTER = ['Made with care in Portugal.', 'Independent field companions'];
 
@@ -47,13 +50,27 @@ const imgs = (html) => [...html.matchAll(/<img\b[^>]*>/g)].map((m) => {
 });
 const footerText = (html) => strip((html.match(/<footer[\s\S]*?<\/footer>/) || [''])[0]);
 
-let failures = 0;
+const ENDED_BLOCKS = []; // [page, legacy block, event id]
+const parityProblems = [];
+for (const [page, listKey, pattern, title] of EVENT_PAGES) {
+  const items = parse(readFileSync(new URL(`lists/${listKey}.yaml`, sintra), 'utf8')).items;
+  const blocks = [...readFileSync(page, 'utf8').matchAll(pattern)].map((m) => m[0]);
+  for (const id of items) {
+    const e = eventRecords.get(id);
+    if (!e) { parityProblems.push(`${page}: list item ${id} has no event record`); continue; }
+    if (isEventActive(e, today)) continue;
+    const want = plainInline(title(e));
+    const hits = blocks.filter((b) => strip(b).includes(want));
+    if (hits.length !== 1) { parityProblems.push(`${page}: ended event ${id} matches ${hits.length} legacy blocks (need exactly 1)`); continue; }
+    ENDED_BLOCKS.push([page, hits[0], id]);
+  }
+}
+
+let failures = parityProblems.length;
+for (const p of parityProblems) console.log('✗ ' + p);
 for (const page of PAGES) {
   let oldHtml = readFileSync(page, 'utf8');
-  for (const [p, block] of ALLOWED_REMOVED) if (p === page) {
-    if (!oldHtml.includes(block)) { console.log(`✗ ${page}: allowed removal not found in legacy page:\n    ${block.slice(0, 100)}…`); failures++; continue; }
-    oldHtml = oldHtml.replace(block, '');
-  }
+  for (const [p, block] of ENDED_BLOCKS) if (p === page) oldHtml = oldHtml.replace(block, '');
   const newHtml = readFileSync(`${dist}/${page}`, 'utf8');
   let a = strip(region(oldHtml));
   let b = strip(region(newHtml));
@@ -92,4 +109,4 @@ for (const page of PAGES) {
   failures += problems.length;
 }
 if (failures) { console.error(`\nParity check failed (${failures} problem(s)).`); process.exit(1); }
-console.log('\nEditorial parity: identical text, links and images on all pages (allowed changes: ' + ALLOWED.length + ' text, ' + ALLOWED_REMOVED.length + ' removed legacy blocks).');
+console.log('\nEditorial parity: identical text, links and images on all pages (validation date ' + today + '; allowed changes: ' + ALLOWED.length + ' text; ended events hidden: ' + (ENDED_BLOCKS.map(([p, , id]) => `${id} on ${p}`).join(', ') || 'none') + ').');

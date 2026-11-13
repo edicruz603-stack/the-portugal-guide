@@ -6,6 +6,7 @@ import { getCollection } from 'astro:content';
 import type { Place, Fact, Event, List } from './schemas.ts';
 import type { MapPlace } from '../map/types.ts';
 import { buildMarker } from '../map/markers.ts';
+import { validationDate, activeEventIds } from './dates.ts';
 
 export interface DestinationContent {
   places: Map<string, Place>;
@@ -53,15 +54,19 @@ export async function placesInList<K extends keyof Place['editorial']>(destinati
   });
 }
 
-export async function eventsInList<K extends keyof Event['editorial']>(destination: string, listId: string, context: K) {
+/**
+ * Events of a list that are still on at the validation date (see dates.ts: shown up to and including
+ * their last day). Ended events stay in the content as history; no list needs editing when one ends.
+ */
+export async function eventsInList<K extends keyof Event['editorial']>(destination: string, listId: string, context: K, today: string = validationDate(process.env)) {
   const content = await loadDestination(destination);
   const l = list(content, listId);
   if (l.context !== `event:${context}`) throw new Error(`${listId} renders "${l.context}", not "event:${context}"`);
-  return l.items.map((id) => {
-    const event = content.events.get(id);
-    const editorial = event?.editorial[context];
-    if (!event || !editorial) throw new Error(`${listId}: ${id} has no ${context} text`);
-    return { event, editorial: editorial as NonNullable<Event['editorial'][K]> };
+  // every listed event must be renderable, ended or not, so a list never breaks when its date passes
+  for (const id of l.items) if (!content.events.get(id)?.editorial[context]) throw new Error(`${listId}: ${id} has no ${context} text`);
+  return activeEventIds(l.items, content.events, today).map((id) => {
+    const event = content.events.get(id)!;
+    return { event, editorial: event.editorial[context] as NonNullable<Event['editorial'][K]> };
   });
 }
 
