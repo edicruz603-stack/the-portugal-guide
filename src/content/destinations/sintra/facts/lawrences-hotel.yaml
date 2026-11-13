@@ -1,0 +1,12 @@
+place: place.sintra.lawrences-hotel
+facts:
+- id: fact.sintra.lawrences-hotel.founded
+  kind: history
+  value:
+    founded: 1764
+  text: Founded in 1764
+  quote: Founded in 1764
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported

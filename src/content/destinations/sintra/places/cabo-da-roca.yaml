@@ -1,0 +1,8 @@
+id: place.sintra.cabo-da-roca
+destination: destination.sintra
+kind: area
+zone: zone.sintra.atlantic-coast
+name:
+  aliases:
+    - Cabo da Roca
+editorial: {}

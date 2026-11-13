@@ -1,0 +1,10 @@
+id: place.sintra.cabo-da-roca-lighthouse
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.atlantic-coast
+part_of: place.sintra.cabo-da-roca
+name:
+  official: Cabo da Roca Lighthouse
+  official_source: src.parques-de-sintra.cabo-da-roca-lighthouse
+  aliases: []
+editorial: {}

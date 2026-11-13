@@ -1,0 +1,12 @@
+place: place.sintra.restaurante-regional
+facts:
+- id: fact.sintra.restaurante-regional.address
+  kind: address
+  value:
+    street: Travessa do Município 2
+  text: Travessa do Município 2
+  quote: Travessa do Município 2.
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported

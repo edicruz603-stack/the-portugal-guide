@@ -1,0 +1,40 @@
+id: place.sintra.queijadas-da-sapa
+destination: destination.sintra
+kind: pastry-shop
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Queijadas da Sapa
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Pastries
+    title: Queijadas da Sapa
+    text: A traditional place to focus on the queijada itself. Compare the flavour and texture with another producer.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Queijadas+da+Sapa+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Queijadas+da+Sapa+Sintra
+        external: true
+  local:
+    tag: Historic pastry shop · queijadas
+    title: Queijadas da Sapa
+    text: A traditional stop for queijadas, the small cheese-based tarts associated with Sintra. A useful comparison with the Piriquita if you want to understand the town's pastry traditions.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Queijadas+da+Sapa+Sintra
+        external: false
+  food_card:
+    title: Queijadas da Sapa
+    paragraphs:
+      - "**For:** a traditional queijada and a slower tea-room stop. The shop’s history is traced to Maria Sapa in 1756 and its move to Volta do Duche in 1887."
+      - "**Address:** Volta do Duche 12."
+    links:
+      - label: Open in Google Maps ↗
+        href: https://www.google.com/maps/search/?api=1&query=Queijadas+da+Sapa+Volta+do+Duche+12+Sintra
+        external: true
+      - label: Historic shop profile ↗
+        href: https://www.comerciocomhistoria.gov.pt/en/listings/queijadas-da-sapa-3707/
+        external: true

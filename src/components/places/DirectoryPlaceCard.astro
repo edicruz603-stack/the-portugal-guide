@@ -1,0 +1,10 @@
+---
+import type { Place } from '../../lib/content/schemas.ts';
+import { inline, plain } from '../../lib/content/inline.ts';
+import Links from './Links.astro';
+interface Props { editorial: NonNullable<Place['editorial']['directory']> }
+const { editorial: e } = Astro.props;
+// search index: title + zone label + text, as in the previous edition
+const search = `${plain(e.title)} ${plain(e.meta.split(' · ')[0] ?? '')} ${plain(e.text)}`.toLowerCase();
+---
+<article class="place" data-type={e.filter} data-search={search}><div class="meta" set:html={inline(e.meta)} /><h3 set:html={inline(e.title)} /><p set:html={inline(e.text)} /><div class="links"><Links links={e.links} separator="" /></div></article>

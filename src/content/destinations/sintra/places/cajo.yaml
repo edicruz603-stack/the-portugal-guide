@@ -1,0 +1,20 @@
+id: place.sintra.cajo
+destination: destination.sintra
+kind: restaurant
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Cajó
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Petiscos
+    title: Cajó
+    text: Portuguese sharing plates; a useful alternative to a formal meal.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Cajo+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Cajo+Sintra
+        external: true

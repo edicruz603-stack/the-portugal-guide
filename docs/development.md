@@ -31,6 +31,20 @@ tests/unit · tests/e2e        Vitest · Playwright (mobile 390, tablet 820, des
 
 - Never push to `main`. Work on a branch, open a PR into `develop`; CI must be green before review.
 - Production deploys only with explicit owner approval.
-- Every image on a page needs a record in `src/content/images.json`; commercial builds (`PUBLICATION_MODE=commercial`) refuse uncleared images.
-- Coordinates marked `official` need a source ID from `src/content/sources.json`.
+- Every build validates content first (an Astro build hook runs `scripts/validate-content.ts`; `npx astro build` cannot skip it). Any critical issue stops the build.
+- Publication mode: `free` (default, announced in the output) or `commercial`, set with `PUBLICATION_MODE` or `--mode=` on the validator. `npm run build:commercial` / `npm run validate:commercial` refuse uncleared images (C11). An unknown or contradicting mode is an error (exit 2), never a silent fallback to free.
+- Every map marker carries its coordinate fact's verification (`checked`, `reported`, `confirm-first`, `unresolved`) plus source and provenance; the map never labels a coordinate more certain than its fact.
+- Events expire by themselves: a listed event is shown up to and including its last day (`ends_on`, or `starts_on` for one-day events) and disappears the next day. Ended events stay in `events/` and in their lists as history; nobody edits YAML when an event ends. "Today" is the validation date: `VALIDATION_DATE=YYYY-MM-DD`, otherwise the calendar date in Europe/Lisbon; the build hook fixes it once per build (`src/lib/content/dates.ts`). W02 reports listed events that have ended; W07 reports an event list with nothing left to show. Pages are static, so a page changes only when the site is rebuilt.
+- Reports: `npm run validate` writes `dist-reports/content-status.md` (incl. pending items by category); `npm run report:inventory` regenerates `docs/content/sintra-inventory-reconciliation.md`.
 - The legacy root HTML files are what production serves today. Do not edit them; `scripts/port-legacy.mjs` regenerates the Astro pages from them until Phase 2 replaces that with structured content.
+
+## Content (M2)
+
+Places, facts, events and lists live in `src/content/destinations/<destination>/` as YAML (one record per file),
+validated by the Zod schemas in `src/lib/content/schemas.ts`. Pages read them only through `src/lib/content/repository.ts`.
+
+- Add a place: create `places/<key>.yaml` with a new `id` (`place.<destination>.<key>`), add it to a list in `lists/`, run `npm run ids:lock`.
+- Add a fact: add it to `facts/<place-key>.yaml` with `source`, `observed_on`, `status` and `provenance`; add `checked_on` only if you verified it yourself against an operator or official page.
+- Sources disagree: keep every value, give them the same `conflict_group`, status `unresolved`.
+- Never rename or delete an ID; retire it in `src/content/ids.lock.json`.
+- `npm run validate` writes `dist-reports/content-status.md` (inventory, coverage, conflicts, pending).

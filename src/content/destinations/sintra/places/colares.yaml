@@ -1,0 +1,8 @@
+id: place.sintra.colares
+destination: destination.sintra
+kind: area
+zone: zone.sintra.colares
+name:
+  aliases:
+    - Colares
+editorial: {}

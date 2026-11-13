@@ -1,0 +1,7 @@
+id: place.sintra.museu-do-bonsai
+destination: destination.sintra
+kind: museum
+name:
+  aliases:
+    - Museu do Bonsai
+editorial: {}

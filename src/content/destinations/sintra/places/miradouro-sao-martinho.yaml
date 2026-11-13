@@ -1,0 +1,56 @@
+id: place.sintra.miradouro-sao-martinho
+destination: destination.sintra
+kind: viewpoint
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Miradouro de São Martinho
+    - Miradouro do Adro de São Martinho
+    - Miradouro do Adro de São Martinho · free
+map:
+  coordinates: fact.sintra.miradouro-sao-martinho.coordinates-approximate
+  category: free
+  label: Miradouro do Adro de São Martinho · free
+  zone_label: Free viewpoint
+editorial:
+  directory:
+    filter: free
+    meta: Historic Centre · Free viewpoint
+    title: Miradouro de São Martinho
+    text: "A quick village panorama: notice the National Palace chimneys and the dramatic relationship between the rooftops and the hills."
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Miradouro+do+Adro+de+Sao+Martinho+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://visitsintra.travel/
+        external: true
+  local:
+    tag: Free viewpoint
+    title: Miradouro do Adro de São Martinho
+    text: A rewarding viewpoint over the historic centre and the National Palace, with the castle and Pena rising above the town. A good short pause when exploring the old village. The approach uses historic streets and uneven surfaces.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Miradouro+do+Adro+de+Sao+Martinho+Sintra
+        external: false
+      - label: Visit Sintra ↗
+        href: https://visitsintra.travel/pt/visitar/miradouros-e-cascatas/miradouro-do-adro-da-igreja-de-s-martinho
+        external: false
+  field_guide:
+    label: FREE · VIEWPOINT
+    title: Miradouro do Adro de São Martinho
+    paragraphs:
+      - This is the little viewpoint I would not want visitors to miss. From the churchyard terrace you can frame the National Palace, the white houses of the old town and, higher up, the Moorish Castle and Pena. On a clear day, the view stretches towards the coast.
+      - "**Why stop:** One of the best quick panoramas in the historic centre, with benches for a proper pause."
+      - "**Best moment:** Late afternoon, when the light softens over the village."
+      - "**Entry:** Free public viewpoint."
+    links:
+      - label: Open viewpoint map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Miradouro+do+Adro+da+Igreja+de+S+Martinho+Sintra
+        external: true
+      - label: Official viewpoint details ↗
+        href: https://visitsintra.travel/pt/visitar/miradouros-e-cascatas/miradouro-do-adro-da-igreja-de-s-martinho
+        external: true
+  map_link:
+    title: Miradouro de São Martinho
+    href: https://www.google.com/maps/search/?api=1&query=Miradouro+do+Adro+de+S+Martinho+Sintra

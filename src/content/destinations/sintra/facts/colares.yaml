@@ -1,0 +1,43 @@
+place: place.sintra.colares
+facts:
+- id: fact.sintra.colares.demarcated
+  kind: history
+  value:
+    since: 1908
+  text: Colares wine region demarcated since 1908
+  source: src.visit-sintra.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+- id: fact.sintra.colares.ungrafted-vines
+  kind: history
+  value:
+    ungrafted: true
+  text: Ramisco vines grown ungrafted in sandy soils
+  source: src.wines-of-portugal
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+- id: fact.sintra.colares.pr8-length-hiking-page
+  kind: route
+  subject: PR8 trail length
+  value:
+    length_km: 15.5
+  text: 'PR8 Vinho de Colares trail: circular, approx. 15.5 km (hiking page)'
+  source: src.visit-sintra.hiking
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: colares-pr8-length
+- id: fact.sintra.colares.pr8-length-itinerary-page
+  kind: route
+  subject: PR8 trail length
+  value:
+    length_km: 15
+  text: 'PR8 trail: circular, about 15 km (three-day itinerary page)'
+  source: src.visit-sintra.itinerary-3-days
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: colares-pr8-length
+  note: The PDF edition used “about 15 km”.

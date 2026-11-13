@@ -12,6 +12,13 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 
+// Retired in M2: pages now render places and events from src/content/destinations. Re-running this
+// script would overwrite them with hard-coded lists again. Kept only as a record of the Phase 1 port.
+if (!process.argv.includes('--i-know-this-overwrites-m2-pages')) {
+  console.error('port-legacy.mjs is retired (M2). See docs/m2-report.md.');
+  process.exit(1);
+}
+
 const root = new URL('..', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
 const write = (p, s) => writeFileSync(new URL(p, root), s);

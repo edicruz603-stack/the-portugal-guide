@@ -1,0 +1,78 @@
+place: place.sintra.moorish-castle
+facts:
+- id: fact.sintra.moorish-castle.coordinates-monument
+  kind: coordinates
+  subject: monument
+  value:
+    lat: 38.79007
+    lon: -9.3893
+    dms: 38°47'24.25"N 9°23'21.47"W
+    precision: rounded to the existing map marker (4–5 decimals)
+  text: Monument 38°47’24.25”N 9°23’21.47”W
+  source: src.parques-de-sintra.moorish-castle
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.moorish-castle.coordinates-entrance
+  kind: coordinates
+  subject: entrance
+  value:
+    lat: 38.792556
+    lon: -9.388194
+    dms: 38°47'33.2"N 9°23'17.5"W
+  text: Entrance 38°47’33.2”N 9°23’17.5”W
+  source: src.parques-de-sintra.ticket-office.moorish-castle
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  note: A different point from the monument coordinates, not a conflict.
+- id: fact.sintra.moorish-castle.hours
+  kind: hours
+  value:
+    opens: 09:30
+    closes: '18:00'
+    last_entry: '17:30'
+  text: 09:30–18:00; last ticket and last entry 17:30
+  source: src.parques-de-sintra.ticket-office.moorish-castle
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.moorish-castle.price
+  kind: price
+  value:
+    adult: 12
+    youth: 10
+    senior: 10
+    family: 33
+    currency: EUR
+  text: Adult €12, youth €10, senior €10, family €33
+  source: src.parques-de-sintra.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.moorish-castle.private-traffic
+  kind: rule
+  value:
+    private_vehicles: false
+  text: Private traffic is not permitted on the access roads
+  source: src.parques-de-sintra.ticket-office.moorish-castle
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.moorish-castle.founded
+  kind: history
+  value:
+    century: 10
+  text: Founded in the 10th century
+  source: src.parques-de-sintra.moorish-castle
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked

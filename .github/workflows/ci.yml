@@ -38,8 +38,17 @@ jobs:
       - name: Unit tests
         run: npm test
 
-      - name: Content validation + production build
+      - name: Content validation (free mode) + production build
         run: npm run build
+
+      - name: Commercial build must refuse uncleared images
+        # the validation hook in astro.config.mjs must stop a direct `astro build` in commercial mode
+        run: |
+          if PUBLICATION_MODE=commercial npx astro build --outDir "$RUNNER_TEMP/commercial-dist" > "$RUNNER_TEMP/commercial.log" 2>&1; then
+            cat "$RUNNER_TEMP/commercial.log"; echo "::error::commercial build passed with uncleared images"; exit 1
+          fi
+          grep -q "\[C11\]" "$RUNNER_TEMP/commercial.log" || { cat "$RUNNER_TEMP/commercial.log"; echo "::error::commercial build failed for a reason other than C11"; exit 1; }
+          echo "Commercial build refused as expected (C11)."
 
       - name: Internal links
         run: npm run test:links

@@ -1,94 +1,156 @@
+/**
+ * Every critical rule (C01–C13) is demonstrated by a fixture that must fail, plus the real dataset
+ * passing with zero critical issues. Fixtures are small mutations of the real content.
+ */
 import { describe, expect, it } from 'vitest';
-import { validateContent, hasCritical, type ContentInput, type Options } from '../../src/lib/validation/validate.ts';
-import { sintraMapPlaces } from '../../src/data/sintra-map.ts';
-import sources from '../../src/content/sources.json';
-import images from '../../src/content/images.json';
-import homeDestinations from '../../src/data/home-destinations.json';
+import { fileURLToPath } from 'node:url';
+import { loadContentFromDisk } from '../../src/lib/content/load-fs.ts';
+import { validateContent, hasCritical, DEFAULT_OPTIONS, parseDms, type ContentInput, type Options } from '../../src/lib/validation/validate.ts';
 
-const pages = {
-  'index.astro': '', 'sintra.astro': `<img src="${images[0]!.url}">`,
-  'sintra-local-discoveries.astro': '', 'sintra-romantic-guide.astro': '', 'sintra-discoveries.astro': '',
+const root = fileURLToPath(new URL('../../', import.meta.url));
+const real = loadContentFromDisk(root);
+const opts: Options = { ...DEFAULT_OPTIONS, today: '2026-11-11' };
+const fresh = (): ContentInput => structuredClone(real);
+const run = (input: ContentInput, o: Options = opts) => validateContent(input, o);
+const fails = (input: ContentInput, rule: string, text?: RegExp, o?: Options) => {
+  const hits = run(input, o).filter((i) => i.level === 'critical' && i.rule === rule && (!text || text.test(`${i.where} ${i.message}`)));
+  expect(hits.length, `expected a critical ${rule}${text ? ` matching ${text}` : ''}`).toBeGreaterThan(0);
 };
-const base = (): ContentInput => structuredClone({ sources, images, mapPlaces: sintraMapPlaces, homeDestinations, pages });
-const free: Options = { mode: 'free', today: '2026-11-07', sourceReviewDays: 90 };
-const levels = (input: ContentInput, opts = free) => validateContent(input, opts);
+// typed helpers to reach into fixtures
+type Rec = Record<string, any>;
+const place = (i: ContentInput, key: string) => (i.places as Rec[]).find((p) => p.id === `place.sintra.${key}`)!;
+const factSet = (i: ContentInput, key: string) => (i.factSets as Rec[]).find((s) => s.place === `place.sintra.${key}`)!;
+const fact = (i: ContentInput, id: string) => (i.factSets as Rec[]).flatMap((s) => s.facts).find((f: Rec) => f.id === id)!;
 
-describe('content validation levels', () => {
-  it('current repository content has no critical issues in free mode', () => {
-    expect(hasCritical(levels(base()))).toBe(false);
+describe('the real dataset', () => {
+  it('has no critical issues', () => {
+    const critical = run(fresh()).filter((i) => i.level === 'critical');
+    expect(critical, JSON.stringify(critical, null, 1)).toEqual([]);
   });
-
-  it('CRITICAL: duplicate stable IDs', () => {
-    const input = base();
-    input.mapPlaces.push({ ...(sintraMapPlaces[0]!) });
-    expect(levels(input).some((i) => i.level === 'critical' && /duplicate ID/.test(i.message))).toBe(true);
-  });
-
-  it('CRITICAL: malformed IDs', () => {
-    const input = base();
-    (input.mapPlaces[0] as { id: string }).id = 'Pena Palace';
-    expect(hasCritical(levels(input))).toBe(true);
-  });
-
-  it('CRITICAL: broken source reference', () => {
-    const input = base();
-    (input.mapPlaces[0] as { source: string }).source = 'src.nowhere';
-    expect(levels(input).some((i) => i.level === 'critical' && /broken reference/.test(i.message))).toBe(true);
-  });
-
-  it('CRITICAL: official coordinates without a source', () => {
-    const input = base();
-    delete (input.mapPlaces[0] as { source?: string }).source;
-    expect(levels(input).some((i) => /need a source/.test(i.message))).toBe(true);
-  });
-
-  it('CRITICAL: coordinates outside mainland Portugal', () => {
-    const input = base();
-    (input.mapPlaces[0] as { lat: number }).lat = 51.5;
-    expect(hasCritical(levels(input))).toBe(true);
-  });
-
-  it('CRITICAL: a page image without a source/credit record', () => {
-    const input = base();
-    input.pages['sintra.astro'] += '<img src="https://example.com/unknown.jpg" alt="">';
-    expect(levels(input).some((i) => i.level === 'critical' && /without a source\/credit record/.test(i.message))).toBe(true);
-  });
-
-  it('CRITICAL: contributor image without written permission', () => {
-    const input = base();
-    Object.assign(input.images[0] as object, { rights_category: 'contributor' });
-    expect(levels(input).some((i) => /written-permission/.test(i.message))).toBe(true);
-  });
-
-  it('uncleared image is a WARNING in free mode and CRITICAL in commercial mode', () => {
-    const issues = levels(base());
-    expect(issues.some((i) => i.level === 'warning' && /commercial/.test(i.message))).toBe(true);
-    expect(hasCritical(levels(base(), { ...free, mode: 'commercial' }))).toBe(true);
-  });
-
-  it('WARNING: source older than the review window, never blocking', () => {
-    const issues = levels(base(), { ...free, today: '2027-06-01' });
-    expect(issues.some((i) => i.level === 'warning' && /last seen/.test(i.message))).toBe(true);
-    expect(hasCritical(issues)).toBe(false);
-  });
-
-  it('EDITORIAL PENDING: approximate coordinates are flagged, not blocking', () => {
-    const issues = levels(base());
-    const pending = issues.filter((i) => i.level === 'pending' && /approximate/.test(i.message));
-    expect(pending.length).toBe(3);
-  });
-
-  it('CRITICAL: home destination linking to a missing page', () => {
-    const input = base();
-    (input.homeDestinations[0] as { href: string }).href = 'lisbon.html';
-    expect(levels(input).some((i) => /does not exist/.test(i.message))).toBe(true);
+  it('locks every ID it defines', () => {
+    expect(run(fresh()).filter((i) => i.rule === 'W05')).toEqual([]);
   });
 });
 
-describe('map data', () => {
-  it('Regaleira and Monserrate use the operators’ published coordinates', () => {
-    const byId = Object.fromEntries(sintraMapPlaces.map((p) => [p.id, p]));
-    expect(byId['place.sintra.quinta-da-regaleira']).toMatchObject({ lat: 38.795875, lon: -9.397281, precision: 'official' });
-    expect(byId['place.sintra.monserrate']).toMatchObject({ lat: 38.791861, lon: -9.419192, precision: 'official' });
+describe('CRITICAL rules each fail on a fixture', () => {
+  it('C01 schema: malformed ID', () => { const i = fresh(); place(i, 'pena-palace').id = 'Pena Palace'; fails(i, 'C01'); });
+  it('C01 schema: fact without a source', () => { const i = fresh(); delete fact(i, 'fact.sintra.pena-palace.hours-park').source; fails(i, 'C01', /source/); });
+  it('C01 schema: fact without observed_on', () => { const i = fresh(); delete fact(i, 'fact.sintra.pena-palace.hours-park').observed_on; fails(i, 'C01', /observed_on/); });
+  it('C01 schema: fact without status', () => { const i = fresh(); delete fact(i, 'fact.sintra.pena-palace.hours-park').status; fails(i, 'C01', /status/); });
+  it('C01 schema: HTML inside editorial text', () => { const i = fresh(); place(i, 'tascantiga').editorial.local.text = 'Small <b>plates</b>'; fails(i, 'C01', /HTML/); });
+
+  it('C02 duplicate IDs', () => { const i = fresh(); (i.places as Rec[]).push(structuredClone(place(i, 'tascantiga'))); fails(i, 'C02', /duplicate ID/); });
+  it('C02 two fact files for one place', () => { const i = fresh(); const extra = structuredClone(fact(i, 'fact.sintra.pena-palace.hours-park')); extra.id = 'fact.sintra.pena-palace.second-file'; (i.factSets as Rec[]).push({ place: 'place.sintra.pena-palace', facts: [extra] }); fails(i, 'C02', /more than one fact file/); });
+
+  it('C03 immutable IDs: renaming a locked ID fails', () => {
+    const i = fresh();
+    const p = place(i, 'tascantiga'); p.id = 'place.sintra.tasca-antiga';
+    for (const l of i.lists as Rec[]) l.items = l.items.map((x: string) => (x === 'place.sintra.tascantiga' ? p.id : x));
+    const set = factSet(i, 'tascantiga'); set.place = p.id;
+    for (const f of set.facts) f.id = f.id.replace('.tascantiga.', '.tasca-antiga.');
+    fails(i, 'C03', /place\.sintra\.tascantiga/);
+  });
+  it('C03 immutable IDs: removing a locked ID fails', () => {
+    const i = fresh();
+    i.places = (i.places as Rec[]).filter((p) => p.id !== 'place.sintra.museu-ferreira-de-castro');
+    for (const l of i.lists as Rec[]) l.items = l.items.filter((x: string) => x !== 'place.sintra.museu-ferreira-de-castro');
+    fails(i, 'C03', /museu-ferreira-de-castro/);
+  });
+  it('C03 retiring an ID properly is accepted', () => {
+    const i = fresh();
+    i.places = (i.places as Rec[]).filter((p) => p.id !== 'place.sintra.museu-ferreira-de-castro');
+    for (const l of i.lists as Rec[]) l.items = l.items.filter((x: string) => x !== 'place.sintra.museu-ferreira-de-castro');
+    (i.idLock as Rec).retired['place.sintra.museu-ferreira-de-castro'] = { reason: 'fixture' };
+    expect(run(i).filter((x) => x.rule === 'C03')).toEqual([]);
+  });
+
+  it('C04 broken reference: fact source', () => { const i = fresh(); fact(i, 'fact.sintra.pena-palace.hours-park').source = 'src.nowhere'; fails(i, 'C04', /src\.nowhere/); });
+  it('C04 broken reference: list item', () => { const i = fresh(); (i.lists as Rec[])[0]!.items.push('place.sintra.atlantis'); fails(i, 'C04', /atlantis/); });
+  it('C04 broken reference: zone', () => { const i = fresh(); place(i, 'cajo').zone = 'zone.sintra.nowhere'; fails(i, 'C04', /zone\.sintra\.nowhere/); });
+  it('C04 broken reference: part_of', () => { const i = fresh(); place(i, 'national-palace-gardens').part_of = 'place.sintra.nowhere'; fails(i, 'C04', /part_of/); });
+  it('C04 broken reference: map coordinates fact', () => { const i = fresh(); place(i, 'villa-sassetti').map.coordinates = 'fact.sintra.villa-sassetti.nowhere'; fails(i, 'C04', /map\.coordinates/); });
+  it('C04 list renders a context the place does not have', () => { const i = fresh(); (i.lists as Rec[]).find((l) => l.id === 'list.sintra.romantic')!.items.push('place.sintra.cajo'); fails(i, 'C04', /romantic/); });
+
+  it('C05 an imported website value cannot appear verified', () => {
+    const i = fresh(); const f = fact(i, 'fact.sintra.casa-piriquita.founded'); f.status = 'checked'; f.checked_on = '2026-11-11';
+    fails(i, 'C05', /legacy-website|own-edition/);
+  });
+  it('C05 checked_on on a reported fact', () => { const i = fresh(); fact(i, 'fact.sintra.casa-piriquita.founded').checked_on = '2026-11-11'; fails(i, 'C05', /only allowed for status checked/); });
+  it('C05 checked fact without checked_on', () => { const i = fresh(); delete fact(i, 'fact.sintra.pena-palace.hours-park').checked_on; fails(i, 'C05', /requires checked_on/); });
+  it('C05 checked from a secondary source', () => {
+    const i = fresh(); const f = fact(i, 'fact.sintra.museu-do-bonsai.founder'); f.status = 'checked'; f.checked_on = '2026-11-07'; f.provenance = 'official-page-read';
+    fails(i, 'C05', /secondary/);
+  });
+  it('C05 dates in the future', () => { const i = fresh(); fact(i, 'fact.sintra.pena-palace.hours-park').checked_on = '2027-01-01'; fails(i, 'C05', /future/); });
+
+  it('C06 a conflict cannot be silently resolved', () => { const i = fresh(); fact(i, 'fact.sintra.monserrate.coordinates-a').status = 'checked'; fact(i, 'fact.sintra.monserrate.coordinates-a').checked_on = '2026-11-11'; fails(i, 'C06', /must stay unresolved/); });
+  it('C06 a conflict group needs two facts', () => {
+    const i = fresh(); const s = factSet(i, 'monserrate'); s.facts = s.facts.filter((f: Rec) => f.id !== 'fact.sintra.monserrate.coordinates-b');
+    (i.idLock as Rec).retired['fact.sintra.monserrate.coordinates-b'] = { reason: 'fixture' };
+    fails(i, 'C06', /at least two/);
+  });
+  it('C06 unresolved without a conflict group', () => { const i = fresh(); delete fact(i, 'fact.sintra.monserrate.coordinates-b').conflict_group; fails(i, 'C06'); });
+
+  it('C07 duplicate place (same name under two IDs)', () => {
+    const i = fresh(); const copy = structuredClone(place(i, 'tascantiga')); copy.id = 'place.sintra.tascantiga-2'; (i.places as Rec[]).push(copy);
+    fails(i, 'C07', /also used by/);
+  });
+
+  it('C08 coordinates outside Portugal', () => { const i = fresh(); fact(i, 'fact.sintra.parque-da-liberdade.coordinates-approximate').value.lat = 51.5; fails(i, 'C08', /outside/); });
+  it('C08 official coordinates that drift from the published DMS', () => { const i = fresh(); fact(i, 'fact.sintra.villa-sassetti.coordinates').value.lat = 38.80; fails(i, 'C08', /m from the published value/); });
+  it('C08 official coordinates without the DMS text', () => { const i = fresh(); delete fact(i, 'fact.sintra.villa-sassetti.coordinates').value.dms; fails(i, 'C08', /DMS/); });
+
+  it('C09 a quote that is not in the editorial text', () => { const i = fresh(); fact(i, 'fact.sintra.casa-piriquita.founded').quote = 'Founded in 1863'; fails(i, 'C09'); });
+
+  it('C10 a hard-coded place card in a page', () => { const i = fresh(); i.pages['sintra.astro'] += '<article class="highlight-card"><h3>Tascantiga</h3></article>'; fails(i, 'C10', /tascantiga/); });
+  it('C10 a hard-coded directory list in a page', () => { const i = fresh(); i.pages['sintra-discoveries.astro'] += '<article class="place" data-type="food"></article>'; fails(i, 'C10', /card markup/); });
+  it('C10 a hard-coded map link to a place', () => { const i = fresh(); i.pages['sintra.astro'] += '<a href="https://www.google.com/maps/search/?api=1&amp;query=Casa+Piriquita+Sintra">x</a>'; fails(i, 'C10', /casa-piriquita/); });
+
+  it('C11 a page image without a rights record', () => { const i = fresh(); i.pages['sintra.astro'] += '<img src="https://example.com/x.jpg" alt="">'; fails(i, 'C11', /without a source\/credit record/); });
+  it('C11 uncleared images block a commercial build', () => { fails(fresh(), 'C11', /commercial/, { ...opts, mode: 'commercial' }); });
+  it('C11 contributor image without written permission', () => { const i = fresh(); (i.images as Rec[])[0]!.rights_category = 'contributor'; fails(i, 'C11', /written-permission/); });
+
+  it('C12 event ending before it starts', () => { const i = fresh(); (i.events as Rec[])[0]!.ends_on = '2020-01-01'; fails(i, 'C12'); });
+  it('C13 homepage card linking to a missing page', () => { const i = fresh(); (i.homeDestinations as Rec[])[0]!.href = 'lisbon.html'; fails(i, 'C13'); });
+});
+
+describe('WARNING and EDITORIAL PENDING never block', () => {
+  it('unverified facts are reported but not critical', () => {
+    const issues = run(fresh());
+    expect(issues.some((i) => i.rule === 'P01')).toBe(true);
+    expect(hasCritical(issues)).toBe(false);
+  });
+  it('W02 flags listed events that ended (hidden automatically); unlisted ended events are silent history', () => {
+    const i = fresh();
+    const evs = i.events as Rec[];
+    const unlisted: Rec = { ...evs.find((e) => e.id === 'event.sintra.taxi-concert')!, id: 'event.sintra.old-unlisted', starts_on: '2020-01-01' };
+    delete unlisted.ends_on; evs.push(unlisted);
+    const w02 = run(i).filter((x) => x.rule === 'W02').map((x) => x.where).sort();
+    expect(w02).toEqual(['event.sintra.colares-wine-journey', 'event.sintra.masmo-mystery-afternoon', 'event.sintra.taxi-concert']);
+    expect(run(i).find((x) => x.rule === 'W02')!.message).toMatch(/hidden automatically/);
+    expect(hasCritical(run(i))).toBe(false);
+  });
+  it('W02 follows the validation date: Mutatis Mutandis joins on 16 Nov, not on 15 Nov', () => {
+    const w = (today: string) => run(fresh(), { ...opts, today }).filter((x) => x.rule === 'W02').map((x) => x.where);
+    expect(w('2026-11-15')).not.toContain('event.sintra.mutatis-mutandis');
+    expect(w('2026-11-16')).toContain('event.sintra.mutatis-mutandis');
+  });
+  it('W07 flags an event list with nothing left to show', () => {
+    expect(run(fresh()).filter((x) => x.rule === 'W07')).toEqual([]);
+    // last recorded events end 3 Jan 2027 (Mordidas do Tempo, Vinil Musa): from 4 Jan both diaries are empty
+    expect(run(fresh(), { ...opts, today: '2027-01-03' }).filter((x) => x.rule === 'W07')).toEqual([]);
+    expect(run(fresh(), { ...opts, today: '2027-01-04' }).filter((x) => x.rule === 'W07').map((x) => x.where).sort()).toEqual(['list.sintra.events-directory', 'list.sintra.events-local']);
+  });
+  it('facts past their review window become warnings, not errors', () => {
+    const issues = run(fresh(), { ...opts, today: '2027-06-01' });
+    expect(issues.some((i) => i.rule === 'W01')).toBe(true);
+    expect(issues.filter((i) => i.level === 'critical' && i.rule !== 'C05')).toEqual([]);
+  });
+});
+
+describe('helpers', () => {
+  it('parses DMS in operator formats', () => {
+    expect(parseDms('38°47\'44.6"N 9°23\'26.4"W')![0]).toBeCloseTo(38.795722, 5);
+    expect(parseDms('38º 47’ 30,70” N 9º 25’ 9,09” W')![1]).toBeCloseTo(-9.419192, 5);
   });
 });

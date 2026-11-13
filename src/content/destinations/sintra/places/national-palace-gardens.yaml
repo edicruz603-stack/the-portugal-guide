@@ -1,0 +1,55 @@
+id: place.sintra.national-palace-gardens
+destination: destination.sintra
+kind: garden
+zone: zone.sintra.historic-centre
+part_of: place.sintra.national-palace
+name:
+  aliases:
+    - Jardins do Palácio Nacional
+    - National Palace gardens
+    - Gardens of the National Palace
+    - Palácio Nacional de Sintra · gardens (free entry)
+map:
+  coordinates: fact.sintra.national-palace.coordinates
+  category: monument
+  label: Palácio Nacional de Sintra · gardens (free entry)
+  zone_label: Historic centre
+editorial:
+  directory:
+    filter: free
+    meta: Historic Centre · Free garden access
+    title: Jardins do Palácio Nacional
+    text: Enjoy a calmer part of the palace complex without paying for the interior. Verify current garden access before arrival.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Jardins+Palacio+Nacional+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  local:
+    tag: Free garden area · palace
+    title: National Palace gardens
+    text: The gardens can be visited without buying the ticket for the palace interior. This is a useful budget-friendly stop in the heart of the old town. Check the official visitor page for current garden access, opening hours and any temporary restrictions.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Palacio+Nacional+de+Sintra+Jardins
+        external: false
+      - label: Official details ↗
+        href: https://www.parquesdesintra.pt/pt/parques-monumentos/palacio-nacional-sintra/
+        external: false
+  field_guide:
+    label: FREE · GARDEN
+    title: Gardens of the National Palace
+    paragraphs:
+      - "Here is a useful detail many visitors miss: the National Palace’s gardens have free admission, even though entry to the palace interiors is ticketed. It is an easy way to enjoy a quieter corner of the royal complex without committing to the full visit."
+      - "**Why stop:** A calm pause right in the historic centre, especially if you are saving your budget for another monument."
+      - "**Current published hours:** 09:30–18:30; last entry 18:00. Check the official page before visiting."
+      - "**Entry:** Free to the gardens; palace interiors require a ticket."
+    links:
+      - label: Open garden map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Jardins+Palacio+Nacional+de+Sintra
+        external: true
+      - label: Official details ↗
+        href: https://www.parquesdesintra.pt/pt/parques-monumentos/palacio-nacional-sintra/
+        external: true

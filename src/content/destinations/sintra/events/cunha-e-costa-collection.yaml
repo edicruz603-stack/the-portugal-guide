@@ -1,0 +1,20 @@
+id: event.sintra.cunha-e-costa-collection
+destination: destination.sintra
+title: 'A Coleção de Cunha e Costa: Um Portugal que nos Une'
+starts_on: '2026-06-01'
+ends_on: '2026-12-31'
+venue: Natural History Museum of Sintra
+place: place.sintra.natural-history-museum
+source: src.tpg.website-2026
+provenance: legacy-website
+observed_on: '2026-11-11'
+status: reported
+editorial:
+  local:
+    when: 1 Jun – 31 Dec 2026
+    title: 'A Coleção de Cunha e Costa: Um Portugal que nos Une'
+    text: An exhibition at the Natural History Museum exploring Portuguese popular culture and traditions. Confirm museum opening hours before visiting.
+    link:
+      label: Official cultural agenda ↗
+      href: https://agendaculturaldesintra.pt/agenda
+      external: false
