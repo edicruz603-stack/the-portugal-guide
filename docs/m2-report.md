@@ -249,17 +249,17 @@ Classification at validation date 2026-11-13 (`docs/content/sintra-content-statu
 Editorial blockers: 27 visible items without verification (3 unresolved: gardens last entry, Monserrate and gardens markers); 33 research items; 6 places without text; 16 without facts; diary research.
 Commercial blockers: 4 image rights (C11); in addition, category 1 should be resolved before any paid edition.
 
-Decisions taken by the owner on 15 Nov 2026 (§10.8): 1 — keep visible text in M2; 5 — inclusive last day approved.
+Decisions taken by the owner on 15 Nov 2026 (§10.8): 1 — keep visible text in M2; 5 — inclusive last day approved; 6 — Europe/Lisbon default date approved.
 
 Still open:
 2. Candidate places: Palace of Seteais, MASMO (event venue), Viúva Gomes — create records or keep as editorial mentions.
 3. A scheduled rebuild so ended events disappear on time (a deployment change; not introduced).
 4. Agenda research to refresh the seasonal diary (editorial work, outside M2).
-6. Confirmation of Europe/Lisbon as the default calendar date when `VALIDATION_DATE` is not set (implemented; not separately decided).
 
 ### 10.8 Owner decisions (15 Nov 2026)
 
 1. **Event expiry:** the final date is inclusive. An event stays visible through its end date and disappears from the next build onwards. This is what `src/lib/content/dates.ts` implements (`lastDay(e) >= today`); tested at 14, 15 and 16 Nov 2026. Expiry acts on generated builds only: an already-published static site does not change until it is rebuilt, and no scheduled rebuild has been introduced (`.github/workflows/ci.yml` has no `schedule` trigger; there is no other workflow).
 2. **Conflicting facts:** M2 keeps the current visible website text and does not resolve or change any conflicting value. The 5 conflict groups (12 `unresolved` facts) stay recorded as data, enforced by C06, and carry forward to M3 for editorial resolution. Visible text is unchanged: `test:parity` passes on all 5 pages.
+3. **Default validation date:** when `VALIDATION_DATE` is not set, the validation date is today's calendar date in Europe/Lisbon. The implementation already does this (`validationDate()` in `src/lib/content/dates.ts`, `DESTINATION_TIME_ZONE = 'Europe/Lisbon'`), and every consumer uses that one function: the validator, the event lists, the parity check and the build hook, which fixes the date once per build. An explicitly set `VALIDATION_DATE` still takes precedence. Tested in `tests/unit/event-expiry.test.ts` (23:30 UTC on 1 Jul is 2 Jul in Lisbon; 23:30 UTC on 15 Nov stays 15 Nov).
 
 No code, content data, event date or fact value changed with these decisions; only this report was updated.
