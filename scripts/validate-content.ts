@@ -1,49 +1,44 @@
 /**
  * Content validation CLI.
- *   npm run validate                       -> report all levels, exit 0 unless critical
- *   npm run validate -- --production       -> same, used by `npm run build`
- *   PUBLICATION_MODE=commercial npm run build -> uncleared images become critical
- * Writes a JSON report to dist-reports/validation.json for CI artifacts.
+ *   npm run validate                               free mode (default, announced); exit 1 on any critical issue
+ *   npm run validate -- --mode=commercial          commercial mode: uncleared images are critical
+ *   PUBLICATION_MODE=commercial npm run validate   same, from the environment
+ * Exit codes: 0 passed · 1 critical issues · 2 invalid publication mode.
+ * `astro build` runs this same script from the build hook in astro.config.mjs, so no build skips it.
+ * Writes dist-reports/validation.json and dist-reports/content-status.md (commercial: *-commercial.*).
  */
-import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
-import { sintraMapPlaces } from '../src/data/sintra-map.ts';
-import { validateContent, hasCritical, type Issue } from '../src/lib/validation/validate.ts';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { loadContentFromDisk } from '../src/lib/content/load-fs.ts';
+import { validateContent, hasCritical, DEFAULT_OPTIONS, type Issue } from '../src/lib/validation/validate.ts';
+import { contentStatusReport } from '../src/lib/validation/report.ts';
+import { resolvePublicationMode, PublicationModeError } from '../src/lib/validation/mode.ts';
+import { validationDate } from '../src/lib/content/dates.ts';
 
-const root = new URL('../', import.meta.url);
-const json = (p: string) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
-const pagesDir = new URL('src/pages/', root);
-const pages = Object.fromEntries(
-  readdirSync(pagesDir).filter((f) => f.endsWith('.astro')).map((f) => [f, readFileSync(new URL(f, pagesDir), 'utf8')]),
-);
-
-const mode = process.env.PUBLICATION_MODE === 'commercial' ? 'commercial' : 'free';
-const today = process.env.VALIDATION_DATE ?? new Date().toISOString().slice(0, 10);
-const issues = validateContent(
-  {
-    sources: json('src/content/sources.json'),
-    images: json('src/content/images.json'),
-    mapPlaces: sintraMapPlaces,
-    homeDestinations: json('src/data/home-destinations.json'),
-    pages,
-  },
-  { mode, today, sourceReviewDays: 90 },
-);
+const root = fileURLToPath(new URL('../', import.meta.url));
+const input = loadContentFromDisk(root);
+let resolved;
+try { resolved = resolvePublicationMode(process.argv.slice(2), process.env); }
+catch (e) { if (e instanceof PublicationModeError) { console.error(`✗ ${e.message}`); process.exit(2); } throw e; }
+const { mode, origin } = resolved;
+let today: string;
+try { today = validationDate(process.env); } catch (e) { console.error(`✗ ${(e as Error).message}`); process.exit(2); }
+const issues = validateContent(input, { ...DEFAULT_OPTIONS, mode, today });
 
 const by = (l: Issue['level']) => issues.filter((i) => i.level === l);
-const print = (label: string, list: Issue[]) => {
-  console.log(`\n${label} (${list.length})`);
-  for (const i of list) console.log(`  - ${i.where}: ${i.message}`);
-};
-console.log(`Content validation · mode=${mode} · date=${today}`);
-print('CRITICAL', by('critical'));
-print('WARNING', by('warning'));
-print('EDITORIAL PENDING', by('pending'));
+console.log(`Content validation · publication mode=${mode} (${origin === 'default' ? 'default; set PUBLICATION_MODE or --mode to change' : `from ${origin}`}) · date=${today}`);
+console.log(`CRITICAL (${by('critical').length}) · WARNING (${by('warning').length}) · EDITORIAL PENDING (${by('pending').length})`);
+for (const i of by('critical')) console.log(`  ✗ [${i.rule}] ${i.where}: ${i.message}`);
+const counts = (l: Issue['level']) => Object.entries(by(l).reduce<Record<string, number>>((a, i) => ((a[i.rule] = (a[i.rule] ?? 0) + 1), a), {})).map(([r, n]) => `${r}×${n}`).join(' ');
+console.log(`  warnings by rule: ${counts('warning') || '—'}`);
+console.log(`  pending by rule:  ${counts('pending') || '—'}`);
 
-mkdirSync(new URL('dist-reports/', root), { recursive: true });
-writeFileSync(new URL('dist-reports/validation.json', root), JSON.stringify({ mode, today, issues }, null, 2));
+mkdirSync(new URL('../dist-reports/', import.meta.url), { recursive: true });
+// commercial reports get their own names so a commercial check never overwrites the free-edition reports
+const suffix = mode === 'commercial' ? '-commercial' : '';
+writeFileSync(new URL(`../dist-reports/validation${suffix}.json`, import.meta.url), JSON.stringify({ mode, today, issues }, null, 2));
+writeFileSync(new URL(`../dist-reports/content-status${suffix}.md`, import.meta.url), contentStatusReport(input, issues, today));
+console.log(`Reports: dist-reports/validation${suffix}.json, dist-reports/content-status${suffix}.md`);
 
-if (hasCritical(issues)) {
-  console.error('\nValidation failed: critical issues block the build.');
-  process.exit(1);
-}
+if (hasCritical(issues)) { console.error('\nValidation failed: critical issues block the build.'); process.exit(1); }
 console.log('\nValidation passed (no critical issues).');

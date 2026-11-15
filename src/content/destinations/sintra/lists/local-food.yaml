@@ -1,0 +1,15 @@
+id: list.sintra.local-food
+destination: destination.sintra
+title: Local discoveries · food and drink
+context: local
+items:
+  - place.sintra.cafe-saudade
+  - place.sintra.casa-piriquita
+  - place.sintra.queijadas-da-sapa
+  - place.sintra.dona-estefania
+  - place.sintra.tascantiga
+  - place.sintra.bacalhau-na-vila
+  - place.sintra.metamorphosis
+  - place.sintra.romaria-de-baco
+  - place.sintra.incomum
+  - place.sintra.tacho-real

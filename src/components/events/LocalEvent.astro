@@ -1,0 +1,7 @@
+---
+import type { Event } from '../../lib/content/schemas.ts';
+import { inline } from '../../lib/content/inline.ts';
+interface Props { editorial: NonNullable<Event['editorial']['local']> }
+const { editorial: e } = Astro.props;
+---
+<div class="event"><time set:html={inline(e.when)} /><div><h3 set:html={inline(e.title)} /><p><Fragment set:html={inline(e.text)} /> <a href={e.link.href}>{e.link.label}</a></p></div></div>

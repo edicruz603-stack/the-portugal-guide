@@ -1,0 +1,10 @@
+id: place.sintra.adega-regional-de-colares
+destination: destination.sintra
+kind: wine-cellar
+zone: zone.sintra.colares
+name:
+  official: Adega Regional de Colares
+  official_source: src.visit-sintra.adega-regional-de-colares
+  aliases:
+    - Colares Regional Wine cellar
+editorial: {}

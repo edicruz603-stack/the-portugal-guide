@@ -1,0 +1,66 @@
+place: place.sintra.capuchos-convent
+facts:
+- id: fact.sintra.capuchos-convent.coordinates
+  kind: coordinates
+  value:
+    lat: 38.782911
+    lon: -9.435794
+    dms: 38°46'58.48"N 9°26'08.86"W
+  text: 38°46’58.48”N 9°26’08.86”W
+  source: src.parques-de-sintra.visitor-map
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.capuchos-convent.hours
+  kind: hours
+  value:
+    opens: 09:00
+    closes: '17:30'
+    last_entry: '17:00'
+  text: 09:00–17:30; last admission 17:00
+  source: src.parques-de-sintra.capuchos
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.capuchos-convent.price
+  kind: price
+  value:
+    adult: 11
+    youth: 9
+    senior: 9
+    family: 29
+    currency: EUR
+  text: Adult €11, youth €9, senior €9, family €29
+  quote: Adult ticket €11 (2026 tariff)
+  source: src.parques-de-sintra.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.capuchos-convent.closure-history
+  kind: closure
+  value:
+    closed: 2025-03
+    reopened: 2025-07
+    closed_again_notice: 2026-02
+  text: Closed March 2025 (Storm Martinho), reopened July 2025; a February 2026 notice said it was closed again
+  source: src.parques-de-sintra.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  review_after_days: 30
+- id: fact.sintra.capuchos-convent.road-closure
+  kind: notice
+  value:
+    closed: true
+  text: Road traffic between Pena and the Capuchos closed (notice on 7 November 2026)
+  source: src.parques-de-sintra.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 30

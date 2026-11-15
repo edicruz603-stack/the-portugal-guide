@@ -1,9 +1,264 @@
 [
-  { "id": "src.parques-de-sintra.national-palace", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/", "kind": "operator", "seen_on": "2026-11-07" },
-  { "id": "src.parques-de-sintra.pena", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/", "kind": "operator", "seen_on": "2026-11-07" },
-  { "id": "src.parques-de-sintra.moorish-castle", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/the-moorish-castle/", "kind": "operator", "seen_on": "2026-11-07" },
-  { "id": "src.parques-de-sintra.monserrate", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-palace-of-monserrate/", "kind": "operator", "seen_on": "2026-11-07" },
-  { "id": "src.parques-de-sintra.villa-sassetti", "publisher": "Parques de Sintra", "url": "https://www.parquesdesintra.pt/en/", "kind": "operator", "seen_on": "2026-11-07", "note": "Coordinates recorded in the PDF fact ledger; exact page URL to be re-recorded in Phase 2." },
-  { "id": "src.regaleira.contacts", "publisher": "Fundação Cultursintra (Quinta da Regaleira)", "url": "https://www.regaleira.pt/en/", "kind": "operator", "seen_on": "2026-11-07" },
-  { "id": "src.wikimedia-commons", "publisher": "Wikimedia Commons", "url": "https://commons.wikimedia.org/", "kind": "image-library", "seen_on": "2026-10-30" }
+  {
+    "id": "src.parques-de-sintra.site",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/",
+    "kind": "operator",
+    "seen_on": "2026-11-07",
+    "note": "Operator website; used where the PDF ledger recorded the site or its notices without a page URL."
+  },
+  {
+    "id": "src.parques-de-sintra.opening-times",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/plan-your-visit/opening-times-and-prices/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.ticket-office",
+    "publisher": "Parques de Sintra (online ticket office)",
+    "url": "https://bilheteira.parquesdesintra.pt",
+    "kind": "operator",
+    "seen_on": "2026-11-07",
+    "note": "Prices recorded in the PDF fact ledger."
+  },
+  {
+    "id": "src.parques-de-sintra.visitor-map",
+    "publisher": "Parques de Sintra (visitor map, English PDF)",
+    "url": "https://www.parquesdesintra.pt/media/jydbaz0b/sintra_eng.pdf",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.national-palace",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.national-palace-essential-visit",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/essential-visit/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.ticket-office.national-palace",
+    "publisher": "Parques de Sintra (online ticket office)",
+    "url": "https://bilheteira.parquesdesintra.pt/info/palacio-de-sintra-visita-essencial/1224/en",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.pena",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/",
+    "kind": "operator",
+    "seen_on": "2026-11-07"
+  },
+  {
+    "id": "src.parques-de-sintra.pena-skip-the-line",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/plan-your-visit/skip-the-line-entrance-to-palace-of-pena/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.parks-list",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.moorish-castle",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/the-moorish-castle/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.ticket-office.moorish-castle",
+    "publisher": "Parques de Sintra (online ticket office)",
+    "url": "https://bilheteira.parquesdesintra.pt/info/castelo-dos-mouros/1196/en",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.monserrate",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-palace-of-monserrate/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.monserrate-pt",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-de-monserrate/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.ticket-office.monserrate",
+    "publisher": "Parques de Sintra (online ticket office)",
+    "url": "https://bilheteira.parquesdesintra.pt/info/parque-e-palacio-de-monserrate/1219/pt",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.capuchos",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/convent-of-the-capuchos/",
+    "kind": "operator",
+    "seen_on": "2026-11-07"
+  },
+  {
+    "id": "src.parques-de-sintra.chalet-edla",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/chalet-and-garden-of-the-countess-of-edla/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.villa-sassetti",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/villa-sassetti/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.cabo-da-roca-lighthouse",
+    "publisher": "Parques de Sintra",
+    "url": "https://www.parquesdesintra.pt/en/parks-monuments/cabo-da-roca-lighthouse/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.parques-de-sintra.news.cabo-da-roca-opening",
+    "publisher": "Parques de Sintra (news)",
+    "url": "https://www.parquesdesintra.pt/en/about-us/news/cabo-da-roca-lighthouse-opening-to-the-public-july-23-2026/",
+    "kind": "operator",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.regaleira.site",
+    "publisher": "Fundação Cultursintra (Quinta da Regaleira)",
+    "url": "https://www.regaleira.pt/en/",
+    "kind": "operator",
+    "seen_on": "2026-11-07"
+  },
+  {
+    "id": "src.regaleira.ticket-office",
+    "publisher": "Quinta da Regaleira (online ticket office)",
+    "url": "https://regaleira.byblueticket.pt",
+    "kind": "operator",
+    "seen_on": "2026-11-07",
+    "note": "The PDF ledger marked prices from this listing as Reported."
+  },
+  {
+    "id": "src.visit-sintra.site",
+    "publisher": "Visit Sintra (Sintra municipal tourism)",
+    "url": "https://visitsintra.travel",
+    "kind": "official",
+    "seen_on": "2026-11-07",
+    "note": "Recorded in the PDF ledger without a page URL."
+  },
+  {
+    "id": "src.visit-sintra.adega-regional-de-colares",
+    "publisher": "Visit Sintra (Sintra municipal tourism)",
+    "url": "https://visitsintra.travel/en/eat-drink/wine-cellars/colares-regional-wine-cellar",
+    "kind": "official",
+    "seen_on": "2026-11-11",
+    "note": "Not the operator of the cellar."
+  },
+  {
+    "id": "src.visit-sintra.adega-regional-de-colares-pt",
+    "publisher": "Visit Sintra (Sintra municipal tourism)",
+    "url": "https://visitsintra.travel/pt/comer-beber/adegas/adega-regional-de-colares",
+    "kind": "official",
+    "seen_on": "2026-11-11",
+    "note": "Not the operator of the cellar."
+  },
+  {
+    "id": "src.visit-sintra.hiking",
+    "publisher": "Visit Sintra (Sintra municipal tourism)",
+    "url": "https://visitsintra.travel/en/discover/active-sintra/land-sports/hiking/sintra-welcome-centre",
+    "kind": "official",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.visit-sintra.itinerary-3-days",
+    "publisher": "Visit Sintra (Sintra municipal tourism)",
+    "url": "https://visitsintra.travel/pt/descobrir/roteiros/3-dias-o-litoral-e-a-regiao-saloia",
+    "kind": "official",
+    "seen_on": "2026-11-11"
+  },
+  {
+    "id": "src.cp",
+    "publisher": "CP – Comboios de Portugal",
+    "url": "https://www.cp.pt",
+    "kind": "official",
+    "seen_on": "2026-11-07",
+    "note": "Journey planner."
+  },
+  {
+    "id": "src.sintra434",
+    "publisher": "Sintra 434 (bus information site)",
+    "url": "https://sintra434.com",
+    "kind": "secondary",
+    "seen_on": "2026-11-07"
+  },
+  {
+    "id": "src.wines-of-portugal",
+    "publisher": "Wines of Portugal",
+    "url": "https://www.winesofportugal.com",
+    "kind": "secondary",
+    "seen_on": "2026-11-07"
+  },
+  {
+    "id": "src.press.nit",
+    "publisher": "NiT",
+    "url": "https://www.nit.pt",
+    "kind": "secondary",
+    "seen_on": "2026-11-07",
+    "note": "Article URL not recorded in the PDF ledger."
+  },
+  {
+    "id": "src.press.time-out",
+    "publisher": "Time Out Lisboa",
+    "url": "https://www.timeout.pt",
+    "kind": "secondary",
+    "seen_on": "2026-11-07",
+    "note": "Article URL not recorded in the PDF ledger."
+  },
+  {
+    "id": "src.agenda-cultural-sintra",
+    "publisher": "Agenda Cultural de Sintra",
+    "url": "https://agendaculturaldesintra.pt/agenda",
+    "kind": "official",
+    "seen_on": "2026-10-30"
+  },
+  {
+    "id": "src.cm-sintra.agenda",
+    "publisher": "Câmara Municipal de Sintra",
+    "url": "https://cm-sintra.pt/agenda",
+    "kind": "official",
+    "seen_on": "2026-10-30"
+  },
+  {
+    "id": "src.tpg.website-2026",
+    "publisher": "The Portugal Guide — previous website edition",
+    "url": "https://edicruz603-stack.github.io/the-portugal-guide/",
+    "kind": "own-edition",
+    "seen_on": "2026-11-11",
+    "note": "Values found in the live website text. The edition states it checked official sources on 30 October 2026; that check is not re-verified here, so these facts are Reported."
+  },
+  {
+    "id": "src.wikimedia-commons",
+    "publisher": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/",
+    "kind": "image-library",
+    "seen_on": "2026-10-30"
+  }
 ]

@@ -1,0 +1,72 @@
+place: place.sintra.adega-regional-de-colares
+facts:
+- id: fact.sintra.adega-regional-de-colares.coordinates
+  kind: coordinates
+  value:
+    lat: 38.805889
+    lon: -9.449972
+    dms: 38°48'21.2"N 9°26'59.9"W
+  text: 38°48’21.2”N 9°26’59.9”W
+  source: src.visit-sintra.adega-regional-de-colares
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: reported
+  note: 'Published by Visit Sintra (municipal tourism), not by the cellar itself: Reported, as in the PDF edition.'
+- id: fact.sintra.adega-regional-de-colares.address
+  kind: address
+  value:
+    street: Av. Coronel Linhares de Lima, n.º 32
+    postcode: 2705-351
+    town: Colares
+  text: Av. Coronel Linhares de Lima, n.º 32, 2705-351 Colares
+  source: src.visit-sintra.adega-regional-de-colares
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: reported
+  note: 'Published by Visit Sintra (municipal tourism), not by the cellar itself: Reported, as in the PDF edition.'
+- id: fact.sintra.adega-regional-de-colares.phone
+  kind: phone
+  value:
+    phone: +351 219 291 210
+  text: +351 219 291 210
+  source: src.visit-sintra.adega-regional-de-colares
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: reported
+  note: 'Published by Visit Sintra (municipal tourism), not by the cellar itself: Reported, as in the PDF edition.'
+- id: fact.sintra.adega-regional-de-colares.hours
+  kind: hours
+  value:
+    days: Mon–Sat
+    morning: 09:00–13:00
+    afternoon: 14:00–18:00
+    closed: Sundays and public holidays
+  text: Monday–Saturday 09:00–13:00 and 14:00–18:00; closed Sundays and public holidays
+  source: src.visit-sintra.adega-regional-de-colares
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: reported
+  review_after_days: 60
+  note: 'Published by Visit Sintra (municipal tourism), not by the cellar itself: Reported, as in the PDF edition.'
+- id: fact.sintra.adega-regional-de-colares.visits
+  kind: rule
+  value:
+    booking_required: true
+  text: Guided visits and wine tastings by prior booking
+  source: src.visit-sintra.adega-regional-de-colares-pt
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: reported
+  review_after_days: 60
+  note: 'Published by Visit Sintra (municipal tourism), not by the cellar itself: Reported, as in the PDF edition.'
+- id: fact.sintra.adega-regional-de-colares.founded
+  kind: history
+  value:
+    founded: 1931
+    share_of_production: '>50%'
+  text: Founded in 1931; brings together more than 50% of the region’s production
+  source: src.visit-sintra.adega-regional-de-colares
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: reported
+  note: 'Published by Visit Sintra (municipal tourism), not by the cellar itself: Reported, as in the PDF edition.'

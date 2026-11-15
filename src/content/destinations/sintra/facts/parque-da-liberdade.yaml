@@ -1,0 +1,35 @@
+place: place.sintra.parque-da-liberdade
+facts:
+- id: fact.sintra.parque-da-liberdade.hours
+  kind: hours
+  value:
+    opens: '10:00'
+  text: Seasonal, generally from 10:00
+  quote: Seasonal, generally from 10:00
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported
+  review_after_days: 60
+- id: fact.sintra.parque-da-liberdade.price
+  kind: price
+  value:
+    adult: 0
+    currency: EUR
+  text: Free entry
+  quote: '**Entry:** Free.'
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported
+- id: fact.sintra.parque-da-liberdade.coordinates-approximate
+  kind: coordinates
+  value:
+    lat: 38.79667
+    lon: -9.38628
+  text: Approximate visitor-area marker
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: confirm-first
+  note: Placed by the previous edition; not checked against any source.

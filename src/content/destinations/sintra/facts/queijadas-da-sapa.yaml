@@ -1,0 +1,23 @@
+place: place.sintra.queijadas-da-sapa
+facts:
+- id: fact.sintra.queijadas-da-sapa.history
+  kind: history
+  value:
+    origin: 1756
+    moved: 1887
+  text: History traced to Maria Sapa in 1756; moved to Volta do Duche in 1887
+  quote: traced to Maria Sapa in 1756 and its move to Volta do Duche in 1887
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported
+- id: fact.sintra.queijadas-da-sapa.address
+  kind: address
+  value:
+    street: Volta do Duche 12
+  text: Volta do Duche 12
+  quote: Volta do Duche 12.
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported

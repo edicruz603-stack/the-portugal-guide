@@ -1,0 +1,11 @@
+id: list.sintra.field-guide-free
+destination: destination.sintra
+title: Field guide · free discoveries
+context: field_guide
+items:
+  - place.sintra.museu-anjos-teixeira
+  - place.sintra.national-palace-gardens
+  - place.sintra.parque-da-liberdade
+  - place.sintra.miradouro-sao-martinho
+  - place.sintra.lawrences-hotel
+  - place.sintra.villa-sassetti

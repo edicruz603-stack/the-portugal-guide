@@ -1,0 +1,19 @@
+id: event.sintra.vinil-musa
+destination: destination.sintra
+title: VINIL
+starts_on: '2026-10-15'
+ends_on: '2027-01-03'
+venue: MU.SA
+source: src.tpg.website-2026
+provenance: legacy-website
+observed_on: '2026-11-11'
+status: reported
+editorial:
+  local:
+    when: 15 Oct 2026 – 3 Jan 2027
+    title: VINIL · MU.SA
+    text: An exhibition by Luís Vasconcelos, with photographs capturing Portuguese and international musicians and artists from the 1970s and 1980s.
+    link:
+      label: Event details ↗
+      href: https://agendaculturaldesintra.pt/component/icagenda/vinil-celebra-a-memoria-da-musica-no-mu-sa?lang=pt-PT
+      external: false

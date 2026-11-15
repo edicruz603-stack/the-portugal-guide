@@ -1,0 +1,27 @@
+id: place.sintra.chalet-countess-edla
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.palace-hills
+part_of: place.sintra.pena-palace
+name:
+  official: Chalet and Garden of the Countess of Edla
+  official_source: src.parques-de-sintra.chalet-edla
+  aliases:
+    - Chalet da Condessa d’Edla
+    - Chalet of the Countess of Edla
+editorial:
+  directory:
+    filter: monument
+    meta: Palace Hills · Check ticket
+    title: Chalet da Condessa d’Edla
+    text: Look for the intimate, decorative side of Ferdinand II and the Countess of Edla’s Romantic garden vision.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Chalet+da+Condessa+de+Edla+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  map_link:
+    title: Chalet of the Countess of Edla
+    href: https://www.google.com/maps/search/?api=1&query=Chalet+da+Condessa+d+Edla+Sintra

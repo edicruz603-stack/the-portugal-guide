@@ -1,0 +1,13 @@
+id: event.sintra.masmo-mystery-afternoon
+destination: destination.sintra
+title: A mystery afternoon at the Archaeological Museum of São Miguel de Odrinhas
+starts_on: '2026-10-31'
+venue: Archaeological Museum of São Miguel de Odrinhas (MASMO)
+source: src.tpg.website-2026
+provenance: legacy-website
+observed_on: '2026-11-11'
+status: reported
+editorial:
+  directory:
+    heading: 31 Oct · A mystery afternoon at the Archaeological Museum of São Miguel de Odrinhas
+    text: A themed history and mystery activity. Check age suitability and admission details with the organiser.

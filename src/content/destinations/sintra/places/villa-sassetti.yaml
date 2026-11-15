@@ -1,0 +1,68 @@
+id: place.sintra.villa-sassetti
+destination: destination.sintra
+kind: garden
+zone: zone.sintra.palace-hills
+name:
+  official: Villa Sassetti
+  official_source: src.parques-de-sintra.villa-sassetti
+  aliases:
+    - Vila Sassetti
+    - Vila Sassetti · free garden path
+map:
+  coordinates: fact.sintra.villa-sassetti.coordinates
+  category: free
+  label: Vila Sassetti · free garden path
+  zone_label: Free garden walk
+editorial:
+  directory:
+    filter: free
+    meta: Palace Hills · Check opening
+    title: Vila Sassetti
+    text: Romantic garden paths and terraces between town and mountain; the climb is demanding and not a step-free shortcut.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Vila+Sassetti+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  local:
+    tag: Free access · garden trail
+    title: Vila Sassetti
+    text: A romantic garden and hillside path connecting the village with the upper mountain area. Look for terraces, stonework and planting rather than treating it as a quick shortcut. The climb is steep and includes steps; avoid it if you need step-free access or if conditions are slippery.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Vila+Sassetti+Sintra
+        external: false
+      - label: Parques de Sintra ↗
+        href: https://www.parquesdesintra.pt/en/parks-monuments/villa-sassetti/
+        external: false
+  field_guide:
+    label: FREE · GARDEN WALK
+    title: Vila Sassetti
+    paragraphs:
+      - A beautiful garden path and historic villa on the way up towards the hilltop monuments. It is a rewarding alternative to simply taking the road, with landscaped terraces and a strong sense of Sintra’s romantic garden culture.
+      - "**Why stop:** A scenic link between the village and the hills, especially if you enjoy walking. The climb is real, and this is not a step-free shortcut."
+      - "**Entry:** Free. Opening hours are published by Parques de Sintra and can change."
+    links:
+      - label: Open garden map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Vila+Sassetti+Sintra
+        external: true
+      - label: Official visitor details ↗
+        href: https://www.parquesdesintra.pt/pt/parques-monumentos/vila-sassetti/
+        external: true
+  map_link:
+    title: Vila Sassetti
+    href: https://www.google.com/maps/search/?api=1&query=Vila+Sassetti+Sintra
+  romantic:
+    label: 03 / A WALK THROUGH THE WOODS
+    title: Vila Sassetti
+    text: A terracotta, Lombard-inspired villa framed by a garden path, water features, rocks and woodland. The route links the historic centre with the upper mountain, but it is not a flat stroll.
+    links:
+      - label: Official visitor information ↗
+        href: https://www.parquesdesintra.pt/en/parks-monuments/vila-sassetti/
+        external: true
+      - label: Walking route ↗
+        href: https://www.parquesdesintra.pt/en/agenda/walking-route-vila-sassetti/
+        external: true
+    meta: "Garden and path access currently free · Official route: 1.85 km, about 45 minutes, moderate difficulty."

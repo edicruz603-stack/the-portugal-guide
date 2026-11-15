@@ -1,0 +1,20 @@
+id: place.sintra.museu-ferreira-de-castro
+destination: destination.sintra
+kind: museum
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Museu Ferreira de Castro
+editorial:
+  directory:
+    filter: free
+    meta: Historic Centre · Free
+    title: Museu Ferreira de Castro
+    text: A literary stop that adds depth to Sintra beyond the palaces. Check current municipal opening hours.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Museu+Ferreira+de+Castro+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://cm-sintra.pt/sintra/cultura/museus-municipais
+        external: true

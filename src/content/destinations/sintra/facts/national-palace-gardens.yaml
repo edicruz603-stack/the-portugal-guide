@@ -1,0 +1,72 @@
+place: place.sintra.national-palace-gardens
+facts:
+- id: fact.sintra.national-palace-gardens.price
+  kind: price
+  value:
+    adult: 0
+    currency: EUR
+  text: 'Gardens: free entrance'
+  source: src.parques-de-sintra.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace-gardens.hours
+  kind: hours
+  subject: gardens
+  value:
+    opens: 09:30
+    closes: '18:30'
+  text: Gardens 09:30–18:30
+  source: src.parques-de-sintra.national-palace-essential-visit
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace-gardens.last-entry-ticket-office
+  kind: last-entry
+  subject: gardens
+  value:
+    time: '18:00'
+  text: 'Gardens: last entry 18:00 (ticket-office page)'
+  source: src.parques-de-sintra.ticket-office.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: national-palace-gardens-last-entry
+- id: fact.sintra.national-palace-gardens.last-entry-opening-times
+  kind: last-entry
+  subject: gardens
+  value:
+    time: '18:00'
+  text: 'Gardens: last admission 18:00 (opening-times page)'
+  source: src.parques-de-sintra.opening-times
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: national-palace-gardens-last-entry
+- id: fact.sintra.national-palace-gardens.last-entry-essential-visit
+  kind: last-entry
+  subject: gardens
+  value:
+    time: '17:30'
+  text: 'Gardens: last ticket and last admission 17:30 (Essential Visit page)'
+  source: src.parques-de-sintra.national-palace-essential-visit
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: national-palace-gardens-last-entry
+- id: fact.sintra.national-palace-gardens.last-entry-website
+  kind: last-entry
+  subject: gardens
+  value:
+    time: '18:00'
+  text: 'Gardens: last entry 18:00 (previous website edition)'
+  quote: 09:30–18:30; last entry 18:00
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: national-palace-gardens-last-entry

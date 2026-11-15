@@ -1,0 +1,23 @@
+id: event.sintra.colares-wine-journey
+destination: destination.sintra
+title: Wine journey between Sintra and Colares
+starts_on: '2026-11-07'
+time: '10:00'
+venue: Adega Regional de Colares
+place: place.sintra.adega-regional-de-colares
+source: src.tpg.website-2026
+provenance: legacy-website
+observed_on: '2026-11-11'
+status: reported
+editorial:
+  local:
+    when: 7 Nov 2026 · 10:00
+    title: Wine journey between Sintra and Colares
+    text: A guided visit announced by Sintra Municipality and Adega Regional de Colares for World Wine Tourism Day. Booking requirements and availability apply; confirm with the organiser.
+    link:
+      label: Municipal event details ↗
+      href: https://cm-sintra.pt/agenda
+      external: false
+  directory:
+    heading: 7 Nov · Sintra and Colares wine heritage visit
+    text: A guided wine-themed event at Adega Regional de Colares, listed for 10:00. Booking requirements should be confirmed.

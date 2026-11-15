@@ -1,0 +1,31 @@
+place: place.sintra.sintra-station
+facts:
+- id: fact.sintra.sintra-station.train-from-lisbon
+  kind: transport
+  value:
+    minutes: 40
+  text: 'Lisbon Rossio to Sintra: about 40 minutes by train'
+  source: src.cp
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+- id: fact.sintra.sintra-station.buses
+  kind: transport
+  value:
+    lines: 434, 435, 1253, 1624
+  text: Bus 434 (Moorish Castle, Pena, National Palace); 435 (Regaleira, Seteais, Monserrate); 1253 (Monserrate, Capuchos, Cabo da Roca); 1624 (Cascais–Portela de Sintra via Cabo da Roca)
+  source: src.sintra434
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+- id: fact.sintra.sintra-station.bus-pass
+  kind: price
+  value:
+    amount: 10.96
+    currency: EUR
+  text: Scotturb 24-hour pass €10.96
+  source: src.sintra434
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  review_after_days: 60

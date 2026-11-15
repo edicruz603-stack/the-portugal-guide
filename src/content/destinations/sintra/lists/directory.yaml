@@ -1,0 +1,35 @@
+id: list.sintra.directory
+destination: destination.sintra
+title: Discoveries directory
+context: directory
+items:
+  - place.sintra.pena-palace
+  - place.sintra.quinta-da-regaleira
+  - place.sintra.moorish-castle
+  - place.sintra.national-palace
+  - place.sintra.monserrate
+  - place.sintra.biester-palace
+  - place.sintra.capuchos-convent
+  - place.sintra.chalet-countess-edla
+  - place.sintra.museu-anjos-teixeira
+  - place.sintra.natural-history-museum
+  - place.sintra.museu-ferreira-de-castro
+  - place.sintra.parque-da-liberdade
+  - place.sintra.national-palace-gardens
+  - place.sintra.miradouro-santa-eufemia
+  - place.sintra.miradouro-sao-martinho
+  - place.sintra.villa-sassetti
+  - place.sintra.lawrences-hotel
+  - place.sintra.cafe-saudade
+  - place.sintra.casa-piriquita
+  - place.sintra.queijadas-da-sapa
+  - place.sintra.dona-estefania
+  - place.sintra.tascantiga
+  - place.sintra.romaria-de-baco
+  - place.sintra.restaurante-regional
+  - place.sintra.apeadeiro
+  - place.sintra.metamorphosis
+  - place.sintra.cajo
+  - place.sintra.tacho-real
+  - place.sintra.mela-canela
+  - place.sintra.loja-5

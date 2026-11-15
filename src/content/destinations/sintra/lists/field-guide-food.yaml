@@ -1,0 +1,9 @@
+id: list.sintra.field-guide-food
+destination: destination.sintra
+title: Field guide · food stops
+context: food_card
+items:
+  - place.sintra.casa-piriquita
+  - place.sintra.queijadas-da-sapa
+  - place.sintra.tascantiga
+  - place.sintra.restaurante-regional

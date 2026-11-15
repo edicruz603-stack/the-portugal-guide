@@ -1,0 +1,35 @@
+id: place.sintra.capuchos-convent
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.western-sintra
+name:
+  official: Convent of the Capuchos
+  official_source: src.parques-de-sintra.capuchos
+  aliases:
+    - Convento dos Capuchos
+    - Convent of the Capuchos
+editorial:
+  directory:
+    filter: monument
+    meta: Western Sintra · Check access
+    title: Convento dos Capuchos
+    text: Small-scale monastic architecture contrasts with the grand palaces. Check for closures or restricted access before making the journey.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Convento+dos+Capuchos+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  map_link:
+    title: Convent of the Capuchos
+    href: https://www.google.com/maps/search/?api=1&query=Convento+dos+Capuchos+Sintra
+  romantic:
+    label: 05 / QUIET BEAUTY
+    title: Convent of the Capuchos
+    text: "A striking contrast to Sintra's grand palaces: a small Franciscan convent that sits close to the granite rocks and the surrounding forest. Its atmosphere comes from simplicity, not splendour."
+    links:
+      - label: Official visitor information ↗
+        href: https://www.parquesdesintra.pt/en/parks-monuments/convent-of-the-capuchos/
+        external: true
+    meta: Adult ticket €11 (2026 tariff) · Remote location; check transport and forest access notices first.

@@ -1,0 +1,15 @@
+id: place.sintra.bacalhau-na-vila
+destination: destination.sintra
+kind: restaurant
+name:
+  aliases:
+    - Bacalhau na Vila
+editorial:
+  local:
+    tag: Portuguese food · cod
+    title: Bacalhau na Vila
+    text: A cod-focused menu with dishes suited to sharing. A useful choice for visitors who want a meal built around a classic Portuguese ingredient. Check access and reservations if travelling with mobility needs.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Bacalhau+na+Vila+Sintra
+        external: false

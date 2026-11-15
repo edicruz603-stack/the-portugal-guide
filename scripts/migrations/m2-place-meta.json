@@ -1,0 +1,207 @@
+{
+ "pena-palace": {
+  "kind": "monument",
+  "zone": "palace-hills",
+  "official": "Park and National Palace of Pena",
+  "official_source": "src.parques-de-sintra.pena",
+  "map_fact": "coordinates-main-entrance"
+ },
+ "quinta-da-regaleira": {
+  "kind": "monument",
+  "zone": "historic-centre",
+  "official": "Quinta da Regaleira",
+  "official_source": "src.regaleira.site",
+  "map_fact": "coordinates"
+ },
+ "moorish-castle": {
+  "kind": "monument",
+  "zone": "palace-hills",
+  "official": "The Moorish Castle",
+  "official_source": "src.parques-de-sintra.moorish-castle",
+  "map_fact": "coordinates-monument"
+ },
+ "sao-pedro-de-canaferrim": {
+  "kind": "monument",
+  "zone": "palace-hills",
+  "part_of": "moorish-castle",
+  "aliases": [
+   "São Pedro de Canaferrim"
+  ]
+ },
+ "national-palace": {
+  "kind": "monument",
+  "zone": "historic-centre",
+  "official": "National Palace of Sintra",
+  "official_source": "src.parques-de-sintra.national-palace"
+ },
+ "national-palace-gardens": {
+  "kind": "garden",
+  "zone": "historic-centre",
+  "part_of": "national-palace",
+  "map_fact": "USE_PARENT"
+ },
+ "monserrate": {
+  "kind": "monument",
+  "zone": "western-sintra",
+  "official": "Park and Palace of Monserrate",
+  "official_source": "src.parques-de-sintra.monserrate",
+  "map_fact": "coordinates-a"
+ },
+ "biester-palace": {
+  "kind": "monument",
+  "zone": "historic-centre"
+ },
+ "capuchos-convent": {
+  "kind": "monument",
+  "zone": "western-sintra",
+  "official": "Convent of the Capuchos",
+  "official_source": "src.parques-de-sintra.capuchos"
+ },
+ "chalet-countess-edla": {
+  "kind": "monument",
+  "zone": "palace-hills",
+  "part_of": "pena-palace",
+  "official": "Chalet and Garden of the Countess of Edla",
+  "official_source": "src.parques-de-sintra.chalet-edla"
+ },
+ "museu-anjos-teixeira": {
+  "kind": "museum",
+  "zone": "station-and-town",
+  "map_fact": "coordinates-approximate"
+ },
+ "natural-history-museum": {
+  "kind": "museum",
+  "zone": "historic-centre"
+ },
+ "museu-ferreira-de-castro": {
+  "kind": "museum",
+  "zone": "historic-centre"
+ },
+ "parque-da-liberdade": {
+  "kind": "garden",
+  "zone": "station-and-town",
+  "map_fact": "coordinates-approximate"
+ },
+ "miradouro-santa-eufemia": {
+  "kind": "viewpoint",
+  "zone": "palace-hills"
+ },
+ "miradouro-sao-martinho": {
+  "kind": "viewpoint",
+  "zone": "historic-centre",
+  "map_fact": "coordinates-approximate"
+ },
+ "villa-sassetti": {
+  "kind": "garden",
+  "zone": "palace-hills",
+  "official": "Villa Sassetti",
+  "official_source": "src.parques-de-sintra.villa-sassetti",
+  "map_fact": "coordinates"
+ },
+ "lawrences-hotel": {
+  "kind": "landmark",
+  "zone": "historic-centre"
+ },
+ "historic-centre": {
+  "kind": "area",
+  "zone": "historic-centre"
+ },
+ "sintra-station": {
+  "kind": "transport",
+  "zone": "station-and-town"
+ },
+ "cafe-saudade": {
+  "kind": "cafe",
+  "zone": "station-and-town"
+ },
+ "casa-piriquita": {
+  "kind": "pastry-shop",
+  "zone": "historic-centre"
+ },
+ "queijadas-da-sapa": {
+  "kind": "pastry-shop",
+  "zone": "station-and-town"
+ },
+ "dona-estefania": {
+  "kind": "pastry-shop",
+  "zone": "station-and-town"
+ },
+ "tascantiga": {
+  "kind": "restaurant",
+  "zone": "historic-centre"
+ },
+ "romaria-de-baco": {
+  "kind": "restaurant",
+  "zone": "historic-centre"
+ },
+ "restaurante-regional": {
+  "kind": "restaurant",
+  "zone": "station-and-town"
+ },
+ "apeadeiro": {
+  "kind": "restaurant",
+  "zone": "station-and-town"
+ },
+ "metamorphosis": {
+  "kind": "restaurant",
+  "zone": "station-and-town"
+ },
+ "cajo": {
+  "kind": "restaurant",
+  "zone": "station-and-town"
+ },
+ "tacho-real": {
+  "kind": "restaurant",
+  "zone": "historic-centre"
+ },
+ "mela-canela": {
+  "kind": "cafe",
+  "zone": "station-and-town"
+ },
+ "loja-5": {
+  "kind": "cafe",
+  "zone": "historic-centre"
+ },
+ "bacalhau-na-vila": {
+  "kind": "restaurant"
+ },
+ "incomum": {
+  "kind": "restaurant"
+ },
+ "colares": {
+  "kind": "area",
+  "zone": "colares",
+  "aliases": [
+   "Colares"
+  ]
+ },
+ "adega-regional-de-colares": {
+  "kind": "wine-cellar",
+  "zone": "colares",
+  "official": "Adega Regional de Colares",
+  "official_source": "src.visit-sintra.adega-regional-de-colares",
+  "aliases": [
+   "Colares Regional Wine cellar"
+  ]
+ },
+ "cabo-da-roca": {
+  "kind": "area",
+  "zone": "atlantic-coast",
+  "aliases": [
+   "Cabo da Roca"
+  ]
+ },
+ "cabo-da-roca-lighthouse": {
+  "kind": "monument",
+  "zone": "atlantic-coast",
+  "part_of": "cabo-da-roca",
+  "official": "Cabo da Roca Lighthouse",
+  "official_source": "src.parques-de-sintra.cabo-da-roca-lighthouse"
+ },
+ "museu-do-bonsai": {
+  "kind": "museum",
+  "aliases": [
+   "Museu do Bonsai"
+  ]
+ }
+}

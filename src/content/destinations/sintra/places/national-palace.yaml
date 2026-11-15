@@ -1,0 +1,26 @@
+id: place.sintra.national-palace
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.historic-centre
+name:
+  official: National Palace of Sintra
+  official_source: src.parques-de-sintra.national-palace
+  aliases:
+    - Palácio Nacional de Sintra
+    - National Palace
+editorial:
+  directory:
+    filter: monument
+    meta: Historic Centre · Paid
+    title: Palácio Nacional de Sintra
+    text: Look up at the distinctive kitchen chimneys. Inside, pay attention to the decorative tiles and rooms shaped by royal life.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Palacio+Nacional+de+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  map_link:
+    title: National Palace
+    href: https://www.google.com/maps/search/?api=1&query=Palacio+Nacional+de+Sintra

@@ -1,0 +1,32 @@
+id: place.sintra.natural-history-museum
+destination: destination.sintra
+kind: museum
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Museu de História Natural
+    - Museu de História Natural de Sintra
+editorial:
+  directory:
+    filter: free
+    meta: Historic Centre · Free
+    title: Museu de História Natural
+    text: A useful indoor stop for curious families and a strong alternative when weather turns against a hill walk.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Museu+Historia+Natural+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://cm-sintra.pt/sintra/cultura/museus-municipais
+        external: true
+  local:
+    tag: Free museum · natural history
+    title: Museu de História Natural de Sintra
+    text: Fossils, minerals and natural-history collections in the historic centre. A particularly good rainy-day option or a family stop. The municipal cultural agenda lists exhibitions such as “Mordidas do Tempo”, exploring fossil teeth, through 3 January 2027. Confirm current opening hours and exhibition access.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Museu+de+Historia+Natural+de+Sintra
+        external: false
+      - label: Cultural agenda ↗
+        href: https://agendaculturaldesintra.pt/agenda
+        external: false

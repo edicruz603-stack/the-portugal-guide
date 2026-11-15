@@ -1,0 +1,13 @@
+place: place.sintra.natural-history-museum
+facts:
+- id: fact.sintra.natural-history-museum.price
+  kind: price
+  value:
+    adult: 0
+    currency: EUR
+  text: Free entry
+  quote: Free museum · natural history
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported

@@ -1,0 +1,15 @@
+id: place.sintra.incomum
+destination: destination.sintra
+kind: restaurant
+name:
+  aliases:
+    - Incomum by Luís Santos
+editorial:
+  local:
+    tag: Contemporary Portuguese
+    title: Incomum by Luís Santos
+    text: A more contemporary restaurant option for visitors planning a special lunch or dinner. This belongs in the “make a reservation and enjoy a full meal” category rather than the budget snack list.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Incomum+Sintra
+        external: false

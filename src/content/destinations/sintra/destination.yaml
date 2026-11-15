@@ -1,0 +1,8 @@
+id: destination.sintra
+name: Sintra
+country: PT
+status: in-production
+map:
+  lat: 38.7955
+  lon: -9.3975
+  zoom: 13

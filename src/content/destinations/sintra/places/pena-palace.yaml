@@ -1,0 +1,51 @@
+id: place.sintra.pena-palace
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.palace-hills
+name:
+  official: Park and National Palace of Pena
+  official_source: src.parques-de-sintra.pena
+  aliases:
+    - Palácio Nacional da Pena
+    - Palácio da Pena
+    - Pena Palace & Park
+    - Palácio da Pena · visitor entrance
+map:
+  coordinates: fact.sintra.pena-palace.coordinates-main-entrance
+  category: monument
+  label: Palácio da Pena · visitor entrance
+  zone_label: Hilltop monuments
+editorial:
+  directory:
+    filter: monument
+    meta: Palace Hills · Paid
+    title: Palácio Nacional da Pena
+    text: The colourful Romantic palace is the headline, but do not overlook the surrounding park and viewpoints. Reserve your palace time slot and allow for the uphill approach.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Palacio+da+Pena+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  field_guide:
+    label: "01"
+    title: Palácio da Pena
+    paragraphs:
+      - The unmistakable hilltop palace. Its colours and terraces are spectacular, but the visit works best when you respect your timed entry and allow time to reach the palace from the park entrance.
+    links:
+      - label: Official visitor information ↗
+        href: https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-nacional-da-pena/
+        external: true
+  map_link:
+    title: Pena Palace & Park
+    href: https://www.google.com/maps/search/?api=1&query=Park+and+National+Palace+of+Pena+Sintra
+  romantic:
+    label: 04 / THE ARTIST KING'S PALACE
+    title: Pena Palace & Park
+    text: "Colour, theatrical architecture and broad views across the hills. It is spectacular, but popular and tightly scheduled: book the palace time slot and plan the uphill transfer before you arrive."
+    links:
+      - label: Official visitor information ↗
+        href: https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/
+        external: true
+    meta: Palace entry requires a dated time slot · Check the current ticket options and park transfer.

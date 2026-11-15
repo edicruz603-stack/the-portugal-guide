@@ -1,0 +1,40 @@
+id: place.sintra.moorish-castle
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.palace-hills
+name:
+  official: The Moorish Castle
+  official_source: src.parques-de-sintra.moorish-castle
+  aliases:
+    - Castelo dos Mouros
+    - Moorish Castle
+map:
+  coordinates: fact.sintra.moorish-castle.coordinates-monument
+  category: monument
+  label: Castelo dos Mouros
+  zone_label: Hilltop monuments
+editorial:
+  directory:
+    filter: monument
+    meta: Palace Hills · Paid
+    title: Castelo dos Mouros
+    text: Walk the ramparts for broad views, but be ready for exposed steps, wind and uneven stone.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Castelo+dos+Mouros+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.parquesdesintra.pt/
+        external: true
+  field_guide:
+    label: "03"
+    title: Castelo dos Mouros
+    paragraphs:
+      - Come for the long stone walls and the views across the hills. There are uneven steps and exposed sections, so take your time and check the weather.
+    links:
+      - label: Official visitor information ↗
+        href: https://www.parquesdesintra.pt/pt/parques-monumentos/castelo-dos-mouros/
+        external: true
+  map_link:
+    title: Moorish Castle
+    href: https://www.google.com/maps/search/?api=1&query=Castelo+dos+Mouros+Sintra

@@ -1,0 +1,19 @@
+id: event.sintra.mutatis-mutandis
+destination: destination.sintra
+title: Mutatis Mutandis
+starts_on: '2026-10-24'
+ends_on: '2026-11-15'
+venue: Archaeological Museum of São Miguel de Odrinhas (MASMO)
+source: src.tpg.website-2026
+provenance: legacy-website
+observed_on: '2026-11-11'
+status: reported
+editorial:
+  local:
+    when: 24 Oct – 15 Nov 2026
+    title: Mutatis Mutandis · MASMO
+    text: A theatrical production at the Archaeological Museum of São Miguel de Odrinhas, listed in the municipal cultural agenda. Check the event page for session times and ticket details.
+    link:
+      label: Official cultural agenda ↗
+      href: https://agendaculturaldesintra.pt/agenda
+      external: false

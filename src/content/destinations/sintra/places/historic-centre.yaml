@@ -1,0 +1,21 @@
+id: place.sintra.historic-centre
+destination: destination.sintra
+kind: area
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Historic Centre
+    - Sintra's historic centre
+editorial:
+  map_link:
+    title: Historic Centre
+    href: https://www.google.com/maps/search/?api=1&query=Sintra+Historic+Centre
+  romantic:
+    label: 06 / THE VILLAGE BETWEEN VISITS
+    title: Sintra's historic centre
+    text: Take the slower route through the lanes, pause for a pastry and look up at the National Palace chimneys. The village is not merely a transfer point between monuments; it is part of the experience.
+    links:
+      - label: More local places, cafés and food ↗
+        href: sintra-local-discoveries.html
+        external: false
+    meta: Best enjoyed on foot · Cobblestones and slopes are part of the terrain.

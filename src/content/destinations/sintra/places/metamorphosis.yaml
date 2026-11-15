@@ -1,0 +1,28 @@
+id: place.sintra.metamorphosis
+destination: destination.sintra
+kind: restaurant
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Metamorphosis
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Value
+    title: Metamorphosis
+    text: An option for a generous traditional meal near the station rather than the postcard centre.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Metamorphosis+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Metamorphosis+Sintra
+        external: true
+  local:
+    tag: Portuguese restaurant · near station
+    title: Metamorphosis
+    text: A practical sit-down option near the station, with Portuguese cooking and generous portions reported by visitors. A useful alternative to the busiest historic-centre lanes. Confirm the current menu and accessibility directly.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Metamorphosis+Sintra
+        external: false

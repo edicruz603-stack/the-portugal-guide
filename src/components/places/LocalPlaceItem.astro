@@ -1,0 +1,8 @@
+---
+import type { Place } from '../../lib/content/schemas.ts';
+import { inline } from '../../lib/content/inline.ts';
+import Links from './Links.astro';
+interface Props { editorial: NonNullable<Place['editorial']['local']> }
+const { editorial: e } = Astro.props;
+---
+<article class="item"><span class="tag" set:html={inline(e.tag)} /><h3 set:html={inline(e.title)} /><p set:html={inline(e.text)} /><Links links={e.links} /></article>

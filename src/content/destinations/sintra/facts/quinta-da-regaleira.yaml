@@ -1,0 +1,148 @@
+place: place.sintra.quinta-da-regaleira
+facts:
+- id: fact.sintra.quinta-da-regaleira.coordinates
+  kind: coordinates
+  value:
+    lat: 38.795875
+    lon: -9.397281
+    dms: 38°47'45.15"N 9°23'50.21"W
+  text: 38°47’45.15”N 9°23’50.21”W
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.quinta-da-regaleira.hours-winter
+  kind: hours
+  subject: Jan–Mar, Oct–Dec
+  value:
+    opens: '10:00'
+    closes: '18:30'
+  text: January–March and October–December 10:00–18:30
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.quinta-da-regaleira.hours-summer
+  kind: hours
+  subject: Apr–Sep
+  value:
+    opens: 09:00
+    closes: '19:30'
+  text: April–September 09:00–19:30
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.quinta-da-regaleira.last-entry
+  kind: last-entry
+  value:
+    time: '17:30'
+  text: Last entrance 17:30
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.quinta-da-regaleira.price-adult
+  kind: price
+  value:
+    adult: 20
+    currency: EUR
+  text: Adult €20
+  quote: €20 (2026 tariff)
+  source: src.regaleira.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  review_after_days: 60
+  note: Recorded as Reported in the PDF ledger (ticket-office listing).
+- id: fact.sintra.quinta-da-regaleira.price-youth-senior
+  kind: price
+  value:
+    youth: 15
+    senior: 15
+    currency: EUR
+  text: Youth and senior €15
+  source: src.regaleira.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: reported
+  review_after_days: 60
+- id: fact.sintra.quinta-da-regaleira.price-family
+  kind: price
+  value:
+    family: null
+  text: Family price not published on the ticket-office listing
+  source: src.regaleira.ticket-office
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  status: confirm-first
+- id: fact.sintra.quinta-da-regaleira.address
+  kind: address
+  value:
+    street: Quinta da Regaleira, 9
+    postcode: 2710-567
+    town: Sintra
+  text: Quinta da Regaleira, 9, 2710-567 Sintra
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.quinta-da-regaleira.phone
+  kind: phone
+  value:
+    phone: +351 219 106 650
+  text: +351 219 106 650
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.quinta-da-regaleira.parking
+  kind: access
+  value:
+    parking: false
+  text: No visitor parking
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.quinta-da-regaleira.owner
+  kind: history
+  value:
+    since: 1996
+  text: Owned by Sintra Town Council since 1996 (Fundação Cultursintra)
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.quinta-da-regaleira.people
+  kind: history
+  value:
+    carvalho_monteiro: 1848–1920
+    manini: 1848–1936
+  text: António Augusto Carvalho Monteiro (1848–1920) and architect Luigi Manini (1848–1936)
+  source: src.regaleira.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.quinta-da-regaleira.timed-ticket
+  kind: rule
+  value:
+    timed: true
+  text: Tickets valid for the selected date and time
+  quote: tickets are valid for the selected date and time
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported

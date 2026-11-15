@@ -1,0 +1,7 @@
+---
+/** Links joined by " · " (or nothing, for the directory's link row). */
+import type { Link } from '../../lib/content/schemas.ts';
+interface Props { links: Link[]; separator?: string }
+const { links, separator = ' · ' } = Astro.props;
+---
+{links.map((l, i) => <>{i > 0 && separator}{l.external ? <a href={l.href} target="_blank" rel="noopener">{l.label}</a> : <a href={l.href}>{l.label}</a>}</>)}

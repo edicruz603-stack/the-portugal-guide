@@ -1,0 +1,6 @@
+id: list.sintra.field-guide-tickets
+destination: destination.sintra
+title: Field guide · ticket cards for single places
+context: field_guide_tickets
+items:
+  - place.sintra.quinta-da-regaleira

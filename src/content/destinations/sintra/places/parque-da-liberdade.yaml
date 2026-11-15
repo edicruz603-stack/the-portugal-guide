@@ -1,0 +1,55 @@
+id: place.sintra.parque-da-liberdade
+destination: destination.sintra
+kind: garden
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Parque da Liberdade
+    - Parque da Liberdade · free
+map:
+  coordinates: fact.sintra.parque-da-liberdade.coordinates-approximate
+  category: free
+  label: Parque da Liberdade · free
+  zone_label: Free public garden
+editorial:
+  directory:
+    filter: free
+    meta: Station & town · Free
+    title: Parque da Liberdade
+    text: A shady public garden with winding paths, a natural breathing space between the station and old town. Some paths are steep.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Parque+da+Liberdade+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.visitportugal.com/en/content/sintra-accessible-itinerary
+        external: true
+  local:
+    tag: Free garden · public park
+    title: Parque da Liberdade
+    text: A green public garden just above the old town, with mature trees, winding paths and a quieter atmosphere. A good pause between the station area and the historic centre. Paths are sloped and uneven in places; not a fully step-free attraction.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Parque+da+Liberdade+Sintra
+        external: false
+      - label: Visit Sintra ↗
+        href: https://visitsintra.travel/pt/visitar/parques-e-jardins/parque-da-liberdade
+        external: false
+  field_guide:
+    label: FREE · PUBLIC PARK
+    title: Parque da Liberdade
+    paragraphs:
+      - A green, slightly wild public garden tucked just above the Volta do Duche. Follow its winding paths among mature trees, rocks and moss, and look for the small details that make it feel like a secret garden. The paths climb, so it is not uniformly easy for everyone.
+      - "**Why stop:** A peaceful breather close to the centre, ideal between the museum and the old town."
+      - "**Published hours:** Seasonal, generally from 10:00; check the municipal page for the current closing time."
+      - "**Entry:** Free."
+    links:
+      - label: Open park map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Parque+da+Liberdade+Sintra
+        external: true
+      - label: Official park story and hours ↗
+        href: https://visitsintra.travel/pt/visitar/parques-e-jardins/parque-da-liberdade
+        external: true
+  map_link:
+    title: Parque da Liberdade
+    href: https://www.google.com/maps/search/?api=1&query=Parque+da+Liberdade+Sintra

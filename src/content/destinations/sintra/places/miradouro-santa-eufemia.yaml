@@ -1,0 +1,31 @@
+id: place.sintra.miradouro-santa-eufemia
+destination: destination.sintra
+kind: viewpoint
+zone: zone.sintra.palace-hills
+name:
+  aliases:
+    - Miradouro de Santa Eufémia
+editorial:
+  directory:
+    filter: free
+    meta: Palace Hills · Free viewpoint
+    title: Miradouro de Santa Eufémia
+    text: A rewarding panorama beside the chapel. The nearby Lapa pedestrian connection has slopes and steps; check its current condition.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Miradouro+de+Santa+Eufemia+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://cm-sintra.pt/noticias/turismo/info-condicionamentos-de-acesso-a-monumentos-em-sintra
+        external: true
+  local:
+    tag: Free viewpoint · chapel
+    title: Miradouro de Santa Eufémia
+    text: A quieter scenic stop above Sintra, beside the Chapel of Santa Eufémia. The viewpoint looks across the surrounding landscape and is associated with the historic Lapa path and its renewed wooden walkways. Treat this as a separate outing or a mountain-side stop, not as a quick detour from the old town. Check trail condition, weather and access before leaving.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Miradouro+de+Santa+Eufemia+Sintra
+        external: false
+      - label: Sintra Municipality ↗
+        href: https://cm-sintra.pt/
+        external: false

@@ -1,0 +1,9 @@
+---
+import type { Place } from '../../lib/content/schemas.ts';
+import { inline } from '../../lib/content/inline.ts';
+import Links from './Links.astro';
+type E = NonNullable<Place['editorial']['field_guide']>;
+interface Props { editorial: E }
+const { editorial: e } = Astro.props;
+---
+<article class="highlight-card"><span class="highlight-no" set:html={inline(e.label)} /><h3 set:html={inline(e.title)} />{e.paragraphs.map((p) => <p set:html={inline(p)} />)}<Links links={e.links} /></article>

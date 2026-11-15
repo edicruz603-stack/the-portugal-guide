@@ -1,0 +1,28 @@
+id: place.sintra.romaria-de-baco
+destination: destination.sintra
+kind: restaurant
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Romaria de Baco
+editorial:
+  directory:
+    filter: food
+    meta: Historic Centre · Portuguese
+    title: Romaria de Baco
+    text: A sit-down choice for Portuguese flavours and petiscos close to the centre.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Romaria+de+Baco+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Romaria+de+Baco+Sintra
+        external: true
+  local:
+    tag: Portuguese restaurant · traditional
+    title: Romaria de Baco
+    text: A central option for Portuguese and Mediterranean-style dishes. Consider it for a proper sit-down meal rather than a quick pastry stop. Check the menu and opening hours before going.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Romaria+de+Baco+Sintra
+        external: false

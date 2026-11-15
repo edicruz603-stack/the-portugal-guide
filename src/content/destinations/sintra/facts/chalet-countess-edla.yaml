@@ -1,0 +1,39 @@
+place: place.sintra.chalet-countess-edla
+facts:
+- id: fact.sintra.chalet-countess-edla.coordinates
+  kind: coordinates
+  value:
+    lat: 38.785947
+    lon: -9.399578
+    dms: 38°47'9.41"N 9°23'58.48"W
+  text: 38°47’9.41”N 9°23’58.48”W
+  source: src.parques-de-sintra.chalet-edla
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.chalet-countess-edla.hours
+  kind: hours
+  value:
+    opens: 09:00
+    closes: '17:30'
+    last_entry: '17:00'
+    gate_closed: 12:00–14:00
+  text: Chalet 09:00–17:30; last admission 17:00; entrance gate closed 12:00–14:00
+  source: src.parques-de-sintra.chalet-edla
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.chalet-countess-edla.ticket
+  kind: price
+  value:
+    included_in: place.sintra.pena-palace
+  text: Included in the ticket for the Park and National Palace of Pena
+  source: src.parques-de-sintra.chalet-edla
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60

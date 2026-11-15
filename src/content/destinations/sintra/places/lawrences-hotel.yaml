@@ -1,0 +1,49 @@
+id: place.sintra.lawrences-hotel
+destination: destination.sintra
+kind: landmark
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Lawrence’s Hotel
+    - Lawrence's Hotel
+editorial:
+  directory:
+    filter: free
+    meta: Historic Centre · Exterior free
+    title: Lawrence’s Hotel
+    text: Pause at the façade of one of Sintra’s great historic hotels and think of its literary associations. Respect guests’ privacy.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Lawrences+Hotel+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.lawrenceshotel.com/
+        external: true
+  local:
+    tag: Historic landmark · exterior
+    title: Lawrence's Hotel
+    text: Founded in 1764 and often described as one of the oldest hotels in the Iberian Peninsula. Its story is linked to literary Sintra and the long tradition of travellers staying in the hills. Admire the exterior from the public street; it remains a working hotel, so do not assume non-guests can enter private rooms or facilities.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Lawrences+Hotel+Sintra
+        external: false
+      - label: Hotel website ↗
+        href: https://www.lawrenceshotel.com/
+        external: false
+  field_guide:
+    label: HISTORIC LANDMARK · HOTEL
+    title: Lawrence’s Hotel
+    paragraphs:
+      - "Founded in 1764 as the Estalagem dos Cavaleiros, Lawrence’s is widely described as the oldest hotel on the Iberian Peninsula. It later became associated with the Englishman Lewis Lawrence and with literary Sintra: Lord Byron stayed here, and the hotel is connected to the world of Eça de Queirós’s *Os Maias*."
+      - "**Why stop:** Notice the historic façade and imagine the generations of travellers who have passed through this street. It is a working hotel, so respect guest privacy and do not assume the interior is open to non-guests."
+      - "**Entry:** Admire the exterior from the public street; access to hotel spaces is for guests or by arrangement."
+    links:
+      - label: Open hotel map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Lawrences+Hotel+Sintra
+        external: true
+      - label: Hotel website and history ↗
+        href: https://www.lawrenceshotel.com/
+        external: true
+  map_link:
+    title: Lawrence’s Hotel
+    href: https://www.google.com/maps/search/?api=1&query=Lawrences+Hotel+Sintra

@@ -1,0 +1,66 @@
+place: place.sintra.cabo-da-roca-lighthouse
+facts:
+- id: fact.sintra.cabo-da-roca-lighthouse.coordinates
+  kind: coordinates
+  value:
+    lat: 38.781928
+    lon: -9.497303
+    dms: 38°46'54.94"N 9°29'50.29"W
+  text: 38°46’54.94”N 9°29’50.29”W
+  source: src.parques-de-sintra.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+- id: fact.sintra.cabo-da-roca-lighthouse.hours
+  kind: hours
+  value:
+    opens: 09:30
+    closes: '17:30'
+  text: Courtyard and interpretation area 09:30–17:30
+  source: src.parques-de-sintra.cabo-da-roca-lighthouse
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.cabo-da-roca-lighthouse.price-essential
+  kind: price
+  value:
+    adult: 5
+    youth: 5
+    senior: 5
+    family: 15
+    currency: EUR
+  text: 'Essential visit: €5 (adult, youth, senior), family €15'
+  source: src.parques-de-sintra.cabo-da-roca-lighthouse
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.cabo-da-roca-lighthouse.price-panoramic
+  kind: price
+  value:
+    adult: 10
+    youth: 5
+    senior: 7.5
+    family: 20
+    currency: EUR
+  text: 'Panoramic visit: adult €10, youth €5, senior €7.50, family €20'
+  source: src.parques-de-sintra.cabo-da-roca-lighthouse
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.cabo-da-roca-lighthouse.interpretation-centre
+  kind: date
+  value:
+    date: '2026-07-23'
+  text: Interpretation Centre opened to the public on 23 July 2026
+  source: src.parques-de-sintra.news.cabo-da-roca-opening
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked

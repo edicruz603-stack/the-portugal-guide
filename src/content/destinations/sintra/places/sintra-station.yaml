@@ -1,0 +1,11 @@
+id: place.sintra.sintra-station
+destination: destination.sintra
+kind: transport
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Train Station
+editorial:
+  map_link:
+    title: Train Station
+    href: https://www.google.com/maps/search/?api=1&query=Sintra+Train+Station

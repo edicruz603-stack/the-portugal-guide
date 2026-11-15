@@ -1,0 +1,7 @@
+---
+import type { Event } from '../../lib/content/schemas.ts';
+import { inline } from '../../lib/content/inline.ts';
+interface Props { editorial: NonNullable<Event['editorial']['directory']> }
+const { editorial: e } = Astro.props;
+---
+<div class="event"><strong set:html={inline(e.heading)} /><p set:html={inline(e.text)} /></div>

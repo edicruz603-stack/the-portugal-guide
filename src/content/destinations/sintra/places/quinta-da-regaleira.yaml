@@ -1,0 +1,57 @@
+id: place.sintra.quinta-da-regaleira
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.historic-centre
+name:
+  official: Quinta da Regaleira
+  official_source: src.regaleira.site
+  aliases:
+    - Quinta da Regaleira
+map:
+  coordinates: fact.sintra.quinta-da-regaleira.coordinates
+  category: monument
+  label: Quinta da Regaleira
+  zone_label: Historic centre and gardens
+editorial:
+  directory:
+    filter: monument
+    meta: Historic Centre · Paid
+    title: Quinta da Regaleira
+    text: "Explore beyond the Initiation Well: terraces, tunnels, symbolism and garden paths reward an unhurried visit."
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Quinta+da+Regaleira+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.regaleira.pt/
+        external: true
+  field_guide:
+    label: "02"
+    title: Quinta da Regaleira
+    paragraphs:
+      - A romantic estate of gardens, grottoes, tunnels and symbolic architecture. Give the gardens time; the Initiation Well is only one part of the experience.
+    links:
+      - label: Official visitor information ↗
+        href: https://www.regaleira.pt/pt/visitas
+        external: true
+  field_guide_tickets:
+    label: SEPARATE OPERATOR · ADULT 18–64
+    title: Quinta da Regaleira
+    paragraphs:
+      - "**Adult admission:** €20 (2026 tariff). The estate has its own ticketing system; tickets are valid for the selected date and time. Buy only through the official ticket office and check current access notices before travelling."
+    links:
+      - label: Check official tickets, prices and hours ↗
+        href: https://www.regaleira.pt/pt/visitas
+        external: true
+  map_link:
+    title: Quinta da Regaleira
+    href: https://www.google.com/maps/search/?api=1&query=Quinta+da+Regaleira+Sintra
+  romantic:
+    label: 02 / SYMBOLS & SECRET GARDENS
+    title: Quinta da Regaleira
+    text: "A world of grottoes, paths, terraces and symbolic architecture. It rewards curiosity: look beyond the famous Initiation Well and give the gardens time to reveal their details."
+    links:
+      - label: Official visitor information ↗
+        href: https://www.regaleira.pt/en/
+        external: true
+    meta: Allow 2–3 hours as a planning estimate · Adult ticket €20 (2026 tariff) · Timed entry applies; buy through the official ticket office.

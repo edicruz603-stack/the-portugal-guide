@@ -1,0 +1,29 @@
+id: place.sintra.restaurante-regional
+destination: destination.sintra
+kind: restaurant
+zone: zone.sintra.station-and-town
+name:
+  aliases:
+    - Restaurante Regional de Sintra
+editorial:
+  directory:
+    filter: food
+    meta: Station & town · Traditional
+    title: Restaurante Regional de Sintra
+    text: A traditional meal near the Town Hall; useful if you want a proper lunch away from the busiest square.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Restaurante+Regional+de+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Restaurante+Regional+de+Sintra
+        external: true
+  food_card:
+    title: Restaurante Regional de Sintra
+    paragraphs:
+      - "**For:** a traditional Portuguese sit-down meal close to the Town Hall. A useful option when you want a full lunch rather than pastries or snacks."
+      - "**Address:** Travessa do Município 2."
+    links:
+      - label: Open in Google Maps ↗
+        href: https://www.google.com/maps/search/?api=1&query=Restaurante+Regional+de+Sintra
+        external: true

@@ -1,0 +1,133 @@
+place: place.sintra.national-palace
+facts:
+- id: fact.sintra.national-palace.coordinates
+  kind: coordinates
+  subject: monument page
+  value:
+    lat: 38.79736
+    lon: -9.39052
+    dms: 38°47'50.50"N 9°23'25.87"W
+    precision: rounded to the existing map marker (4–5 decimals)
+  text: 38°47’50.50”N 9°23’25.87”W (monument page)
+  source: src.parques-de-sintra.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: national-palace-coordinates
+  note: The ticket-office page gives 38°47′50.7″N 9°23′25.9″W (about 6 m away). Both kept; the map keeps the existing marker.
+- id: fact.sintra.national-palace.coordinates-ticket-office
+  kind: coordinates
+  subject: ticket-office page
+  value:
+    lat: 38.797417
+    lon: -9.390528
+    dms: 38°47'50.7"N 9°23'25.9"W
+  text: 38°47’50.7”N 9°23’25.9”W (ticket-office page)
+  source: src.parques-de-sintra.ticket-office.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: national-palace-coordinates
+- id: fact.sintra.national-palace.hours-palace
+  kind: hours
+  subject: palace
+  value:
+    opens: 09:30
+    closes: '18:30'
+  text: Palace 09:30–18:30
+  source: src.parques-de-sintra.national-palace-essential-visit
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace.last-entry-palace
+  kind: last-entry
+  subject: palace
+  value:
+    time: '17:30'
+  text: 'Palace: last ticket and last admission 17:30'
+  source: src.parques-de-sintra.national-palace-essential-visit
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace.ticket-office-closed-midday
+  kind: hours
+  value:
+    closed_from: '12:00'
+    closed_to: '13:00'
+  text: Ticket office closed 12:00–13:00; automatic ticket machine available
+  source: src.parques-de-sintra.ticket-office.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace.price-essential
+  kind: price
+  value:
+    adult: 13
+    youth: 10
+    senior: 10
+    family: 35
+    currency: EUR
+  text: 'Essential visit: adult €13, youth €10, senior €10, family €35'
+  source: src.parques-de-sintra.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace.price-full
+  kind: price
+  value:
+    adult: 35
+    youth: 20
+    senior: 25
+    family: 95
+    currency: EUR
+  text: 'Full visit: adult €35, youth €20, senior €25, family €95'
+  source: src.parques-de-sintra.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace.price-theatrical
+  kind: price
+  value:
+    adult: 65
+    youth: 20
+    senior: 50
+    family: 130
+    currency: EUR
+  text: 'Theatrical visit: adult €65, youth €20, senior €50, family €130'
+  source: src.parques-de-sintra.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.national-palace.walk-from-station
+  kind: transport
+  value:
+    minutes_min: 10
+    minutes_max: 15
+  text: 'Sintra train station to the National Palace: 10–15 minutes'
+  source: src.parques-de-sintra.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.national-palace.private-traffic
+  kind: rule
+  value:
+    restricted: true
+  text: Private vehicles in the historic centre are limited to residents
+  source: src.parques-de-sintra.national-palace
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked

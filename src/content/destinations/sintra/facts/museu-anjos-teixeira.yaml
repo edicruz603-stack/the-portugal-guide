@@ -1,0 +1,37 @@
+place: place.sintra.museu-anjos-teixeira
+facts:
+- id: fact.sintra.museu-anjos-teixeira.hours
+  kind: hours
+  value:
+    tue_fri: 10:00–18:00
+    weekends: 12:00–18:00
+    closed: Mondays, most public holidays
+  text: Tue–Fri 10:00–18:00; weekends 12:00–18:00; closed Mondays and most public holidays
+  quote: Tue–Fri 10:00–18:00; weekends 12:00–18:00. Closed Mondays and most public holidays.
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported
+  review_after_days: 60
+- id: fact.sintra.museu-anjos-teixeira.price
+  kind: price
+  value:
+    adult: 0
+    currency: EUR
+  text: Free entry
+  quote: '**Entry:** Free.'
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: reported
+- id: fact.sintra.museu-anjos-teixeira.coordinates-approximate
+  kind: coordinates
+  value:
+    lat: 38.79683
+    lon: -9.38733
+  text: Approximate visitor-area marker
+  source: src.tpg.website-2026
+  provenance: legacy-website
+  observed_on: '2026-11-11'
+  status: confirm-first
+  note: Placed by the previous edition; not checked against any source.

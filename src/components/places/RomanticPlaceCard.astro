@@ -1,0 +1,8 @@
+---
+import type { Place } from '../../lib/content/schemas.ts';
+import { inline } from '../../lib/content/inline.ts';
+import Links from './Links.astro';
+interface Props { editorial: NonNullable<Place['editorial']['romantic']> }
+const { editorial: e } = Astro.props;
+---
+<article class="card"><span class="number" set:html={inline(e.label)} /><h3 set:html={inline(e.title)} /><p set:html={inline(e.text)} />{e.meta && <p class="meta" set:html={inline(e.meta)} />}<Links links={e.links} /></article>

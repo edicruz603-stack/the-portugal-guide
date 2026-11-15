@@ -1,0 +1,13 @@
+place: place.sintra.sao-pedro-de-canaferrim
+facts:
+- id: fact.sintra.sao-pedro-de-canaferrim.works
+  kind: notice
+  value:
+    started: '2024-12-12'
+  text: Refurbishment of the church began 12 December 2024 and is still listed on the operator’s works page
+  source: src.parques-de-sintra.site
+  provenance: pdf-first-edition-2026
+  observed_on: '2026-11-07'
+  checked_on: '2026-11-07'
+  status: checked
+  review_after_days: 60

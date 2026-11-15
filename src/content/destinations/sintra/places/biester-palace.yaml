@@ -1,0 +1,20 @@
+id: place.sintra.biester-palace
+destination: destination.sintra
+kind: monument
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Palácio Biester
+editorial:
+  directory:
+    filter: monument
+    meta: Historic Centre · Paid
+    title: Palácio Biester
+    text: "A restored nineteenth-century estate: an interesting option for visitors drawn to architecture and romantic-era interiors."
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Palacio+Biester+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://visitsintra.travel/pt/visitar/monumentos
+        external: true

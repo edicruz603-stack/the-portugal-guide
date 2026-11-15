@@ -1,0 +1,28 @@
+id: place.sintra.tacho-real
+destination: destination.sintra
+kind: restaurant
+zone: zone.sintra.historic-centre
+name:
+  aliases:
+    - Tacho Real
+editorial:
+  directory:
+    filter: food
+    meta: Historic Centre · Special occasion
+    title: Tacho Real
+    text: Traditional cuisine in a more formal setting, suitable for a longer lunch or a date.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Tacho+Real+Sintra
+        external: true
+      - label: Check details ↗
+        href: https://www.google.com/maps/search/?api=1&query=Tacho+Real+Sintra
+        external: true
+  local:
+    tag: Traditional dining
+    title: Tacho Real
+    text: A traditional dining-room option in the old town. Include it for visitors looking for a sit-down meal in a classic setting; check current menu, prices and service hours.
+    links:
+      - label: Open map ↗
+        href: https://www.google.com/maps/search/?api=1&query=Tacho+Real+Sintra
+        external: false

@@ -1,0 +1,7 @@
+---
+import type { Place } from '../../lib/content/schemas.ts';
+import { inline } from '../../lib/content/inline.ts';
+interface Props { editorial: NonNullable<Place['editorial']['map_link']> }
+const { editorial: e } = Astro.props;
+---
+<a href={e.href} target="_blank" rel="noopener"><span set:html={inline(e.title)} /><small>Map and directions ↗</small></a>

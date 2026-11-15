@@ -1,0 +1,118 @@
+place: place.sintra.monserrate
+facts:
+- id: fact.sintra.monserrate.coordinates-a
+  kind: coordinates
+  value:
+    lat: 38.791861
+    lon: -9.419192
+    dms: 38°47'30.70"N 9°25'9.09"W
+  text: 38°47’30.70”N 9°25’9.09”W (visitor map; monument page gives 38°47’30”N 9°25’09”W)
+  source: src.parques-de-sintra.visitor-map
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: monserrate-coordinates
+- id: fact.sintra.monserrate.coordinates-b
+  kind: coordinates
+  value:
+    lat: 38.794032
+    lon: -9.420948
+    dms: 38°47'38.515"N 9°25'15.413"W
+  text: 38°47’38.515”N 9°25’15.413”W (second, unlabelled value on the English monument page)
+  source: src.parques-de-sintra.monserrate
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: monserrate-coordinates
+  note: About 280 m from coordinates-a; the page does not say which point each value marks.
+- id: fact.sintra.monserrate.coordinates-entrance
+  kind: coordinates
+  subject: park entrance
+  value:
+    lat: 38.790942
+    lon: -9.411178
+    dms: 38°47'27.39"N 9°24'40.24"W
+  text: Park entrance 38°47’27.39”N 9°24’40.24”W
+  source: src.parques-de-sintra.ticket-office.monserrate
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+- id: fact.sintra.monserrate.hours-park
+  kind: hours
+  subject: park
+  value:
+    opens: 09:00
+    closes: '19:00'
+    last_entry: '18:00'
+  text: Park 09:00–19:00; last admission 18:00
+  source: src.parques-de-sintra.monserrate-pt
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.monserrate.last-ticket-park-monument-page
+  kind: last-entry
+  subject: park, last ticket
+  value:
+    time: '17:30'
+  text: 'Park: last ticket 17:30 (monument page)'
+  source: src.parques-de-sintra.monserrate-pt
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: monserrate-park-last-ticket
+- id: fact.sintra.monserrate.last-ticket-park-ticket-office
+  kind: last-entry
+  subject: park, last ticket
+  value:
+    time: '18:00'
+  text: 'Park: last ticket and last entry 18:00 (ticket-office page)'
+  source: src.parques-de-sintra.ticket-office.monserrate
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  status: unresolved
+  conflict_group: monserrate-park-last-ticket
+- id: fact.sintra.monserrate.hours-palace
+  kind: hours
+  subject: palace
+  value:
+    opens: 09:30
+    closes: '18:00'
+    last_ticket: '17:00'
+    last_entry: '17:30'
+  text: Palace 09:30–18:00; last ticket 17:00, last admission 17:30
+  source: src.parques-de-sintra.monserrate-pt
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.monserrate.price
+  kind: price
+  value:
+    adult: 12
+    youth: 10
+    senior: 10
+    family: 33
+    currency: EUR
+  text: Adult €12, youth €10, senior €10, family €33
+  quote: Adult ticket currently €12
+  source: src.parques-de-sintra.monserrate-pt
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
+- id: fact.sintra.monserrate.roof-works
+  kind: notice
+  value:
+    until: 2027-Q1
+  text: Palace roof recovery under way until the first quarter of 2027, with scaffolding and a temporary cover
+  source: src.parques-de-sintra.ticket-office.monserrate
+  provenance: official-page-read
+  observed_on: '2026-11-11'
+  checked_on: '2026-11-11'
+  status: checked
+  review_after_days: 60
