@@ -55,17 +55,17 @@ src/lib/content/repository.ts  the only read path for pages (placesInList, event
 | C12 | Event ending before it starts |
 | C13 | Homepage card linking to a missing page |
 
-WARNING (never blocks): W01 fact past its review window · W02 ended event still in an active list (unlisted ended events are history) · W03 place without coordinates · W04 stale source · W05 new ID not yet locked · W06 uncleared image (free mode).
+WARNING (never blocks): W01 fact past its review window · W02 listed event that has ended (hidden automatically from the next build; unlisted ended events are silent history) · W03 place without coordinates · W04 stale source · W05 new ID not yet locked · W06 uncleared image (free mode) · W07 event list with nothing left to show.
 EDITORIAL PENDING: P01 unverified facts/events · P02 no zone · P03 no reader-facing text · P04 no facts · P05 image rights pending · P06 map marker on unverified coordinates.
 
-Current dataset: **0 critical · 29 warnings · 91 pending**.
+Current dataset (validation date 15 Nov 2026): **0 critical · 32 warnings (W03×25, W06×4, W02×3) · 91 pending** (P01×57, P04×16, P03×6, P06×5, P05×4, P02×3).
 
 ## 4. Data entered
 
 - **40 places**: the 34 on the website plus the PDF chapters not yet on the site — São Pedro de Canaferrim (part of the Moorish Castle), Colares, Adega Regional de Colares, Cabo da Roca and its lighthouse, Museu do Bonsai. Kinds and zones use the website's own zone labels; three places whose location is not established have no zone (pending).
 - **108 facts** on 24 places — checked 58 · reported 33 · confirm-first 5 · unresolved 12. Provenance: 52 read on official pages on 11 Nov 2026, 37 from the PDF fact ledger (read 7 Nov, original status kept), 19 from the previous website (Reported).
 - **36 sources** with URL, kind and date seen.
-- **7 events** (3 already ended → warnings).
+- **7 events** (at 15 Nov 2026: 3 ended, hidden automatically and reported by W02; 4 shown).
 
 ## 5. Findings while entering data (all preserved as data, nothing chosen)
 
@@ -249,9 +249,17 @@ Classification at validation date 2026-11-13 (`docs/content/sintra-content-statu
 Editorial blockers: 27 visible items without verification (3 unresolved: gardens last entry, Monserrate and gardens markers); 33 research items; 6 places without text; 16 without facts; diary research.
 Commercial blockers: 4 image rights (C11); in addition, category 1 should be resolved before any paid edition.
 
-Decisions for the owner:
-1. Unresolved values now visible (gardens last entry 18:00; two markers): keep as published until M3, or replace them with "confirm with the operator" — this changes visible text (parity).
+Decisions taken by the owner on 15 Nov 2026 (§10.8): 1 — keep visible text in M2; 5 — inclusive last day approved.
+
+Still open:
 2. Candidate places: Palace of Seteais, MASMO (event venue), Viúva Gomes — create records or keep as editorial mentions.
-3. A scheduled rebuild so ended events disappear on time (a deployment change; not done).
+3. A scheduled rebuild so ended events disappear on time (a deployment change; not introduced).
 4. Agenda research to refresh the seasonal diary (editorial work, outside M2).
-5. Approval of the expiry rule (inclusive last day) and of the Europe/Lisbon date.
+6. Confirmation of Europe/Lisbon as the default calendar date when `VALIDATION_DATE` is not set (implemented; not separately decided).
+
+### 10.8 Owner decisions (15 Nov 2026)
+
+1. **Event expiry:** the final date is inclusive. An event stays visible through its end date and disappears from the next build onwards. This is what `src/lib/content/dates.ts` implements (`lastDay(e) >= today`); tested at 14, 15 and 16 Nov 2026. Expiry acts on generated builds only: an already-published static site does not change until it is rebuilt, and no scheduled rebuild has been introduced (`.github/workflows/ci.yml` has no `schedule` trigger; there is no other workflow).
+2. **Conflicting facts:** M2 keeps the current visible website text and does not resolve or change any conflicting value. The 5 conflict groups (12 `unresolved` facts) stay recorded as data, enforced by C06, and carry forward to M3 for editorial resolution. Visible text is unchanged: `test:parity` passes on all 5 pages.
+
+No code, content data, event date or fact value changed with these decisions; only this report was updated.
