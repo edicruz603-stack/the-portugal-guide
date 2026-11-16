@@ -137,6 +137,29 @@ describe('CRITICAL rules each fail on a fixture', () => {
     const g = fresh(); fact(g, A).conflict_group = 'x-y'; fact(g, B).conflict_group = 'x-y'; fact(g, A).status = 'unresolved'; fact(g, B).status = 'unresolved'; fails(g, 'C16', /not a conflict/);
     const k = fresh(); fact(k, 'fact.sintra.monserrate.price').agrees_with = A; fails(k, 'C16', /coordinates only/);
   });
+  it('C16 operator identity is explicit source metadata, not inferred from the source ID', () => {
+    const A = 'fact.sintra.national-palace.coordinates', B = 'fact.sintra.national-palace.coordinates-ticket-office';
+    const src = (i: ContentInput, id: string) => (i.sources as Rec[]).find((x) => x.id === id)!;
+    // same ID prefix, different declared operator → not the same operator
+    const d = fresh(); src(d, fact(d, B).source).operator = 'another-operator'; fails(d, 'C16', /same operator/);
+    // an operator source must declare its operator
+    const m = fresh(); delete src(m, fact(m, A).source).operator; fails(m, 'C16', /without an operator identifier/);
+    // a non-operator source may not claim one
+    const n = fresh(); src(n, 'src.visit-sintra.hiking').operator = 'parques-de-sintra'; fails(n, 'C16', /operator identifier on a official source/);
+    // different ID prefixes but the same declared operator still agree (no string parsing)
+    const r = fresh(); const sb = src(r, fact(r, B).source); (r.sources as Rec[]).push({ ...sb, id: 'src.psml-tickets.national-palace' }); fact(r, B).source = 'src.psml-tickets.national-palace';
+    expect(run(r).filter((x) => x.rule === 'C16')).toEqual([]);
+  });
+  it('C16 verifications: owner field verification is dated, not in the future, and covers the same place and kind', () => {
+    const A = 'fact.sintra.national-palace.coordinates';
+    const v = (i: ContentInput) => fact(i, A).verifications[0];
+    const real16 = fresh(); expect(v(real16)).toMatchObject({ on: '2026-11-16', by: 'owner', method: 'field-verification' });
+    expect(fact(real16, A).checked_on).toBe('2026-11-15'); expect(fact(real16, A).status).toBe('checked');
+    const f1 = fresh(); v(f1).on = '2027-01-01'; fails(f1, 'C16', /verification 1 is dated in the future/);
+    const f2 = fresh(); v(f2).on = '2026-11-01'; fails(f2, 'C16', /predates the observation/);
+    const f3 = fresh(); v(f3).covers = ['fact.sintra.national-palace.hours-palace']; fails(f3, 'C16', /different place or kind/);
+    const f4 = fresh(); v(f4).covers = ['fact.sintra.national-palace.nowhere']; fails(f4, 'C16', /unknown fact/);
+  });
   it('C16 status history: complete, dated, and ending at the current status', () => {
     const E = 'fact.sintra.monserrate.coordinates-entrance';
     const a = fresh(); fact(a, E).status = 'reported'; fails(a, 'C16', /history ends at confirm-first/);

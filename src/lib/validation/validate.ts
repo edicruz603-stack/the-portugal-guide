@@ -312,21 +312,27 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
   //   b) `agrees_with`: two coordinate values for the same subject from the same operator within 15 m, not in a conflict
   //   c) `history`: chronological, no future dates, each entry changes the status, the last one is the current status,
   //      and leaving `checked` records the previous checked_on
+  //   d) source metadata: operator sources name their operator explicitly; `verifications` are dated, not in the
+  //      future, not before the value was observed, and only cover facts of the same place and kind
   for (const [g, fs] of groups) {
     const claims = new Set(fs.map((f) => `${f.kind}|${f.subject ?? ''}`));
     if (claims.size > 1) add('critical', 'C16', g, `conflict group mixes different claims: ${[...claims].join(' / ')}`);
   }
   const factById = new Map(facts.map((f) => [f.id, f]));
   const sourceById = new Map(sources.map((x) => [x.id, x]));
-  // the operator is the publisher segment of the source ID: src.<publisher>.<page> (its pages and ticket office alike)
-  const publisher = (id: string) => (sourceById.has(id) ? id.split('.')[1] : undefined);
+  // the operator is explicit source metadata (sources.json `operator`), never inferred from the ID or publisher text
+  for (const x of sources) {
+    if (x.kind === 'operator' && !x.operator) add('critical', 'C16', x.id, 'operator source without an operator identifier');
+    if (x.kind !== 'operator' && x.operator) add('critical', 'C16', x.id, `operator identifier on a ${x.kind} source`);
+  }
+  const operatorOf = (id: string) => { const x = sourceById.get(id); return x?.kind === 'operator' ? x.operator : undefined; };
   for (const f of facts.filter((x) => x.agrees_with)) {
     const o = factById.get(f.agrees_with!);
     const where = `${f.id} agrees_with ${f.agrees_with}`;
     if (!o) { add('critical', 'C16', where, 'unknown fact'); continue; }
     if (f.kind !== 'coordinates' || o.kind !== 'coordinates') { add('critical', 'C16', where, 'tolerance applies to coordinates only'); continue; }
     if ((f.subject ?? '') !== (o.subject ?? '') || f.place !== o.place) add('critical', 'C16', where, 'different physical points (place or subject differ)');
-    if (!publisher(f.source) || publisher(f.source) !== publisher(o.source) || sourceById.get(f.source)?.kind !== 'operator' || sourceById.get(o.source)?.kind !== 'operator') add('critical', 'C16', where, 'tolerance requires the same operator for both values');
+    if (!operatorOf(f.source) || operatorOf(f.source) !== operatorOf(o.source)) add('critical', 'C16', where, 'tolerance requires the same operator for both values');
     if (f.conflict_group || o.conflict_group) add('critical', 'C16', where, 'values within tolerance are not a conflict: remove the conflict group');
     const pa = typeof f.value.lat === 'number' && typeof f.value.lon === 'number' ? [f.value.lat, f.value.lon] as [number, number] : null;
     const pb = typeof o.value.lat === 'number' && typeof o.value.lon === 'number' ? [o.value.lat, o.value.lon] as [number, number] : null;
@@ -343,7 +349,18 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
       if (e.from === 'checked' && !e.previous_checked_on) add('critical', 'C16', f.id, `history entry ${i + 1} leaves checked without previous_checked_on`);
     });
     if (h[h.length - 1]!.to !== f.status) add('critical', 'C16', f.id, `history ends at ${h[h.length - 1]!.to} but the fact is ${f.status}`);
+  }  for (const f of facts.filter((x) => x.verifications)) {
+    for (const [i, v] of f.verifications!.entries()) {
+      if (v.on > opts.today) add('critical', 'C16', f.id, `verification ${i + 1} is dated in the future (${v.on})`);
+      if (v.on < f.observed_on) add('critical', 'C16', f.id, `verification ${i + 1} predates the observation (${f.observed_on})`);
+      for (const c of v.covers ?? []) {
+        const o = factById.get(c);
+        if (!o) add('critical', 'C16', f.id, `verification ${i + 1} covers unknown fact ${c}`);
+        else if (o.place !== f.place || o.kind !== f.kind) add('critical', 'C16', f.id, `verification ${i + 1} covers ${c}, a different place or kind`);
+      }
+    }
   }
+
 
   // ---------------- warnings
   for (const f of facts) {
