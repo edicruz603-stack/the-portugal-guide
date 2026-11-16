@@ -62,7 +62,8 @@ export const ImageSchema = z.object({
   /**
    * Why commercial use is allowed (M3, rule C18). Required when commercial_ok is true.
    *   licence-verified   the licence was read on the file page (licence_url, licence_verified_on)
-   *   owner-original     the owner's own original photograph (intake record with a received original and confirmed subject)
+   *   owner-original     the owner's own photograph (declared photographer and rights holder; intake record with no
+   *                      documented blocker; the original need not be accessible to the build)
    *   written-permission a contributor's written permission (permission_ref)
    */
   commercial_basis: z.enum(['licence-verified', 'owner-original', 'written-permission']).optional(),
@@ -70,6 +71,14 @@ export const ImageSchema = z.object({
   licence_verified_on: isoDate.optional(),
   /** owner photographs: `<batch>/<sender_filename>` in media/intake */
   intake: z.string().optional(),
+  /**
+   * Operators' image rules (M3 closure): the published rule of the site the photo depicts (e.g. the Parques de Sintra
+   * image-capture regulation). Commercial use then also needs the operator's authorisation (rule C18).
+   */
+  site_rule: sourceId.optional(),
+  site_authorisation_ref: z.string().min(5).optional(),
+  /** owner photographs that depict the same subject and could replace this image (intake refs; rule C18) */
+  replacement_candidates: z.array(z.string()).min(1).optional(),
   /** audit trail when an image record takes over from another */
   replaces: z.string().optional(),
   replaced_by: z.string().optional(),

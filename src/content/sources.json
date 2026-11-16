@@ -291,5 +291,25 @@
     "kind": "operator",
     "operator": "parques-de-sintra",
     "seen_on": "2026-11-15"
+  },
+  {
+    "id": "src.parques-de-sintra.image-capture-regulation",
+    "publisher": "Parques de Sintra",
+    "title": "Regulation for Image Capture in the areas managed by Parques de Sintra (February 2022)",
+    "url": "https://www.parquesdesintra.pt/media/hs2bfdft/regulationpsml-image_capture.pdf",
+    "kind": "operator",
+    "operator": "parques-de-sintra",
+    "seen_on": "2026-11-16",
+    "note": "Art. 1(4): the general regime allows image capture for private use; commercial or public use requires prior authorisation from Parques de Sintra. Art. 1(5) and Art. 5 / Annex 1: the exceptional regime, with fees per hour and site. Covers Pena, the National Palace of Sintra, Monserrate, the Capuchos, the Moorish Castle, Cabo da Roca lighthouse (shared site) and others. The cover says February 2022; the approval line gives 18 February 2021."
+  },
+  {
+    "id": "src.regaleira.visitor-rules",
+    "publisher": "Fundação Cultursintra (Quinta da Regaleira)",
+    "title": "Visits — visitor rules",
+    "url": "https://regaleira.pt/en/visitas",
+    "kind": "operator",
+    "operator": "quinta-da-regaleira",
+    "seen_on": "2026-11-16",
+    "note": "Visitor rules: public use of Quinta da Regaleira's image, regardless of its aim and purposes, requires prior authorisation from Fundação Cultursintra FP. Filming and photography rules: https://www.regaleira.pt/en/normas-de-captacao-de-imagens"
   }
 ]

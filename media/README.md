@@ -2,15 +2,14 @@
 
 ```
 media/
-  intake/<batch>.yaml        manifest of what was received (schema: src/lib/media/intake.ts; checked by rule C18)
-  originals/<batch>/<file>   original files exactly as supplied by the owner (never edited, cropped or re-encoded)
+  intake/<batch>.yaml        what was received (schema: src/lib/media/intake.ts; checked by rule C18)
+  originals/<batch>/<file>   original files exactly as exported by the owner, when they are accessible to the build
 ```
 
-- **Originals are read-only.** They are never overwritten or modified. Website images are *derivatives* generated from an original (resized/encoded) and stored separately, only when a page needs them.
-- **Previews are not originals.** Images received in a conversation are downscaled copies without camera metadata. They are catalogued (dimensions and SHA-256) but not stored here or used on the site.
-- **Status per photo:** `awaiting-original` → `original-received` (with path, SHA-256 and date) → optionally `rejected`.
-- **Subjects** are proposals until the owner confirms them (`confirmed_subject`). A photo is never used where its subject matters until confirmed. Capture dates, places, camera data and captions are never invented; they come from the original's metadata or from the owner.
-- **People and signage** are noted per photo. Photos with identifiable people are not published in a way that raises avoidable privacy concerns.
-- An `images.json` record for an owner photograph needs `rights_category: owner` and an `intake` reference to a received original with a confirmed subject (rule C18). Commercial use also needs `commercial_basis: owner-original` and a `permission_ref` to the written ownership/permission record.
+- **Owner = declared photographer and rights holder** (batch `declaration`, 16 Nov 2026). Earlier statements that qualify it are kept in `declaration.history`.
+- **Originals vs derivatives.** `original.state` is `supplied-not-accessible` when the owner supplied the photo but only a reduced copy reached the workspace, or `accessible` (with path and SHA-256). A missing original is never read as "not supplied". `preview` is that reduced copy (size, SHA-256, metadata). `derivatives` are files kept in the repository (path, size, SHA-256, edits); their hashes are checked on every validation run.
+- **Separate assessments:** `subject` (visual / owner-confirmed / not-identified), `authorship` (owner-declared, or owner-to-reconfirm *with documented evidence*), `people`, `marks` (trademarks and signage), `property` (the operator image rule of a depicted site, and any authorisation).
+- **Commercial blockers** are only the documented issues listed by `commercialBlockers()`; see `docs/content/image-rights.md`.
+- Capture dates, places, devices and captions are never invented.
 
-Current batch: `intake/2026-11-16-owner-sintra.yaml`, 19 photos, all `awaiting-original`.
+Batches: `2026-11-06-owner-sintra` (11), `2026-11-07-owner-sintra` (11, one duplicate), `2026-11-16-owner-sintra` (19). No original or derivative is stored in the repository yet.

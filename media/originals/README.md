@@ -1,1 +1,1 @@
-Original owner photographs go here, one folder per intake batch (`media/originals/<batch>/`), unchanged from the camera or phone export. None received yet.
+Original owner photographs go here when they are accessible to the build, one folder per intake batch (`media/originals/<batch>/`), unchanged from the camera or phone export. None is stored yet: the originals of all three batches were supplied by the owner but are not accessible in the build workspace (see `media/intake/*.yaml`, `original.state`).

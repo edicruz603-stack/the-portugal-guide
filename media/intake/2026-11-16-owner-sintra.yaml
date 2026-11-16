@@ -1,162 +1,563 @@
-# Owner photographs received 16 Nov 2026 (M3 brief §9).
-# These are DOWNSCALED PREVIEWS sent in the conversation (longest side 2576 px, camera metadata removed), not the
-# original files. They are catalogued here and are not stored in the repository. Each entry stays awaiting-original
-# until the owner supplies the original file; subjects are proposals until the owner confirms them.
+# Owner photographs supplied 16 Nov 2026 (M3 brief §9), corrected at M3 closure (16 Nov 2026).
+# The owner is the declared photographer and rights holder. The files accessible in the build workspace are REDUCED
+# DERIVATIVES (longest side 2576 px, camera metadata reduced to an empty pointer); the originals were supplied by the
+# owner but are not accessible here. Subjects are visual identifications by the editors unless marked owner-confirmed.
+# Nothing here is stored in the repository or used on the site yet.
 batch: 2026-11-16-owner-sintra
-owner: Project owner (The Portugal Guide)
-received_on: '2026-11-16'
-received_via: conversation upload (downscaled previews)
-rights_statement: Owner-provided original photographs taken in Sintra (M3 brief §9). Written ownership/permission record still to be filed with the originals.
+received_via: conversation upload (the owner sent the photographs; reduced copies reached the workspace)
+declaration:
+  photographer: owner
+  rights_holder: owner
+  stated_on: '2026-11-16'
+  ref: 'Owner, M3 continuation brief (16 Nov 2026): "The project owner has already supplied original photographs of Sintra and other locations. These are the owner''s own photographs."'
 photos:
-  - sender_filename: 1000077326.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: bc1539634e9cf977db121e74c91b903303ddadeb23afd23897a3431323c996bd }
-    description: "Portrait. White palace complex with two tall conical white chimneys seen from above across trees, ivy and a mossy wall sharp in the foreground; red-roofed building at the right edge; cloudy sky."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077325.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 677ea6b12b53c23985bb941a6a3c0b25ae26190c234985d9d39984d8f7fc73cd }
-    description: "Portrait. Same view as 1000077326 with slightly different framing."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077324.jpg
-    status: awaiting-original
-    preview: { width: 2576, height: 1190, sha256: 2dff1cc6d7b0f8a7062ede7cf86bde3eee7cb1a143791decd825022026bb704a }
-    description: "Landscape. Same palace and chimneys from above, wider; ivy on the left, corner of a red building with a white pilaster top left, tiled roofs and wooded valley on the right."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077323.jpg
-    status: awaiting-original
-    preview: { width: 2576, height: 1190, sha256: fc9f4e15df4324920c932c558158a8cdfb0db16f4946a740c72c68c8b24b9835 }
-    description: "Landscape. Coral-red building with balcony and a security camera on the left; palace with conical chimneys in the centre; town and valley beyond; ivy foreground."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077322.jpg
-    status: awaiting-original
-    preview: { width: 2576, height: 1190, sha256: 5101b0d168abed28343f067d941edde0d5bdb8c7b47b297b23381997c464f425 }
-    description: "Landscape. Similar view with focus on the ivy in the foreground; palace and coral building out of focus."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077321.jpg
-    status: awaiting-original
-    preview: { width: 2576, height: 1190, sha256: 1c76246d13fabed1e0a5fb527ad9e6a6d29cb969c29e3aefce9f7bab9d0b5c97 }
-    description: "Landscape. Coral building on the left, palace with conical chimneys, tiled roofs and wooded valley; ivy foreground, mostly sharp."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077320.jpg
-    status: awaiting-original
-    preview: { width: 2576, height: 1190, sha256: 101e99e1211784d1e43f7a3380fed4ac5762e129b6eb5b40b969116b890309c9 }
-    description: "Landscape. Near-identical to 1000077321."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077319.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 8e55274ca6141b3196ac727474114694d975a6bda7a0fe2952d2b358cd3910f3 }
-    description: "Portrait. Coral building with an arched stair on the left, palace with conical chimneys in the middle distance, sloping garden; large cloudy sky."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077318.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 74e0e27eea00abc3afda2abb4b78e800ee70816cfb6df79aab265f5c93c8c15c }
-    description: "Portrait. Same view as 1000077319 with two birds in the sky."
-    proposed_subject: { text: "National Palace of Sintra, seen from above", basis: "visual: the two tall conical white chimneys, the palace's best-known feature (2026 Edition p.6). The viewpoint is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077317.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: dca07ff41ac7d61b133dc6191ad38f72b9a15125b692d9ea2cc36d2912888c88 }
-    description: "Portrait. Narrow paved terrace along a pale blue house with a tower topped by a glazed lantern; tile sign reading \"VILLA NOGUEIRAS\"; blue iron gate and potted plants; overhead cables."
-    proposed_subject: { text: "A house named \"Villa Nogueiras\" (tile sign)", basis: "visual: legible tile sign. Its location is not established and it is not a place in the guide.", confirmed: false }
-    people: "none visible"
-    signage: "tile house-name sign"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077316.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: fa91a284b49cfce55bba58191506d17c7a024d24ccc524e2746460b99fb0c59e }
-    description: "Portrait. Same scene as 1000077317, slightly different framing."
-    proposed_subject: { text: "A house named \"Villa Nogueiras\" (tile sign)", basis: "visual: legible tile sign. Its location is not established and it is not a place in the guide.", confirmed: false }
-    people: "none visible"
-    signage: "tile house-name sign"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077315.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: f644fec89592ded5fe4e7866232d7606f5dff7b9fc55b7105faacb0a63f34759 }
-    description: "Portrait. Curving asphalt lane between a tall stone retaining wall with a lantern and small houses; yellow building above the wall; tiled coat-of-arms panel on a white house."
-    proposed_subject: { text: "A street in a historic town (location not established)", basis: "none: no legible place name.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077313.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: fe8a9013b25ea5d10eb7af50a3619728bb6b41edfddbaa7e4483f17e72c7848a }
-    description: "Portrait. Stepped lane of Portuguese pavement (calçada) with a central handrail between a yellow wall and a tall house; drain grate and a manhole cover marked \"CMS\"."
-    proposed_subject: { text: "A street in a historic town (location not established)", basis: "none: no legible place name.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077314.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: dafd2ef451384f83710d8db1c5ceef3878cd0917e321d268d4b5cb633ea624bb }
-    description: "Portrait. White house with door number 29; stone arch leading to a small courtyard with a blue gate; road signs and a stone wall on the right."
-    proposed_subject: { text: "A street in a historic town (location not established)", basis: "none: no legible place name.", confirmed: false }
-    people: "none visible"
-    signage: "none"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077312.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 2fac6f2feeeec46098e41507a6e9ff6936c46c1dabd3136c1f2e065c81e55318 }
-    description: "Portrait. Pink building with a hanging shop sign \"ARTNIS\" and a tiled shop panel; diamond-patterned calçada lane rising past an old stone building with a red door; tiled street-name sign only partly legible."
-    proposed_subject: { text: "A street with shop signage (location not established)", basis: "visual: shop and café signs only; the street is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "shop or café signage visible (incidental trade names)"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077311.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 7c6b9594b6022fcf37bb0884b14a76fe9bdc00937382e25ff3c8c4ed5f5bb48c }
-    description: "Portrait. Junction with a looped calçada pattern; pink corner building with \"Lord Byron\" café signage and tile panels; lanes rising on both sides; \"Ginjinha\" sign on the right."
-    proposed_subject: { text: "A street with shop signage (location not established)", basis: "visual: shop and café signs only; the street is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "shop or café signage visible (incidental trade names)"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077310.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 9c4f349e5bf6225739ff04a1dc3ab0d6a95dae72168be1c6fd9de0bd63810bb5 }
-    description: "Portrait. Same junction as 1000077311 from a lower angle; a few small, distant figures at the lower left."
-    proposed_subject: { text: "A street with shop signage (location not established)", basis: "visual: shop and café signs only; the street is not identified.", confirmed: false }
-    people: "few small, distant figures; not identifiable at preview resolution — review on the original"
-    signage: "shop or café signage visible (incidental trade names)"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077309.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 5ab99887f11bae6ca13b8b736fc0937052c59bdf4bc4d2e343597b205d7a381f }
-    description: "Portrait. Closer, upward view of the same corner building and the rising cobbled lane beside a stone wall with an orange tree."
-    proposed_subject: { text: "A street with shop signage (location not established)", basis: "visual: shop and café signs only; the street is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "shop or café signage visible (incidental trade names)"
-    capture: not known (no metadata in the preview)
-  - sender_filename: 1000077308.jpg
-    status: awaiting-original
-    preview: { width: 1190, height: 2576, sha256: 110d77cbbc8e50afe82127c7efe90662d59bcb336ec1752ef1f7005aa18f70f4 }
-    description: "Portrait. Narrow lane with diamond-patterned calçada; signs for \"Cintra Antiga\" souvenirs and \"Ginja Mariquinhas\"; red door, wall lantern, a pigeon."
-    proposed_subject: { text: "A street with shop signage (location not established)", basis: "visual: shop and café signs only; the street is not identified.", confirmed: false }
-    people: "none visible"
-    signage: "shop or café signage visible (incidental trade names)"
-    capture: not known (no metadata in the preview)
+- sender_filename: 1000077326.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: bc1539634e9cf977db121e74c91b903303ddadeb23afd23897a3431323c996bd
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. White palace complex with two tall conical white chimneys seen from above across trees, ivy and a mossy wall sharp in the foreground; red-roofed building at the right edge; cloudy
+    sky.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077325.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 677ea6b12b53c23985bb941a6a3c0b25ae26190c234985d9d39984d8f7fc73cd
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Same view as 1000077326 with slightly different framing.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077324.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 2576
+    height: 1190
+    sha256: 2dff1cc6d7b0f8a7062ede7cf86bde3eee7cb1a143791decd825022026bb704a
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Landscape. Same palace and chimneys from above, wider; ivy on the left, corner of a red building with a white pilaster top left, tiled roofs and wooded valley on the right.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077323.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 2576
+    height: 1190
+    sha256: fc9f4e15df4324920c932c558158a8cdfb0db16f4946a740c72c68c8b24b9835
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Landscape. Coral-red building with balcony and a security camera on the left; palace with conical chimneys in the centre; town and valley beyond; ivy foreground.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077322.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 2576
+    height: 1190
+    sha256: 5101b0d168abed28343f067d941edde0d5bdb8c7b47b297b23381997c464f425
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Landscape. Similar view with focus on the ivy in the foreground; palace and coral building out of focus.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077321.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 2576
+    height: 1190
+    sha256: 1c76246d13fabed1e0a5fb527ad9e6a6d29cb969c29e3aefce9f7bab9d0b5c97
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Landscape. Coral building on the left, palace with conical chimneys, tiled roofs and wooded valley; ivy foreground, mostly sharp.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077320.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 2576
+    height: 1190
+    sha256: 101e99e1211784d1e43f7a3380fed4ac5762e129b6eb5b40b969116b890309c9
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Landscape. Near-identical to 1000077321.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077319.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 8e55274ca6141b3196ac727474114694d975a6bda7a0fe2952d2b358cd3910f3
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Coral building with an arched stair on the left, palace with conical chimneys in the middle distance, sloping garden; large cloudy sky.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077318.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 74e0e27eea00abc3afda2abb4b78e800ee70816cfb6df79aab265f5c93c8c15c
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Same view as 1000077319 with two birds in the sky.
+  subject:
+    text: National Palace of Sintra, seen from above
+    identification: visual
+    basis: 'visual: the two tall conical white chimneys, the palace''s best-known feature (2026 Edition p.6). The viewpoint is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    managed_site: National Palace of Sintra (Parques de Sintra)
+    rule: src.parques-de-sintra.image-capture-regulation
+    capture: unknown
+    note: Viewpoint not identified (the palace is seen from above). The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs
+      taken from outside its areas is not established here.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077317.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: dca07ff41ac7d61b133dc6191ad38f72b9a15125b692d9ea2cc36d2912888c88
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Narrow paved terrace along a pale blue house with a tower topped by a glazed lantern; tile sign reading "VILLA NOGUEIRAS"; blue iron gate and potted plants; overhead cables.
+  subject:
+    text: A house named "Villa Nogueiras" (tile sign)
+    identification: visual
+    basis: 'visual: legible tile sign. Its location is not established and it is not a place in the guide.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: present
+    note: tile house-name sign
+  property:
+    capture: outside
+    note: Private house seen from the street as far as the image shows; house name on a tile sign. No operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077316.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: fa91a284b49cfce55bba58191506d17c7a024d24ccc524e2746460b99fb0c59e
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Same scene as 1000077317, slightly different framing.
+  subject:
+    text: A house named "Villa Nogueiras" (tile sign)
+    identification: visual
+    basis: 'visual: legible tile sign. Its location is not established and it is not a place in the guide.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: present
+    note: tile house-name sign
+  property:
+    capture: outside
+    note: Private house seen from the street as far as the image shows; house name on a tile sign. No operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077315.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: f644fec89592ded5fe4e7866232d7606f5dff7b9fc55b7105faacb0a63f34759
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Curving asphalt lane between a tall stone retaining wall with a lantern and small houses; yellow building above the wall; tiled coat-of-arms panel on a white house.
+  subject:
+    text: A street in a historic town (location not established)
+    identification: visual
+    basis: 'none: no legible place name.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077313.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: fe8a9013b25ea5d10eb7af50a3619728bb6b41edfddbaa7e4483f17e72c7848a
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Stepped lane of Portuguese pavement (calçada) with a central handrail between a yellow wall and a tall house; drain grate and a manhole cover marked "CMS".
+  subject:
+    text: A street in a historic town (location not established)
+    identification: visual
+    basis: 'none: no legible place name.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077314.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: dafd2ef451384f83710d8db1c5ceef3878cd0917e321d268d4b5cb633ea624bb
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. White house with door number 29; stone arch leading to a small courtyard with a blue gate; road signs and a stone wall on the right.
+  subject:
+    text: A street in a historic town (location not established)
+    identification: visual
+    basis: 'none: no legible place name.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077312.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 2fac6f2feeeec46098e41507a6e9ff6936c46c1dabd3136c1f2e065c81e55318
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Pink building with a hanging shop sign "ARTNIS" and a tiled shop panel; diamond-patterned calçada lane rising past an old stone building with a red door; tiled street-name sign
+    only partly legible.
+  subject:
+    text: A street with shop signage (location not established)
+    identification: visual
+    basis: 'visual: shop and café signs only; the street is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: present
+    note: shop or café signage visible (incidental trade names)
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077311.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 7c6b9594b6022fcf37bb0884b14a76fe9bdc00937382e25ff3c8c4ed5f5bb48c
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Junction with a looped calçada pattern; pink corner building with "Lord Byron" café signage and tile panels; lanes rising on both sides; "Ginjinha" sign on the right.
+  subject:
+    text: A street with shop signage (location not established)
+    identification: visual
+    basis: 'visual: shop and café signs only; the street is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: present
+    note: shop or café signage visible (incidental trade names)
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077310.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 9c4f349e5bf6225739ff04a1dc3ab0d6a95dae72168be1c6fd9de0bd63810bb5
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Same junction as 1000077311 from a lower angle; a few small, distant figures at the lower left.
+  subject:
+    text: A street with shop signage (location not established)
+    identification: visual
+    basis: 'visual: shop and café signs only; the street is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: not-identifiable
+    note: few small, distant figures; not identifiable at preview resolution — review on the original
+  marks:
+    assessment: present
+    note: shop or café signage visible (incidental trade names)
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077309.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 5ab99887f11bae6ca13b8b736fc0937052c59bdf4bc4d2e343597b205d7a381f
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Closer, upward view of the same corner building and the rising cobbled lane beside a stone wall with an orange tree.
+  subject:
+    text: A street with shop signage (location not established)
+    identification: visual
+    basis: 'visual: shop and café signs only; the street is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: present
+    note: shop or café signage visible (incidental trade names)
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: 1000077308.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 16 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 110d77cbbc8e50afe82127c7efe90662d59bcb336ec1752ef1f7005aa18f70f4
+    received_on: '2026-11-16'
+    metadata: reduced
+  description: Portrait. Narrow lane with diamond-patterned calçada; signs for "Cintra Antiga" souvenirs and "Ginja Mariquinhas"; red door, wall lantern, a pigeon.
+  subject:
+    text: A street with shop signage (location not established)
+    identification: visual
+    basis: 'visual: shop and café signs only; the street is not identified.'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: present
+    note: shop or café signage visible (incidental trade names)
+  property:
+    capture: unknown
+    note: Street scene; no managed site depicted and no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
