@@ -292,17 +292,21 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     }
   }
 
-  // C15 — disputed values are never shown: a quoted unresolved fact needs approved visitor text that replaces
-  //        the quote, says the sources differ (or vary) and repeats none of the group's times
+  // C15 — disputed values are never stated as settled: the canonical editorial text may not quote an unresolved
+  //        fact. Its approved `unresolved_text` (which says the sources differ or vary and repeats none of the
+  //        group's times) is what the text says instead, and is how the card is linked to the conflict.
+  const editorialOf = new Map(places.map((p) => [p.id, strings(p.editorial)]));
   for (const f of facts) {
     if (f.unresolved_text && f.status !== 'unresolved') add('critical', 'C15', f.id, `unresolved_text on a ${f.status} fact (remove it when the conflict is settled)`);
     if (f.status !== 'unresolved') continue;
-    if (f.quote && !f.unresolved_text) add('critical', 'C15', f.id, 'unresolved fact shown in editorial text (quote) has no unresolved_text: the disputed value would be published');
-    if (!f.unresolved_text) continue;
-    if (!/sources (differ|vary)/i.test(f.unresolved_text)) add('critical', 'C15', f.id, 'unresolved_text must say that the sources differ or vary');
-    if (f.quote && f.unresolved_text.includes(f.quote)) add('critical', 'C15', f.id, 'unresolved_text still contains the disputed quote');
+    if (f.quote) add('critical', 'C15', f.id, 'unresolved fact has a quote: the editorial text would state a disputed value. Replace the wording with the fact\'s unresolved_text and remove the quote');
     const times = facts.filter((g) => g.conflict_group && g.conflict_group === f.conflict_group)
       .flatMap((g) => Object.values(g.value)).filter((v): v is string => typeof v === 'string' && /^\d{1,2}:\d{2}$/.test(v));
+    // the place's own text must not pair the disputed claim with one of the disputed times
+    const claim = f.kind === 'last-entry' ? /last (entry|admission|ticket)s?\W{0,3}(at\s)?(\d{1,2}:\d{2})/gi : null;
+    if (claim) for (const t of editorialOf.get(f.place) ?? []) for (const m of t.matchAll(claim)) if (times.includes(m[3]!)) add('critical', 'C15', f.id, `editorial text states the disputed ${m[0]}`);
+    if (!f.unresolved_text) continue;
+    if (!/sources (differ|vary)/i.test(f.unresolved_text)) add('critical', 'C15', f.id, 'unresolved_text must say that the sources differ or vary');
     for (const t of new Set(times)) if (f.unresolved_text.includes(t)) add('critical', 'C15', f.id, `unresolved_text shows the disputed time ${t}`);
   }
 
@@ -311,21 +315,27 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
   //   b) `agrees_with`: two coordinate values for the same subject from the same operator within 15 m, not in a conflict
   //   c) `history`: chronological, no future dates, each entry changes the status, the last one is the current status,
   //      and leaving `checked` records the previous checked_on
+  //   d) source metadata: operator sources name their operator explicitly; `verifications` are dated, not in the
+  //      future, not before the value was observed, and only cover facts of the same place and kind
   for (const [g, fs] of groups) {
     const claims = new Set(fs.map((f) => `${f.kind}|${f.subject ?? ''}`));
     if (claims.size > 1) add('critical', 'C16', g, `conflict group mixes different claims: ${[...claims].join(' / ')}`);
   }
   const factById = new Map(facts.map((f) => [f.id, f]));
   const sourceById = new Map(sources.map((x) => [x.id, x]));
-  // the operator is the publisher segment of the source ID: src.<publisher>.<page> (its pages and ticket office alike)
-  const publisher = (id: string) => (sourceById.has(id) ? id.split('.')[1] : undefined);
+  // the operator is explicit source metadata (sources.json `operator`), never inferred from the ID or publisher text
+  for (const x of sources) {
+    if (x.kind === 'operator' && !x.operator) add('critical', 'C16', x.id, 'operator source without an operator identifier');
+    if (x.kind !== 'operator' && x.operator) add('critical', 'C16', x.id, `operator identifier on a ${x.kind} source`);
+  }
+  const operatorOf = (id: string) => { const x = sourceById.get(id); return x?.kind === 'operator' ? x.operator : undefined; };
   for (const f of facts.filter((x) => x.agrees_with)) {
     const o = factById.get(f.agrees_with!);
     const where = `${f.id} agrees_with ${f.agrees_with}`;
     if (!o) { add('critical', 'C16', where, 'unknown fact'); continue; }
     if (f.kind !== 'coordinates' || o.kind !== 'coordinates') { add('critical', 'C16', where, 'tolerance applies to coordinates only'); continue; }
     if ((f.subject ?? '') !== (o.subject ?? '') || f.place !== o.place) add('critical', 'C16', where, 'different physical points (place or subject differ)');
-    if (!publisher(f.source) || publisher(f.source) !== publisher(o.source) || sourceById.get(f.source)?.kind !== 'operator' || sourceById.get(o.source)?.kind !== 'operator') add('critical', 'C16', where, 'tolerance requires the same operator for both values');
+    if (!operatorOf(f.source) || operatorOf(f.source) !== operatorOf(o.source)) add('critical', 'C16', where, 'tolerance requires the same operator for both values');
     if (f.conflict_group || o.conflict_group) add('critical', 'C16', where, 'values within tolerance are not a conflict: remove the conflict group');
     const pa = typeof f.value.lat === 'number' && typeof f.value.lon === 'number' ? [f.value.lat, f.value.lon] as [number, number] : null;
     const pb = typeof o.value.lat === 'number' && typeof o.value.lon === 'number' ? [o.value.lat, o.value.lon] as [number, number] : null;
@@ -343,6 +353,18 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     });
     if (h[h.length - 1]!.to !== f.status) add('critical', 'C16', f.id, `history ends at ${h[h.length - 1]!.to} but the fact is ${f.status}`);
   }
+  for (const f of facts.filter((x) => x.verifications)) {
+    for (const [i, v] of f.verifications!.entries()) {
+      if (v.on > opts.today) add('critical', 'C16', f.id, `verification ${i + 1} is dated in the future (${v.on})`);
+      if (v.on < f.observed_on) add('critical', 'C16', f.id, `verification ${i + 1} predates the observation (${f.observed_on})`);
+      for (const c of v.covers ?? []) {
+        const o = factById.get(c);
+        if (!o) add('critical', 'C16', f.id, `verification ${i + 1} covers unknown fact ${c}`);
+        else if (o.place !== f.place || o.kind !== f.kind) add('critical', 'C16', f.id, `verification ${i + 1} covers ${c}, a different place or kind`);
+      }
+    }
+  }
+
 
   // C17 — events: `checked` only from the organiser's own published information, read on checked_on
   for (const e of events) {

@@ -50,7 +50,7 @@ changes:
     kind: text
     before: "hours: 09:30–18:30; last entry 18:00."
     after: "hours: 09:30–18:30; last entry: official sources differ."
-    reason: "Disputed gardens last-entry time no longer shown as settled: operator pages give 18:00 and 17:30; the fact stays unresolved and its approved unresolved_text replaces the quote."
+    reason: "Disputed gardens last-entry time no longer shown as settled: operator pages give 18:00 and 17:30; the fact stays unresolved; the canonical editorial text now carries its approved unresolved_text (the previous wording is the 'before' of this entry)."
     approval:
       ref: "Owner, M3 implementation brief §5 conflict 1 and owner rule 5 (15 Nov 2026), 16 Nov 2026"
       date: '2026-11-16'

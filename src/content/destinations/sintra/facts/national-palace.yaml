@@ -20,6 +20,13 @@ facts:
     to: checked
     reason: 'Same operator, same building: the ticket-office value is 6.2 m away, within the approved 15 m tolerance, so the two values are consistent rather than a conflict. Re-read on 15 Nov 2026: the monument page and the How to get there page both give 38º 47′ 50.50″ N 9º 23′ 25.87″ W.'
     approval: 'Owner, M3 implementation brief §5 conflict 4 (15 m coordinate tolerance), 16 Nov 2026'
+  verifications:
+  - on: '2026-11-16'
+    by: owner
+    method: field-verification
+    result: 'The owner personally checked both coordinate readings (monument page 38.797360, -9.390520; ticket-office page 38.797417, -9.390528, about 6.2 m apart): both lead to the courtyard of the National Palace of Sintra. Owner field verification, not an operator confirmation; checked_on stays the date the operator pages were consulted.'
+    covers:
+    - fact.sintra.national-palace.coordinates-ticket-office
   note: The ticket-office page gives 38°47′50.7″N 9°23′25.9″W (about 6 m away; see agrees_with). The map keeps the existing marker.
 - id: fact.sintra.national-palace.coordinates-ticket-office
   kind: coordinates
@@ -40,6 +47,13 @@ facts:
     to: checked
     reason: 'Same operator, same building, 6.2 m from the monument-page value: within the approved 15 m tolerance. Re-read on the ticket-office page on 15 Nov 2026 with the same value.'
     approval: 'Owner, M3 implementation brief §5 conflict 4 (15 m coordinate tolerance), 16 Nov 2026'
+  verifications:
+  - on: '2026-11-16'
+    by: owner
+    method: field-verification
+    result: 'The owner personally checked both coordinate readings (monument page 38.797360, -9.390520; ticket-office page 38.797417, -9.390528, about 6.2 m apart): both lead to the courtyard of the National Palace of Sintra. Owner field verification, not an operator confirmation; checked_on stays the date the operator pages were consulted.'
+    covers:
+    - fact.sintra.national-palace.coordinates
 - id: fact.sintra.national-palace.hours-palace
   kind: hours
   subject: palace

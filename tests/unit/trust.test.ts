@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { fileURLToPath } from 'node:url';
-import { formatDate, checkedLabel, trustLines, factsOnCard, suppressDisputed, eventTrust, markerTrust, LABELS, type TrustFact, type SourceInfo } from '../../src/lib/trust/trust';
+import { formatDate, checkedLabel, trustLines, factsOnCard, eventTrust, markerTrust, LABELS, type TrustFact, type SourceInfo } from '../../src/lib/trust/trust';
 import { loadContentFromDisk } from '../../src/lib/content/load-fs';
 
 const sources = new Map<string, SourceInfo>([
@@ -53,18 +53,17 @@ describe('card-level grouping', () => {
 });
 
 describe('facts on a card and disputed values', () => {
-  const editorial = { title: 'Gardens', paragraphs: ['Hours: 09:30–18:30; last entry 18:00. Check first.', 'Entry: free.'] };
-  const disputed = f({ status: 'unresolved', quote: '09:30–18:30; last entry 18:00', unresolved_text: '09:30–18:30; last entry: official sources differ' });
+  const editorial = { title: 'Gardens', paragraphs: ['Hours: 09:30–18:30; last entry: official sources differ. Check first.', 'Entry: free.'] };
+  const disputed = f({ status: 'unresolved', quote: undefined, unresolved_text: '09:30–18:30; last entry: official sources differ' });
   it('finds facts by their quote in this card only', () => {
-    expect(factsOnCard(editorial, [disputed, f({ id: 'other', quote: 'not on this card' })]).map((x) => x.id)).toEqual(['fact.x.y.z']);
+    const q = f({ id: 'q', quote: 'Entry: free' });
+    expect(factsOnCard(editorial, [q, f({ id: 'other', quote: 'not on this card' })]).map((x) => x.id)).toEqual(['q']);
   });
-  it('replaces the disputed quote everywhere in the card, leaving the stored text untouched', () => {
-    const out = suppressDisputed(editorial, [disputed]);
-    expect(out.paragraphs[0]).toBe('Hours: 09:30–18:30; last entry: official sources differ. Check first.');
-    expect(editorial.paragraphs[0]).toContain('18:00');
+  it('links an unresolved fact to the card through its approved unresolved_text', () => {
+    expect(factsOnCard(editorial, [disputed]).map((x) => x.id)).toEqual(['fact.x.y.z']);
   });
-  it('does not touch reported or checked values', () => {
-    expect(suppressDisputed(editorial, [{ ...disputed, status: 'reported' }])).toBe(editorial);
+  it('does not link a non-unresolved fact through unresolved_text', () => {
+    expect(factsOnCard(editorial, [{ ...disputed, status: 'reported' }])).toEqual([]);
   });
 });
 
@@ -87,5 +86,20 @@ describe('the real dataset', () => {
   const facts = c.factSets.flatMap((s: any) => s.facts);
   it('every quoted unresolved fact has approved visitor text', () => {
     for (const x of facts.filter((y: any) => y.status === 'unresolved' && y.quote)) expect(x.unresolved_text, x.id).toBeTruthy();
+  });
+});
+
+describe('checked means consulted, not operator-confirmed', () => {
+  it('the checked label is a date only and never claims confirmation', () => {
+    expect(checkedLabel('2026-11-15')).toBe('Checked 15 Nov 2026');
+    expect(checkedLabel('2026-11-15')).not.toMatch(/confirm/i);
+  });
+  it('every checked fact rests on an editorial reading of an official page (no direct-confirmation records exist)', async () => {
+    const { loadContentFromDisk } = await import('../../src/lib/content/load-fs');
+    const input = loadContentFromDisk(process.cwd());
+    const checked = (input.factSets as { facts: { id: string; status: string; provenance: string; checked_on?: string }[] }[]).flatMap((s) => s.facts).filter((f) => f.status === 'checked');
+    expect(checked.length).toBeGreaterThan(0);
+    // both provenances are readings of a published official page by the editors (on checked_on / 7 Nov 2026 for the PDF ledger)
+    for (const f of checked) { expect(['official-page-read', 'pdf-first-edition-2026'], f.id).toContain(f.provenance); expect(f.checked_on, f.id).toBeTruthy(); }
   });
 });
