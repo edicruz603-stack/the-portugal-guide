@@ -14,6 +14,7 @@ import { parse } from 'yaml';
 import { validationDate, isEventActive } from '../src/lib/content/dates.ts';
 import { plain } from '../src/lib/content/inline.ts';
 import { EditorialRegisterSchema, applyTextChanges, applyImageChanges } from '../src/lib/editorial/register.ts';
+import { decode, region, strip } from '../src/lib/editorial/parity-text.ts';
 const plainInline = (t) => plain(t).replace(/\s+/g, ' ').trim();
 
 const dist = process.argv[2] ?? 'dist';
@@ -38,12 +39,6 @@ const eventRecords = new Map(readdirSync(new URL('events/', sintra)).map((f) => 
 // Legacy footer taglines replaced by the single shared footer ("Independent travel guides, made with care in Portugal.")
 const ALLOWED_FOOTER = ['Made with care in Portugal.', 'Independent field companions'];
 
-const decode = (s) => s
-  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-  .replace(/&quot;/g, '"').replace(/&#39;|&#x27;/g, "'")
-  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)));
-const region = (html) => html.slice(html.indexOf('</header>') + 9, html.indexOf('<footer'));
-const strip = (html) => decode(html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 const links = (html) => [...html.matchAll(/<a\b[^>]*\bhref="([^"]*)"/g)].map((m) => decode(m[1]));
 const imgs = (html) => [...html.matchAll(/<img\b[^>]*>/g)].map((m) => {
   const t = m[0];
@@ -67,6 +62,9 @@ for (const [page, listKey, pattern, title] of EVENT_PAGES) {
   }
 }
 
+// register entries about an event that has ended at the validation date no longer apply (its block is cut)
+const endedEventIds = new Set(ENDED_BLOCKS.map(([, , id]) => id));
+const activeChanges = register.changes.filter((c) => !endedEventIds.has(c.content_id));
 let failures = parityProblems.length;
 for (const p of parityProblems) console.log('✗ ' + p);
 for (const page of PAGES) {
@@ -74,7 +72,7 @@ for (const page of PAGES) {
   for (const [p, block] of ENDED_BLOCKS) if (p === page) oldHtml = oldHtml.replace(block, '');
   const newHtml = readFileSync(`${dist}/${page}`, 'utf8');
   const b = strip(region(newHtml));
-  const t = applyTextChanges(page, strip(region(oldHtml)), b, register.changes);
+  const t = applyTextChanges(page, strip(region(oldHtml)), b, activeChanges);
   const a = t.text;
 
   const problems = [...t.problems];
@@ -93,7 +91,7 @@ for (const page of PAGES) {
   ]);
   if (attrs(region(oldHtml)) !== attrs(region(newHtml))) problems.push('data-search / data-type / link-target attributes differ');
   const ib = imgs(region(newHtml));
-  const im = applyImageChanges(page, imgs(region(oldHtml)), ib, register.changes);
+  const im = applyImageChanges(page, imgs(region(oldHtml)), ib, activeChanges);
   const ia = im.images;
   problems.push(...im.problems); appliedChanges.push(...im.applied);
   if (JSON.stringify(ia) !== JSON.stringify(ib)) problems.push('images or alt texts differ');
@@ -113,8 +111,8 @@ for (const page of PAGES) {
   for (const p of problems) console.log('    ' + p);
   failures += problems.length;
 }
-const unused = register.changes.filter((c) => !appliedChanges.includes(c.id));
+const unused = activeChanges.filter((c) => !appliedChanges.includes(c.id));
 for (const c of unused) console.log(`✗ ${c.id}: registered change was not applied on ${c.page}`);
 failures += unused.length;
 if (failures) { console.error(`\nParity check failed (${failures} problem(s)).`); process.exit(1); }
-console.log('\nEditorial parity: identical text, links and images on all pages (validation date ' + today + '; registered editorial changes applied: ' + appliedChanges.length + '/' + register.changes.length + '; ended events hidden: ' + (ENDED_BLOCKS.map(([p, , id]) => `${id} on ${p}`).join(', ') || 'none') + ').');
+console.log('\nEditorial parity: identical text, links and images on all pages (validation date ' + today + '; registered editorial changes applied: ' + appliedChanges.length + '/' + activeChanges.length + (activeChanges.length < register.changes.length ? ' (' + (register.changes.length - activeChanges.length) + ' about ended events not applicable)' : '') + '; ended events hidden: ' + (ENDED_BLOCKS.map(([p, , id]) => `${id} on ${p}`).join(', ') || 'none') + ').');

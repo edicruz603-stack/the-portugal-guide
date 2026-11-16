@@ -287,6 +287,20 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     }
   }
 
+  // C15 — disputed values are never shown: a quoted unresolved fact needs approved visitor text that replaces
+  //        the quote, says the sources differ (or vary) and repeats none of the group's times
+  for (const f of facts) {
+    if (f.unresolved_text && f.status !== 'unresolved') add('critical', 'C15', f.id, `unresolved_text on a ${f.status} fact (remove it when the conflict is settled)`);
+    if (f.status !== 'unresolved') continue;
+    if (f.quote && !f.unresolved_text) add('critical', 'C15', f.id, 'unresolved fact shown in editorial text (quote) has no unresolved_text: the disputed value would be published');
+    if (!f.unresolved_text) continue;
+    if (!/sources (differ|vary)/i.test(f.unresolved_text)) add('critical', 'C15', f.id, 'unresolved_text must say that the sources differ or vary');
+    if (f.quote && f.unresolved_text.includes(f.quote)) add('critical', 'C15', f.id, 'unresolved_text still contains the disputed quote');
+    const times = facts.filter((g) => g.conflict_group && g.conflict_group === f.conflict_group)
+      .flatMap((g) => Object.values(g.value)).filter((v): v is string => typeof v === 'string' && /^\d{1,2}:\d{2}$/.test(v));
+    for (const t of new Set(times)) if (f.unresolved_text.includes(t)) add('critical', 'C15', f.id, `unresolved_text shows the disputed time ${t}`);
+  }
+
   // ---------------- warnings
   for (const f of facts) {
     const since = f.checked_on ?? f.observed_on;

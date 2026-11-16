@@ -2,6 +2,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import type { MapAdapter } from './types.ts';
+import { LABELS, markerTrust } from '../trust/trust.ts';
 
 const escape = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
@@ -54,13 +55,13 @@ export const leafletAdapter: MapAdapter = {
     for (const p of places) {
       const icon = L.divIcon({
         className: 'tpg-marker-icon',
-        html: `<span class="tpg-dot tpg-dot--${p.category}" aria-hidden="true"></span><span class="tpg-sr">${escape(p.name)}</span>`,
+        html: `<span class="tpg-dot tpg-dot--${p.category}${p.coordinates.status === 'checked' ? '' : ' tpg-dot--uncertain'}" aria-hidden="true"></span><span class="tpg-sr">${escape(p.name)}${p.coordinates.status === 'checked' ? '' : `. ${escape(LABELS[p.coordinates.status])}`}</span>`,
         iconSize: [32, 32],     // touch target; the visible dot is 16 px and centred on the coordinate
         iconAnchor: [16, 16],
         popupAnchor: [0, -10],
       });
       const marker = L.marker([p.lat, p.lon], { icon, keyboard: true, riseOnHover: true })
-        .bindPopup(`<strong>${escape(p.name)}</strong><br><small>${escape(p.zone)}</small>`);
+        .bindPopup(`<strong>${escape(p.name)}</strong><br><small>${escape(p.zone)}</small><br><small class="tpg-trust tpg-trust--${p.coordinates.status}">${escape(markerTrust(p))}</small>`);
       cluster.addLayer(marker);
       const ll = marker.getLatLng();
       mounted.push({ id: p.id, lat: ll.lat, lon: ll.lng });

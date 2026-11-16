@@ -16,6 +16,7 @@
 import type { ContentInput, Issue } from './validate.ts';
 import type { Event, Fact, List, Place } from '../content/schemas.ts';
 import { isEventActive } from '../content/dates.ts';
+import { VISIBLE_IN_PROSE } from '../trust/prose.ts';
 
 export type PendingCategory = 'visible-risk' | 'research' | 'descriptions' | 'facts' | 'commercial';
 
@@ -63,14 +64,7 @@ export const CATEGORY_INFO: Record<PendingCategory, { title: string; impact: str
 
 type Src = { id: string; kind: string };
 
-/**
- * Facts without a `quote` whose value nevertheless also appears in page prose outside place records.
- * Found by checking every unquoted pending fact's value against the built pages (13 Nov 2026).
- * tests/unit/pending.test.ts asserts each phrase is still in the page source, so this list cannot go stale.
- */
-export const VISIBLE_IN_PROSE: Record<string, { page: string; phrase: string }> = {
-  'fact.sintra.sintra-station.buses': { page: 'src/pages/sintra.astro', phrase: 'Bus 434 serves the historic centre' },
-};
+export { VISIBLE_IN_PROSE };
 
 function factAction(f: Fact, sourceKind: string | undefined): string {
   if (f.status === 'unresolved') return `Ask the operator which value applies (conflict ${f.conflict_group}); keep every value until then; then mark the confirmed one checked and retire or re-scope the others.`;

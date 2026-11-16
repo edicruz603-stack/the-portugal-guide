@@ -14,3 +14,243 @@ changes:
     approval:
       ref: 'PR #1 (Phase 0+1), change 1 in docs/phase-0-1-report.md'
       date: '2026-11-07'
+  - id: change.sintra.trust-bus-434
+    page: sintra.html
+    content_id: fact.sintra.sintra-station.buses
+    kind: text
+    before: "and ticket conditions."
+    after: "and ticket conditions. Not yet re-checked · transport From Sintra 434 (bus information site). We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-regaleira-tickets
+    page: sintra.html
+    content_id: place.sintra.quinta-da-regaleira
+    kind: text
+    before: "tickets, prices and hours ↗"
+    after: "tickets, prices and hours ↗ Not yet re-checked · price, ticket rule From the previous edition of this guide and Quinta da Regaleira (online ticket office). We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-anjos-teixeira
+    page: sintra.html
+    content_id: place.sintra.museu-anjos-teixeira
+    kind: text
+    before: "museum map ↗ · Official visitor details ↗"
+    after: "museum map ↗ · Official visitor details ↗ Not yet re-checked · opening hours, price From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.gardens-last-entry-suppressed
+    page: sintra.html
+    content_id: fact.sintra.national-palace-gardens.last-entry-website
+    kind: text
+    before: "hours: 09:30–18:30; last entry 18:00."
+    after: "hours: 09:30–18:30; last entry: official sources differ."
+    reason: "Disputed gardens last-entry time no longer shown as settled: operator pages give 18:00 and 17:30; the fact stays unresolved and its approved unresolved_text replaces the quote."
+    approval:
+      ref: "Owner, M3 implementation brief §5 conflict 1 and owner rule 5 (15 Nov 2026), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-national-palace-gardens
+    page: sintra.html
+    content_id: place.sintra.national-palace-gardens
+    kind: text
+    before: "Official details ↗"
+    after: "Official details ↗ Sources differ — confirm with the operator · last entry Official sources give different information, so we do not show a single value. Confirm with the operator before you go."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-parque-da-liberdade
+    page: sintra.html
+    content_id: place.sintra.parque-da-liberdade
+    kind: text
+    before: "story and hours ↗"
+    after: "story and hours ↗ Not yet re-checked · opening hours, price From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-miradouro-sao-martinho
+    page: sintra.html
+    content_id: place.sintra.miradouro-sao-martinho
+    kind: text
+    before: "viewpoint details ↗"
+    after: "viewpoint details ↗ Not yet re-checked · price From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-lawrences-hotel-field-guide
+    page: sintra.html
+    content_id: place.sintra.lawrences-hotel
+    kind: text
+    before: "and history ↗"
+    after: "and history ↗ Not yet re-checked · history From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-casa-piriquita
+    page: sintra.html
+    content_id: place.sintra.casa-piriquita
+    kind: text
+    before: "Official website ↗"
+    after: "Official website ↗ Not yet re-checked · history, address From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-queijadas-da-sapa
+    page: sintra.html
+    content_id: place.sintra.queijadas-da-sapa
+    kind: text
+    before: "shop profile ↗"
+    after: "shop profile ↗ Not yet re-checked · history, address From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-tascantiga
+    page: sintra.html
+    content_id: place.sintra.tascantiga
+    kind: text
+    before: "Pipa 2. Open in Google Maps ↗"
+    after: "Pipa 2. Open in Google Maps ↗ Not yet re-checked · address From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-restaurante-regional
+    page: sintra.html
+    content_id: place.sintra.restaurante-regional
+    kind: text
+    before: "Município 2. Open in Google Maps ↗"
+    after: "Município 2. Open in Google Maps ↗ Not yet re-checked · address From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-natural-history-museum
+    page: sintra-local-discoveries.html
+    content_id: place.sintra.natural-history-museum
+    kind: text
+    before: "Cultural agenda ↗"
+    after: "Cultural agenda ↗ Not yet re-checked · price From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-lawrences-hotel-local
+    page: sintra-local-discoveries.html
+    content_id: place.sintra.lawrences-hotel
+    kind: text
+    before: "Hotel website ↗"
+    after: "Hotel website ↗ Not yet re-checked · history From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-event-cunha-e-costa-local
+    page: sintra-local-discoveries.html
+    content_id: event.sintra.cunha-e-costa-collection
+    kind: text
+    before: "visiting. Official cultural agenda ↗"
+    after: "visiting. Official cultural agenda ↗ Not yet re-checked · dates From the previous edition of this guide. We have not yet re-checked this with the organiser. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-event-mordidas-local
+    page: sintra-local-discoveries.html
+    content_id: event.sintra.mordidas-do-tempo
+    kind: text
+    before: "adaptation. Official cultural agenda ↗"
+    after: "adaptation. Official cultural agenda ↗ Not yet re-checked · dates From the previous edition of this guide. We have not yet re-checked this with the organiser. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-event-vinil-musa-local
+    page: sintra-local-discoveries.html
+    content_id: event.sintra.vinil-musa
+    kind: text
+    before: "Event details ↗"
+    after: "Event details ↗ Not yet re-checked · dates From the previous edition of this guide. We have not yet re-checked this with the organiser. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-monserrate-romantic
+    page: sintra-romantic-guide.html
+    content_id: place.sintra.monserrate
+    kind: text
+    before: "visiting. Official visitor information ↗"
+    after: "visiting. Official visitor information ↗ Checked 11 Nov 2026 · price"
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-regaleira-romantic
+    page: sintra-romantic-guide.html
+    content_id: place.sintra.quinta-da-regaleira
+    kind: text
+    before: "office. Official visitor information ↗"
+    after: "office. Official visitor information ↗ Not yet re-checked · price From Quinta da Regaleira (online ticket office). We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-villa-sassetti-romantic
+    page: sintra-romantic-guide.html
+    content_id: place.sintra.villa-sassetti
+    kind: text
+    before: "Walking route ↗"
+    after: "Walking route ↗ Not yet re-checked · price From the previous edition of this guide. We have not yet re-checked this with the operator. It may well be correct — confirm before you rely on it. Checked 7 Nov 2026 · route"
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-pena-romantic
+    page: sintra-romantic-guide.html
+    content_id: place.sintra.pena-palace
+    kind: text
+    before: "transfer. Official visitor information ↗"
+    after: "transfer. Official visitor information ↗ Checked 11 Nov 2026 · ticket rule"
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-capuchos-romantic
+    page: sintra-romantic-guide.html
+    content_id: place.sintra.capuchos-convent
+    kind: text
+    before: "first. Official visitor information ↗"
+    after: "first. Official visitor information ↗ Checked 7 Nov 2026 · price"
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-event-mordidas-directory
+    page: sintra-discoveries.html
+    content_id: event.sintra.mordidas-do-tempo
+    kind: text
+    before: "stories they tell."
+    after: "stories they tell. Not yet re-checked · dates From the previous edition of this guide. We have not yet re-checked this with the organiser. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'
+  - id: change.sintra.trust-event-mutatis-mutandis-local
+    page: sintra-local-discoveries.html
+    content_id: event.sintra.mutatis-mutandis
+    kind: text
+    before: "Check the event page for session times and ticket details. Official cultural agenda ↗"
+    after: "Check the event page for session times and ticket details. Official cultural agenda ↗ Not yet re-checked · dates From the previous edition of this guide. We have not yet re-checked this with the organiser. It may well be correct — confirm before you rely on it."
+    reason: "Trust information for the card's facts, in the approved visitor wording (Checked {date} / Not yet re-checked / Confirm first / Sources differ — confirm with the operator), grouped per card."
+    approval:
+      ref: "Owner, M3 implementation brief §3 (visitor-facing trust system), 16 Nov 2026"
+      date: '2026-11-16'

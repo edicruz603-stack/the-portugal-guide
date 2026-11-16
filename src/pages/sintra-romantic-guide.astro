@@ -32,7 +32,7 @@ const romantic = await placesInList('destination.sintra', 'list.sintra.romantic'
 <div class="wrap">
 <div class="section-head"><p class="eyebrow">01 · Places with atmosphere</p><h2>Where the romance lives</h2><p>These places offer very different moods. Choose by the kind of experience you want, not by how many names you can fit into one day.</p></div>
 <div class="cards">
-{romantic.map(({ editorial }) => <RomanticPlaceCard editorial={editorial} />)}
+{romantic.map(({ editorial, trust }) => <RomanticPlaceCard editorial={editorial} trust={trust} />)}
 </div>
 </div>
 </section>

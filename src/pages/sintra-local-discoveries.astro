@@ -18,18 +18,18 @@ const diary = await eventsInList('destination.sintra', 'list.sintra.events-local
 <section class="local-hero"><p class="tag" style="color:var(--gold-light)">The local atlas · Sintra</p><h1>Find the Sintra <em>between the monuments.</em></h1><p>A carefully selected companion to the famous palaces: small museums, free gardens, viewpoints, historic places, cafés and a cultural diary. Built to help you decide where to go, what is worth your time and how to make a better day.</p></section>
 <section class="local-wrap" id="free"><p class="tag">01 · Spend less, discover more</p><h2>Sintra's free discoveries</h2><p class="lead">Free entry is not the same as always open, and public access can change. Check the linked official information on the day. Walking times below are deliberately not promised: Sintra's slopes, steps and cobbles make route choice important.</p>
 <div class="cards">
-{localFree.map(({ editorial }) => <LocalPlaceItem editorial={editorial} />)}
+{localFree.map(({ editorial, trust }) => <LocalPlaceItem editorial={editorial} trust={trust} />)}
 </div>
 <div class="notice"><strong>Local walking note:</strong> Santa Eufémia, Vila Sassetti and the palace hills involve slopes and steps. Do not combine them into a single route without checking current access and your group's mobility. For the easiest old-town day, keep to the station, museum and historic-centre cluster.</div>
 </section>
 <section class="local-wrap" id="food" style="background:var(--paper);max-width:none;padding-left:max(24px,calc((100% - 1080px)/2));padding-right:max(24px,calc((100% - 1080px)/2))"><p class="tag">02 · Eat and drink</p><h2>Choose the right table<br><em>for the right moment.</em></h2><p class="lead">This is an editorial shortlist, not a paid ranking. Recommendations describe the kind of stop each place suits. Menus, prices, hours and quality can change; check directly before making a special journey.</p>
 <div class="cards">
-{localFood.map(({ editorial }) => <LocalPlaceItem editorial={editorial} />)}
+{localFood.map(({ editorial, trust }) => <LocalPlaceItem editorial={editorial} trust={trust} />)}
 </div>
 </section>
 <section class="local-wrap" id="events"><p class="tag">03 · Seasonal diary</p><h2>What's on in Sintra<br><em>Autumn and winter 2026.</em></h2><p class="lead">A dated snapshot checked against the official Sintra cultural agenda on 30 October 2026. Event dates, session times and availability can change; follow the organiser's link before travelling. The official cultural agenda is the live source, not this static page.</p>
 <div class="events">
-{diary.map(({ editorial }) => <LocalEvent editorial={editorial} />)}
+{diary.map(({ editorial, trust }) => <LocalEvent editorial={editorial} trust={trust} />)}
 </div>
 <div class="notice"><strong>Keep the diary current:</strong> check <a href="https://agendaculturaldesintra.pt/agenda">Agenda Cultural de Sintra</a> and <a href="https://cm-sintra.pt/agenda">Câmara Municipal de Sintra — Agenda</a>. This page is a researched edition snapshot, not an automated event feed. A paid seasonal update must include a fresh editorial check and a visible “last checked” date.</div>
 </section>

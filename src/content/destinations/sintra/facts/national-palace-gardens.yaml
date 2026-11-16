@@ -65,6 +65,7 @@ facts:
     time: '18:00'
   text: 'Gardens: last entry 18:00 (previous website edition)'
   quote: 09:30–18:30; last entry 18:00
+  unresolved_text: '09:30–18:30; last entry: official sources differ'
   source: src.tpg.website-2026
   provenance: legacy-website
   observed_on: '2026-11-11'

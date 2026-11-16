@@ -1,5 +1,5 @@
 /**
- * Every critical rule (C01–C14) is demonstrated by a fixture that must fail, plus the real dataset
+ * Every critical rule (C01–C15) is demonstrated by a fixture that must fail, plus the real dataset
  * passing with zero critical issues. Fixtures are small mutations of the real content.
  */
 import { describe, expect, it } from 'vitest';
@@ -112,6 +112,14 @@ describe('CRITICAL rules each fail on a fixture', () => {
 
   it('C12 event ending before it starts', () => { const i = fresh(); (i.events as Rec[])[0]!.ends_on = '2020-01-01'; fails(i, 'C12'); });
   it('C13 homepage card linking to a missing page', () => { const i = fresh(); (i.homeDestinations as Rec[])[0]!.href = 'lisbon.html'; fails(i, 'C13'); });
+  it('C15 disputed values are never shown', () => {
+    const id = 'fact.sintra.national-palace-gardens.last-entry-website';
+    const a = fresh(); delete fact(a, id).unresolved_text; fails(a, 'C15', /no unresolved_text/);
+    const b = fresh(); fact(b, id).unresolved_text = '09:30–18:30; last entry 18:00 — sources differ'; fails(b, 'C15', /disputed (quote|time 18:00)/);
+    const c = fresh(); fact(c, id).unresolved_text = '09:30–18:30; ask at the gate'; fails(c, 'C15', /must say that the sources differ/);
+    const d = fresh(); fact(d, 'fact.sintra.national-palace-gardens.price').unresolved_text = 'sources differ'; fails(d, 'C15', /on a checked fact/);
+    const e = fresh(); fact(e, id).unresolved_text = 'last entry 17:30 (sources differ)'; fails(e, 'C15', /disputed time 17:30/);
+  });
   it('C14 editorial changes register: invalid entry or unknown content ID', () => {
     const i = fresh(); (i.editorialChanges as Rec).changes[0].approval = undefined; fails(i, 'C14', /approval/);
     const j = fresh(); (j.editorialChanges as Rec).changes[0].content_id = 'place.sintra.nowhere'; fails(j, 'C14', /unknown content_id/);

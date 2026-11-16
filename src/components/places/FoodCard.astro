@@ -2,7 +2,9 @@
 import type { Place } from '../../lib/content/schemas.ts';
 import { inline } from '../../lib/content/inline.ts';
 import Links from './Links.astro';
-interface Props { editorial: NonNullable<Place['editorial']['food_card']> }
-const { editorial: e } = Astro.props;
+import TrustNote from '../TrustNote.astro';
+import type { TrustLine } from '../../lib/trust/trust.ts';
+interface Props { editorial: NonNullable<Place['editorial']['food_card']>; trust?: TrustLine[] }
+const { editorial: e, trust = [] } = Astro.props;
 ---
-<article class="food-card"><h3 set:html={inline(e.title)} />{e.paragraphs.map((p) => <p set:html={inline(p)} />)}<Links links={e.links} /></article>
+<article class="food-card"><h3 set:html={inline(e.title)} />{e.paragraphs.map((p) => <p set:html={inline(p)} />)}<Links links={e.links} /><TrustNote lines={trust} /></article>
