@@ -260,5 +260,13 @@
     "url": "https://commons.wikimedia.org/",
     "kind": "image-library",
     "seen_on": "2026-10-30"
+  },
+  {
+    "id": "src.parques-de-sintra.how-to-get-there",
+    "publisher": "Parques de Sintra",
+    "title": "How to get there",
+    "url": "https://parquesdesintra.pt/en/plan-your-visit/how-to-get-there/",
+    "kind": "operator",
+    "seen_on": "2026-11-15"
   }
 ]

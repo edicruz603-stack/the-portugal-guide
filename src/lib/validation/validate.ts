@@ -49,6 +49,8 @@ export const DEFAULT_OPTIONS: Omit<Options, 'today'> = { mode: 'free', defaultRe
 // mainland Portugal (Phase scope); extend when island destinations arrive
 const BOUNDS = { latMin: 36.8, latMax: 42.2, lonMin: -9.6, lonMax: -6.1 };
 const MAX_DMS_DRIFT_M = 15;
+/** Owner rule (15 Nov 2026): same operator, same physical point, within this distance → consistent. */
+export const COORDINATE_TOLERANCE_M = 15;
 
 const days = (from: string, to: string) => Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000);
 const norm = (s: string) => s.normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[’'`]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
@@ -299,6 +301,44 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     const times = facts.filter((g) => g.conflict_group && g.conflict_group === f.conflict_group)
       .flatMap((g) => Object.values(g.value)).filter((v): v is string => typeof v === 'string' && /^\d{1,2}:\d{2}$/.test(v));
     for (const t of new Set(times)) if (f.unresolved_text.includes(t)) add('critical', 'C15', f.id, `unresolved_text shows the disputed time ${t}`);
+  }
+
+  // C16 — conflicts, tolerance and status history (M3)
+  //   a) members of a conflict group make the same claim: same kind and same subject (e.g. last ticket ≠ last admission)
+  //   b) `agrees_with`: two coordinate values for the same subject from the same operator within 15 m, not in a conflict
+  //   c) `history`: chronological, no future dates, each entry changes the status, the last one is the current status,
+  //      and leaving `checked` records the previous checked_on
+  for (const [g, fs] of groups) {
+    const claims = new Set(fs.map((f) => `${f.kind}|${f.subject ?? ''}`));
+    if (claims.size > 1) add('critical', 'C16', g, `conflict group mixes different claims: ${[...claims].join(' / ')}`);
+  }
+  const factById = new Map(facts.map((f) => [f.id, f]));
+  const sourceById = new Map(sources.map((x) => [x.id, x]));
+  // the operator is the publisher segment of the source ID: src.<publisher>.<page> (its pages and ticket office alike)
+  const publisher = (id: string) => (sourceById.has(id) ? id.split('.')[1] : undefined);
+  for (const f of facts.filter((x) => x.agrees_with)) {
+    const o = factById.get(f.agrees_with!);
+    const where = `${f.id} agrees_with ${f.agrees_with}`;
+    if (!o) { add('critical', 'C16', where, 'unknown fact'); continue; }
+    if (f.kind !== 'coordinates' || o.kind !== 'coordinates') { add('critical', 'C16', where, 'tolerance applies to coordinates only'); continue; }
+    if ((f.subject ?? '') !== (o.subject ?? '') || f.place !== o.place) add('critical', 'C16', where, 'different physical points (place or subject differ)');
+    if (!publisher(f.source) || publisher(f.source) !== publisher(o.source) || sourceById.get(f.source)?.kind !== 'operator' || sourceById.get(o.source)?.kind !== 'operator') add('critical', 'C16', where, 'tolerance requires the same operator for both values');
+    if (f.conflict_group || o.conflict_group) add('critical', 'C16', where, 'values within tolerance are not a conflict: remove the conflict group');
+    const pa = typeof f.value.lat === 'number' && typeof f.value.lon === 'number' ? [f.value.lat, f.value.lon] as [number, number] : null;
+    const pb = typeof o.value.lat === 'number' && typeof o.value.lon === 'number' ? [o.value.lat, o.value.lon] as [number, number] : null;
+    if (!pa || !pb) add('critical', 'C16', where, 'both facts need numeric lat/lon');
+    else if (haversine(pa, pb) > COORDINATE_TOLERANCE_M) add('critical', 'C16', where, `${Math.round(haversine(pa, pb))} m apart (tolerance ${COORDINATE_TOLERANCE_M} m)`);
+  }
+  for (const f of facts.filter((x) => x.history)) {
+    const h = f.history!;
+    h.forEach((e, i) => {
+      if (e.from === e.to) add('critical', 'C16', f.id, `history entry ${i + 1} does not change the status`);
+      if (e.on > opts.today) add('critical', 'C16', f.id, `history entry ${i + 1} is dated in the future (${e.on})`);
+      if (i > 0 && e.on < h[i - 1]!.on) add('critical', 'C16', f.id, 'history is not in date order');
+      if (i > 0 && e.from !== h[i - 1]!.to) add('critical', 'C16', f.id, `history entry ${i + 1} starts from ${e.from}, previous entry ended at ${h[i - 1]!.to}`);
+      if (e.from === 'checked' && !e.previous_checked_on) add('critical', 'C16', f.id, `history entry ${i + 1} leaves checked without previous_checked_on`);
+    });
+    if (h[h.length - 1]!.to !== f.status) add('critical', 'C16', f.id, `history ends at ${h[h.length - 1]!.to} but the fact is ${f.status}`);
   }
 
   // ---------------- warnings

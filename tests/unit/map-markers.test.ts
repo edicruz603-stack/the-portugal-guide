@@ -38,7 +38,7 @@ describe('Sintra map: verification per marker (coordinates unchanged, see m2-pre
   const status = Object.fromEntries(markers.map((m: any) => [m.id, m.coordinates.status]));
   it('matches the recorded fact statuses', () => {
     expect(status).toEqual({
-      'place.sintra.national-palace-gardens': 'unresolved',
+      'place.sintra.national-palace-gardens': 'checked',
       'place.sintra.quinta-da-regaleira': 'checked',
       'place.sintra.moorish-castle': 'checked',
       'place.sintra.pena-palace': 'checked',
@@ -52,7 +52,7 @@ describe('Sintra map: verification per marker (coordinates unchanged, see m2-pre
   it('keeps each marker\'s coordinate source and provenance (Phase 1 positions, see m2-preservation)', () => {
     const prov = Object.fromEntries(markers.map((m: any) => [m.id, [m.coordinates.provenance, m.coordinates.source, m.coordinates.checkedOn ?? null]]));
     expect(prov).toEqual({
-      'place.sintra.national-palace-gardens': ['official-page-read', 'src.parques-de-sintra.national-palace', null],
+      'place.sintra.national-palace-gardens': ['official-page-read', 'src.parques-de-sintra.national-palace', '2026-11-15'],
       'place.sintra.quinta-da-regaleira': ['pdf-first-edition-2026', 'src.regaleira.site', '2026-11-07'],
       'place.sintra.moorish-castle': ['official-page-read', 'src.parques-de-sintra.moorish-castle', '2026-11-11'],
       'place.sintra.pena-palace': ['official-page-read', 'src.parques-de-sintra.visitor-map', '2026-11-11'],

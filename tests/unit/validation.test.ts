@@ -1,5 +1,5 @@
 /**
- * Every critical rule (C01–C15) is demonstrated by a fixture that must fail, plus the real dataset
+ * Every critical rule (C01–C16) is demonstrated by a fixture that must fail, plus the real dataset
  * passing with zero critical issues. Fixtures are small mutations of the real content.
  */
 import { describe, expect, it } from 'vitest';
@@ -9,7 +9,7 @@ import { validateContent, hasCritical, DEFAULT_OPTIONS, parseDms, type ContentIn
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const real = loadContentFromDisk(root);
-const opts: Options = { ...DEFAULT_OPTIONS, today: '2026-11-11' };
+const opts: Options = { ...DEFAULT_OPTIONS, today: '2026-11-16' }; // on or after the newest date in the dataset
 const fresh = (): ContentInput => structuredClone(real);
 const run = (input: ContentInput, o: Options = opts) => validateContent(input, o);
 const fails = (input: ContentInput, rule: string, text?: RegExp, o?: Options) => {
@@ -120,6 +120,28 @@ describe('CRITICAL rules each fail on a fixture', () => {
     const d = fresh(); fact(d, 'fact.sintra.national-palace-gardens.price').unresolved_text = 'sources differ'; fails(d, 'C15', /on a checked fact/);
     const e = fresh(); fact(e, id).unresolved_text = 'last entry 17:30 (sources differ)'; fails(e, 'C15', /disputed time 17:30/);
   });
+  it('C16 a conflict group may not mix claims (last ticket is not last admission)', () => {
+    const i = fresh(); fact(i, 'fact.sintra.monserrate.last-ticket-park-monument-page').subject = 'park, last admission'; fails(i, 'C16', /mixes different claims/);
+  });
+  it('C16 tolerance: same operator, same point, within 15 m, never in a conflict', () => {
+    const A = 'fact.sintra.national-palace.coordinates', B = 'fact.sintra.national-palace.coordinates-ticket-office';
+    const m = 1 / 111_195; // degrees of latitude per metre
+    const at = (metres: number) => { const i = fresh(); const b = fact(i, B); const a = fact(i, A); b.value.lat = a.value.lat + metres * m; b.value.lon = a.value.lon; delete b.value.dms; return i; };
+    const c16 = (i: ContentInput) => run(i).filter((x) => x.rule === 'C16');
+    expect(c16(at(14.9))).toEqual([]);
+    fails(at(15.1), 'C16', /apart \(tolerance 15 m\)/);
+    const s = fresh(); fact(s, B).subject = 'garden gate'; fails(s, 'C16', /different physical points/);
+    const o = fresh(); fact(o, B).source = 'src.visit-sintra.hiking'; fails(o, 'C16', /same operator/);
+    const g = fresh(); fact(g, A).conflict_group = 'x-y'; fact(g, B).conflict_group = 'x-y'; fact(g, A).status = 'unresolved'; fact(g, B).status = 'unresolved'; fails(g, 'C16', /not a conflict/);
+    const k = fresh(); fact(k, 'fact.sintra.monserrate.price').agrees_with = A; fails(k, 'C16', /coordinates only/);
+  });
+  it('C16 status history: complete, dated, and ending at the current status', () => {
+    const E = 'fact.sintra.monserrate.coordinates-entrance';
+    const a = fresh(); fact(a, E).status = 'reported'; fails(a, 'C16', /history ends at confirm-first/);
+    const b = fresh(); fact(b, E).history[0].on = '2027-01-01'; fails(b, 'C16', /in the future/);
+    const c = fresh(); delete fact(c, E).history[0].previous_checked_on; fails(c, 'C16', /without previous_checked_on/);
+    const d = fresh(); fact(d, E).history[0].to = 'checked'; fails(d, 'C16', /does not change the status/);
+  });
   it('C14 editorial changes register: invalid entry or unknown content ID', () => {
     const i = fresh(); (i.editorialChanges as Rec).changes[0].approval = undefined; fails(i, 'C14', /approval/);
     const j = fresh(); (j.editorialChanges as Rec).changes[0].content_id = 'place.sintra.nowhere'; fails(j, 'C14', /unknown content_id/);
@@ -139,7 +161,7 @@ describe('WARNING and EDITORIAL PENDING never block', () => {
     const unlisted: Rec = { ...evs.find((e) => e.id === 'event.sintra.taxi-concert')!, id: 'event.sintra.old-unlisted', starts_on: '2020-01-01' };
     delete unlisted.ends_on; evs.push(unlisted);
     const w02 = run(i).filter((x) => x.rule === 'W02').map((x) => x.where).sort();
-    expect(w02).toEqual(['event.sintra.colares-wine-journey', 'event.sintra.masmo-mystery-afternoon', 'event.sintra.taxi-concert']);
+    expect(w02).toEqual(['event.sintra.colares-wine-journey', 'event.sintra.masmo-mystery-afternoon', 'event.sintra.mutatis-mutandis', 'event.sintra.taxi-concert']); // at 16 Nov 2026
     expect(run(i).find((x) => x.rule === 'W02')!.message).toMatch(/hidden automatically/);
     expect(hasCritical(run(i))).toBe(false);
   });

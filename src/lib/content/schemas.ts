@@ -143,6 +143,17 @@ export const Provenance = z.enum([
   'secondary-listing',       // press or listing
 ]);
 
+/** One status correction in a fact's audit history. Values are never overwritten; the reason says why. */
+export const StatusChangeSchema = z.object({
+  on: isoDate,
+  from: FactStatus,
+  to: FactStatus,
+  /** the checked_on the fact carried before, when it leaves `checked` */
+  previous_checked_on: isoDate.optional(),
+  reason: z.string().min(10),
+  approval: z.string().min(5),
+}).strict();
+
 export const FactSchema = z.object({
   id: factId,
   kind: FactKind,
@@ -165,6 +176,13 @@ export const FactSchema = z.object({
    * Must say the sources differ or vary (rule C15).
    */
   unresolved_text: z.string().min(1).optional(),
+  /**
+   * Coordinates only (M3, owner rule of 15 Nov 2026): another coordinate fact for the same subject from the same
+   * operator that lies within 15 m. Such values are treated as consistent rather than as a conflict (rule C16).
+   */
+  agrees_with: factId.optional(),
+  /** Status corrections, oldest first (M3). The last entry's `to` is the current status (rule C16). */
+  history: z.array(StatusChangeSchema).min(1).optional(),
   review_after_days: z.number().int().positive().optional(),
   note: z.string().optional(),
 }).strict();
