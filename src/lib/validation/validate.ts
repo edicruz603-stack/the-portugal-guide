@@ -14,6 +14,7 @@ import {
   type Event, type Fact, type List, type Place,
 } from '../content/schemas.ts';
 import { HomeDestinationSchema } from './schemas.ts';
+import { EditorialRegisterSchema, checkRegister } from '../editorial/register.ts';
 import { isEventActive, lastDay } from '../content/dates.ts';
 
 export type Level = 'critical' | 'warning' | 'pending';
@@ -32,6 +33,8 @@ export interface ContentInput {
   homeDestinations: unknown[];
   /** src/pages/*.astro sources keyed by file name */
   pages: Record<string, string>;
+  /** src/content/editorial-changes.yaml (approved editorial changes register, M3) */
+  editorialChanges?: unknown;
 }
 
 export interface Options {
@@ -272,6 +275,34 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
   for (const d of homeDests) {
     const target = d.href.split('#')[0]!;
     if (target && !/^https?:/.test(target) && !pageNames.has(target)) add('critical', 'C13', `home destination ${d.name}`, `link target ${target} does not exist`);
+  }
+
+  // C14 — approved editorial changes register: valid entries, unique ids, content IDs that exist
+  if (input.editorialChanges !== undefined) {
+    const reg = EditorialRegisterSchema.safeParse(input.editorialChanges);
+    if (!reg.success) for (const e of reg.error.issues) add('critical', 'C14', 'editorial-changes.yaml', `${e.path.join('.') || '(root)'}: ${e.message}`);
+    else {
+      const known = new Set([...sources, ...images, ...destinations, ...zones, ...places, ...facts, ...events, ...lists].map((x) => x.id));
+      for (const m of checkRegister(reg.data, known)) add('critical', 'C14', 'editorial-changes.yaml', m);
+    }
+  }
+
+  // C15 — disputed values are never stated as settled: the canonical editorial text may not quote an unresolved
+  //        fact. Its approved `unresolved_text` (which says the sources differ or vary and repeats none of the
+  //        group's times) is what the text says instead, and is how the card is linked to the conflict.
+  const editorialOf = new Map(places.map((p) => [p.id, strings(p.editorial)]));
+  for (const f of facts) {
+    if (f.unresolved_text && f.status !== 'unresolved') add('critical', 'C15', f.id, `unresolved_text on a ${f.status} fact (remove it when the conflict is settled)`);
+    if (f.status !== 'unresolved') continue;
+    if (f.quote) add('critical', 'C15', f.id, 'unresolved fact has a quote: the editorial text would state a disputed value. Replace the wording with the fact\'s unresolved_text and remove the quote');
+    const times = facts.filter((g) => g.conflict_group && g.conflict_group === f.conflict_group)
+      .flatMap((g) => Object.values(g.value)).filter((v): v is string => typeof v === 'string' && /^\d{1,2}:\d{2}$/.test(v));
+    // the place's own text must not pair the disputed claim with one of the disputed times
+    const claim = f.kind === 'last-entry' ? /last (entry|admission|ticket)s?\W{0,3}(at\s)?(\d{1,2}:\d{2})/gi : null;
+    if (claim) for (const t of editorialOf.get(f.place) ?? []) for (const m of t.matchAll(claim)) if (times.includes(m[3]!)) add('critical', 'C15', f.id, `editorial text states the disputed ${m[0]}`);
+    if (!f.unresolved_text) continue;
+    if (!/sources (differ|vary)/i.test(f.unresolved_text)) add('critical', 'C15', f.id, 'unresolved_text must say that the sources differ or vary');
+    for (const t of new Set(times)) if (f.unresolved_text.includes(t)) add('critical', 'C15', f.id, `unresolved_text shows the disputed time ${t}`);
   }
 
   // ---------------- warnings

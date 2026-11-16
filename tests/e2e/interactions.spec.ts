@@ -1,4 +1,6 @@
 import { test, expect } from './fixtures.ts';
+import { markerTrust } from '../../src/lib/trust/trust';
+import type { MapPlace } from '../../src/lib/map/types';
 
 test('mobile navigation: toggle, Escape closes and returns focus', async ({ page, consoleErrors }, info) => {
   test.skip(info.project.name === 'desktop', 'disclosure is used on mobile and tablet');
@@ -100,7 +102,7 @@ test('map: all nine places, names, zones and popups remain reachable', async ({ 
     }
   };
   const map0 = await open();
-  const source = await map0.evaluate((el) => JSON.parse(el.dataset.mapPlaces ?? '[]') as { name: string; zone: string }[]);
+  const source = await map0.evaluate((el) => JSON.parse(el.dataset.mapPlaces ?? '[]') as MapPlace[]);
   // depth-first: open the page, follow a path of cluster selections, collect popups, recurse into each remaining cluster
   const explore = async (path: number[]): Promise<void> => {
     const map = await open();
@@ -110,7 +112,8 @@ test('map: all nine places, names, zones and popups remain reachable', async ({ 
     if (path.length < 4) for (let k = 0; k < n; k++) await explore([...path, k]);
   };
   await explore([]);
-  expect([...seen].sort()).toEqual(source.map((p) => `${p.name} ${p.zone}`).sort());
+  // each popup: name, zone and the marker's trust line (M3)
+  expect([...seen].sort()).toEqual(source.map((p) => `${p.name} ${p.zone} ${markerTrust(p)}`).sort());
   expect(consoleErrors).toEqual([]);
 });
 

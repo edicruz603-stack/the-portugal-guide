@@ -160,6 +160,11 @@ export const FactSchema = z.object({
   checked_on: isoDate.optional(),
   status: FactStatus,
   conflict_group: z.string().regex(new RegExp(`^${KEY}$`)).optional(),
+  /**
+   * Visitor text shown instead of `quote` while the fact is `unresolved` (M3): the disputed value is not shown.
+   * Must say the sources differ or vary (rule C15).
+   */
+  unresolved_text: z.string().min(1).optional(),
   review_after_days: z.number().int().positive().optional(),
   note: z.string().optional(),
 }).strict();

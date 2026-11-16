@@ -31,6 +31,22 @@ main h2 em { color: var(--gold-text); }
 .tpg-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ivory); box-shadow: 0 1px 3px rgba(0, 0, 0, .35); }
 .tpg-dot--monument { background: var(--gold-text); }
 .tpg-dot--free { background: var(--forest); }
+/* M3: position not checked (approximate, unresolved or reported): dashed ring, plus the status in text */
+.tpg-dot--uncertain { border-style: dashed; border-color: var(--ink); background-clip: padding-box; }
 .tpg-cluster { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--forest); color: var(--ivory); border: 3px solid var(--gold-light); font: 700 14px var(--font-sans); box-shadow: 0 1px 4px rgba(0, 0, 0, .35); }
 .tpg-marker-icon:focus-visible, .tpg-cluster-icon:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 50%; }
 .tpg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- M3 trust information (src/components/TrustNote.astro) ----------
+   Quiet text in the card's own colour; status is always written out. Disclosures open by tap or keyboard. */
+.trust { margin-top: 14px; font-family: var(--font-sans); font-size: 12px; line-height: 1.6; }
+.trust .trust-line { margin: 2px 0; }
+.trust p.trust-checked { margin: 2px 0; color: inherit; }
+.trust summary { display: flex; align-items: center; gap: .5em; min-height: 44px; cursor: pointer; list-style: none; font-weight: 600; text-decoration: underline dotted; text-underline-offset: 3px; }
+.trust summary::-webkit-details-marker { display: none; }
+.trust summary::before { content: ""; flex: none; width: .6em; height: .6em; border: 1.5px solid currentColor; border-radius: 50%; }
+.trust .trust-confirm-first summary::before { background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
+.trust .trust-unresolved summary::before { border-radius: 0; transform: rotate(45deg); }
+.trust details > p { margin: 0 0 8px; font-size: 12px; line-height: 1.6; color: inherit; }
+.trust summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+

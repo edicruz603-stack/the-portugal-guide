@@ -16,6 +16,7 @@
 import type { ContentInput, Issue } from './validate.ts';
 import type { Event, Fact, List, Place } from '../content/schemas.ts';
 import { isEventActive } from '../content/dates.ts';
+import { VISIBLE_IN_PROSE } from '../trust/prose.ts';
 
 export type PendingCategory = 'visible-risk' | 'research' | 'descriptions' | 'facts' | 'commercial';
 
@@ -63,14 +64,7 @@ export const CATEGORY_INFO: Record<PendingCategory, { title: string; impact: str
 
 type Src = { id: string; kind: string };
 
-/**
- * Facts without a `quote` whose value nevertheless also appears in page prose outside place records.
- * Found by checking every unquoted pending fact's value against the built pages (13 Nov 2026).
- * tests/unit/pending.test.ts asserts each phrase is still in the page source, so this list cannot go stale.
- */
-export const VISIBLE_IN_PROSE: Record<string, { page: string; phrase: string }> = {
-  'fact.sintra.sintra-station.buses': { page: 'src/pages/sintra.astro', phrase: 'Bus 434 serves the historic centre' },
-};
+export { VISIBLE_IN_PROSE };
 
 function factAction(f: Fact, sourceKind: string | undefined): string {
   if (f.status === 'unresolved') return `Ask the operator which value applies (conflict ${f.conflict_group}); keep every value until then; then mark the confirmed one checked and retire or re-scope the others.`;
@@ -117,8 +111,9 @@ export function classifyPending(input: ContentInput, issues: Issue[], today: str
         if (f) {
           if (markerFact.has(f.id) && pending.some((x) => x.rule === 'P06' && x.where === markerFact.get(f.id))) break; // merged into the P06 item
           const prose = VISIBLE_IN_PROSE[f.id];
-          const shown = (f.quote && listsOf(f.place).length) || prose;
-          const visibleAs = prose ? `page prose (${prose.page.split('/').pop()}): “${prose.phrase}…” (part of the value)` : `published text of ${f.place}: “${f.quote}”`;
+          const onCard = f.quote ?? (f.status === 'unresolved' ? f.unresolved_text : undefined);
+          const shown = (onCard && listsOf(f.place).length) || prose;
+          const visibleAs = prose ? `page prose (${prose.page.split('/').pop()}): “${prose.phrase}…” (part of the value)` : `published text of ${f.place}: “${onCard}”`;
           items.push({ category: shown ? 'visible-risk' : 'research', id: f.id, issues: [key], status: f.status, ...(shown ? { visibleAs } : {}), action: factAction(f, sources.get(f.source)) });
           break;
         }
