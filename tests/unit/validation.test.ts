@@ -1,5 +1,5 @@
 /**
- * Every critical rule (C01–C16) is demonstrated by a fixture that must fail, plus the real dataset
+ * Every critical rule (C01–C17) is demonstrated by a fixture that must fail, plus the real dataset
  * passing with zero critical issues. Fixtures are small mutations of the real content.
  */
 import { describe, expect, it } from 'vitest';
@@ -141,6 +141,16 @@ describe('CRITICAL rules each fail on a fixture', () => {
     const b = fresh(); fact(b, E).history[0].on = '2027-01-01'; fails(b, 'C16', /in the future/);
     const c = fresh(); delete fact(c, E).history[0].previous_checked_on; fails(c, 'C16', /without previous_checked_on/);
     const d = fresh(); fact(d, E).history[0].to = 'checked'; fails(d, 'C16', /does not change the status/);
+  });
+  it('C17 an event is checked only from the organiser\'s own page, with a date', () => {
+    const ev = (i: ContentInput) => (i.events as Rec[]).find((e) => e.id === 'event.sintra.mordidas-do-tempo')!;
+    const a = fresh(); ev(a).status = 'checked'; fails(a, 'C17', /without checked_on/);
+    const b = fresh(); Object.assign(ev(b), { status: 'checked', checked_on: '2026-11-16' }); fails(b, 'C17', /own-edition source/);
+    const c = fresh(); Object.assign(ev(c), { status: 'checked', checked_on: '2026-11-16', source: 'src.parques-de-sintra.site' }); fails(c, 'C17', /provenance legacy-website/);
+    const d = fresh(); ev(d).checked_on = '2026-11-16'; fails(d, 'C17', /checked_on on a reported event/);
+    const e = fresh(); Object.assign(ev(e), { status: 'checked', checked_on: '2026-12-01', source: 'src.parques-de-sintra.site', provenance: 'official-page-read' }); fails(e, 'C17', /in the future/);
+    const ok = fresh(); Object.assign(ev(ok), { status: 'checked', checked_on: '2026-11-16', source: 'src.parques-de-sintra.site', provenance: 'official-page-read' });
+    expect(run(ok).filter((x) => x.rule === 'C17')).toEqual([]);
   });
   it('C14 editorial changes register: invalid entry or unknown content ID', () => {
     const i = fresh(); (i.editorialChanges as Rec).changes[0].approval = undefined; fails(i, 'C14', /approval/);

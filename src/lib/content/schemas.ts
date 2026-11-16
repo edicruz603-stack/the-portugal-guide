@@ -208,8 +208,11 @@ export const EventSchema = z.object({
   source: sourceId,
   provenance: Provenance,
   observed_on: isoDate,
+  /** Only for status `checked`: the date the organiser's own published information was read (rule C17). */
   checked_on: isoDate.optional(),
   status: FactStatus,
+  /** Verification evidence: what the organiser's page showed (dates, times, booking) and anything still to confirm. */
+  note: z.string().optional(),
   editorial: z.object({
     local: z.object({ when: Text, title: Text, text: Text, link: LinkSchema }).strict().optional(),
     directory: z.object({ heading: Text, text: Text }).strict().optional(),

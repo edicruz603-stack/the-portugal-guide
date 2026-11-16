@@ -341,6 +341,18 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     if (h[h.length - 1]!.to !== f.status) add('critical', 'C16', f.id, `history ends at ${h[h.length - 1]!.to} but the fact is ${f.status}`);
   }
 
+  // C17 — events: `checked` only from the organiser's own published information, read on checked_on
+  for (const e of events) {
+    const src = sourceById.get(e.source);
+    if (e.status === 'checked') {
+      if (!e.checked_on) add('critical', 'C17', e.id, 'checked event without checked_on');
+      if (!src || !(CHECKABLE_KINDS as readonly string[]).includes(src.kind)) add('critical', 'C17', e.id, `checked event from a ${src?.kind ?? 'missing'} source: needs the organiser's own page (operator or official)`);
+      if (e.provenance !== 'official-page-read') add('critical', 'C17', e.id, `checked event with provenance ${e.provenance}`);
+    } else if (e.checked_on) add('critical', 'C17', e.id, `checked_on on a ${e.status} event`);
+    for (const d of [e.observed_on, e.checked_on]) if (d && d > opts.today) add('critical', 'C17', e.id, `date ${d} is in the future`);
+    if (e.checked_on && e.checked_on < e.observed_on) add('critical', 'C17', e.id, 'checked_on is before observed_on');
+  }
+
   // ---------------- warnings
   for (const f of facts) {
     const since = f.checked_on ?? f.observed_on;
