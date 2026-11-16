@@ -3,7 +3,8 @@
 // Editorial content is unchanged; see docs/phase-0-1-report.md.
 import Base from '../layouts/Base.astro';
 import MapView from '../components/MapView.astro';
-import { placesInList, mapMarkers } from '../lib/content/repository.ts';
+import { placesInList, mapMarkers, proseTrust } from '../lib/content/repository.ts';
+import TrustNote from '../components/TrustNote.astro';
 import FieldGuideCard from '../components/places/FieldGuideCard.astro';
 import FoodCard from '../components/places/FoodCard.astro';
 import MapLink from '../components/places/MapLink.astro';
@@ -12,6 +13,7 @@ const freeCards = await placesInList('destination.sintra', 'list.sintra.field-gu
 const tickets = await placesInList('destination.sintra', 'list.sintra.field-guide-tickets', 'field_guide_tickets');
 const food = await placesInList('destination.sintra', 'list.sintra.field-guide-food', 'food_card');
 const mapLinks = await placesInList('destination.sintra', 'list.sintra.map-links', 'map_link');
+const busTrust = await proseTrust('destination.sintra', 'sintra.astro', 'Bus 434 serves the historic centre');
 const sintraMapPlaces = await mapMarkers('destination.sintra', 'list.sintra.map');
 ---
 <Base
@@ -54,7 +56,7 @@ const sintraMapPlaces = await mapMarkers('destination.sintra', 'list.sintra.map'
         <p class="eyebrow">02 · Choose your stops</p>
         <h2>Four places, four different moods.</h2>
         <div class="highlight-grid">
-          {highlights.map(({ editorial }) => <FieldGuideCard editorial={editorial} />)}
+          {highlights.map(({ editorial, trust }) => <FieldGuideCard editorial={editorial} trust={trust} />)}
         </div>
       </div>
     </section>
@@ -65,7 +67,7 @@ const sintraMapPlaces = await mapMarkers('destination.sintra', 'list.sintra.map'
       <p>The monuments sit across the hills, not in one walkable cluster. The easiest plan is usually to arrive by train, use the local public transport or walk where the route makes sense, and avoid trying to drive from monument to monument.</p>
       <div class="guide-facts">
         <div><strong>By train</strong><span>Direct services connect Lisbon with Sintra. Check the timetable before setting off.</span></div>
-        <div><strong>By bus</strong><span>Bus 434 serves the historic centre, Moorish Castle and Pena area. Check the operator’s current route and ticket conditions.</span></div>
+        <div><strong>By bus</strong><span>Bus 434 serves the historic centre, Moorish Castle and Pena area. Check the operator’s current route and ticket conditions.</span><TrustNote lines={busTrust} /></div>
         <div><strong>By car</strong><span>Private vehicles are restricted on access roads to Pena and in parts of the historic centre. Use designated parking and continue on foot or by public transport.</span></div>
       </div>
       <p style="margin-top:28px"><a class="text-link" href="https://www.parquesdesintra.pt/pt/planear-a-visita/como-chegar/" target="_blank" rel="noopener">Check the official access and transport guidance ↗</a></p>
@@ -128,7 +130,7 @@ const sintraMapPlaces = await mapMarkers('destination.sintra', 'list.sintra.map'
         <p class="plan-lead">Adult reference prices currently published by the operators, checked on 30 October 2026. These are separate admissions, not a combined pass. Transport, food and optional transfers are extra.</p>
         <div class="highlight-grid">
           <article class="highlight-card"><span class="highlight-no">PARQUES DE SINTRA · ADULT 18–64</span><h3>Signature monuments</h3><p><strong>Pena Palace · Essential visit:</strong> €20. <strong>Pena Park only:</strong> €12. The optional park-to-palace transfer is an additional €4.50 return. <strong>Moorish Castle:</strong> €12. <strong>Monserrate Park and Palace:</strong> €12. <strong>National Palace of Sintra:</strong> €13. The National Palace gardens are listed as free entry.</p><a href="https://www.parquesdesintra.pt/pt/planear-a-visita/horarios-e-precos/" target="_blank" rel="noopener">Check official prices and hours ↗</a></article>
-          {tickets.map(({ editorial }) => <FieldGuideCard editorial={editorial} />)}
+          {tickets.map(({ editorial, trust }) => <FieldGuideCard editorial={editorial} trust={trust} />)}
         </div>
         <p class="guide-disclaimer">Prices checked on 30 October 2026 against the official operators. Adult rates apply to ages 18–64; other age bands, family tickets and special conditions differ. Prices and visit formats can change. Confirm the exact product and date before paying. Sources: Parques de Sintra and Fundação Cultursintra.</p>
       </div>
@@ -141,7 +143,7 @@ const sintraMapPlaces = await mapMarkers('destination.sintra', 'list.sintra.map'
         <h2>The places you can enjoy<br><em>without buying a palace ticket.</em></h2>
         <p class="plan-lead">Some of Sintra’s best moments happen between the famous monuments. This small-town trail brings together public gardens, a free museum, a viewpoint and a remarkable historic hotel. Check opening hours before you go; “free” does not always mean open at every hour.</p>
         <div class="highlight-grid">
-          {freeCards.map(({ editorial }) => <FieldGuideCard editorial={editorial} />)}
+          {freeCards.map(({ editorial, trust }) => <FieldGuideCard editorial={editorial} trust={trust} />)}
         </div>
         <p class="guide-disclaimer">Free-entry information and opening hours checked against official visitor sources on 30 October 2026. Temporary closures, maintenance and special-event restrictions may apply. The museum is free according to Visit Sintra; the National Palace gardens are explicitly listed as free by Parques de Sintra. The Parque da Liberdade is a public municipal park.</p>
       </div>
@@ -165,7 +167,7 @@ const sintraMapPlaces = await mapMarkers('destination.sintra', 'list.sintra.map'
         <h2>Good places for a proper pause.</h2>
         <p class="plan-lead">A short, practical shortlist in and around the historic centre. These are independent suggestions, not paid placements. Check opening times and menus before setting off.</p>
         <div class="food-grid">
-          {food.map(({ editorial }) => <FoodCard editorial={editorial} />)}
+          {food.map(({ editorial, trust }) => <FoodCard editorial={editorial} trust={trust} />)}
         </div>
         <p class="guide-disclaimer">Food recommendations are selected for their local character and location. Menus, prices, service and opening hours can change; check directly with each business. The Portugal Guide is independent and receives no payment for these listings.</p>
       </div>

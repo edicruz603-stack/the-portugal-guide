@@ -64,9 +64,10 @@ facts:
   value:
     time: '18:00'
   text: 'Gardens: last entry 18:00 (previous website edition)'
-  quote: 09:30–18:30; last entry 18:00
+  unresolved_text: '09:30–18:30; last entry: official sources differ'
   source: src.tpg.website-2026
   provenance: legacy-website
   observed_on: '2026-11-11'
   status: unresolved
   conflict_group: national-palace-gardens-last-entry
+  note: 'M3 (16 Nov 2026): the canonical editorial text no longer states this disputed value. The previous edition''s wording "09:30–18:30; last entry 18:00" (formerly this fact''s quote) is preserved in the editorial changes register (change.sintra.gardens-last-entry-suppressed); the card now carries unresolved_text.'

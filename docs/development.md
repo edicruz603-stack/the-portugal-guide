@@ -48,3 +48,4 @@ validated by the Zod schemas in `src/lib/content/schemas.ts`. Pages read them on
 - Sources disagree: keep every value, give them the same `conflict_group`, status `unresolved`.
 - Never rename or delete an ID; retire it in `src/content/ids.lock.json`.
 - `npm run validate` writes `dist-reports/content-status.md` (inventory, coverage, conflicts, pending).
+- Intentional visible changes to page text or images need an entry in the approved editorial changes register (`src/content/editorial-changes.yaml`, see `docs/content/editorial-register.md`); `npm run test:parity` fails on any unregistered difference.

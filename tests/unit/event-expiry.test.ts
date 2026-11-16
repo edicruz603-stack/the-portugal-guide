@@ -70,7 +70,14 @@ describe('every event list applies the same rule', () => {
   it('unknown IDs are an error, not silently dropped', () => { expect(() => activeEventIds(['event.sintra.nope'], events, '2026-11-13')).toThrow(/no event record/); });
 });
 
-describe('built pages at 14, 15 and 16 Nov 2026 (both event components, plus parity)', () => {
+/*
+ * Built pages. From M3 on the dataset holds facts observed and corrected on 15–16 Nov 2026, so a build dated
+ * before then is (rightly) refused by validation (C05/C16: dates in the future). The inclusive rule is therefore
+ * shown on built pages at later boundaries: Mutatis Mutandis (ended 15 Nov) is gone on 16 Nov, and the Cunha e Costa
+ * exhibition (last day 31 Dec 2026) is shown on 31 Dec and gone on 1 Jan 2027. The 14/15 Nov behaviour of Mutatis
+ * Mutandis stays covered above, on the real lists.
+ */
+describe('built pages at the inclusive boundary (both event components, plus parity)', () => {
   const build = (day: string) => {
     const out = mkdtempSync(join(tmpdir(), `tpg-${day}-`));
     const env = { ...process.env, VALIDATION_DATE: day }; delete (env as any).PUBLICATION_MODE;
@@ -83,17 +90,23 @@ describe('built pages at 14, 15 and 16 Nov 2026 (both event components, plus par
     return res;
   };
   const count = (html: string) => (html.match(/<div class="event">/g) ?? []).length;
-  it.each([['2026-11-14', true, 4], ['2026-11-15', true, 4], ['2026-11-16', false, 3]])('%s: Mutatis Mutandis shown=%s, local diary has %i events', (day, shown, n) => {
+  const CUNHA = 'event.sintra.cunha-e-costa-collection';
+  it.each([
+    ['2026-11-16', { mutatis: false, cunha: true, local: 3 }],
+    ['2026-12-31', { mutatis: false, cunha: true, local: 3 }],
+    ['2027-01-01', { mutatis: false, cunha: false, local: 2 }],
+  ] as const)('%s', (day, want) => {
     const b = build(day);
-    expect(b.local.includes('Mutatis Mutandis')).toBe(shown);
-    expect(count(b.local)).toBe(n);
-    // directory diary: only Mordidas do Tempo (until 3 Jan 2027) is still on; ended ones absent in every build
+    expect(b.local.includes('Mutatis Mutandis')).toBe(want.mutatis);
+    expect(b.local.includes('Cunha e Costa')).toBe(want.cunha);
+    expect(count(b.local)).toBe(want.local);
+    // directory diary: only Mordidas do Tempo (last day 3 Jan 2027) is still on; ended ones absent in every build
     expect(count(b.directory)).toBe(1);
     expect(b.directory).toContain('Mordidas do Tempo');
     for (const gone of ['TAXI', 'Colares wine heritage', 'mystery afternoon']) expect(b.directory).not.toContain(gone);
-    expect(b.local).not.toContain('TAXI · Centro Cultural');
     expect(b.parity.status, b.parity.stdout).toBe(0);
     expect(b.parity.stdout).toContain(`validation date ${day}`);
-    expect(b.parity.stdout.includes(`${MUTATIS} on sintra-local-discoveries.html`)).toBe(!shown);
+    expect(b.parity.stdout.includes(`${MUTATIS} on sintra-local-discoveries.html`)).toBe(true);
+    expect(b.parity.stdout.includes(`${CUNHA} on sintra-local-discoveries.html`)).toBe(!want.cunha);
   }, 120_000);
 });

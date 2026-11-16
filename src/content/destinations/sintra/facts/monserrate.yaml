@@ -12,6 +12,7 @@ facts:
   observed_on: '2026-11-11'
   status: unresolved
   conflict_group: monserrate-coordinates
+  note: 'Re-read 15 Nov 2026: the monument page and the How to get there page give 38°47′30″N 9°25′09″W directly after saying the park is on the road from the town centre to Colares (EN375). Visit Sintra (municipal tourism) gives 38°47′30.9″N 9°25′09.1″W, about 6 m away. Which physical point the value marks is not stated; kept unresolved with coordinates-b. The map marker uses this value.'
 - id: fact.sintra.monserrate.coordinates-b
   kind: coordinates
   value:
@@ -24,7 +25,7 @@ facts:
   observed_on: '2026-11-11'
   status: unresolved
   conflict_group: monserrate-coordinates
-  note: About 280 m from coordinates-a; the page does not say which point each value marks.
+  note: 'About 285 m from coordinates-a. Re-read 15 Nov 2026 on the monument page: this value is listed with the advice that, because of road works, access through Colares is recommended. A secondary source (Wikipedia, "Monserrate Palace") places the palace building about 35 m from it. No source states what the point marks, so it is not modelled as a separate point; kept unresolved with coordinates-a.'
 - id: fact.sintra.monserrate.coordinates-entrance
   kind: coordinates
   subject: park entrance
@@ -36,8 +37,28 @@ facts:
   source: src.parques-de-sintra.ticket-office.monserrate
   provenance: official-page-read
   observed_on: '2026-11-11'
-  checked_on: '2026-11-11'
-  status: checked
+  status: confirm-first
+  history:
+  - on: '2026-11-16'
+    from: checked
+    to: confirm-first
+    previous_checked_on: '2026-11-11'
+    reason: 'Reopened: the operator''s How to get there page (read 15 Nov 2026) gives this same value for the Farmyard of Monserrate, 850 m east of the entrance (see coordinates-farmyard). Not a verified visitor entrance until the physical location is confirmed. Value and source unchanged.'
+    approval: 'Owner, M3 implementation brief §6 (reopen Monserrate entrance fact), 16 Nov 2026'
+  note: Not used by the map. Do not present as the visitor entrance until confirmed.
+- id: fact.sintra.monserrate.coordinates-farmyard
+  kind: coordinates
+  subject: Farmyard of Monserrate
+  value:
+    lat: 38.790942
+    lon: -9.411178
+    dms: 38°47'27.39"N 9°24'40.24"W
+  text: Farmyard of Monserrate 38°47’27.39”N 9°24’40.24”W (How to get there page, which places the farmyard 850 m east of the entrance)
+  source: src.parques-de-sintra.how-to-get-there
+  provenance: official-page-read
+  observed_on: '2026-11-15'
+  status: confirm-first
+  note: The ticket-office page gives the identical value as the park entrance (coordinates-entrance). One of the two labels is wrong; confirm on site or with the operator before using either.
 - id: fact.sintra.monserrate.hours-park
   kind: hours
   subject: park
@@ -63,6 +84,19 @@ facts:
   observed_on: '2026-11-11'
   status: unresolved
   conflict_group: monserrate-park-last-ticket
+  note: 'Re-read 15 Nov 2026 on the English monument page: last ticket 5:30PM and last admission 06:00PM, shown separately. Last admission (18:00) is a different claim, recorded in hours-park.'
+- id: fact.sintra.monserrate.last-ticket-park-opening-times
+  kind: last-entry
+  subject: park, last ticket
+  value:
+    time: '18:00'
+  text: 'Park: last ticket and last admission 18:00 (opening-times page)'
+  source: src.parques-de-sintra.opening-times
+  provenance: official-page-read
+  observed_on: '2026-11-15'
+  status: unresolved
+  conflict_group: monserrate-park-last-ticket
+  note: This page gives one time for both last ticket and last admission.
 - id: fact.sintra.monserrate.last-ticket-park-ticket-office
   kind: last-entry
   subject: park, last ticket

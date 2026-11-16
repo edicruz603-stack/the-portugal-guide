@@ -1,5 +1,5 @@
 /**
- * Every critical rule (C01–C13) is demonstrated by a fixture that must fail, plus the real dataset
+ * Every critical rule (C01–C16) is demonstrated by a fixture that must fail, plus the real dataset
  * passing with zero critical issues. Fixtures are small mutations of the real content.
  */
 import { describe, expect, it } from 'vitest';
@@ -9,7 +9,7 @@ import { validateContent, hasCritical, DEFAULT_OPTIONS, parseDms, type ContentIn
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const real = loadContentFromDisk(root);
-const opts: Options = { ...DEFAULT_OPTIONS, today: '2026-11-11' };
+const opts: Options = { ...DEFAULT_OPTIONS, today: '2026-11-16' }; // on or after the newest date in the dataset
 const fresh = (): ContentInput => structuredClone(real);
 const run = (input: ContentInput, o: Options = opts) => validateContent(input, o);
 const fails = (input: ContentInput, rule: string, text?: RegExp, o?: Options) => {
@@ -112,6 +112,66 @@ describe('CRITICAL rules each fail on a fixture', () => {
 
   it('C12 event ending before it starts', () => { const i = fresh(); (i.events as Rec[])[0]!.ends_on = '2020-01-01'; fails(i, 'C12'); });
   it('C13 homepage card linking to a missing page', () => { const i = fresh(); (i.homeDestinations as Rec[])[0]!.href = 'lisbon.html'; fails(i, 'C13'); });
+  it('C15 disputed values are never shown', () => {
+    const id = 'fact.sintra.national-palace-gardens.last-entry-website';
+    const a = fresh(); fact(a, id).quote = '09:30–18:30; last entry 18:00'; fails(a, 'C15', /unresolved fact has a quote/);
+    const g = fresh(); const pg = place(g, 'national-palace-gardens').editorial.field_guide;
+    pg.paragraphs = pg.paragraphs.map((t: string) => t.replace('last entry: official sources differ', 'last entry 18:00')); fails(g, 'C15', /editorial text states the disputed last entry 18:00/);
+    const b = fresh(); fact(b, id).unresolved_text = '09:30–18:30; last entry 18:00 — sources differ'; fails(b, 'C15', /disputed (quote|time 18:00)/);
+    const c = fresh(); fact(c, id).unresolved_text = '09:30–18:30; ask at the gate'; fails(c, 'C15', /must say that the sources differ/);
+    const d = fresh(); fact(d, 'fact.sintra.national-palace-gardens.price').unresolved_text = 'sources differ'; fails(d, 'C15', /on a checked fact/);
+    const e = fresh(); fact(e, id).unresolved_text = 'last entry 17:30 (sources differ)'; fails(e, 'C15', /disputed time 17:30/);
+  });
+  it('C16 a conflict group may not mix claims (last ticket is not last admission)', () => {
+    const i = fresh(); fact(i, 'fact.sintra.monserrate.last-ticket-park-monument-page').subject = 'park, last admission'; fails(i, 'C16', /mixes different claims/);
+  });
+  it('C16 tolerance: same operator, same point, within 15 m, never in a conflict', () => {
+    const A = 'fact.sintra.national-palace.coordinates', B = 'fact.sintra.national-palace.coordinates-ticket-office';
+    const m = 1 / 111_195; // degrees of latitude per metre
+    const at = (metres: number) => { const i = fresh(); const b = fact(i, B); const a = fact(i, A); b.value.lat = a.value.lat + metres * m; b.value.lon = a.value.lon; delete b.value.dms; return i; };
+    const c16 = (i: ContentInput) => run(i).filter((x) => x.rule === 'C16');
+    expect(c16(at(14.9))).toEqual([]);
+    fails(at(15.1), 'C16', /apart \(tolerance 15 m\)/);
+    const s = fresh(); fact(s, B).subject = 'garden gate'; fails(s, 'C16', /different physical points/);
+    const o = fresh(); fact(o, B).source = 'src.visit-sintra.hiking'; fails(o, 'C16', /same operator/);
+    const g = fresh(); fact(g, A).conflict_group = 'x-y'; fact(g, B).conflict_group = 'x-y'; fact(g, A).status = 'unresolved'; fact(g, B).status = 'unresolved'; fails(g, 'C16', /not a conflict/);
+    const k = fresh(); fact(k, 'fact.sintra.monserrate.price').agrees_with = A; fails(k, 'C16', /coordinates only/);
+  });
+  it('C16 operator identity is explicit source metadata, not inferred from the source ID', () => {
+    const A = 'fact.sintra.national-palace.coordinates', B = 'fact.sintra.national-palace.coordinates-ticket-office';
+    const src = (i: ContentInput, id: string) => (i.sources as Rec[]).find((x) => x.id === id)!;
+    // same ID prefix, different declared operator → not the same operator
+    const d = fresh(); src(d, fact(d, B).source).operator = 'another-operator'; fails(d, 'C16', /same operator/);
+    // an operator source must declare its operator
+    const m = fresh(); delete src(m, fact(m, A).source).operator; fails(m, 'C16', /without an operator identifier/);
+    // a non-operator source may not claim one
+    const n = fresh(); src(n, 'src.visit-sintra.hiking').operator = 'parques-de-sintra'; fails(n, 'C16', /operator identifier on a official source/);
+    // different ID prefixes but the same declared operator still agree (no string parsing)
+    const r = fresh(); const sb = src(r, fact(r, B).source); (r.sources as Rec[]).push({ ...sb, id: 'src.psml-tickets.national-palace' }); fact(r, B).source = 'src.psml-tickets.national-palace';
+    expect(run(r).filter((x) => x.rule === 'C16')).toEqual([]);
+  });
+  it('C16 verifications: owner field verification is dated, not in the future, and covers the same place and kind', () => {
+    const A = 'fact.sintra.national-palace.coordinates';
+    const v = (i: ContentInput) => fact(i, A).verifications[0];
+    const real16 = fresh(); expect(v(real16)).toMatchObject({ on: '2026-11-16', by: 'owner', method: 'field-verification' });
+    expect(fact(real16, A).checked_on).toBe('2026-11-15'); expect(fact(real16, A).status).toBe('checked');
+    const f1 = fresh(); v(f1).on = '2027-01-01'; fails(f1, 'C16', /verification 1 is dated in the future/);
+    const f2 = fresh(); v(f2).on = '2026-11-01'; fails(f2, 'C16', /predates the observation/);
+    const f3 = fresh(); v(f3).covers = ['fact.sintra.national-palace.hours-palace']; fails(f3, 'C16', /different place or kind/);
+    const f4 = fresh(); v(f4).covers = ['fact.sintra.national-palace.nowhere']; fails(f4, 'C16', /unknown fact/);
+  });
+  it('C16 status history: complete, dated, and ending at the current status', () => {
+    const E = 'fact.sintra.monserrate.coordinates-entrance';
+    const a = fresh(); fact(a, E).status = 'reported'; fails(a, 'C16', /history ends at confirm-first/);
+    const b = fresh(); fact(b, E).history[0].on = '2027-01-01'; fails(b, 'C16', /in the future/);
+    const c = fresh(); delete fact(c, E).history[0].previous_checked_on; fails(c, 'C16', /without previous_checked_on/);
+    const d = fresh(); fact(d, E).history[0].to = 'checked'; fails(d, 'C16', /does not change the status/);
+  });
+  it('C14 editorial changes register: invalid entry or unknown content ID', () => {
+    const i = fresh(); (i.editorialChanges as Rec).changes[0].approval = undefined; fails(i, 'C14', /approval/);
+    const j = fresh(); (j.editorialChanges as Rec).changes[0].content_id = 'place.sintra.nowhere'; fails(j, 'C14', /unknown content_id/);
+    const k = fresh(); (k.editorialChanges as Rec).changes.push({ ...(k.editorialChanges as Rec).changes[0] }); fails(k, 'C14', /duplicate/);
+  });
 });
 
 describe('WARNING and EDITORIAL PENDING never block', () => {
@@ -126,7 +186,7 @@ describe('WARNING and EDITORIAL PENDING never block', () => {
     const unlisted: Rec = { ...evs.find((e) => e.id === 'event.sintra.taxi-concert')!, id: 'event.sintra.old-unlisted', starts_on: '2020-01-01' };
     delete unlisted.ends_on; evs.push(unlisted);
     const w02 = run(i).filter((x) => x.rule === 'W02').map((x) => x.where).sort();
-    expect(w02).toEqual(['event.sintra.colares-wine-journey', 'event.sintra.masmo-mystery-afternoon', 'event.sintra.taxi-concert']);
+    expect(w02).toEqual(['event.sintra.colares-wine-journey', 'event.sintra.masmo-mystery-afternoon', 'event.sintra.mutatis-mutandis', 'event.sintra.taxi-concert']); // at 16 Nov 2026
     expect(run(i).find((x) => x.rule === 'W02')!.message).toMatch(/hidden automatically/);
     expect(hasCritical(run(i))).toBe(false);
   });
