@@ -1,0 +1,16 @@
+# Approved editorial changes register (M3). See src/lib/editorial/register.ts and docs/content/editorial-register.md.
+# Every intentional visible difference from the frozen legacy pages needs an entry here; the editorial parity
+# check (npm run test:parity) applies only these entries and fails on anything else.
+# Text entries use visible text as parity sees it: tags stripped, entities decoded, single spaces.
+version: 1
+changes:
+  - id: change.sintra.map-legend
+    page: sintra.html
+    content_id: page:sintra.html
+    kind: text
+    before: Historic centre Hilltop and garden monuments
+    after: Main monuments Free stops
+    reason: The legacy map legend contradicted the markers (5 main monuments and 4 free stops). Carried over from the Phase 1 parity allow-list.
+    approval:
+      ref: 'PR #1 (Phase 0+1), change 1 in docs/phase-0-1-report.md'
+      date: '2026-11-07'

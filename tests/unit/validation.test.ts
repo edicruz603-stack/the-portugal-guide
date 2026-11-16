@@ -1,5 +1,5 @@
 /**
- * Every critical rule (C01–C13) is demonstrated by a fixture that must fail, plus the real dataset
+ * Every critical rule (C01–C14) is demonstrated by a fixture that must fail, plus the real dataset
  * passing with zero critical issues. Fixtures are small mutations of the real content.
  */
 import { describe, expect, it } from 'vitest';
@@ -112,6 +112,11 @@ describe('CRITICAL rules each fail on a fixture', () => {
 
   it('C12 event ending before it starts', () => { const i = fresh(); (i.events as Rec[])[0]!.ends_on = '2020-01-01'; fails(i, 'C12'); });
   it('C13 homepage card linking to a missing page', () => { const i = fresh(); (i.homeDestinations as Rec[])[0]!.href = 'lisbon.html'; fails(i, 'C13'); });
+  it('C14 editorial changes register: invalid entry or unknown content ID', () => {
+    const i = fresh(); (i.editorialChanges as Rec).changes[0].approval = undefined; fails(i, 'C14', /approval/);
+    const j = fresh(); (j.editorialChanges as Rec).changes[0].content_id = 'place.sintra.nowhere'; fails(j, 'C14', /unknown content_id/);
+    const k = fresh(); (k.editorialChanges as Rec).changes.push({ ...(k.editorialChanges as Rec).changes[0] }); fails(k, 'C14', /duplicate/);
+  });
 });
 
 describe('WARNING and EDITORIAL PENDING never block', () => {

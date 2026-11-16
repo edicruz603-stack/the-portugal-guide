@@ -14,6 +14,7 @@ import {
   type Event, type Fact, type List, type Place,
 } from '../content/schemas.ts';
 import { HomeDestinationSchema } from './schemas.ts';
+import { EditorialRegisterSchema, checkRegister } from '../editorial/register.ts';
 import { isEventActive, lastDay } from '../content/dates.ts';
 
 export type Level = 'critical' | 'warning' | 'pending';
@@ -32,6 +33,8 @@ export interface ContentInput {
   homeDestinations: unknown[];
   /** src/pages/*.astro sources keyed by file name */
   pages: Record<string, string>;
+  /** src/content/editorial-changes.yaml (approved editorial changes register, M3) */
+  editorialChanges?: unknown;
 }
 
 export interface Options {
@@ -272,6 +275,16 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
   for (const d of homeDests) {
     const target = d.href.split('#')[0]!;
     if (target && !/^https?:/.test(target) && !pageNames.has(target)) add('critical', 'C13', `home destination ${d.name}`, `link target ${target} does not exist`);
+  }
+
+  // C14 — approved editorial changes register: valid entries, unique ids, content IDs that exist
+  if (input.editorialChanges !== undefined) {
+    const reg = EditorialRegisterSchema.safeParse(input.editorialChanges);
+    if (!reg.success) for (const e of reg.error.issues) add('critical', 'C14', 'editorial-changes.yaml', `${e.path.join('.') || '(root)'}: ${e.message}`);
+    else {
+      const known = new Set([...sources, ...images, ...destinations, ...zones, ...places, ...facts, ...events, ...lists].map((x) => x.id));
+      for (const m of checkRegister(reg.data, known)) add('critical', 'C14', 'editorial-changes.yaml', m);
+    }
   }
 
   // ---------------- warnings
