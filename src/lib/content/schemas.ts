@@ -54,6 +54,20 @@ export const ImageSchema = z.object({
   credit_line: z.string().min(1),
   permission_ref: z.string().optional(),
   commercial_ok: z.boolean(),
+  /**
+   * Why commercial use is allowed (M3, rule C18). Required when commercial_ok is true.
+   *   licence-verified   the licence was read on the file page (licence_url, licence_verified_on)
+   *   owner-original     the owner's own original photograph (intake record with a received original and confirmed subject)
+   *   written-permission a contributor's written permission (permission_ref)
+   */
+  commercial_basis: z.enum(['licence-verified', 'owner-original', 'written-permission']).optional(),
+  licence_url: z.url().optional(),
+  licence_verified_on: isoDate.optional(),
+  /** owner photographs: `<batch>/<sender_filename>` in media/intake */
+  intake: z.string().optional(),
+  /** audit trail when an image record takes over from another */
+  replaces: z.string().optional(),
+  replaced_by: z.string().optional(),
   status: z.enum(['verified', 'pending']),
   notes: z.string().optional(),
 }).strict();

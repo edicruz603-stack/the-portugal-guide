@@ -28,6 +28,7 @@ export function loadContentFromDisk(root: string): ContentInput {
     lists: each('lists'),
     idLock: readJson(join(content, 'ids.lock.json')),
     homeDestinations: readJson(join(root, 'src/data/home-destinations.json')) as unknown[],
+    photoIntake: yamlFiles(join(root, 'media/intake')).map(readYaml),
     editorialChanges: existsSync(join(content, 'editorial-changes.yaml')) ? readYaml(join(content, 'editorial-changes.yaml')) : undefined,
     pages: Object.fromEntries(readdirSync(pagesDir).filter((f) => f.endsWith('.astro')).map((f) => [f, readFileSync(join(pagesDir, f), 'utf8')])),
   };

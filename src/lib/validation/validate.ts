@@ -15,6 +15,7 @@ import {
 } from '../content/schemas.ts';
 import { HomeDestinationSchema } from './schemas.ts';
 import { EditorialRegisterSchema, checkRegister } from '../editorial/register.ts';
+import { IntakeBatchSchema, intakeRef, type IntakeBatch } from '../media/intake.ts';
 import { isEventActive, lastDay } from '../content/dates.ts';
 
 export type Level = 'critical' | 'warning' | 'pending';
@@ -35,6 +36,8 @@ export interface ContentInput {
   pages: Record<string, string>;
   /** src/content/editorial-changes.yaml (approved editorial changes register, M3) */
   editorialChanges?: unknown;
+  /** media/intake/*.yaml (owner photograph intake, M3) */
+  photoIntake?: unknown[];
 }
 
 export interface Options {
@@ -351,6 +354,37 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     } else if (e.checked_on) add('critical', 'C17', e.id, `checked_on on a ${e.status} event`);
     for (const d of [e.observed_on, e.checked_on]) if (d && d > opts.today) add('critical', 'C17', e.id, `date ${d} is in the future`);
     if (e.checked_on && e.checked_on < e.observed_on) add('critical', 'C17', e.id, 'checked_on is before observed_on');
+  }
+
+  // C18 — image rights and owner photographs (M3)
+  //   commercial_ok needs a recorded basis; attribution alone is never a commercial clearance.
+  //   owner photographs need an intake record with the original received and the subject confirmed.
+  const intakeBatches: IntakeBatch[] = [];
+  for (const [i, b] of (input.photoIntake ?? []).entries()) {
+    const r = IntakeBatchSchema.safeParse(b);
+    if (!r.success) for (const e of r.error.issues) add('critical', 'C18', `photo intake #${i + 1}`, `${e.path.join('.') || '(root)'}: ${e.message}`);
+    else {
+      intakeBatches.push(r.data);
+      const names = r.data.photos.map((p) => p.sender_filename);
+      for (const n of new Set(names.filter((x, k) => names.indexOf(x) !== k))) add('critical', 'C18', r.data.batch, `duplicate photo ${n}`);
+    }
+  }
+  const intake = new Map(intakeBatches.flatMap((b) => b.photos.map((p) => [intakeRef(b, p), p] as const)));
+  const imageIds = new Set(images.map((im) => im.id));
+  for (const im of images) {
+    if (im.commercial_ok) {
+      if (!im.commercial_basis) add('critical', 'C18', im.id, 'commercial_ok without a commercial_basis (attribution alone is not a clearance)');
+      if (im.commercial_basis === 'licence-verified' && (im.rights_category !== 'licensed' || !im.licence_url || !im.licence_verified_on || im.status !== 'verified')) add('critical', 'C18', im.id, 'licence-verified needs rights_category licensed, licence_url, licence_verified_on and status verified');
+      if (im.commercial_basis === 'owner-original' && (im.rights_category !== 'owner' || !im.permission_ref)) add('critical', 'C18', im.id, 'owner-original needs rights_category owner and a permission_ref');
+      if (im.commercial_basis === 'written-permission' && (im.rights_category !== 'contributor' || !im.permission_ref)) add('critical', 'C18', im.id, 'written-permission needs rights_category contributor and a permission_ref');
+    }
+    if (im.licence_verified_on && im.licence_verified_on > opts.today) add('critical', 'C18', im.id, `licence_verified_on ${im.licence_verified_on} is in the future`);
+    if (im.rights_category === 'owner' || im.intake) {
+      const p = im.intake ? intake.get(im.intake) : undefined;
+      if (!p) add('critical', 'C18', im.id, `owner photograph without a valid intake record (${im.intake ?? 'none'})`);
+      else if (p.status !== 'original-received' || !p.confirmed_subject) add('critical', 'C18', im.id, `intake ${im.intake}: original not received or subject not confirmed — not usable yet`);
+    }
+    for (const ref of [im.replaces, im.replaced_by]) if (ref && !imageIds.has(ref)) add('critical', 'C18', im.id, `replaces/replaced_by unknown image ${ref}`);
   }
 
   // ---------------- warnings

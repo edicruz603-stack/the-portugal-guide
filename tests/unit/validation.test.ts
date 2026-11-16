@@ -1,5 +1,5 @@
 /**
- * Every critical rule (C01–C17) is demonstrated by a fixture that must fail, plus the real dataset
+ * Every critical rule (C01–C18; C18 in detail in photo-intake.test.ts) is demonstrated by a fixture that must fail, plus the real dataset
  * passing with zero critical issues. Fixtures are small mutations of the real content.
  */
 import { describe, expect, it } from 'vitest';
@@ -151,6 +151,9 @@ describe('CRITICAL rules each fail on a fixture', () => {
     const e = fresh(); Object.assign(ev(e), { status: 'checked', checked_on: '2026-12-01', source: 'src.parques-de-sintra.site', provenance: 'official-page-read' }); fails(e, 'C17', /in the future/);
     const ok = fresh(); Object.assign(ev(ok), { status: 'checked', checked_on: '2026-11-16', source: 'src.parques-de-sintra.site', provenance: 'official-page-read' });
     expect(run(ok).filter((x) => x.rule === 'C17')).toEqual([]);
+  });
+  it('C18 commercial use needs a recorded basis', () => {
+    const i = fresh(); (i.images as Rec[])[0]!.commercial_ok = true; fails(i, 'C18', /without a commercial_basis/);
   });
   it('C14 editorial changes register: invalid entry or unknown content ID', () => {
     const i = fresh(); (i.editorialChanges as Rec).changes[0].approval = undefined; fails(i, 'C14', /approval/);
