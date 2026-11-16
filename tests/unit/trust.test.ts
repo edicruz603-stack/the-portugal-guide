@@ -88,3 +88,18 @@ describe('the real dataset', () => {
     for (const x of facts.filter((y: any) => y.status === 'unresolved' && y.quote)) expect(x.unresolved_text, x.id).toBeTruthy();
   });
 });
+
+describe('checked means consulted, not operator-confirmed', () => {
+  it('the checked label is a date only and never claims confirmation', () => {
+    expect(checkedLabel('2026-11-15')).toBe('Checked 15 Nov 2026');
+    expect(checkedLabel('2026-11-15')).not.toMatch(/confirm/i);
+  });
+  it('every checked fact rests on an editorial reading of an official page (no direct-confirmation records exist)', async () => {
+    const { loadContentFromDisk } = await import('../../src/lib/content/load-fs');
+    const input = loadContentFromDisk(process.cwd());
+    const checked = (input.factSets as { facts: { id: string; status: string; provenance: string; checked_on?: string }[] }[]).flatMap((s) => s.facts).filter((f) => f.status === 'checked');
+    expect(checked.length).toBeGreaterThan(0);
+    // both provenances are readings of a published official page by the editors (on checked_on / 7 Nov 2026 for the PDF ledger)
+    for (const f of checked) { expect(['official-page-read', 'pdf-first-edition-2026'], f.id).toContain(f.provenance); expect(f.checked_on, f.id).toBeTruthy(); }
+  });
+});
