@@ -14,6 +14,8 @@ import {
   type Event, type Fact, type List, type Place,
 } from '../content/schemas.ts';
 import { HomeDestinationSchema } from './schemas.ts';
+import { EditorialRegisterSchema, checkRegister } from '../editorial/register.ts';
+import { IntakeBatchSchema, intakeRef, commercialBlockers, type IntakeBatch } from '../media/intake.ts';
 import { isEventActive, lastDay } from '../content/dates.ts';
 
 export type Level = 'critical' | 'warning' | 'pending';
@@ -32,6 +34,12 @@ export interface ContentInput {
   homeDestinations: unknown[];
   /** src/pages/*.astro sources keyed by file name */
   pages: Record<string, string>;
+  /** src/content/editorial-changes.yaml (approved editorial changes register, M3) */
+  editorialChanges?: unknown;
+  /** media/intake/*.yaml (owner photograph intake, M3) */
+  photoIntake?: unknown[];
+  /** SHA-256 of the derivative files the intake manifests record, keyed by repository path (absent = file missing) */
+  fileHashes?: Record<string, string>;
 }
 
 export interface Options {
@@ -46,6 +54,8 @@ export const DEFAULT_OPTIONS: Omit<Options, 'today'> = { mode: 'free', defaultRe
 // mainland Portugal (Phase scope); extend when island destinations arrive
 const BOUNDS = { latMin: 36.8, latMax: 42.2, lonMin: -9.6, lonMax: -6.1 };
 const MAX_DMS_DRIFT_M = 15;
+/** Owner rule (15 Nov 2026): same operator, same physical point, within this distance → consistent. */
+export const COORDINATE_TOLERANCE_M = 15;
 
 const days = (from: string, to: string) => Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000);
 const norm = (s: string) => s.normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[’'`]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
@@ -272,6 +282,162 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
   for (const d of homeDests) {
     const target = d.href.split('#')[0]!;
     if (target && !/^https?:/.test(target) && !pageNames.has(target)) add('critical', 'C13', `home destination ${d.name}`, `link target ${target} does not exist`);
+  }
+
+  // C14 — approved editorial changes register: valid entries, unique ids, content IDs that exist
+  if (input.editorialChanges !== undefined) {
+    const reg = EditorialRegisterSchema.safeParse(input.editorialChanges);
+    if (!reg.success) for (const e of reg.error.issues) add('critical', 'C14', 'editorial-changes.yaml', `${e.path.join('.') || '(root)'}: ${e.message}`);
+    else {
+      const known = new Set([...sources, ...images, ...destinations, ...zones, ...places, ...facts, ...events, ...lists].map((x) => x.id));
+      for (const m of checkRegister(reg.data, known)) add('critical', 'C14', 'editorial-changes.yaml', m);
+    }
+  }
+
+  // C15 — disputed values are never stated as settled: the canonical editorial text may not quote an unresolved
+  //        fact. Its approved `unresolved_text` (which says the sources differ or vary and repeats none of the
+  //        group's times) is what the text says instead, and is how the card is linked to the conflict.
+  const editorialOf = new Map(places.map((p) => [p.id, strings(p.editorial)]));
+  for (const f of facts) {
+    if (f.unresolved_text && f.status !== 'unresolved') add('critical', 'C15', f.id, `unresolved_text on a ${f.status} fact (remove it when the conflict is settled)`);
+    if (f.status !== 'unresolved') continue;
+    if (f.quote) add('critical', 'C15', f.id, 'unresolved fact has a quote: the editorial text would state a disputed value. Replace the wording with the fact\'s unresolved_text and remove the quote');
+    const times = facts.filter((g) => g.conflict_group && g.conflict_group === f.conflict_group)
+      .flatMap((g) => Object.values(g.value)).filter((v): v is string => typeof v === 'string' && /^\d{1,2}:\d{2}$/.test(v));
+    // the place's own text must not pair the disputed claim with one of the disputed times
+    const claim = f.kind === 'last-entry' ? /last (entry|admission|ticket)s?\W{0,3}(at\s)?(\d{1,2}:\d{2})/gi : null;
+    if (claim) for (const t of editorialOf.get(f.place) ?? []) for (const m of t.matchAll(claim)) if (times.includes(m[3]!)) add('critical', 'C15', f.id, `editorial text states the disputed ${m[0]}`);
+    if (!f.unresolved_text) continue;
+    if (!/sources (differ|vary)/i.test(f.unresolved_text)) add('critical', 'C15', f.id, 'unresolved_text must say that the sources differ or vary');
+    for (const t of new Set(times)) if (f.unresolved_text.includes(t)) add('critical', 'C15', f.id, `unresolved_text shows the disputed time ${t}`);
+  }
+
+  // C16 — conflicts, tolerance and status history (M3)
+  //   a) members of a conflict group make the same claim: same kind and same subject (e.g. last ticket ≠ last admission)
+  //   b) `agrees_with`: two coordinate values for the same subject from the same operator within 15 m, not in a conflict
+  //   c) `history`: chronological, no future dates, each entry changes the status, the last one is the current status,
+  //      and leaving `checked` records the previous checked_on
+  //   d) source metadata: operator sources name their operator explicitly; `verifications` are dated, not in the
+  //      future, not before the value was observed, and only cover facts of the same place and kind
+  for (const [g, fs] of groups) {
+    const claims = new Set(fs.map((f) => `${f.kind}|${f.subject ?? ''}`));
+    if (claims.size > 1) add('critical', 'C16', g, `conflict group mixes different claims: ${[...claims].join(' / ')}`);
+  }
+  const factById = new Map(facts.map((f) => [f.id, f]));
+  const sourceById = new Map(sources.map((x) => [x.id, x]));
+  // the operator is explicit source metadata (sources.json `operator`), never inferred from the ID or publisher text
+  for (const x of sources) {
+    if (x.kind === 'operator' && !x.operator) add('critical', 'C16', x.id, 'operator source without an operator identifier');
+    if (x.kind !== 'operator' && x.operator) add('critical', 'C16', x.id, `operator identifier on a ${x.kind} source`);
+  }
+  const operatorOf = (id: string) => { const x = sourceById.get(id); return x?.kind === 'operator' ? x.operator : undefined; };
+  for (const f of facts.filter((x) => x.agrees_with)) {
+    const o = factById.get(f.agrees_with!);
+    const where = `${f.id} agrees_with ${f.agrees_with}`;
+    if (!o) { add('critical', 'C16', where, 'unknown fact'); continue; }
+    if (f.kind !== 'coordinates' || o.kind !== 'coordinates') { add('critical', 'C16', where, 'tolerance applies to coordinates only'); continue; }
+    if ((f.subject ?? '') !== (o.subject ?? '') || f.place !== o.place) add('critical', 'C16', where, 'different physical points (place or subject differ)');
+    if (!operatorOf(f.source) || operatorOf(f.source) !== operatorOf(o.source)) add('critical', 'C16', where, 'tolerance requires the same operator for both values');
+    if (f.conflict_group || o.conflict_group) add('critical', 'C16', where, 'values within tolerance are not a conflict: remove the conflict group');
+    const pa = typeof f.value.lat === 'number' && typeof f.value.lon === 'number' ? [f.value.lat, f.value.lon] as [number, number] : null;
+    const pb = typeof o.value.lat === 'number' && typeof o.value.lon === 'number' ? [o.value.lat, o.value.lon] as [number, number] : null;
+    if (!pa || !pb) add('critical', 'C16', where, 'both facts need numeric lat/lon');
+    else if (haversine(pa, pb) > COORDINATE_TOLERANCE_M) add('critical', 'C16', where, `${Math.round(haversine(pa, pb))} m apart (tolerance ${COORDINATE_TOLERANCE_M} m)`);
+  }
+  for (const f of facts.filter((x) => x.history)) {
+    const h = f.history!;
+    h.forEach((e, i) => {
+      if (e.from === e.to) add('critical', 'C16', f.id, `history entry ${i + 1} does not change the status`);
+      if (e.on > opts.today) add('critical', 'C16', f.id, `history entry ${i + 1} is dated in the future (${e.on})`);
+      if (i > 0 && e.on < h[i - 1]!.on) add('critical', 'C16', f.id, 'history is not in date order');
+      if (i > 0 && e.from !== h[i - 1]!.to) add('critical', 'C16', f.id, `history entry ${i + 1} starts from ${e.from}, previous entry ended at ${h[i - 1]!.to}`);
+      if (e.from === 'checked' && !e.previous_checked_on) add('critical', 'C16', f.id, `history entry ${i + 1} leaves checked without previous_checked_on`);
+    });
+    if (h[h.length - 1]!.to !== f.status) add('critical', 'C16', f.id, `history ends at ${h[h.length - 1]!.to} but the fact is ${f.status}`);
+  }
+  for (const f of facts.filter((x) => x.verifications)) {
+    for (const [i, v] of f.verifications!.entries()) {
+      if (v.on > opts.today) add('critical', 'C16', f.id, `verification ${i + 1} is dated in the future (${v.on})`);
+      if (v.on < f.observed_on) add('critical', 'C16', f.id, `verification ${i + 1} predates the observation (${f.observed_on})`);
+      for (const c of v.covers ?? []) {
+        const o = factById.get(c);
+        if (!o) add('critical', 'C16', f.id, `verification ${i + 1} covers unknown fact ${c}`);
+        else if (o.place !== f.place || o.kind !== f.kind) add('critical', 'C16', f.id, `verification ${i + 1} covers ${c}, a different place or kind`);
+      }
+    }
+  }
+
+
+  // C17 — events: `checked` only from the organiser's own published information, read on checked_on
+  for (const e of events) {
+    const src = sourceById.get(e.source);
+    if (e.status === 'checked') {
+      if (!e.checked_on) add('critical', 'C17', e.id, 'checked event without checked_on');
+      if (!src || !(CHECKABLE_KINDS as readonly string[]).includes(src.kind)) add('critical', 'C17', e.id, `checked event from a ${src?.kind ?? 'missing'} source: needs the organiser's own page (operator or official)`);
+      if (e.provenance !== 'official-page-read') add('critical', 'C17', e.id, `checked event with provenance ${e.provenance}`);
+    } else if (e.checked_on) add('critical', 'C17', e.id, `checked_on on a ${e.status} event`);
+    for (const d of [e.observed_on, e.checked_on]) if (d && d > opts.today) add('critical', 'C17', e.id, `date ${d} is in the future`);
+    if (e.checked_on && e.checked_on < e.observed_on) add('critical', 'C17', e.id, 'checked_on is before observed_on');
+  }
+
+  // C18 — image rights and owner photographs (M3, corrected at M3 closure)
+  //   commercial_ok needs a recorded basis; attribution alone is never a commercial clearance.
+  //   owner photographs need a valid intake record. The owner is the declared photographer; a reduced derivative or an
+  //   original not accessible here is NOT a blocker. Commercial use is blocked only by documented issues
+  //   (commercialBlockers: authorship to reconfirm with evidence, subject not identified, identifiable people,
+  //   an operator's image rule without authorisation). Stored derivatives must match their recorded SHA-256.
+  //   An operator's internal image rule (site_rule) applies only with evidence of capture inside its premises, and then
+  //   needs site_authorisation_ref for commercial use (owner decision, 16 Nov 2026: public-space photography).
+  const intakeBatches: IntakeBatch[] = [];
+  for (const [i, b] of (input.photoIntake ?? []).entries()) {
+    const r = IntakeBatchSchema.safeParse(b);
+    if (!r.success) for (const e of r.error.issues) add('critical', 'C18', `photo intake #${i + 1}`, `${e.path.join('.') || '(root)'}: ${e.message}`);
+    else {
+      intakeBatches.push(r.data);
+      const names = r.data.photos.map((p) => p.sender_filename);
+      for (const n of new Set(names.filter((x, k) => names.indexOf(x) !== k))) add('critical', 'C18', r.data.batch, `duplicate photo ${n}`);
+    }
+  }
+  const intake = new Map(intakeBatches.flatMap((b) => b.photos.map((p) => [intakeRef(b, p), p] as const)));
+  for (const [ref, p] of intake) {
+    if (p.property.rule && !sourceById.has(p.property.rule)) add('critical', 'C18', ref, `unknown rule source ${p.property.rule}`);
+    if (p.duplicate_of) {
+      const d = intake.get(p.duplicate_of);
+      if (!d) add('critical', 'C18', ref, `duplicate_of unknown photo ${p.duplicate_of}`);
+      else if (d.preview.sha256 !== p.preview.sha256) add('critical', 'C18', ref, `duplicate_of ${p.duplicate_of} but the SHA-256 differs`);
+    }
+    for (const dv of p.derivatives ?? []) {
+      const hash = input.fileHashes?.[dv.path];
+      if (hash === undefined) add('critical', 'C18', ref, `derivative ${dv.path} is recorded but the file is missing`);
+      else if (hash !== dv.sha256) add('critical', 'C18', ref, `derivative ${dv.path} does not match its recorded SHA-256`);
+    }
+  }
+  const imageIds = new Set(images.map((im) => im.id));
+  for (const im of images) {
+    if (im.commercial_ok) {
+      if (!im.commercial_basis) add('critical', 'C18', im.id, 'commercial_ok without a commercial_basis (attribution alone is not a clearance)');
+      if (im.commercial_basis === 'licence-verified' && (im.rights_category !== 'licensed' || !im.licence_url || !im.licence_verified_on || im.status !== 'verified')) add('critical', 'C18', im.id, 'licence-verified needs rights_category licensed, licence_url, licence_verified_on and status verified');
+      if (im.commercial_basis === 'owner-original' && (im.rights_category !== 'owner' || !im.permission_ref)) add('critical', 'C18', im.id, 'owner-original needs rights_category owner and a permission_ref (the owner declaration)');
+      if (im.commercial_basis === 'written-permission' && (im.rights_category !== 'contributor' || !im.permission_ref)) add('critical', 'C18', im.id, 'written-permission needs rights_category contributor and a permission_ref');
+      if (im.site_rule && !im.site_authorisation_ref) add('critical', 'C18', im.id, `depicts a site whose image rule (${im.site_rule}) requires the operator's authorisation for commercial use; none recorded`);
+    }
+    if (im.site_rule && !sourceById.has(im.site_rule)) add('critical', 'C18', im.id, `unknown site_rule source ${im.site_rule}`);
+    if (im.site_rule && (im.capture_location !== 'inside' || !im.capture_evidence)) add('critical', 'C18', im.id, 'site_rule applies only with evidence of capture inside the premises (capture_location inside + capture_evidence); public-space or unknown captures are not restricted by internal venue rules');
+    if (im.licence_verified_on && im.licence_verified_on > opts.today) add('critical', 'C18', im.id, `licence_verified_on ${im.licence_verified_on} is in the future`);
+    if (im.rights_category === 'owner' || im.intake) {
+      const p = im.intake ? intake.get(im.intake) : undefined;
+      if (!p) add('critical', 'C18', im.id, `owner photograph without a valid intake record (${im.intake ?? 'none'})`);
+      else {
+        if (p.duplicate_of) add('critical', 'C18', im.id, `intake ${im.intake} is a duplicate: reference ${p.duplicate_of}`);
+        if (im.commercial_ok) for (const why of commercialBlockers(p)) add('critical', 'C18', im.id, `intake ${im.intake}: ${why}`);
+      }
+    }
+    for (const ref of [im.replaces, im.replaced_by]) if (ref && !imageIds.has(ref)) add('critical', 'C18', im.id, `replaces/replaced_by unknown image ${ref}`);
+    for (const ref of im.replacement_candidates ?? []) {
+      const p = intake.get(ref);
+      if (!p) add('critical', 'C18', im.id, `replacement candidate ${ref} is not in the photo intake`);
+      else if (p.duplicate_of) add('critical', 'C18', im.id, `replacement candidate ${ref} is a duplicate of ${p.duplicate_of}`);
+    }
   }
 
   // ---------------- warnings

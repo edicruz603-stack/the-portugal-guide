@@ -4,6 +4,7 @@
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { createHash } from 'node:crypto';
 import YAML from 'yaml';
 import type { ContentInput } from '../validation/validate.ts';
 
@@ -17,6 +18,12 @@ export function loadContentFromDisk(root: string): ContentInput {
   const dests = readdirSync(destRoot).filter((d) => existsSync(join(destRoot, d, 'destination.yaml'))).sort();
   const each = (sub: string) => dests.flatMap((d) => yamlFiles(join(destRoot, d, sub)).map(readYaml));
   const pagesDir = join(root, 'src/pages');
+  const photoIntake = yamlFiles(join(root, 'media/intake')).map(readYaml);
+  // hash every derivative a manifest records, when the file is present (integrity check, rule C18)
+  const derivativePaths = photoIntake.flatMap((b) => ((b as { photos?: { derivatives?: { path?: string }[] }[] }).photos ?? [])
+    .flatMap((p) => (p.derivatives ?? []).map((d) => d.path).filter((x): x is string => typeof x === 'string')));
+  const fileHashes = Object.fromEntries(derivativePaths.filter((f) => existsSync(join(root, f)))
+    .map((f) => [f, createHash('sha256').update(readFileSync(join(root, f))).digest('hex')]));
   return {
     sources: readJson(join(content, 'sources.json')) as unknown[],
     images: readJson(join(content, 'images.json')) as unknown[],
@@ -28,6 +35,9 @@ export function loadContentFromDisk(root: string): ContentInput {
     lists: each('lists'),
     idLock: readJson(join(content, 'ids.lock.json')),
     homeDestinations: readJson(join(root, 'src/data/home-destinations.json')) as unknown[],
+    photoIntake,
+    fileHashes,
+    editorialChanges: existsSync(join(content, 'editorial-changes.yaml')) ? readYaml(join(content, 'editorial-changes.yaml')) : undefined,
     pages: Object.fromEntries(readdirSync(pagesDir).filter((f) => f.endsWith('.astro')).map((f) => [f, readFileSync(join(pagesDir, f), 'utf8')])),
   };
 }

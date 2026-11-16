@@ -7,10 +7,16 @@ import type { Place, Fact, Event, List } from './schemas.ts';
 import type { MapPlace } from '../map/types.ts';
 import { buildMarker } from '../map/markers.ts';
 import { validationDate, activeEventIds } from './dates.ts';
+import { trustLines, factsOnCard, eventTrust, type SourceInfo, type TrustLine } from '../trust/trust.ts';
+import { proseFacts } from '../trust/prose.ts';
+import sourcesJson from '../../content/sources.json';
+
+const sources: ReadonlyMap<string, SourceInfo> = new Map((sourcesJson as SourceInfo[]).map((s) => [s.id, s]));
 
 export interface DestinationContent {
   places: Map<string, Place>;
   facts: Map<string, Fact>;
+  factsByPlace: Map<string, Fact[]>;
   events: Map<string, Event>;
   lists: Map<string, List>;
 }
@@ -26,10 +32,12 @@ async function load(destination: string): Promise<DestinationContent> {
   const of = <T extends { destination?: string }>(items: { data: T }[]) => items.map((e) => e.data).filter((d) => d.destination === destination);
   const places = of(await getCollection('places'));
   const placeIds = new Set(places.map((p) => p.id));
-  const facts = (await getCollection('facts')).map((e) => e.data).filter((s) => placeIds.has(s.place)).flatMap((s) => s.facts);
+  const factSets = (await getCollection('facts')).map((e) => e.data).filter((s) => placeIds.has(s.place));
+  const facts = factSets.flatMap((s) => s.facts);
   return {
     places: new Map(places.map((p) => [p.id, p])),
     facts: new Map(facts.map((f) => [f.id, f])),
+    factsByPlace: new Map(factSets.map((s) => [s.place, s.facts])),
     events: new Map(of(await getCollection('events')).map((e) => [e.id, e])),
     lists: new Map(of(await getCollection('lists')).map((l) => [l.id, l])),
   };
@@ -41,7 +49,10 @@ function list(content: DestinationContent, id: string): List {
   return l;
 }
 
-/** Places of a list, in list order, with the editorial context the list renders. */
+/**
+ * Places of a list, in list order, with the editorial context the list renders and the card's trust lines.
+ * The canonical text never states a disputed value (rule C15), so it is rendered as stored.
+ */
 export async function placesInList<K extends keyof Place['editorial']>(destination: string, listId: string, context: K) {
   const content = await loadDestination(destination);
   const l = list(content, listId);
@@ -50,7 +61,12 @@ export async function placesInList<K extends keyof Place['editorial']>(destinati
     const place = content.places.get(id);
     const editorial = place?.editorial[context];
     if (!place || !editorial) throw new Error(`${listId}: ${id} has no ${context} text`);
-    return { place, editorial: editorial as NonNullable<Place['editorial'][K]> };
+    const onCard = factsOnCard(editorial, content.factsByPlace.get(id) ?? []);
+    return {
+      place,
+      editorial: editorial as NonNullable<Place['editorial'][K]>,
+      trust: trustLines(onCard, sources),
+    };
   });
 }
 
@@ -66,8 +82,18 @@ export async function eventsInList<K extends keyof Event['editorial']>(destinati
   for (const id of l.items) if (!content.events.get(id)?.editorial[context]) throw new Error(`${listId}: ${id} has no ${context} text`);
   return activeEventIds(l.items, content.events, today).map((id) => {
     const event = content.events.get(id)!;
-    return { event, editorial: event.editorial[context] as NonNullable<Event['editorial'][K]> };
+    return { event, editorial: event.editorial[context] as NonNullable<Event['editorial'][K]>, trust: eventTrust(event, sources) };
   });
+}
+
+/** Trust lines for a sentence of page prose that states facts (registered in src/lib/trust/prose.ts). */
+export async function proseTrust(destination: string, page: string, phrase: string): Promise<TrustLine[]> {
+  const content = await loadDestination(destination);
+  return trustLines(proseFacts(page, phrase).map((id) => {
+    const f = content.facts.get(id);
+    if (!f) throw new Error(`proseTrust: unknown fact ${id}`);
+    return f;
+  }), sources);
 }
 
 /** Map markers for a list: coordinates come from the referenced coordinate facts. */

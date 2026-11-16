@@ -1,0 +1,347 @@
+# Owner photographs supplied on 6 Nov 2026, catalogued at M3 closure (16 Nov 2026).
+# Received in the conversation; reduced copies (no camera metadata) are what reached the build workspace. The
+# originals were supplied but are not accessible here. Earlier register IDs (O-xx, N-xx) are from the First Edition
+# registers v0.5/v0.8. Nothing here is stored in the repository or used on the site yet.
+batch: 2026-11-06-owner-sintra
+received_via: conversation upload (reduced copies reached the workspace)
+declaration:
+  photographer: owner
+  rights_holder: owner
+  stated_on: '2026-11-16'
+  ref: 'Owner, M3 continuation brief (16 Nov 2026): "The project owner has already supplied original photographs of Sintra and other locations. These are the owner''s own photographs."'
+  history:
+  - 'on': '2026-11-06'
+    statement: The owner declared that the Sintra photographs he supplied are all his own, with no third-party copyright (Image Rights Register v0.5).
+  - 'on': '2026-11-07'
+    statement: 'The owner clarified that not every supplied photograph is necessarily his: other people contribute photographs of places in Portugal (Photography Rights Policy v0.1).'
+photos:
+- sender_filename: 840a618c-image.jpg
+  legacy_ref: O-06
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1160
+    height: 2576
+    sha256: 999329a98ef4eed23ba86b96a7e399088dd756a3ff8f942868bea5d4e0de8571
+    received_on: '2026-11-06'
+    metadata: none
+  description: Portrait. Pena Palace yellow dome and clock tower above forest, strong blue sky and clouds; no people.
+  subject:
+    text: Pena Palace
+    identification: owner-confirmed
+    basis: 'owner chose it as the cover photograph and for Pena (owner decision log, Image Rights Register v0.5 (6 Nov 2026)); visual: yellow dome, red clock tower'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Park and National Palace of Pena (Parques de Sintra)
+    capture: unknown
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+  note: Used in internal prototype/preview PDFs only (unpublished). Candidate replacement for img.sintra.wm-pena-palace.
+- sender_filename: dae4cca9-image.jpg
+  legacy_ref: O-07
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1160
+    height: 2576
+    sha256: c9f28d4ddad1e12f5834c82e8b9d428b8ab88e5c8944e86bff211e757167d05c
+    received_on: '2026-11-06'
+    metadata: none
+  description: Portrait. Pena Palace yellow dome above forest, overcast sky; no people.
+  subject:
+    text: Pena Palace
+    identification: owner-confirmed
+    basis: owner chose it for the Pena chapter opening (owner decision log, Image Rights Register v0.5 (6 Nov 2026))
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Park and National Palace of Pena (Parques de Sintra)
+    capture: unknown
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+  note: Used in internal prototype/preview PDFs only (unpublished).
+- sender_filename: b146a5ce-image.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 78358a9dbb9962434ec789fc4d72a2c13a37040d503f767c1d6e5127405d8f26
+    received_on: '2026-11-06'
+    metadata: none
+  description: Portrait. A distant red-towered building on a forested ridge, misty sky; small in frame.
+  subject:
+    text: Distant red-towered palace above forest (consistent with Pena Palace; not established)
+    identification: not-identified
+    basis: visual only; too small in frame to identify with certainty
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+- sender_filename: 468ee244-image.jpg
+  legacy_ref: O-02
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 2576
+    height: 1160
+    sha256: ba53c2efa2f8b640113f39e6dbb776de23c340ecc71afe97eeb601e5dd386726
+    received_on: '2026-11-06'
+    metadata: none
+  description: Landscape. Quinta da Regaleira palace seen across trees from a garden terrace, misty; a construction crane at one side.
+  subject:
+    text: Quinta da Regaleira palace
+    identification: owner-confirmed
+    basis: owner chose it for the Regaleira panoramic spread (owner decision log, Image Rights Register v0.5 (6 Nov 2026))
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
+    capture: unknown
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+  note: 'Crane in frame: crop only if the composition holds (owner decision, 6 Nov 2026).'
+- sender_filename: 557cbd39-image.jpg
+  legacy_ref: O-03
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 2576
+    height: 1160
+    sha256: 203e53ccf0183a02f8050f7fa957049f6e44dfa51ee53dfa7ab2e365d9a09cc9
+    received_on: '2026-11-06'
+    metadata: none
+  description: Landscape. Same view as 468ee244 with slightly different framing.
+  subject:
+    text: Quinta da Regaleira palace
+    identification: owner-confirmed
+    basis: owner approved it as the alternative to O-02 (owner decision log, Image Rights Register v0.5 (6 Nov 2026))
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
+    capture: unknown
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: catalogued
+- sender_filename: e0b52248-image.jpg
+  legacy_ref: O-04
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1160
+    height: 2576
+    sha256: 4ba6700e8dd9bc0028cb9618c0be86f9c1223778d9f7d0f362a35ca48c829b3e
+    received_on: '2026-11-06'
+    metadata: none
+  description: Portrait. Approach road and cobbled pavement rising towards Quinta da Regaleira; small figures in the distance.
+  subject:
+    text: Road to Quinta da Regaleira
+    identification: owner-confirmed
+    basis: owner chose it for the Regaleira access route (owner decision log, Image Rights Register v0.5 (6 Nov 2026))
+  authorship:
+    status: owner-declared
+  people:
+    assessment: not-identifiable
+    note: small distant figures, not identifiable at this size; recheck at full size
+  marks:
+    assessment: none
+  property:
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
+    capture: outside
+    evidence: 'visual: taken from the public road outside the premises'
+    note: 'Taken from public space: the operator''s internal rules do not apply because the site appears in the photo (owner decision, 16 Nov 2026 (public-space photography)).'
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+- sender_filename: 1dce0e7a-image.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1159
+    height: 2576
+    sha256: 019d3cb9ca7f922cd3f0edf1c8b37fbd82a96311ca84a8e506b9a76d5f54d5f4
+    received_on: '2026-11-06'
+    metadata: none
+  description: Portrait. Same scene as e0b52248 with a dark lens obstruction at the top and a person's hair at the right edge.
+  subject:
+    text: Road to Quinta da Regaleira
+    identification: visual
+    basis: same scene as e0b52248
+  authorship:
+    status: owner-declared
+  people:
+    assessment: not-identifiable
+    note: part of a person's head at the edge
+  marks:
+    assessment: none
+  property:
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
+    capture: outside
+    evidence: 'visual: taken from the public road outside the premises'
+    note: 'Taken from public space: the operator''s internal rules do not apply because the site appears in the photo (owner decision, 16 Nov 2026 (public-space photography)).'
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: not-suitable
+  note: Lens obstruction; not usable as shot.
+- sender_filename: 50893677-image.jpg
+  legacy_ref: O-08
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 715
+    height: 1600
+    sha256: d34d45089b50e1db27c1ff198fa55ae00f6cd638b7a117e4dfc4bdba85609fca
+    received_on: '2026-11-06'
+    metadata: none
+  description: Portrait. Monserrate Palace rotunda with arches and a fountain, under plane-tree leaves, blue sky; no people visible.
+  subject:
+    text: Monserrate Palace
+    identification: owner-confirmed
+    basis: 'owner approved it as Monserrate (owner decision log, Image Rights Register v0.5 (6 Nov 2026)); visual: domed rotunda'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Monserrate (Parques de Sintra)
+    capture: inside
+    evidence: 'visual: the path and fountain in front of the palace terrace, reached only within Monserrate park'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+  note: Candidate replacement for img.sintra.wm-monserrate.
+- sender_filename: c2a5c58f-image.jpg
+  legacy_ref: O-09
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 651
+    height: 479
+    sha256: 02a81994db98c475634713a5b9facea0eb35e0762f74b33c76b0a14773bc4706
+    received_on: '2026-11-06'
+    metadata: none
+  description: Landscape. Moorish Castle walls and stair at dawn, Pena Palace in the distance; heavily HDR-processed.
+  subject:
+    text: Castle of the Moors, with Pena Palace beyond
+    identification: owner-confirmed
+    basis: 'owner approved it as the Moorish Castle (owner decision log, Image Rights Register v0.5 (6 Nov 2026)); visual: crenellated walls, Pena on the next summit'
+  authorship:
+    status: owner-to-reconfirm
+    evidence: Heavy HDR processing and a 651×479 file, unlike the owner's phone photographs (≈1160×2576); the v0.8 photo register held it "until unedited original and source confirmed". The owner approved
+      it on 6 Nov 2026 as Moorish Castle pending the original file, and on 7 Nov stated that not every supplied photograph is necessarily his.
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Castle of the Moors (Parques de Sintra)
+    capture: inside
+    evidence: 'visual: taken on the castle walls and stair, within the Castle of the Moors'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+- sender_filename: 8ab381ad-image.jpg
+  legacy_ref: O-11
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1600
+    height: 1200
+    sha256: 557335db5946dfd118355dec60165966868d873dbe0453fe0cff26fc1ccc286c
+    received_on: '2026-11-06'
+    metadata: none
+  description: Landscape. Round stone-and-brick tower house with a sundial, red tile roofs and red geraniums; sea view behind.
+  subject:
+    text: Tower house with sundial (location not established)
+    identification: not-identified
+    basis: the owner approved it for use, but no location has been given (decision log, 6 Nov 2026)
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+  note: The internal full draft used it without a location caption.
+- sender_filename: c1f4a842-image.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 6 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 736
+    height: 584
+    sha256: 9e8aa01b391e655ea4fbf26d359e7dd6447b72409541389363c23c5a577cc8d2
+    received_on: '2026-11-06'
+    metadata: none
+  description: Landscape. Strongly HDR-processed version of the 8ab381ad subject.
+  subject:
+    text: Tower house with sundial (location not established)
+    identification: not-identified
+    basis: same subject as 8ab381ad
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: not-suitable
+  note: '736×584: too small; 8ab381ad is the better copy.'

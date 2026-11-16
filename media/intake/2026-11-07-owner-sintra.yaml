@@ -1,0 +1,345 @@
+# Owner photographs supplied on 7 Nov 2026, catalogued at M3 closure (16 Nov 2026).
+# Received in the conversation; reduced copies (no camera metadata) are what reached the build workspace. The
+# originals were supplied but are not accessible here. Earlier register IDs (O-xx, N-xx) are from the First Edition
+# registers v0.5/v0.8. Nothing here is stored in the repository or used on the site yet.
+batch: 2026-11-07-owner-sintra
+received_via: conversation upload (reduced copies reached the workspace)
+declaration:
+  photographer: owner
+  rights_holder: owner
+  stated_on: '2026-11-16'
+  ref: 'Owner, M3 continuation brief (16 Nov 2026): "The project owner has already supplied original photographs of Sintra and other locations. These are the owner''s own photographs."'
+  history:
+  - 'on': '2026-11-06'
+    statement: The owner declared that the Sintra photographs he supplied are all his own, with no third-party copyright (Image Rights Register v0.5).
+  - 'on': '2026-11-07'
+    statement: 'The owner clarified that not every supplied photograph is necessarily his: other people contribute photographs of places in Portugal (Photography Rights Policy v0.1).'
+photos:
+- sender_filename: 0a5cdc9f-image.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 715
+    height: 1600
+    sha256: 5a9eb2705f38794fe51427c028daf360f6c141aa467c25579c14b5fa170a4384
+    received_on: '2026-11-07'
+    metadata: none
+  description: Portrait. Stone gateway and cobbled path under vegetation.
+  subject:
+    text: Stone gateway and cobbled path (location not established)
+    identification: not-identified
+    basis: visual only
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+- sender_filename: 77fe1abc-image.jpg
+  legacy_ref: N-03
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 900
+    height: 1600
+    sha256: 14d9966be594293b71c99642274e0e29f68fed5c9d1f16ea5fa5465c75351876
+    received_on: '2026-11-07'
+    metadata: none
+  description: Portrait. Stepped cobbled lane between shop fronts; people walking away up the steps.
+  subject:
+    text: Stepped cobbled lane in a historic town (location not established)
+    identification: visual
+    basis: 'visual: steps, cobbles, shop fronts'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: identifiable
+    note: people in frame, mostly from behind; decide crop, consent or replacement
+  marks:
+    assessment: present
+    note: shop fronts and goods visible (incidental)
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+- sender_filename: bf23dc99-image.jpg
+  legacy_ref: N-01
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1600
+    height: 956
+    sha256: 282f852c35d8361b63b4181a5e58efafefb2e84ebad9a6e0b45d88c1c52deec1
+    received_on: '2026-11-07'
+    metadata: none
+  description: Landscape. Cabo da Roca stone column monument with a cross at sunset; HDR look; no people.
+  subject:
+    text: Cabo da Roca monument at sunset
+    identification: visual
+    basis: 'visual: stone column with cross on the headland'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: The column monument on the headland; the lighthouse (a shared managed site in the Parques de Sintra regulation) is not in frame. No operator image rule documented for the headland.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+- sender_filename: c66ba5cb-image.jpg
+  legacy_ref: N-04
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 715
+    height: 1600
+    sha256: 53190602ec9d00f2e90bde309eee20f2301b6433ee0bb29d0ce7eeb3fad8de2a
+    received_on: '2026-11-07'
+    metadata: none
+  description: Portrait. Ruined Gothic arch with an oculus, ferns and garden beyond.
+  subject:
+    text: Ruined Gothic arch in a garden (location not established)
+    identification: not-identified
+    basis: visual only; location not established
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+- sender_filename: 3e212ddd-image.jpg
+  legacy_ref: N-08
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 715
+    height: 1600
+    sha256: 25f4a934d3e980f2c2bc7d262652e48534833ca0b49aefcf744fe6316553abe1
+    received_on: '2026-11-07'
+    metadata: none
+  description: Portrait. Castle of the Moors summit from below at dusk, backlit, floodlights on the walls; dark forest foreground.
+  subject:
+    text: Castle of the Moors from below at dusk
+    identification: visual
+    basis: 'visual: crenellated walls and tower on the rocky summit'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Castle of the Moors (Parques de Sintra)
+    capture: unknown
+    note: Taken from below the castle; whether from public space or inside a managed area is not established, so it is recorded as unknown and the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+  note: 'Low light and 715×1600: weak at the website card size.'
+- sender_filename: f971bd19-image.jpg
+  legacy_ref: N-02
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 720
+    height: 720
+    sha256: 1f442de42e1760f91cc1141257e5f6c85047c89a7bb61df3b123acb669157b07
+    received_on: '2026-11-07'
+    metadata: none
+  description: Square. Aerial view of the Cabo da Roca lighthouse complex on the cliff, sea behind.
+  subject:
+    text: Cabo da Roca lighthouse, aerial
+    identification: visual
+    basis: 'visual: lighthouse and buildings on the headland'
+  authorship:
+    status: owner-to-reconfirm
+    evidence: Aerial viewpoint (drone or aircraft) in a 720×720 square crop; the v0.8 photo register held it for author and permission; on 7 Nov 2026 the owner stated that not every supplied photograph
+      is necessarily his.
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Cabo da Roca lighthouse (shared site, Parques de Sintra regulation)
+    capture: unknown
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+- sender_filename: 4cbc72fd-image.jpg
+  legacy_ref: N-06
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 720
+    height: 720
+    sha256: 26166ff2a4c6b509c2b96b57f7896141ccba00dc22175393eb8c5f29c6988b91
+    received_on: '2026-11-07'
+    metadata: none
+  description: Square. Monserrate Palace from the lawn, blue sky with clouds.
+  subject:
+    text: Monserrate Palace from the lawn
+    identification: visual
+    basis: 'visual: palace façade and domes'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: not-identifiable
+    note: possible small figures near the palace; none identifiable at this size
+  marks:
+    assessment: none
+  property:
+    depicts_site: Monserrate (Parques de Sintra)
+    capture: inside
+    evidence: 'visual: the lawn in front of the palace, within Monserrate park'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate
+  note: '720×720: small use only.'
+- sender_filename: 9e8b7991-image.jpg
+  legacy_ref: O-09
+  duplicate_of: 2026-11-06-owner-sintra/c2a5c58f-image.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 651
+    height: 479
+    sha256: 02a81994db98c475634713a5b9facea0eb35e0762f74b33c76b0a14773bc4706
+    received_on: '2026-11-07'
+    metadata: none
+  description: Identical bytes to c2a5c58f-image.jpg (received 6 Nov).
+  subject:
+    text: Castle of the Moors, with Pena Palace beyond
+    identification: owner-confirmed
+    basis: see c2a5c58f-image.jpg
+  authorship:
+    status: owner-to-reconfirm
+    evidence: Heavy HDR processing and a 651×479 file, unlike the owner's phone photographs (≈1160×2576); the v0.8 photo register held it "until unedited original and source confirmed". The owner approved
+      it on 6 Nov 2026 as Moorish Castle pending the original file, and on 7 Nov stated that not every supplied photograph is necessarily his.
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Castle of the Moors (Parques de Sintra)
+    capture: inside
+    evidence: 'visual: taken on the castle walls and stair, within the Castle of the Moors'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+  note: Same file as 2026-11-06-owner-sintra/c2a5c58f-image.jpg (identical SHA-256); kept so every received file is accounted for.
+- sender_filename: 98a81e8e-image.jpg
+  legacy_ref: N-07
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 623
+    height: 413
+    sha256: bea625e51293db9db350f1c67cefcac44cc643a02fbb22de5cedeaaf6eb1271a
+    received_on: '2026-11-07'
+    metadata: none
+  description: Landscape. Monserrate Palace floodlit at night, seen from above, town lights beyond.
+  subject:
+    text: Monserrate Palace at night
+    identification: visual
+    basis: 'visual: domes and façade of Monserrate'
+  authorship:
+    status: owner-to-reconfirm
+    evidence: Elevated night view in a 623×413 file, unlike the owner's phone photographs; the v0.8 photo register held it for source and permission; on 7 Nov 2026 the owner stated that not every supplied
+      photograph is necessarily his.
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    depicts_site: Monserrate (Parques de Sintra)
+    capture: unknown
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+- sender_filename: d89b070a-image.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 9fc66c4f5e571261b93c5f75a9d7bc22ff075154bb8964cc89fea0e6e0aba639
+    received_on: '2026-11-07'
+    metadata: none
+  description: Portrait. Pale building among trees with a Gothic-style tower beyond, blue sky.
+  subject:
+    text: Building with a Gothic-style tower beyond trees (location not established)
+    identification: not-identified
+    basis: visual only; the tower is not identified with certainty
+  authorship:
+    status: owner-declared
+  people:
+    assessment: none-visible
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: held
+- sender_filename: 5dc26aba-image.jpg
+  original:
+    state: supplied-not-accessible
+    note: Supplied by the owner on 7 Nov 2026. Only a reduced copy reached this workspace; that is not evidence that the original was not supplied.
+  preview:
+    kind: reduced-derivative
+    width: 1190
+    height: 2576
+    sha256: 17ac6c0b19d52f8297c2d20a3d2347dd399ba217bbaa4efc192914decdde6c53
+    received_on: '2026-11-07'
+    metadata: none
+  description: Portrait. Coastal path through low vegetation towards the Cabo da Roca column, clear sky; a distant walker at the left edge.
+  subject:
+    text: Coastal path towards Cabo da Roca
+    identification: visual
+    basis: 'visual: the column monument on the headland'
+  authorship:
+    status: owner-declared
+  people:
+    assessment: not-identifiable
+    note: one distant walker at the edge
+  marks:
+    assessment: none
+  property:
+    capture: unknown
+    note: No managed site depicted; no operator image rule documented.
+  capture: 'not known: the accessible copy carries no camera metadata (unverified)'
+  use: candidate

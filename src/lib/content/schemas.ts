@@ -39,6 +39,11 @@ export const SourceSchema = z.object({
   title: z.string().min(1).optional(),
   url: z.url(),
   kind: SourceKind,
+  /**
+   * Operator sources only (M3 closure): stable identifier of the organisation that runs the site. All pages and the
+   * ticket office of one operator share it. Explicit metadata, so rule C16 never infers the operator from the ID.
+   */
+  operator: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
   seen_on: isoDate,
   note: z.string().optional(),
 }).strict();
@@ -54,6 +59,33 @@ export const ImageSchema = z.object({
   credit_line: z.string().min(1),
   permission_ref: z.string().optional(),
   commercial_ok: z.boolean(),
+  /**
+   * Why commercial use is allowed (M3, rule C18). Required when commercial_ok is true.
+   *   licence-verified   the licence was read on the file page (licence_url, licence_verified_on)
+   *   owner-original     the owner's own photograph (declared photographer and rights holder; intake record with no
+   *                      documented blocker; the original need not be accessible to the build)
+   *   written-permission a contributor's written permission (permission_ref)
+   */
+  commercial_basis: z.enum(['licence-verified', 'owner-original', 'written-permission']).optional(),
+  licence_url: z.url().optional(),
+  licence_verified_on: isoDate.optional(),
+  /** owner photographs: `<batch>/<sender_filename>` in media/intake */
+  intake: z.string().optional(),
+  /**
+   * Where the photo was taken relative to the managed site it shows (owner decision, 16 Nov 2026: public-space
+   * photography). `site_rule` (an operator's internal image rule) is recorded only with evidence of capture inside the
+   * premises (`capture_location: inside` + `capture_evidence`); commercial use then also needs the operator's
+   * authorisation (rule C18). Unknown is recorded as unknown, never assumed to be inside.
+   */
+  capture_location: z.enum(['inside', 'outside', 'unknown']).optional(),
+  capture_evidence: z.string().min(10).optional(),
+  site_rule: sourceId.optional(),
+  site_authorisation_ref: z.string().min(5).optional(),
+  /** owner photographs that depict the same subject and could replace this image (intake refs; rule C18) */
+  replacement_candidates: z.array(z.string()).min(1).optional(),
+  /** audit trail when an image record takes over from another */
+  replaces: z.string().optional(),
+  replaced_by: z.string().optional(),
   status: z.enum(['verified', 'pending']),
   notes: z.string().optional(),
 }).strict();
@@ -143,6 +175,32 @@ export const Provenance = z.enum([
   'secondary-listing',       // press or listing
 ]);
 
+/** One status correction in a fact's audit history. Values are never overwritten; the reason says why. */
+export const StatusChangeSchema = z.object({
+  on: isoDate,
+  from: FactStatus,
+  to: FactStatus,
+  /** the checked_on the fact carried before, when it leaves `checked` */
+  previous_checked_on: isoDate.optional(),
+  reason: z.string().min(10),
+  approval: z.string().min(5),
+}).strict();
+
+/**
+ * A check of a value made outside the source itself (M3 closure), e.g. the owner opening both coordinates and
+ * confirming where they lead. It is evidence about the value, not an operator confirmation: it never changes
+ * `checked_on` (the date the operator source was consulted) or the fact's provenance.
+ */
+export const VerificationSchema = z.object({
+  on: isoDate,
+  by: z.enum(['owner', 'editor']),
+  method: z.enum(['field-verification', 'map-check']),
+  /** What was checked and what was found, in plain words. */
+  result: z.string().min(1),
+  /** Other facts covered by the same check (e.g. both coordinate readings of one building). */
+  covers: z.array(factId).optional(),
+}).strict();
+
 export const FactSchema = z.object({
   id: factId,
   kind: FactKind,
@@ -160,6 +218,20 @@ export const FactSchema = z.object({
   checked_on: isoDate.optional(),
   status: FactStatus,
   conflict_group: z.string().regex(new RegExp(`^${KEY}$`)).optional(),
+  /**
+   * Visitor text shown instead of `quote` while the fact is `unresolved` (M3): the disputed value is not shown.
+   * Must say the sources differ or vary (rule C15).
+   */
+  unresolved_text: z.string().min(1).optional(),
+  /**
+   * Coordinates only (M3, owner rule of 15 Nov 2026): another coordinate fact for the same subject from the same
+   * operator that lies within 15 m. Such values are treated as consistent rather than as a conflict (rule C16).
+   */
+  agrees_with: factId.optional(),
+  /** Status corrections, oldest first (M3). The last entry's `to` is the current status (rule C16). */
+  history: z.array(StatusChangeSchema).min(1).optional(),
+  /** Checks made outside the source (rule C16 d). Not an operator confirmation. */
+  verifications: z.array(VerificationSchema).min(1).optional(),
   review_after_days: z.number().int().positive().optional(),
   note: z.string().optional(),
 }).strict();
@@ -185,8 +257,11 @@ export const EventSchema = z.object({
   source: sourceId,
   provenance: Provenance,
   observed_on: isoDate,
+  /** Only for status `checked`: the date the organiser's own published information was read (rule C17). */
   checked_on: isoDate.optional(),
   status: FactStatus,
+  /** Verification evidence: what the organiser's page showed (dates, times, booking) and anything still to confirm. */
+  note: z.string().optional(),
   editorial: z.object({
     local: z.object({ when: Text, title: Text, text: Text, link: LinkSchema }).strict().optional(),
     directory: z.object({ heading: Text, text: Text }).strict().optional(),

@@ -1,7 +1,9 @@
 ---
 import type { Event } from '../../lib/content/schemas.ts';
 import { inline } from '../../lib/content/inline.ts';
-interface Props { editorial: NonNullable<Event['editorial']['directory']> }
-const { editorial: e } = Astro.props;
+import TrustNote from '../TrustNote.astro';
+import type { TrustLine } from '../../lib/trust/trust.ts';
+interface Props { editorial: NonNullable<Event['editorial']['directory']>; trust?: TrustLine[] }
+const { editorial: e, trust = [] } = Astro.props;
 ---
-<div class="event"><strong set:html={inline(e.heading)} /><p set:html={inline(e.text)} /></div>
+<div class="event"><strong set:html={inline(e.heading)} /><p set:html={inline(e.text)} /><TrustNote lines={trust} /></div>

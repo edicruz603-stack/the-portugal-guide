@@ -1,0 +1,17 @@
+---
+/**
+ * Card-level trust information (M3). One line per status present, never one per value.
+ * checked → a quiet dated line; other statuses → a native disclosure the visitor can open by tap or keyboard.
+ * Status is always written out in words, never conveyed by colour alone.
+ */
+import type { TrustLine } from '../lib/trust/trust.ts';
+interface Props { lines: TrustLine[] }
+const { lines } = Astro.props;
+---
+{lines.length > 0 && (
+  <div class="trust">
+    {lines.map((l) => l.status === 'checked'
+      ? <p class="trust-line trust-checked">{l.label} · {l.items.join(', ')}</p>
+      : <details class={`trust-line trust-${l.status}`}><summary>{l.label} · {l.items.join(', ')}</summary><p>{l.detail}</p></details>)}
+  </div>
+)}

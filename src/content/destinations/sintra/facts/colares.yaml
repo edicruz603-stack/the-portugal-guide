@@ -29,6 +29,7 @@ facts:
   observed_on: '2026-11-11'
   status: unresolved
   conflict_group: colares-pr8-length
+  unresolved_text: Roughly 15 km (sources vary)
 - id: fact.sintra.colares.pr8-length-itinerary-page
   kind: route
   subject: PR8 trail length
@@ -40,4 +41,5 @@ facts:
   observed_on: '2026-11-11'
   status: unresolved
   conflict_group: colares-pr8-length
+  unresolved_text: Roughly 15 km (sources vary)
   note: The PDF edition used “about 15 km”.

@@ -17,4 +17,13 @@ describe('place inventory reconciliation', () => {
     expect(md).toContain('Presented on the website (in at least one of its place lists): **34**');
     expect(md).toContain('Only in the PDF editions: **4**');
   });
+  it('candidate places follow the owner decisions of 16 Nov 2026: no records or IDs', () => {
+    const lock = JSON.parse(readFileSync(root + 'src/content/ids.lock.json', 'utf8')).ids as string[];
+    for (const k of ['seteais', 'viuva', 'odrinhas', 'masmo']) expect(lock.filter((id) => id.startsWith('place.') && id.includes(k))).toEqual([]);
+    const md = readFileSync(root + 'docs/content/sintra-inventory-reconciliation.md', 'utf8');
+    expect(md).toMatch(/Palace of Seteais[^\n]*deferred — no place record in M3/);
+    expect(md).toMatch(/Viúva Gomes[^\n]*future place record[^\n]*No ID yet/);
+    expect(md).toMatch(/Odrinhas[^\n]*event venue and contextual mention only/);
+  });
 });
+
