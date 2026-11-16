@@ -6,21 +6,22 @@
  *   2. the ordered list of link targets
  *   3. image sources and alt texts
  * Legacy footer sentences must also survive in the new page.
- * Intentional differences are listed in ALLOWED and must be justified in the PR report.
+ * Intentional differences must be recorded in the approved editorial changes register
+ * (src/content/editorial-changes.yaml); only those entries are applied, anything else fails.
  */
 import { readFileSync, readdirSync } from 'node:fs';
 import { parse } from 'yaml';
 import { validationDate, isEventActive } from '../src/lib/content/dates.ts';
 import { plain } from '../src/lib/content/inline.ts';
+import { EditorialRegisterSchema, applyTextChanges, applyImageChanges } from '../src/lib/editorial/register.ts';
 const plainInline = (t) => plain(t).replace(/\s+/g, ' ').trim();
 
 const dist = process.argv[2] ?? 'dist';
 const PAGES = ['index.html', 'sintra.html', 'sintra-local-discoveries.html', 'sintra-romantic-guide.html', 'sintra-discoveries.html'];
 
-// [page, legacy text, new text] — each pair must be justified in docs/phase-0-1-report.md
-const ALLOWED = [
-  ['sintra.html', 'Historic centre Hilltop and garden monuments', 'Main monuments Free stops'],
-];
+// Approved editorial changes (the only intentional differences parity accepts)
+const register = EditorialRegisterSchema.parse(parse(readFileSync(new URL('../src/content/editorial-changes.yaml', import.meta.url), 'utf8')));
+const appliedChanges = [];
 
 // Ended events. The new pages show a listed event only up to and including its last day (src/lib/content/dates.ts);
 // the legacy pages are frozen. So for every listed event that has ended at the validation date, its legacy block is
@@ -72,11 +73,12 @@ for (const page of PAGES) {
   let oldHtml = readFileSync(page, 'utf8');
   for (const [p, block] of ENDED_BLOCKS) if (p === page) oldHtml = oldHtml.replace(block, '');
   const newHtml = readFileSync(`${dist}/${page}`, 'utf8');
-  let a = strip(region(oldHtml));
-  let b = strip(region(newHtml));
-  for (const [p, from, to] of ALLOWED) if (p === page) { a = a.replace(from, to); }
+  const b = strip(region(newHtml));
+  const t = applyTextChanges(page, strip(region(oldHtml)), b, register.changes);
+  const a = t.text;
 
-  const problems = [];
+  const problems = [...t.problems];
+  appliedChanges.push(...t.applied);
   if (a !== b) {
     let i = 0; while (i < a.length && a[i] === b[i]) i++;
     problems.push(`text differs at char ${i}:\n      legacy: …${a.slice(Math.max(0, i - 60), i + 80)}…\n      new:    …${b.slice(Math.max(0, i - 60), i + 80)}…`);
@@ -90,7 +92,10 @@ for (const page of PAGES) {
     [...h.matchAll(/<a\b[^>]*\bhref="([^"]*)"([^>]*)>/g)].map((m) => decode(m[1]) + (/target="_blank"/.test(m[0]) ? ' [new tab]' : '')),
   ]);
   if (attrs(region(oldHtml)) !== attrs(region(newHtml))) problems.push('data-search / data-type / link-target attributes differ');
-  const ia = imgs(region(oldHtml)), ib = imgs(region(newHtml));
+  const ib = imgs(region(newHtml));
+  const im = applyImageChanges(page, imgs(region(oldHtml)), ib, register.changes);
+  const ia = im.images;
+  problems.push(...im.problems); appliedChanges.push(...im.applied);
   if (JSON.stringify(ia) !== JSON.stringify(ib)) problems.push('images or alt texts differ');
 
   // legacy footer sentences that carry editorial content must survive
@@ -108,5 +113,8 @@ for (const page of PAGES) {
   for (const p of problems) console.log('    ' + p);
   failures += problems.length;
 }
+const unused = register.changes.filter((c) => !appliedChanges.includes(c.id));
+for (const c of unused) console.log(`✗ ${c.id}: registered change was not applied on ${c.page}`);
+failures += unused.length;
 if (failures) { console.error(`\nParity check failed (${failures} problem(s)).`); process.exit(1); }
-console.log('\nEditorial parity: identical text, links and images on all pages (validation date ' + today + '; allowed changes: ' + ALLOWED.length + ' text; ended events hidden: ' + (ENDED_BLOCKS.map(([p, , id]) => `${id} on ${p}`).join(', ') || 'none') + ').');
+console.log('\nEditorial parity: identical text, links and images on all pages (validation date ' + today + '; registered editorial changes applied: ' + appliedChanges.length + '/' + register.changes.length + '; ended events hidden: ' + (ENDED_BLOCKS.map(([p, , id]) => `${id} on ${p}`).join(', ') || 'none') + ').');
