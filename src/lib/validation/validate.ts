@@ -349,7 +349,8 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
       if (e.from === 'checked' && !e.previous_checked_on) add('critical', 'C16', f.id, `history entry ${i + 1} leaves checked without previous_checked_on`);
     });
     if (h[h.length - 1]!.to !== f.status) add('critical', 'C16', f.id, `history ends at ${h[h.length - 1]!.to} but the fact is ${f.status}`);
-  }  for (const f of facts.filter((x) => x.verifications)) {
+  }
+  for (const f of facts.filter((x) => x.verifications)) {
     for (const [i, v] of f.verifications!.entries()) {
       if (v.on > opts.today) add('critical', 'C16', f.id, `verification ${i + 1} is dated in the future (${v.on})`);
       if (v.on < f.observed_on) add('critical', 'C16', f.id, `verification ${i + 1} predates the observation (${f.observed_on})`);
