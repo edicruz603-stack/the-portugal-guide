@@ -10,12 +10,12 @@
     "credit_line": "Photo: Pakycassano · CC BY-SA 4.0",
     "commercial_ok": false,
     "status": "pending",
-    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Share-alike obligations for commercial use not reviewed. Site rule (M3 closure, 16 Nov 2026): the Parques de Sintra image-capture regulation requires its prior authorisation for commercial or public use of images of the heritage it manages; a Creative Commons licence covers copyright only and does not replace that authorisation. Owner replacement candidates (M3 closure reassessment): 840a618c (cover choice, 6 Nov) and dae4cca9, both owner photographs that show Pena Palace; replacing does not by itself clear the site rule (capture location not established).",
-    "site_rule": "src.parques-de-sintra.image-capture-regulation",
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Share-alike obligations for commercial use not reviewed. Capture location (owner decision, 16 Nov 2026: public-space photography): unknown, not assumed to be inside the managed premises, so no internal venue rule is applied. Owner replacement candidates (M3 closure reassessment): 840a618c (cover choice, 6 Nov) and dae4cca9, both owner photographs that show Pena Palace; their capture location is unknown, which is not a blocker.",
     "replacement_candidates": [
       "2026-11-06-owner-sintra/840a618c-image.jpg",
       "2026-11-06-owner-sintra/dae4cca9-image.jpg"
-    ]
+    ],
+    "capture_location": "unknown"
   },
   {
     "id": "img.sintra.wm-regaleira-well",
@@ -28,8 +28,10 @@
     "credit_line": "Photo: Husond · CC BY-SA 3.0",
     "commercial_ok": false,
     "status": "pending",
-    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Share-alike obligations for commercial use not reviewed. Site rule (M3 closure, 16 Nov 2026): Quinta da Regaleira's visitor rules require prior authorisation from Fundação Cultursintra for any public use of the Quinta's image. No supplied owner photograph shows the Initiation Well (M3 closure reassessment of all 41 received files); owner photographs of the Regaleira palace (468ee244, 557cbd39) show a different subject, so they are not mapped as replacements.",
-    "site_rule": "src.regaleira.visitor-rules"
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Share-alike obligations for commercial use not reviewed. Site rule (M3 closure, 16 Nov 2026): the photo shows the Initiation Well, inside the Quinta's grounds, so the Quinta's visitor rules (prior authorisation from Fundação Cultursintra for public use of its image) apply to it. No supplied owner photograph shows the Initiation Well (M3 closure reassessment of all 41 received files); owner photographs of the Regaleira palace (468ee244, 557cbd39) show a different subject, so they are not mapped as replacements.",
+    "site_rule": "src.regaleira.visitor-rules",
+    "capture_location": "inside",
+    "capture_evidence": "the subject, the Initiation Well, lies within Quinta da Regaleira's grounds"
   },
   {
     "id": "img.sintra.wm-moorish-castle",
@@ -42,12 +44,12 @@
     "credit_line": "Photo: Ввласенко · CC BY-SA 3.0",
     "commercial_ok": false,
     "status": "pending",
-    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Share-alike obligations for commercial use not reviewed. Site rule (M3 closure, 16 Nov 2026): the Parques de Sintra image-capture regulation requires its prior authorisation for commercial or public use of images of the heritage it manages; a Creative Commons licence covers copyright only and does not replace that authorisation. Owner replacement candidates (M3 closure reassessment): c2a5c58f (approved by the owner as the Moorish Castle on 6 Nov; authorship to reconfirm, see intake) and 3e212ddd (castle summit at dusk; weak at card size).",
-    "site_rule": "src.parques-de-sintra.image-capture-regulation",
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Share-alike obligations for commercial use not reviewed. Capture location (owner decision, 16 Nov 2026: public-space photography): unknown, not assumed to be inside the managed premises, so no internal venue rule is applied. Owner replacement candidates (M3 closure reassessment): c2a5c58f (approved by the owner as the Moorish Castle on 6 Nov; authorship to reconfirm, and taken on the castle walls, so the operator's internal rule applies; see intake) and 3e212ddd (castle summit at dusk, capture location unknown; weak at card size).",
     "replacement_candidates": [
       "2026-11-06-owner-sintra/c2a5c58f-image.jpg",
       "2026-11-07-owner-sintra/3e212ddd-image.jpg"
-    ]
+    ],
+    "capture_location": "unknown"
   },
   {
     "id": "img.sintra.wm-monserrate",
@@ -60,11 +62,11 @@
     "credit_line": "Photo: nborges · CC BY 2.0",
     "commercial_ok": false,
     "status": "pending",
-    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Site rule (M3 closure, 16 Nov 2026): the Parques de Sintra image-capture regulation requires its prior authorisation for commercial or public use of images of the heritage it manages; a Creative Commons licence covers copyright only and does not replace that authorisation. Owner replacement candidates (M3 closure reassessment): 50893677 (approved by the owner as Monserrate on 6 Nov; taken inside the park) and 4cbc72fd (small square view from the lawn).",
-    "site_rule": "src.parques-de-sintra.image-capture-regulation",
+    "notes": "Credit copied from the legacy caption; licence not yet re-verified on Commons. M3 audit (16 Nov 2026): the Commons file page was not inspected (not reachable from the build workspace), so licence, author and any warning templates are unverified; no commercial basis is recorded and commercial_ok stays false. Capture location (owner decision, 16 Nov 2026: public-space photography): unknown, not assumed to be inside the managed premises, so no internal venue rule is applied. Owner replacement candidates (M3 closure reassessment): 50893677 (approved by the owner as Monserrate on 6 Nov; taken inside the park, so the operator's internal rule applies) and 4cbc72fd (small square view from the lawn, also inside the park).",
     "replacement_candidates": [
       "2026-11-06-owner-sintra/50893677-image.jpg",
       "2026-11-07-owner-sintra/4cbc72fd-image.jpg"
-    ]
+    ],
+    "capture_location": "unknown"
   }
 ]

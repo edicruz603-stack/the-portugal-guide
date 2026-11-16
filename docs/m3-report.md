@@ -21,9 +21,10 @@ Prepared 16 Nov 2026 (M3 continuation, corrections and technical closure). **Sta
 - Owner recorded as **declared photographer and rights holder** (16 Nov declaration; the 6 and 7 Nov statements kept as history). No owner photo is classified as Wikimedia or third-party. No resend requested.
 - Separate assessments per photo: subject (visual / owner-confirmed / not identified), authorship, people, marks, property.
 - Authorship marked *to reconfirm* only with documented evidence: c2a5c58f (= 9e8b7991), f971bd19, 98a81e8e.
-- **Documented site rules** added as sources: Parques de Sintra *Regulation for Image Capture* (commercial or public use requires prior authorisation) and Quinta da Regaleira visitor rules (any public use of the Quinta's image requires prior authorisation).
-- C18 rewritten: no "original received" requirement; commercial use blocked only by `commercialBlockers()`; `site_rule` needs `site_authorisation_ref`; replacement candidates and derivative hashes checked.
-- Four Wikimedia images reassessed individually: owner photos depict Pena (840a618c, dae4cca9), the Moorish Castle (c2a5c58f, 3e212ddd) and Monserrate (50893677, 4cbc72fd); **none depicts the Initiation Well**. They are recorded as `replacement_candidates`. No visible image was swapped (see §9). Details: `docs/content/image-rights.md`.
+- **Operators' internal rules** recorded as sources: Parques de Sintra *Regulation for Image Capture* and Quinta da Regaleira visitor rules.
+- **Owner decision, 16 Nov 2026 (public-space photography), implemented:** these internal rules apply only with evidence of capture inside the managed premises. Public-space photos are not restricted because a monument appears in them; an unknown capture location stays unknown and is not a blocker. Capture evidence: inside = 50893677, 4cbc72fd (Monserrate park), c2a5c58f/9e8b7991 (Moorish Castle walls), Commons Initiation Well; outside = e0b52248, 1dce0e7a; all others unknown. The schema and C18 refuse a venue rule on an outside or unknown capture.
+- C18 rewritten: no "original received" requirement; commercial use blocked only by `commercialBlockers()`; a venue rule (inside captures only) needs `site_authorisation_ref`; replacement candidates and derivative hashes checked.
+- Four Wikimedia images reassessed individually: owner photos depict Pena (840a618c, dae4cca9), the Moorish Castle (c2a5c58f, 3e212ddd) and Monserrate (50893677, 4cbc72fd); **none depicts the Initiation Well**. They are recorded as `replacement_candidates`. Images are not replaced automatically (owner instruction); existing references are preserved. Details: `docs/content/image-rights.md`.
 
 ## 4. National Palace coordinates
 Owner field verification on **16 Nov 2026** recorded on both facts (`verifications`: by owner, method field-verification, covering the other reading): both 38.797360, -9.390520 and 38.797417, -9.390528 lead to the courtyard of the National Palace (≈6.2 m apart). Both stay `checked` with `checked_on` 2026-11-15 (operator pages consulted), both provenances and `agrees_with` kept. It is not an operator confirmation. No marker changed. The 15 m tolerance still requires the same place and subject and the same operator, now compared through explicit `operator` metadata on sources.
@@ -51,19 +52,23 @@ The canonical text in `places/national-palace-gardens.yaml` now reads "09:30–1
 | Free build | passed, 5 pages |
 | Commercial build | blocked by external evidence: refused with 4 × C11 (the Wikimedia images) |
 
-## 8. Commercial blockers
+## 8. Commercial blockers (after the public-space decision)
+The commercial build still refuses (4 × C11). The remaining issues are genuine:
+
 | ID | Source | Rights status | Evidence | Issue | Action |
 |---|---|---|---|---|---|
-| `img.sintra.wm-pena-palace` | Wikimedia Commons (Pakycassano, CC BY-SA 4.0 as captioned) | licence unverified; no basis | Commons page unreachable from the workspace; Parques de Sintra regulation | Licence not verified; site rule needs authorisation | Owner decision: swap to 840a618c/dae4cca9 and/or request Parques de Sintra authorisation |
-| `img.sintra.wm-regaleira-well` | Wikimedia Commons (Husond, CC BY-SA 3.0) | licence unverified; no basis | No owner photo shows the Well; Regaleira visitor rules | Licence not verified; site rule needs authorisation | Verify licence and request Fundação Cultursintra authorisation, or change the card's image (owner decision) |
-| `img.sintra.wm-moorish-castle` | Wikimedia Commons (Ввласенко, CC BY-SA 3.0) | licence unverified; no basis | Parques de Sintra regulation; c2a5c58f authorship evidence | Licence not verified; site rule; best owner candidate needs a one-line authorship reconfirmation | Owner reconfirms c2a5c58f, or chooses 3e212ddd; authorisation |
-| `img.sintra.wm-monserrate` | Wikimedia Commons (nborges, CC BY 2.0) | licence unverified; no basis | Parques de Sintra regulation; 50893677 taken inside the park | Licence not verified; site rule needs authorisation | Swap to 50893677 and request authorisation, or verify licence + authorisation |
+| `img.sintra.wm-pena-palace` | Wikimedia Commons (Pakycassano, CC BY-SA 4.0 as captioned) | licence unverified; no commercial basis | Commons page unreachable from the workspace | Licence not verified (capture location unknown: no venue rule) | Verify the licence on Commons, or replace with owner photo 840a618c/dae4cca9 (no documented blocker) |
+| `img.sintra.wm-regaleira-well` | Wikimedia Commons (Husond, CC BY-SA 3.0) | licence unverified; no commercial basis | Subject lies inside the Quinta; visitor rules | Licence not verified; captured inside: Quinta authorisation needed | Verify licence + authorisation, or change the card image (no owner photo of the Well) |
+| `img.sintra.wm-moorish-castle` | Wikimedia Commons (Ввласенко, CC BY-SA 3.0) | licence unverified; no commercial basis | Commons page unreachable | Licence not verified (capture location unknown) | Verify the licence, or replace: 3e212ddd has no documented blocker (weak at card size); c2a5c58f needs authorship reconfirmation and, being captured inside, the operator's authorisation |
+| `img.sintra.wm-monserrate` | Wikimedia Commons (nborges, CC BY 2.0) | licence unverified; no commercial basis | Commons page unreachable | Licence not verified (capture location unknown) | Verify the licence; owner candidates 50893677/4cbc72fd were captured inside the park and would need the operator's authorisation |
+
+Removed as artificial blockers: the venue rule on the three Commons photos of unknown capture location, on the owner's Pena photos, the National Palace views from above, the Regaleira road photos and the other public-space or unknown captures.
 
 ## 9. Owner decisions needed
-1. **Operator authorisations.** Whether to request Parques de Sintra (≥ 15 days ahead; fees per Annex 1) and Fundação Cultursintra authorisation for commercial and public use, or take legal advice on the regulation's reach. This affects owner photos and Commons photos alike, and costs money, so nothing was requested.
-2. **Swapping images on the website now** (Pena → 840a618c; Monserrate → 50893677): a visible change that publishes the owner's photos in a public repository and on a public page, inside the scope of the operator rules above.
-3. **Authorship reconfirmation**, one line each: c2a5c58f/9e8b7991, f971bd19, 98a81e8e. Also confirm that the 16 Nov declaration covers the 6–7 Nov files, given the 7 Nov statement about contributors.
-4. Initiation Well card: keep the Commons image (after verification) or use an owner Regaleira palace photo.
+1. Replace Pena with owner photo 840a618c (or dae4cca9)? It now has no documented blocker. This is a visible change that publishes the photo in the public repository, so it was not done automatically.
+2. Verify the four Commons licences (a person with a browser; the workspace can't reach Commons).
+3. Authorship reconfirmation, one line each: c2a5c58f/9e8b7991, f971bd19, 98a81e8e. Also confirm that the 16 Nov declaration covers the 6–7 Nov files.
+4. Initiation Well card: Commons image (licence + Quinta authorisation) or another image.
 5. Summer festival weeks for weekly diary checks.
 6. Optional: a visitor explanation of "Checked {date}".
 

@@ -152,11 +152,9 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Castle of the Moors (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
-    capture: outside
-    note: Taken from below, apparently from the forest or road under the castle. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches
-      photographs taken from outside its areas is not established here.
+    depicts_site: Castle of the Moors (Parques de Sintra)
+    capture: unknown
+    note: Taken from below the castle; whether from public space or inside a managed area is not established, so it is recorded as unknown and the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: candidate
   note: 'Low light and 715×1600: weak at the website card size.'
@@ -186,10 +184,9 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Cabo da Roca lighthouse (shared site, Parques de Sintra regulation)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Cabo da Roca lighthouse (shared site, Parques de Sintra regulation)
     capture: unknown
-    note: Aerial viewpoint. The regulation bars drones at its sites.
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: held
 - sender_filename: 4cbc72fd-image.jpg
@@ -217,11 +214,11 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Monserrate (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Monserrate (Parques de Sintra)
     capture: inside
-    note: Taken on the lawn in front of the palace. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs taken from outside
-      its areas is not established here.
+    evidence: 'visual: the lawn in front of the palace, within Monserrate park'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: candidate
   note: '720×720: small use only.'
@@ -252,11 +249,11 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Castle of the Moors (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Castle of the Moors (Parques de Sintra)
     capture: inside
-    note: Taken on the castle walls. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs taken from outside its areas
-      is not established here.
+    evidence: 'visual: taken on the castle walls and stair, within the Castle of the Moors'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: held
   note: Same file as 2026-11-06-owner-sintra/c2a5c58f-image.jpg (identical SHA-256); kept so every received file is accounted for.
@@ -286,11 +283,9 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Monserrate (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Monserrate (Parques de Sintra)
     capture: unknown
-    note: Elevated night viewpoint. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs taken from outside its areas
-      is not established here.
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: held
 - sender_filename: d89b070a-image.jpg

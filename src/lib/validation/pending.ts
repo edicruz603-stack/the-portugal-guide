@@ -130,7 +130,7 @@ export function classifyPending(input: ContentInput, issues: Issue[], today: str
       case 'P02': items.push({ category: 'research', id: i.where, issues: [key], action: 'Establish where the place is from a reliable source (address published by the business), then assign its zone.' }); break;
       case 'P03': items.push({ category: 'descriptions', id: i.where, issues: [key], action: 'Write reader-facing text from the PDF chapter or new sourced research, for editorial approval (M3/M4).' }); break;
       case 'P04': items.push({ category: 'facts', id: i.where, issues: [key], action: 'Research hours, prices, address or access from the operator or the business\'s own page; enter each with source and status.' }); break;
-      case 'P05': items.push({ category: 'commercial', id: i.where, issues: [key], action: 'Verify the licence and author on the file page and decide on share-alike and attribution — and, where the image shows a site with a published image rule (site_rule), obtain and record the operator\'s authorisation; or replace it with an owner photograph (replacement_candidates) whose own documented blockers are resolved.' }); break;
+      case 'P05': items.push({ category: 'commercial', id: i.where, issues: [key], action: 'Verify the licence and author on the file page and decide on share-alike and attribution — and, only where the image was captured inside premises with an internal image rule (site_rule), obtain and record the operator\'s authorisation; or replace it with an owner photograph (replacement_candidates) whose own documented blockers are resolved.' }); break;
       default: throw new Error(`unclassified pending rule ${i.rule} (${i.where})`);
     }
   }

@@ -386,7 +386,8 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
   //   original not accessible here is NOT a blocker. Commercial use is blocked only by documented issues
   //   (commercialBlockers: authorship to reconfirm with evidence, subject not identified, identifiable people,
   //   an operator's image rule without authorisation). Stored derivatives must match their recorded SHA-256.
-  //   Depicting a site with a published image rule (site_rule) needs site_authorisation_ref for commercial use.
+  //   An operator's internal image rule (site_rule) applies only with evidence of capture inside its premises, and then
+  //   needs site_authorisation_ref for commercial use (owner decision, 16 Nov 2026: public-space photography).
   const intakeBatches: IntakeBatch[] = [];
   for (const [i, b] of (input.photoIntake ?? []).entries()) {
     const r = IntakeBatchSchema.safeParse(b);
@@ -421,6 +422,7 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
       if (im.site_rule && !im.site_authorisation_ref) add('critical', 'C18', im.id, `depicts a site whose image rule (${im.site_rule}) requires the operator's authorisation for commercial use; none recorded`);
     }
     if (im.site_rule && !sourceById.has(im.site_rule)) add('critical', 'C18', im.id, `unknown site_rule source ${im.site_rule}`);
+    if (im.site_rule && (im.capture_location !== 'inside' || !im.capture_evidence)) add('critical', 'C18', im.id, 'site_rule applies only with evidence of capture inside the premises (capture_location inside + capture_evidence); public-space or unknown captures are not restricted by internal venue rules');
     if (im.licence_verified_on && im.licence_verified_on > opts.today) add('critical', 'C18', im.id, `licence_verified_on ${im.licence_verified_on} is in the future`);
     if (im.rights_category === 'owner' || im.intake) {
       const p = im.intake ? intake.get(im.intake) : undefined;

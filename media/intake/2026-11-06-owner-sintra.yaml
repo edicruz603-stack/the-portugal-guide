@@ -39,11 +39,9 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Park and National Palace of Pena (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Park and National Palace of Pena (Parques de Sintra)
     capture: unknown
-    note: Viewpoint not identified. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs taken from outside its areas
-      is not established here.
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: candidate
   note: Used in internal prototype/preview PDFs only (unpublished). Candidate replacement for img.sintra.wm-pena-palace.
@@ -71,11 +69,9 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Park and National Palace of Pena (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Park and National Palace of Pena (Parques de Sintra)
     capture: unknown
-    note: Viewpoint not identified. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs taken from outside its areas
-      is not established here.
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: candidate
   note: Used in internal prototype/preview PDFs only (unpublished).
@@ -130,10 +126,9 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Quinta da Regaleira (Fundação Cultursintra)
-    rule: src.regaleira.visitor-rules
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
     capture: unknown
-    note: Seen from a garden terrace; whether inside the Quinta is not established. The visitor rules require prior authorisation for any public use of the Quinta's image.
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: candidate
   note: 'Crane in frame: crop only if the composition holds (owner decision, 6 Nov 2026).'
@@ -161,10 +156,9 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Quinta da Regaleira (Fundação Cultursintra)
-    rule: src.regaleira.visitor-rules
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
     capture: unknown
-    note: Seen from a garden terrace; whether inside the Quinta is not established. The visitor rules require prior authorisation for any public use of the Quinta's image.
+    note: Capture location unknown; not assumed to be inside the premises, so the operator's internal rules are not applied (owner decision, 16 Nov 2026 (public-space photography)).
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: catalogued
 - sender_filename: e0b52248-image.jpg
@@ -192,10 +186,10 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Quinta da Regaleira (Fundação Cultursintra)
-    rule: src.regaleira.visitor-rules
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
     capture: outside
-    note: Taken from the public road. The visitor rules require prior authorisation for any public use of the Quinta's image.
+    evidence: 'visual: taken from the public road outside the premises'
+    note: 'Taken from public space: the operator''s internal rules do not apply because the site appears in the photo (owner decision, 16 Nov 2026 (public-space photography)).'
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: candidate
 - sender_filename: 1dce0e7a-image.jpg
@@ -222,10 +216,10 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Quinta da Regaleira (Fundação Cultursintra)
-    rule: src.regaleira.visitor-rules
+    depicts_site: Quinta da Regaleira (Fundação Cultursintra)
     capture: outside
-    note: Taken from the public road. The visitor rules require prior authorisation for any public use of the Quinta's image.
+    evidence: 'visual: taken from the public road outside the premises'
+    note: 'Taken from public space: the operator''s internal rules do not apply because the site appears in the photo (owner decision, 16 Nov 2026 (public-space photography)).'
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: not-suitable
   note: Lens obstruction; not usable as shot.
@@ -253,11 +247,11 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Monserrate (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Monserrate (Parques de Sintra)
     capture: inside
-    note: Taken in the park in front of the palace. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs taken from outside
-      its areas is not established here.
+    evidence: 'visual: the path and fountain in front of the palace terrace, reached only within Monserrate park'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: candidate
   note: Candidate replacement for img.sintra.wm-monserrate.
@@ -287,11 +281,11 @@ photos:
   marks:
     assessment: none
   property:
-    managed_site: Castle of the Moors (Parques de Sintra)
-    rule: src.parques-de-sintra.image-capture-regulation
+    depicts_site: Castle of the Moors (Parques de Sintra)
     capture: inside
-    note: Taken on the castle walls. The regulation is worded to apply to any image capture relating to the heritage Parques de Sintra manages; whether it reaches photographs taken from outside its areas
-      is not established here.
+    evidence: 'visual: taken on the castle walls and stair, within the Castle of the Moors'
+    rule: src.parques-de-sintra.image-capture-regulation
+    note: 'Captured inside the premises: the operator''s internal image rule applies to commercial or public use (owner decision, 16 Nov 2026 (public-space photography)).'
   capture: 'not known: the accessible copy carries no camera metadata (unverified)'
   use: held
 - sender_filename: 8ab381ad-image.jpg

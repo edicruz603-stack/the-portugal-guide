@@ -9,7 +9,8 @@
  *     its own SHA-256 so integrity can be checked whenever the file is present;
  *   - AUTHORSHIP: the owner is the declared photographer and rights holder (batch declaration). A file is marked
  *     `owner-to-reconfirm` only with documented evidence; it is never reclassified as third-party;
- *   - SUBJECT, PEOPLE, MARKS (trademarks/signage) and PROPERTY (operators' image rules) are assessed separately.
+ *   - SUBJECT, PEOPLE, MARKS (trademarks/signage) and PROPERTY (capture location vs operators' internal rules) are
+ *     assessed separately.
  */
 import { z } from 'zod';
 import { isoDate } from '../content/schemas.ts';
@@ -68,14 +69,20 @@ export const IntakePhotoSchema = z.object({
   people: z.object({ assessment: z.enum(['none-visible', 'not-identifiable', 'identifiable']), note: z.string().optional() }).strict(),
   marks: z.object({ assessment: z.enum(['none', 'present']), note: z.string().optional() }).strict(),
   /**
-   * Site image rules. `managed_site` is set when the photo depicts heritage whose operator publishes rules on the
-   * use of its image (Parques de Sintra regulation, Art. 1(1) and 1(4); Quinta da Regaleira visitor rules): commercial
-   * or public use then needs that operator's prior authorisation, recorded in `authorisation_ref`.
+   * Where the photo was taken, relative to a managed site it depicts (owner decision, 16 Nov 2026: public-space
+   * photography). An operator's internal image rules (e.g. the Parques de Sintra regulation) apply ONLY when there is
+   * evidence that the photo was captured inside that operator's premises (`capture: inside`, with `evidence` and the
+   * `rule`). A photo taken from a public street, road or square is not restricted because a monument appears in it.
+   * An unknown capture location is recorded as unknown and never assumed to be inside.
    */
   property: z.object({
-    managed_site: z.string().min(2).optional(),
-    rule: z.string().regex(/^src\./).optional(),
+    /** the managed site shown in the photo (information only; not a restriction by itself) */
+    depicts_site: z.string().min(2).optional(),
     capture: z.enum(['inside', 'outside', 'unknown']),
+    /** what shows where the photo was taken; required for `inside` */
+    evidence: z.string().min(10).optional(),
+    /** the operator's internal rule; only for photos captured inside its premises */
+    rule: z.string().regex(/^src\./).optional(),
     authorisation_ref: z.string().min(5).optional(),
     note: z.string().min(5),
   }).strict(),
@@ -85,7 +92,8 @@ export const IntakePhotoSchema = z.object({
 }).strict()
   .refine((p) => p.original.state !== 'accessible' || (!!p.original.path && !!p.original.sha256), { message: 'an accessible original needs path and sha256' })
   .refine((p) => p.authorship.status !== 'owner-to-reconfirm' || !!p.authorship.evidence, { message: 'owner-to-reconfirm needs documented evidence' })
-  .refine((p) => !p.property.managed_site === !p.property.rule, { message: 'managed_site and its rule source go together' });
+  .refine((p) => !p.property.rule || p.property.capture === 'inside', { message: 'an operator\'s internal rule applies only to photos captured inside its premises' })
+  .refine((p) => p.property.capture !== 'inside' || (!!p.property.depicts_site && !!p.property.evidence && !!p.property.rule), { message: 'capture inside needs the site, the evidence and the rule' });
 
 export const IntakeBatchSchema = z.object({
   batch: z.string().regex(/^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/),
@@ -116,6 +124,7 @@ export function commercialBlockers(p: IntakePhoto): string[] {
   if (p.authorship.status === 'owner-to-reconfirm') out.push(`authorship to reconfirm: ${p.authorship.evidence}`);
   if (p.subject.identification === 'not-identified') out.push('subject not identified');
   if (p.people.assessment === 'identifiable') out.push('identifiable people: consent, crop or replacement needed');
-  if (p.property.managed_site && !p.property.authorisation_ref) out.push(`depicts ${p.property.managed_site}: commercial or public use needs the operator's prior authorisation (${p.property.rule}); none recorded`);
+  // only with evidence of capture inside the premises; outside or unknown is never a blocker on this ground
+  if (p.property.capture === 'inside' && p.property.rule && !p.property.authorisation_ref) out.push(`captured inside ${p.property.depicts_site} (${p.property.evidence}): the operator's internal rule ${p.property.rule} requires its authorisation for commercial or public use; none recorded`);
   return out;
 }

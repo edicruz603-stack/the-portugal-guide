@@ -72,9 +72,13 @@ export const ImageSchema = z.object({
   /** owner photographs: `<batch>/<sender_filename>` in media/intake */
   intake: z.string().optional(),
   /**
-   * Operators' image rules (M3 closure): the published rule of the site the photo depicts (e.g. the Parques de Sintra
-   * image-capture regulation). Commercial use then also needs the operator's authorisation (rule C18).
+   * Where the photo was taken relative to the managed site it shows (owner decision, 16 Nov 2026: public-space
+   * photography). `site_rule` (an operator's internal image rule) is recorded only with evidence of capture inside the
+   * premises (`capture_location: inside` + `capture_evidence`); commercial use then also needs the operator's
+   * authorisation (rule C18). Unknown is recorded as unknown, never assumed to be inside.
    */
+  capture_location: z.enum(['inside', 'outside', 'unknown']).optional(),
+  capture_evidence: z.string().min(10).optional(),
   site_rule: sourceId.optional(),
   site_authorisation_ref: z.string().min(5).optional(),
   /** owner photographs that depict the same subject and could replace this image (intake refs; rule C18) */

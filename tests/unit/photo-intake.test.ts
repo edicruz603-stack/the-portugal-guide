@@ -67,7 +67,9 @@ describe('owner photograph intake: what was received', () => {
     const ok = (o: object) => IntakeBatchSchema.safeParse({ ...b, photos: [{ ...p, ...o }] }).success;
     expect(ok({ original: { state: 'accessible' } })).toBe(false);
     expect(ok({ authorship: { status: 'owner-to-reconfirm' } })).toBe(false);
-    expect(ok({ property: { managed_site: 'X site', capture: 'inside', note: 'no rule given' } })).toBe(false);
+    expect(ok({ property: { depicts_site: 'X site', capture: 'inside', note: 'no rule or evidence given' } })).toBe(false);
+    expect(ok({ property: { depicts_site: 'X site', capture: 'outside', rule: 'src.parques-de-sintra.image-capture-regulation', note: 'rule on a public-space photo' } })).toBe(false);
+    expect(ok({ property: { depicts_site: 'X site', capture: 'unknown', rule: 'src.parques-de-sintra.image-capture-regulation', note: 'rule on an unknown capture' } })).toBe(false);
     expect(ok({})).toBe(true);
   });
 });
@@ -76,12 +78,23 @@ describe('commercial blockers are only documented issues', () => {
   const base = photo('2026-11-06-owner-sintra/840a618c-image.jpg');
   const without = (o: Partial<IntakePhoto>) => commercialBlockers({ ...base, ...o } as IntakePhoto);
   it('a reduced derivative, no metadata and an inaccessible original are not blockers', () => {
-    const clean = without({ property: { capture: 'outside', note: 'public street' } });
+    const clean = without({ property: { capture: 'outside', note: 'public street' } as IntakePhoto['property'] });
     expect(clean).toEqual([]);
   });
-  it('an operator image rule without authorisation is a blocker; with authorisation it is not', () => {
-    expect(commercialBlockers(base).join()).toMatch(/Pena.*prior authorisation.*src.parques-de-sintra.image-capture-regulation/);
-    expect(without({ property: { ...base.property, authorisation_ref: 'PSML letter ref 123' } })).toEqual([]);
+  it('public-space or unknown capture of a monument is not a blocker (owner decision, 16 Nov 2026)', () => {
+    expect(base.property.capture).toBe('unknown');
+    expect(commercialBlockers(base)).toEqual([]); // Pena, location unknown: not assumed inside
+    const road = photo('2026-11-06-owner-sintra/e0b52248-image.jpg'); // Regaleira from the public road
+    expect(road.property.capture).toBe('outside'); expect(road.property.rule).toBeUndefined();
+    expect(commercialBlockers(road)).toEqual([]);
+    for (const { p } of all) if (p.property.capture !== 'inside') expect(p.property.rule, JSON.stringify(p.property)).toBeUndefined();
+  });
+  it('an internal rule applies only with evidence of capture inside the premises, until authorisation is recorded', () => {
+    const inside = all.filter((x) => x.p.property.capture === 'inside').map((x) => x.ref.split('/')[1]).sort();
+    expect(inside).toEqual(['4cbc72fd-image.jpg', '50893677-image.jpg', '9e8b7991-image.jpg', 'c2a5c58f-image.jpg']);
+    const mon = photo('2026-11-06-owner-sintra/50893677-image.jpg');
+    expect(commercialBlockers(mon).join()).toMatch(/captured inside Monserrate .*src.parques-de-sintra.image-capture-regulation/);
+    expect(commercialBlockers({ ...mon, property: { ...mon.property, authorisation_ref: 'PSML authorisation ref' } })).toEqual([]);
   });
   it('identifiable people, an unidentified subject and documented authorship doubt are blockers', () => {
     expect(commercialBlockers(photo('2026-11-07-owner-sintra/77fe1abc-image.jpg')).join()).toMatch(/identifiable people/);
@@ -105,14 +118,21 @@ describe('C18 image rights', () => {
     const i = structuredClone(real); img(i, PENA).commercial_ok = true;
     expect(run(i).map((x) => x.message).join()).toMatch(/without a commercial_basis/);
   });
-  it('a verified licence does not clear the site rule: the operator authorisation is also needed', () => {
+  it('a verified licence clears a photo of unknown capture location; an inside capture also needs the operator authorisation', () => {
     const i = structuredClone(real);
     Object.assign(img(i, PENA), { commercial_ok: true, commercial_basis: 'licence-verified' });
     expect(run(i).map((x) => x.message).join()).toMatch(/licence_url, licence_verified_on/);
     Object.assign(img(i, PENA), { licence_url: 'https://creativecommons.org/licenses/by-sa/4.0/', licence_verified_on: '2026-11-16', status: 'verified' });
+    expect(run(i)).toEqual([]); // Pena: capture location unknown → no venue rule
+    const W = 'img.sintra.wm-regaleira-well';
+    Object.assign(img(i, W), { commercial_ok: true, commercial_basis: 'licence-verified', licence_url: 'https://creativecommons.org/licenses/by-sa/3.0/', licence_verified_on: '2026-11-16', status: 'verified' });
     expect(run(i).map((x) => x.message).join()).toMatch(/requires the operator's authorisation/);
-    img(i, PENA).site_authorisation_ref = 'PSML authorisation ref';
+    img(i, W).site_authorisation_ref = 'Cultursintra authorisation ref';
     expect(run(i)).toEqual([]);
+  });
+  it('a venue rule may not be recorded on a public-space or unknown capture', () => {
+    const i = structuredClone(real); img(i, PENA).site_rule = 'src.parques-de-sintra.image-capture-regulation';
+    expect(run(i).map((x) => x.message).join()).toMatch(/site_rule applies only with evidence of capture inside/);
   });
   it('an owner photograph needs no accessible original; it is blocked only by its documented issues', () => {
     const i = structuredClone(real);
@@ -120,9 +140,9 @@ describe('C18 image rights', () => {
     (i.images as any[]).push(owner);
     const msgs = run(i).map((x) => x.message).join('\n');
     expect(msgs).not.toMatch(/original/i); // the inaccessible original is not a blocker
-    expect(msgs).toMatch(/depicts Park and National Palace of Pena .* none recorded/);
-    (i.images as any[]).at(-1).intake = '2026-11-16-owner-sintra/1000077315.jpg'; // a street, no managed site, no people
-    expect(run(i)).toEqual([]);
+    expect(run(i)).toEqual([]); // Pena seen from an unknown place: no venue rule, no blocker
+    (i.images as any[]).at(-1).intake = '2026-11-06-owner-sintra/50893677-image.jpg'; // captured inside Monserrate park
+    expect(run(i).map((x) => x.message).join()).toMatch(/captured inside Monserrate .* none recorded/);
     (i.images as any[]).at(-1).intake = '2026-11-16-owner-sintra/nope.jpg';
     expect(run(i).map((x) => x.message).join()).toMatch(/without a valid intake record/);
   });
@@ -131,13 +151,13 @@ describe('C18 image rights', () => {
     const m = run(i).map((x) => x.message).join();
     expect(m).toMatch(/is a duplicate of/); expect(m).toMatch(/x\/y.jpg is not in the photo intake/);
   });
-  it('the four Wikimedia images carry the operator rule of the site they show; only the Initiation Well has no owner candidate', () => {
+  it('only the Wikimedia image captured inside premises carries a venue rule; only the Initiation Well has no owner candidate', () => {
     const imgs = real.images as any[];
-    expect(Object.fromEntries(imgs.map((x) => [x.id, x.site_rule]))).toEqual({
-      'img.sintra.wm-pena-palace': 'src.parques-de-sintra.image-capture-regulation',
-      'img.sintra.wm-regaleira-well': 'src.regaleira.visitor-rules',
-      'img.sintra.wm-moorish-castle': 'src.parques-de-sintra.image-capture-regulation',
-      'img.sintra.wm-monserrate': 'src.parques-de-sintra.image-capture-regulation',
+    expect(Object.fromEntries(imgs.map((x) => [x.id, [x.capture_location, x.site_rule]]))).toEqual({
+      'img.sintra.wm-pena-palace': ['unknown', undefined],
+      'img.sintra.wm-regaleira-well': ['inside', 'src.regaleira.visitor-rules'],
+      'img.sintra.wm-moorish-castle': ['unknown', undefined],
+      'img.sintra.wm-monserrate': ['unknown', undefined],
     });
     expect(imgs.filter((x) => !x.replacement_candidates).map((x) => x.id)).toEqual(['img.sintra.wm-regaleira-well']);
   });
