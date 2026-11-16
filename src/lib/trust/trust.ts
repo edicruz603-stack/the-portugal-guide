@@ -95,24 +95,14 @@ export function trustLines(facts: readonly TrustFact[], sources: ReadonlyMap<str
 export const editorialStrings = (o: unknown): string[] =>
   typeof o === 'string' ? [o] : Array.isArray(o) ? o.flatMap(editorialStrings) : o && typeof o === 'object' ? Object.values(o).flatMap(editorialStrings) : [];
 
-/** The place's facts whose quote appears in this card's editorial text. */
+/**
+ * The place's facts shown on this card: those whose `quote` appears in the card's text, and unresolved facts
+ * whose approved `unresolved_text` appears there (the canonical text never states a disputed value — rule C15).
+ */
 export function factsOnCard<F extends TrustFact>(editorial: unknown, facts: readonly F[]): F[] {
   const text = editorialStrings(editorial);
-  return facts.filter((f) => f.quote && text.some((t) => t.includes(f.quote!)));
-}
-
-/**
- * Replaces the quoted text of every unresolved fact by its approved `unresolved_text`, so a disputed value
- * is never shown as if it were settled. Returns a new object; the stored editorial text is untouched.
- */
-export function suppressDisputed<T>(editorial: T, facts: readonly TrustFact[]): T {
-  const swaps = facts.filter((f) => f.status === 'unresolved' && f.quote && f.unresolved_text);
-  if (!swaps.length) return editorial;
-  const walk = (o: unknown): unknown =>
-    typeof o === 'string' ? swaps.reduce((s, f) => s.split(f.quote!).join(f.unresolved_text!), o)
-      : Array.isArray(o) ? o.map(walk)
-        : o && typeof o === 'object' ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, walk(v)])) : o;
-  return walk(editorial) as T;
+  const on = (s?: string) => !!s && text.some((t) => t.includes(s));
+  return facts.filter((f) => on(f.quote) || (f.status === 'unresolved' && on(f.unresolved_text)));
 }
 
 /** Events carry their own status: one line about the event's dates. */

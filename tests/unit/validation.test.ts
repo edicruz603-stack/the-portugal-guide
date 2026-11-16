@@ -114,7 +114,9 @@ describe('CRITICAL rules each fail on a fixture', () => {
   it('C13 homepage card linking to a missing page', () => { const i = fresh(); (i.homeDestinations as Rec[])[0]!.href = 'lisbon.html'; fails(i, 'C13'); });
   it('C15 disputed values are never shown', () => {
     const id = 'fact.sintra.national-palace-gardens.last-entry-website';
-    const a = fresh(); delete fact(a, id).unresolved_text; fails(a, 'C15', /no unresolved_text/);
+    const a = fresh(); fact(a, id).quote = '09:30–18:30; last entry 18:00'; fails(a, 'C15', /unresolved fact has a quote/);
+    const g = fresh(); const pg = place(g, 'national-palace-gardens').editorial.field_guide;
+    pg.paragraphs = pg.paragraphs.map((t: string) => t.replace('last entry: official sources differ', 'last entry 18:00')); fails(g, 'C15', /editorial text states the disputed last entry 18:00/);
     const b = fresh(); fact(b, id).unresolved_text = '09:30–18:30; last entry 18:00 — sources differ'; fails(b, 'C15', /disputed (quote|time 18:00)/);
     const c = fresh(); fact(c, id).unresolved_text = '09:30–18:30; ask at the gate'; fails(c, 'C15', /must say that the sources differ/);
     const d = fresh(); fact(d, 'fact.sintra.national-palace-gardens.price').unresolved_text = 'sources differ'; fails(d, 'C15', /on a checked fact/);
