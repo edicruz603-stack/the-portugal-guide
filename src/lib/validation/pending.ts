@@ -111,8 +111,9 @@ export function classifyPending(input: ContentInput, issues: Issue[], today: str
         if (f) {
           if (markerFact.has(f.id) && pending.some((x) => x.rule === 'P06' && x.where === markerFact.get(f.id))) break; // merged into the P06 item
           const prose = VISIBLE_IN_PROSE[f.id];
-          const shown = (f.quote && listsOf(f.place).length) || prose;
-          const visibleAs = prose ? `page prose (${prose.page.split('/').pop()}): “${prose.phrase}…” (part of the value)` : `published text of ${f.place}: “${f.quote}”`;
+          const onCard = f.quote ?? (f.status === 'unresolved' ? f.unresolved_text : undefined);
+          const shown = (onCard && listsOf(f.place).length) || prose;
+          const visibleAs = prose ? `page prose (${prose.page.split('/').pop()}): “${prose.phrase}…” (part of the value)` : `published text of ${f.place}: “${onCard}”`;
           items.push({ category: shown ? 'visible-risk' : 'research', id: f.id, issues: [key], status: f.status, ...(shown ? { visibleAs } : {}), action: factAction(f, sources.get(f.source)) });
           break;
         }

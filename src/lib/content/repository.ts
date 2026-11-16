@@ -7,7 +7,7 @@ import type { Place, Fact, Event, List } from './schemas.ts';
 import type { MapPlace } from '../map/types.ts';
 import { buildMarker } from '../map/markers.ts';
 import { validationDate, activeEventIds } from './dates.ts';
-import { trustLines, factsOnCard, suppressDisputed, eventTrust, type SourceInfo, type TrustLine } from '../trust/trust.ts';
+import { trustLines, factsOnCard, eventTrust, type SourceInfo, type TrustLine } from '../trust/trust.ts';
 import { proseFacts } from '../trust/prose.ts';
 import sourcesJson from '../../content/sources.json';
 
@@ -51,7 +51,7 @@ function list(content: DestinationContent, id: string): List {
 
 /**
  * Places of a list, in list order, with the editorial context the list renders and the card's trust lines.
- * Disputed (unresolved) values quoted in the text are replaced by their approved `unresolved_text`.
+ * The canonical text never states a disputed value (rule C15), so it is rendered as stored.
  */
 export async function placesInList<K extends keyof Place['editorial']>(destination: string, listId: string, context: K) {
   const content = await loadDestination(destination);
@@ -64,7 +64,7 @@ export async function placesInList<K extends keyof Place['editorial']>(destinati
     const onCard = factsOnCard(editorial, content.factsByPlace.get(id) ?? []);
     return {
       place,
-      editorial: suppressDisputed(editorial, onCard) as NonNullable<Place['editorial'][K]>,
+      editorial: editorial as NonNullable<Place['editorial'][K]>,
       trust: trustLines(onCard, sources),
     };
   });

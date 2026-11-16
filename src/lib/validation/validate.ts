@@ -289,17 +289,21 @@ export function validateContent(input: ContentInput, opts: Options): Issue[] {
     }
   }
 
-  // C15 — disputed values are never shown: a quoted unresolved fact needs approved visitor text that replaces
-  //        the quote, says the sources differ (or vary) and repeats none of the group's times
+  // C15 — disputed values are never stated as settled: the canonical editorial text may not quote an unresolved
+  //        fact. Its approved `unresolved_text` (which says the sources differ or vary and repeats none of the
+  //        group's times) is what the text says instead, and is how the card is linked to the conflict.
+  const editorialOf = new Map(places.map((p) => [p.id, strings(p.editorial)]));
   for (const f of facts) {
     if (f.unresolved_text && f.status !== 'unresolved') add('critical', 'C15', f.id, `unresolved_text on a ${f.status} fact (remove it when the conflict is settled)`);
     if (f.status !== 'unresolved') continue;
-    if (f.quote && !f.unresolved_text) add('critical', 'C15', f.id, 'unresolved fact shown in editorial text (quote) has no unresolved_text: the disputed value would be published');
-    if (!f.unresolved_text) continue;
-    if (!/sources (differ|vary)/i.test(f.unresolved_text)) add('critical', 'C15', f.id, 'unresolved_text must say that the sources differ or vary');
-    if (f.quote && f.unresolved_text.includes(f.quote)) add('critical', 'C15', f.id, 'unresolved_text still contains the disputed quote');
+    if (f.quote) add('critical', 'C15', f.id, 'unresolved fact has a quote: the editorial text would state a disputed value. Replace the wording with the fact\'s unresolved_text and remove the quote');
     const times = facts.filter((g) => g.conflict_group && g.conflict_group === f.conflict_group)
       .flatMap((g) => Object.values(g.value)).filter((v): v is string => typeof v === 'string' && /^\d{1,2}:\d{2}$/.test(v));
+    // the place's own text must not pair the disputed claim with one of the disputed times
+    const claim = f.kind === 'last-entry' ? /last (entry|admission|ticket)s?\W{0,3}(at\s)?(\d{1,2}:\d{2})/gi : null;
+    if (claim) for (const t of editorialOf.get(f.place) ?? []) for (const m of t.matchAll(claim)) if (times.includes(m[3]!)) add('critical', 'C15', f.id, `editorial text states the disputed ${m[0]}`);
+    if (!f.unresolved_text) continue;
+    if (!/sources (differ|vary)/i.test(f.unresolved_text)) add('critical', 'C15', f.id, 'unresolved_text must say that the sources differ or vary');
     for (const t of new Set(times)) if (f.unresolved_text.includes(t)) add('critical', 'C15', f.id, `unresolved_text shows the disputed time ${t}`);
   }
 
