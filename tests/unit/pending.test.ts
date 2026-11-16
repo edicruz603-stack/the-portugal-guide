@@ -13,7 +13,7 @@ const run = (today: string) => {
 };
 
 describe('pending classification', () => {
-  const { issues, items } = run('2026-11-13');
+  const { issues, items } = run('2026-11-16');
   const pending = issues.filter((i) => i.level === 'pending');
   it('covers every pending issue exactly once', () => {
     const covered = items.flatMap((x) => x.issues).sort();
@@ -33,11 +33,11 @@ describe('pending classification', () => {
       expect(x.status).not.toBe('checked');
     }
   });
-  it('13 Nov 2026 snapshot: 91 issues, 86 items, by category', () => {
+  it('16 Nov 2026 snapshot (after the M3 conflict data): 91 issues, by category', () => {
     expect(pending).toHaveLength(91);
     const n = (c: string) => items.filter((x) => x.category === c).length;
     expect({ items: items.length, visible: n('visible-risk'), research: n('research'), descriptions: n('descriptions'), facts: n('facts'), commercial: n('commercial') })
-      .toEqual({ items: 86, visible: 27, research: 33, descriptions: 6, facts: 16, commercial: 4 });
+      .toEqual({ items: 87, visible: 25, research: 36, descriptions: 6, facts: 16, commercial: 4 });
   });
   it('event visibility follows the validation date (Mutatis Mutandis: visible 15 Nov, research 16 Nov)', () => {
     const cat = (d: string) => run(d).items.find((x) => x.id === 'event.sintra.mutatis-mutandis')!.category;

@@ -4,6 +4,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-07",
     "note": "Operator website; used where the PDF ledger recorded the site or its notices without a page URL."
   },
@@ -12,6 +13,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/plan-your-visit/opening-times-and-prices/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -19,6 +21,7 @@
     "publisher": "Parques de Sintra (online ticket office)",
     "url": "https://bilheteira.parquesdesintra.pt",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-07",
     "note": "Prices recorded in the PDF fact ledger."
   },
@@ -27,6 +30,7 @@
     "publisher": "Parques de Sintra (visitor map, English PDF)",
     "url": "https://www.parquesdesintra.pt/media/jydbaz0b/sintra_eng.pdf",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -34,6 +38,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -41,6 +46,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/essential-visit/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -48,6 +54,7 @@
     "publisher": "Parques de Sintra (online ticket office)",
     "url": "https://bilheteira.parquesdesintra.pt/info/palacio-de-sintra-visita-essencial/1224/en",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -55,6 +62,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-07"
   },
   {
@@ -62,6 +70,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/plan-your-visit/skip-the-line-entrance-to-palace-of-pena/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -69,6 +78,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -76,6 +86,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/the-moorish-castle/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -83,6 +94,7 @@
     "publisher": "Parques de Sintra (online ticket office)",
     "url": "https://bilheteira.parquesdesintra.pt/info/castelo-dos-mouros/1196/en",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -90,6 +102,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/park-and-palace-of-monserrate/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -97,6 +110,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-de-monserrate/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -104,6 +118,7 @@
     "publisher": "Parques de Sintra (online ticket office)",
     "url": "https://bilheteira.parquesdesintra.pt/info/parque-e-palacio-de-monserrate/1219/pt",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -111,6 +126,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/convent-of-the-capuchos/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-07"
   },
   {
@@ -118,6 +134,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/chalet-and-garden-of-the-countess-of-edla/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -125,6 +142,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/villa-sassetti/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -132,6 +150,7 @@
     "publisher": "Parques de Sintra",
     "url": "https://www.parquesdesintra.pt/en/parks-monuments/cabo-da-roca-lighthouse/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -139,6 +158,7 @@
     "publisher": "Parques de Sintra (news)",
     "url": "https://www.parquesdesintra.pt/en/about-us/news/cabo-da-roca-lighthouse-opening-to-the-public-july-23-2026/",
     "kind": "operator",
+    "operator": "parques-de-sintra",
     "seen_on": "2026-11-11"
   },
   {
@@ -146,6 +166,7 @@
     "publisher": "Fundação Cultursintra (Quinta da Regaleira)",
     "url": "https://www.regaleira.pt/en/",
     "kind": "operator",
+    "operator": "quinta-da-regaleira",
     "seen_on": "2026-11-07"
   },
   {
@@ -153,6 +174,7 @@
     "publisher": "Quinta da Regaleira (online ticket office)",
     "url": "https://regaleira.byblueticket.pt",
     "kind": "operator",
+    "operator": "quinta-da-regaleira",
     "seen_on": "2026-11-07",
     "note": "The PDF ledger marked prices from this listing as Reported."
   },
@@ -260,5 +282,14 @@
     "url": "https://commons.wikimedia.org/",
     "kind": "image-library",
     "seen_on": "2026-10-30"
+  },
+  {
+    "id": "src.parques-de-sintra.how-to-get-there",
+    "publisher": "Parques de Sintra",
+    "title": "How to get there",
+    "url": "https://parquesdesintra.pt/en/plan-your-visit/how-to-get-there/",
+    "kind": "operator",
+    "operator": "parques-de-sintra",
+    "seen_on": "2026-11-15"
   }
 ]
